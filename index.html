@@ -194,10 +194,44 @@ const SEED={
     {item:"World of Business (/world)", st:"todo", note:""}
   ]
 };
-const KEY="fatsees_build_overview_v7";
-let data=load(), editing=false;
-function load(){try{const s=localStorage.getItem(KEY);return s?JSON.parse(s):structuredClone(SEED);}catch(e){return structuredClone(SEED);}}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){}data.updated=stamp();document.getElementById('updated').textContent="Updated "+data.updated;flash();}
+const KEY="fatsees_build_overview_v8";
+const API="/api/state";
+// Backend: Vercel KV (managed Redis). Every save POSTs the whole state
+// blob; every load GETs it. localStorage is kept ONLY as an offline/API-
+// down fallback so an editor working with flaky wifi doesn't lose
+// their in-progress changes.
+let data=structuredClone(SEED), editing=false, saveTimer=null;
+async function load(){
+  try{
+    const r=await fetch(API,{cache:'no-store'});
+    if(r.ok){
+      const j=await r.json();
+      if(j && j.data){ data=j.data; return; }
+    }
+    // First-run: no saved state yet. Seed the store from SEED so
+    // subsequent loads (other users) see something instead of a
+    // blank page. Fire-and-forget.
+    data=structuredClone(SEED);
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(()=>{});
+  }catch(e){
+    // API unreachable → fall back to any localStorage snapshot the editor
+    // may have, else SEED.
+    try{const s=localStorage.getItem(KEY);data=s?JSON.parse(s):structuredClone(SEED);}
+    catch(_){data=structuredClone(SEED);}
+  }
+}
+function save(){
+  data.updated=stamp();
+  document.getElementById('updated').textContent="Updated "+data.updated;
+  flash();
+  // Cache locally so an offline editor still sees their in-progress edits.
+  try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){}
+  // Debounce network writes 400ms so a burst of edits collapses to one POST.
+  if(saveTimer) clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>{
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(()=>{});
+  },400);
+}
 function stamp(){return new Date().toISOString().slice(0,16).replace('T',' ');}
 function flash(){const f=document.getElementById('flash');f.style.opacity=1;setTimeout(()=>f.style.opacity=0,900);}
 function getRef(p){const k=p.split('.');let o=data;for(let i=0;i<k.length-1;i++)o=o[k[i]];return[o,k[k.length-1]];}
@@ -283,7 +317,11 @@ document.getElementById('exportBtn').onclick=()=>{const b=new Blob([JSON.stringi
 document.getElementById('importBtn').onclick=()=>document.getElementById('fileInput').click();
 document.getElementById('fileInput').onchange=(e)=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data=JSON.parse(r.result);save();render();}catch(x){alert("Invalid JSON");}};r.readAsText(f);};
 document.getElementById('resetBtn').onclick=()=>{if(confirm("Reset to the seeded draft? Your edits will be lost.")){data=structuredClone(SEED);save();render();}};
+// Initial render from SEED (instant, no waiting), then async load() overlays
+// the real shared state and re-renders. That gives the user something to
+// look at while the network round-trip completes instead of a blank page.
 render();
+load().then(()=>{document.getElementById('updated').textContent="Updated "+(data.updated||"");render();});
 </script>
 </body>
 </html>

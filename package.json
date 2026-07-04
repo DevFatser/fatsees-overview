@@ -1,0 +1,9 @@
+{
+  "name": "fatsees-overview",
+  "version": "2.0.0",
+  "description": "Fatsees Build Overview — shared team dashboard with Vercel KV backend",
+  "private": true,
+  "dependencies": {
+    "@vercel/kv": "^3.0.0"
+  }
+}
