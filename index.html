@@ -25,12 +25,12 @@
     </div>
 
     <nav class="nav">
-      <div class="nav-title">Screens</div>
-      <a class="nav-item" data-route="overview" href="#/overview"><span class="dot"></span>Overview<span class="count" id="nav-count-total"></span></a>
-      <a class="nav-item" data-route="done" href="#/done"><span class="dot done"></span>Done<span class="count" id="nav-count-done"></span></a>
-      <a class="nav-item" data-route="progress" href="#/progress"><span class="dot progress"></span>In progress<span class="count" id="nav-count-progress"></span></a>
-      <a class="nav-item" data-route="planned" href="#/planned"><span class="dot planned"></span>Planned<span class="count" id="nav-count-planned"></span></a>
-      <a class="nav-item" data-route="priority" href="#/priority"><span class="dot priority"></span>Priority<span class="count" id="nav-count-priority"></span></a>
+      <div class="nav-title">Sections</div>
+      <a class="nav-item active" data-scroll="overview-top" href="#overview-top"><span class="dot"></span>Overview<span class="count" id="nav-count-total"></span></a>
+      <a class="nav-item" data-scroll="done" href="#done"><span class="dot done"></span>Done<span class="count" id="nav-count-done"></span></a>
+      <a class="nav-item" data-scroll="progress" href="#progress"><span class="dot progress"></span>In progress<span class="count" id="nav-count-progress"></span></a>
+      <a class="nav-item" data-scroll="planned" href="#planned"><span class="dot planned"></span>Planned<span class="count" id="nav-count-planned"></span></a>
+      <a class="nav-item" data-scroll="priority" href="#priority"><span class="dot priority"></span>Priority<span class="count" id="nav-count-priority"></span></a>
     </nav>
 
     <div class="team-panel">
@@ -46,11 +46,11 @@
     </div>
   </aside>
 
-  <!-- ─── Main ─────────────────────────────────────────────────────── -->
+  <!-- ─── Main ─── One scroll: Done → Progress → Planned → Priority ── -->
   <main>
-    <header class="page-header">
+    <header class="page-header" id="overview-top">
       <div>
-        <h1 class="page-title" id="page-title">Overview</h1>
+        <h1 class="page-title">Build Overview</h1>
         <div class="page-sub">
           <span>Updated <time id="updated">—</time></span>
           <span class="saved-flash" id="saved-flash">✓ saved</span>
@@ -62,109 +62,73 @@
       </div>
     </header>
 
-    <!-- ═══ ROUTE: Overview ═════════════════════════════════════════ -->
-    <div class="route" data-route="overview">
-      <div class="stats-hero">
-        <div class="stat-card done" data-jump="done">
-          <div class="stat-value" id="stat-done">—</div>
-          <div class="stat-label"><span class="stat-dot"></span>Done — ready to test</div>
-        </div>
-        <div class="stat-card progress" data-jump="progress">
-          <div class="stat-value" id="stat-progress">—</div>
-          <div class="stat-label"><span class="stat-dot"></span>In progress</div>
-        </div>
-        <div class="stat-card planned" data-jump="planned">
-          <div class="stat-value" id="stat-planned">—</div>
-          <div class="stat-label"><span class="stat-dot"></span>Planned next</div>
-        </div>
-        <div class="stat-card priority" data-jump="priority">
-          <div class="stat-value" id="stat-priority">—</div>
-          <div class="stat-label"><span class="stat-dot"></span>Priority queue</div>
-        </div>
+    <!-- Stats hero — clickable, scrolls to section -->
+    <div class="stats-hero">
+      <div class="stat-card done" data-scroll="done">
+        <div class="stat-value" id="stat-done">—</div>
+        <div class="stat-label"><span class="stat-dot"></span>Done — ready to test</div>
       </div>
-
-      <div class="overview-grid">
-        <div class="overview-panel">
-          <div class="panel-head">
-            <div class="panel-title"><span class="panel-icon priority">⚡</span>Priority now — top 3</div>
-            <a class="panel-more" href="#/priority">See all →</a>
-          </div>
-          <div id="overview-priority"></div>
-        </div>
-        <div class="overview-panel">
-          <div class="panel-head">
-            <div class="panel-title"><span class="panel-icon progress">◐</span>Actively building</div>
-            <a class="panel-more" href="#/progress">See all →</a>
-          </div>
-          <div id="overview-progress"></div>
-        </div>
+      <div class="stat-card progress" data-scroll="progress">
+        <div class="stat-value" id="stat-progress">—</div>
+        <div class="stat-label"><span class="stat-dot"></span>In progress</div>
       </div>
-
-      <div class="rules-banner">
-        <div class="rules-title">Rules of engagement</div>
-        <ul>
-          <li><strong>Priority means NOW.</strong> Stop what you're doing. and fix this first</li>
-          <li><strong>"I'll take it" = start this second.</strong> Not later this week.</li>
-          <li><strong>Done means YOU verified it end-to-end as a real user.</strong> Otherwise it's not Done.</li>
-        </ul>
+      <div class="stat-card planned" data-scroll="planned">
+        <div class="stat-value" id="stat-planned">—</div>
+        <div class="stat-label"><span class="stat-dot"></span>Planned next</div>
+      </div>
+      <div class="stat-card priority" data-scroll="priority">
+        <div class="stat-value" id="stat-priority">—</div>
+        <div class="stat-label"><span class="stat-dot"></span>Priority queue</div>
       </div>
     </div>
 
-    <!-- ═══ ROUTE: Done ═════════════════════════════════════════════ -->
-    <div class="route" data-route="done">
-      <section class="build-section">
-        <div class="section-head">
-          <div class="section-title-wrap">
-            <div class="section-icon done">✓</div>
-            <h2 class="section-title">Done — ready to test</h2>
-          </div>
-          <div class="section-desc">Verified end-to-end. Anyone can sign up + report bugs.</div>
+    <!-- Done section -->
+    <section class="build-section" id="done">
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <div class="section-icon done">✓</div>
+          <h2 class="section-title">Done — ready to test</h2>
         </div>
-        <div class="cards-grid" id="done-grid"></div>
-      </section>
-    </div>
+        <div class="section-desc">Verified end-to-end. Anyone can sign up + report bugs.</div>
+      </div>
+      <div class="cards-grid" id="done-grid"></div>
+    </section>
 
-    <!-- ═══ ROUTE: In progress ══════════════════════════════════════ -->
-    <div class="route" data-route="progress">
-      <section class="build-section">
-        <div class="section-head">
-          <div class="section-title-wrap">
-            <div class="section-icon progress">◐</div>
-            <h2 class="section-title">In progress — being built now</h2>
-          </div>
-          <div class="section-desc">Bars show how far along. "Move to Done" requires you verifying it end-to-end first (Audun's rule).</div>
+    <!-- In progress section -->
+    <section class="build-section" id="progress">
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <div class="section-icon progress">◐</div>
+          <h2 class="section-title">In progress — being built now</h2>
         </div>
-        <div class="cards-grid" id="progress-grid"></div>
-      </section>
-    </div>
+        <div class="section-desc">Not 100% yet. Bars show how far along.</div>
+      </div>
+      <div class="cards-grid" id="progress-grid"></div>
+    </section>
 
-    <!-- ═══ ROUTE: Planned ══════════════════════════════════════════ -->
-    <div class="route" data-route="planned">
-      <section class="build-section">
-        <div class="section-head">
-          <div class="section-title-wrap">
-            <div class="section-icon planned">→</div>
-            <h2 class="section-title">Planned next — after current work</h2>
-          </div>
-          <div class="section-desc">What each developer starts once their current portal is done.</div>
+    <!-- Planned section — what each dev starts next -->
+    <section class="build-section" id="planned">
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <div class="section-icon planned">→</div>
+          <h2 class="section-title">Planned next — after current work</h2>
         </div>
-        <div class="planned-list" id="planned-list"></div>
-      </section>
-    </div>
+        <div class="section-desc">What each developer starts once their current portal is done.</div>
+      </div>
+      <div class="planned-list" id="planned-list"></div>
+    </section>
 
-    <!-- ═══ ROUTE: Priority ═════════════════════════════════════════ -->
-    <div class="route" data-route="priority">
-      <section class="build-section">
-        <div class="section-head">
-          <div class="section-title-wrap">
-            <div class="section-icon priority">⚡</div>
-            <h2 class="section-title">Priority — means NOW</h2>
-          </div>
-          <div class="section-desc">Everything here drops other work. Fix these first.</div>
+    <!-- Priority section — Audun's launch order -->
+    <section class="build-section" id="priority">
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <div class="section-icon priority">▤</div>
+          <h2 class="section-title">Priority — ranked queue of untouched work</h2>
         </div>
-        <div class="priority-list" id="priority-list"></div>
-      </section>
-    </div>
+        <div class="section-desc">Of the things nobody's building right now, what matters most next. When a portal moves to In progress, it leaves this queue.</div>
+      </div>
+      <div class="priority-list" id="priority-list"></div>
+    </section>
   </main>
 </div>
 

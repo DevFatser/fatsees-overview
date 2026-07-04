@@ -13,14 +13,7 @@ const DEV_COLORS = {
 };
 const STATUS_STATES = ['todo', 'prog', 'done'];
 const STATUS_LABELS = { todo: 'To do', prog: 'In prog', done: 'Done' };
-const ROUTES = ['overview', 'done', 'progress', 'planned', 'priority'];
-const ROUTE_TITLES = {
-  overview: 'Overview',
-  done: 'Done — ready to test',
-  progress: 'In progress',
-  planned: 'Planned next',
-  priority: 'Priority queue',
-};
+const SECTIONS = ['overview-top', 'done', 'progress', 'planned', 'priority'];
 
 /* ─── Seed data ───────────────────────────────────────────────────── */
 const SEED = {
@@ -46,22 +39,36 @@ const SEED = {
     { portal: 'Freja Identity Verification Test',devs: ['Apple'],           pct: 50, fe: 'prog', be: 'todo', note: 'Identified-tier local test pass per _docs/FREJA_LOCAL_SETUP_GUIDE.md.' },
   ],
   planned: [
-    { dev: 'Shafi',  next: 'UIUX design pass + PR reviews + Founders + VideoPay testing + push Dev → main' },
-    { dev: 'Victor', next: 'Supabase Branching + LiveKit Phase 4c-2 adapter + /leie /leie-eiendom /eiendom Mollie + Fat AI' },
-    { dev: 'Apple',  next: 'Jobs + Motor (after Shafi redesign)' },
-    { dev: 'Nahid',  next: 'Equity (/aksjer) — green-lit' },
+    // Shafi — 4 atomic cards
+    { dev: 'Shafi',  next: 'UIUX design pass across portals' },
+    { dev: 'Shafi',  next: 'Founders (final e2e review)' },
+    { dev: 'Shafi',  next: 'VideoPay (testing before ship)' },
+    { dev: 'Shafi',  next: 'Push Dev → main' },
+    // Victor — 4 atomic cards
+    { dev: 'Victor', next: 'Supabase Branching' },
+    { dev: 'Victor', next: 'LiveKit Phase 4c-2 adapter (Fat for life)' },
+    { dev: 'Victor', next: 'Mollie checkout on /leie, /leie-eiendom, /eiendom' },
+    { dev: 'Victor', next: 'Fat AI integration on /leie, /leie-eiendom, /eiendom' },
+    // Apple — 2 atomic cards
+    { dev: 'Apple',  next: 'Jobs' },
+    { dev: 'Apple',  next: 'Motor (after Shafi redesign)' },
+    // Nahid: next work is Equity (/aksjer), which lives in the Priority queue (#1).
   ],
   priority: [
-    { item: 'Equity (/aksjer)',                                     st: 'todo', note: 'TOP priority — rides on Freja Identified + escrow + dual-check moderation gate.' },
-    { item: 'Fat for life (/ai)',                                   st: 'prog', note: '~50% — text chat done; LiveKit voice is the gap.' },
-    { item: 'Founders (/founders)',                                 st: 'prog', note: '~90% — e2e punchlist to close.' },
-    { item: 'Dashboard + custom handles',                           st: 'prog', note: '~65% — bare-namespace fatsees.com/[name] → Dashboard.' },
-    { item: 'Real Estate (/eiendom) + Motor (/motor)',              st: 'prog', note: 'Real Estate ~90% (Fat AI integ left); Motor shipped. Finn-parity, NL search.' },
-    { item: 'Jobs (/jobs) + Work Marketplace (/services)',          st: 'todo', note: '' },
-    { item: 'Suppliers (/suppliers)',                               st: 'todo', note: 'Works with zero inventory (Fat web-search).' },
+    { item: 'Equity (/aksjer)',                                        st: 'todo', note: 'TOP priority — rides on Freja Identified + escrow + dual-check moderation gate.' },
+    { item: 'Fat for life (/ai) + Founders (/founders)',               st: 'prog', note: 'Fat for life ~50% (LiveKit voice is the gap); Founders ~90% (e2e punchlist to close).' },
+    { item: 'Dashboard + custom handles',                              st: 'prog', note: '~65% — bare-namespace fatsees.com/[name] → Dashboard.' },
+    { item: 'Community (/community)',                                  st: 'done', note: 'Portal shipped; support / help surface still to add.' },
+    { item: 'VideoPay (/video)',                                       st: 'prog', note: '~70% (PR E + e2e). FE + BE done; testing ongoing.' },
+    { item: 'Real Estate (/eiendom) + Motor (/motor)',                 st: 'prog', note: 'Real Estate ~90% (Fat AI integ left); Motor shipped. Finn-parity, NL search.' },
+    { item: 'Marketplace (/marketplace)',                              st: 'done', note: 'Shipped — the buy/sell + escrow + fee reference path other transactional portals reuse.' },
+    { item: 'Jobs (/jobs)',                                            st: 'todo', note: '' },
+    { item: 'Work Marketplace (/services)',                            st: 'todo', note: '' },
+    { item: 'Suppliers (/suppliers)',                                  st: 'todo', note: 'Works with zero inventory (Fat web-search).' },
     { item: 'Rent Anything (/leie) + Property Rental (/leie-eiendom)', st: 'prog', note: 'Both ~85% (Fat AI + Mollie integ left).' },
-    { item: 'Apps (/apps) + Charity (/charity)',                    st: 'todo', note: '' },
-    { item: 'World of Business (/world)',                           st: 'todo', note: '' },
+    { item: 'Apps (/apps)',                                            st: 'todo', note: '' },
+    { item: 'Charity (/charity)',                                      st: 'todo', note: '' },
+    { item: 'World of Business (/world)',                              st: 'todo', note: '' },
   ],
 };
 
@@ -73,7 +80,6 @@ let data = structuredClone(SEED);
 let editing = false;
 let saveTimer = null;
 let realtimeChannel = null;
-let currentRoute = 'overview';
 
 /* ─── Utility ─────────────────────────────────────────────────────── */
 function stamp() { return new Date().toISOString().slice(0, 16).replace('T', ' '); }
@@ -90,7 +96,6 @@ function escapeHTML(s) { return String(s || '').replace(/[&<>"']/g, c => ({'&':'
 function migrate(d) {
   if (!d) return null;
   if (!d.devs) d.devs = SEED.devs.slice();
-  // TBD is for unassigned cards, never a roster member. Scrub it.
   d.devs = d.devs.filter(n => n !== 'TBD');
   if (!d.done) d.done = [];
   if (!d.progress) d.progress = [];
@@ -115,24 +120,6 @@ function toast(msg, kind) {
   toastEl.classList.add('show');
   setTimeout(() => toastEl.classList.remove('show'), 2400);
 }
-
-/* ─── Router (hash-based) ─────────────────────────────────────────── */
-function parseHash() {
-  const h = (location.hash || '').replace(/^#\/?/, '');
-  return ROUTES.includes(h) ? h : 'overview';
-}
-function swapView(route) {
-  currentRoute = route;
-  document.querySelectorAll('.route').forEach(el => {
-    el.classList.toggle('active', el.dataset.route === route);
-  });
-  document.querySelectorAll('.nav-item').forEach(n => {
-    n.classList.toggle('active', n.dataset.route === route);
-  });
-  document.getElementById('page-title').textContent = ROUTE_TITLES[route];
-  window.scrollTo(0, 0);
-}
-window.addEventListener('hashchange', () => swapView(parseHash()));
 
 /* ─── Load state from Supabase ────────────────────────────────────── */
 async function load() {
@@ -219,7 +206,6 @@ function render() {
   renderPlanned();
   renderPriority();
   renderTeamPanel();
-  renderOverviewPanels();
   applyEditGates();
   bind();
 }
@@ -264,7 +250,7 @@ function renderDone() {
     <div class="card done">
       <div class="card-title" data-path="done.${i}.portal">${escapeHTML(p.portal)}</div>
       <div class="devs">${devChipsHTML(p.devs, `done.${i}.devs`)}</div>
-      <div class="ready-badge">✓ Verified — ready to test</div>
+      <div class="ready-badge">✓ Ready to test</div>
       <div class="card-note" data-path="done.${i}.note">${escapeHTML(p.note || '')}</div>
       <div class="card-actions">
         <span class="card-remove" data-del="done.${i}">× remove</span>
@@ -320,27 +306,30 @@ function renderPlanned() {
 
 function renderPriority() {
   const list = document.getElementById('priority-list');
-  list.innerHTML = data.priority.map((p, i) => {
-    const st = p.st || 'todo';
-    const isNow = st !== 'done';
-    return `
-      <div class="priority-row${isNow ? ' priority-now' : ''}">
-        ${isNow ? '<span class="priority-now-tag">⚡ NOW</span>' : ''}
-        <div class="priority-rank">${i + 1}</div>
-        <div class="priority-body">
-          <div class="priority-item" data-path="priority.${i}.item">${escapeHTML(p.item)}</div>
-          <div class="priority-note" data-path="priority.${i}.note">${escapeHTML(p.note || '')}</div>
-          ${isNow ? '<div class="priority-deadline">Fix first — before other work</div>' : ''}
-        </div>
-        <span class="priority-status ${st}" data-stpath="priority.${i}.st">${st === 'done' ? 'Done' : st === 'prog' ? 'In progress' : 'Not started'}</span>
-        <div class="priority-arrows">
-          <button data-up="${i}" title="Move up">↑</button>
-          <button data-down="${i}" title="Move down">↓</button>
-        </div>
-        <span class="priority-remove" data-del="priority.${i}" title="Remove">×</span>
+  // Audun's spec: priority = ranked queue of tasks nobody is working on right now.
+  // Items that move to prog/done leave the queue. Underlying data is preserved —
+  // toggling the status pill back to 'todo' brings them back into the visible queue.
+  const queue = data.priority
+    .map((p, i) => ({ p, i, st: p.st || 'todo' }))
+    .filter(x => x.st === 'todo');
+  const rowsHTML = queue.map(({ p, i }, displayIdx) => `
+    <div class="priority-row">
+      <div class="priority-rank">${displayIdx + 1}</div>
+      <div class="priority-body">
+        <div class="priority-item" data-path="priority.${i}.item">${escapeHTML(p.item)}</div>
+        <div class="priority-note" data-path="priority.${i}.note">${escapeHTML(p.note || '')}</div>
       </div>
-    `;
-  }).join('') + `<button class="add-card-btn" data-add="priority">+ Add priority item</button>`;
+      <span class="priority-status todo" data-stpath="priority.${i}.st" title="Click in edit mode: mark 'In progress' to dequeue, or 'Done' if shipped">Not started</span>
+      <div class="priority-arrows">
+        <button data-up="${i}" title="Move up">↑</button>
+        <button data-down="${i}" title="Move down">↓</button>
+      </div>
+      <span class="priority-remove" data-del="priority.${i}" title="Remove">×</span>
+    </div>
+  `).join('');
+  const emptyHTML = queue.length ? '' :
+    '<div class="empty-queue">Queue is empty — every priority item has been picked up. Add a new one, or unmark one in the data.</div>';
+  list.innerHTML = rowsHTML + emptyHTML + `<button class="add-card-btn" data-add="priority">+ Add priority item</button>`;
 }
 
 function renderTeamPanel() {
@@ -354,56 +343,20 @@ function renderTeamPanel() {
   `).join('');
 }
 
-function renderOverviewPanels() {
-  const prio = document.getElementById('overview-priority');
-  const topPrio = data.priority.filter(p => (p.st || 'todo') !== 'done').slice(0, 3);
-  prio.innerHTML = topPrio.length ? topPrio.map(p => `
-    <div class="overview-row">
-      <span class="overview-rank">${data.priority.indexOf(p) + 1}</span>
-      <div class="overview-body">
-        <div class="overview-title">${escapeHTML(p.item)}</div>
-        <div class="overview-sub">${escapeHTML(p.note || 'No note yet')}</div>
-      </div>
-      <span class="priority-status ${p.st || 'todo'}">${(p.st || 'todo') === 'prog' ? 'In progress' : 'Not started'}</span>
-    </div>
-  `).join('') : '<div class="empty">All priority items are Done. Add more.</div>';
-
-  const prog = document.getElementById('overview-progress');
-  const activeProg = data.progress.filter(p => (p.pct || 0) < 100).slice(0, 4);
-  prog.innerHTML = activeProg.length ? activeProg.map(p => {
-    const pct = Math.max(0, Math.min(100, p.pct || 0));
-    return `
-      <div class="overview-row">
-        <div class="overview-body">
-          <div class="overview-title">${escapeHTML(p.portal)}</div>
-          <div class="overview-sub">${(p.devs || []).map(d => `<span class="mini-chip" style="background:${devColor(d)}22;color:${devColor(d)}">${escapeHTML(d)}</span>`).join(' ')}</div>
-        </div>
-        <div class="overview-progress-mini">
-          <div class="mini-track"><div class="mini-fill" style="width:${pct}%;background:${pct===100?'var(--success)':'var(--warning)'}"></div></div>
-          <span class="mini-pct">${pct}%</span>
-        </div>
-      </div>
-    `;
-  }).join('') : '<div class="empty">Nothing in progress.</div>';
-}
-
 /* ─── Edit-gate: strictly toggle editability based on `editing` ────── */
 function applyEditGates() {
   document.body.classList.toggle('editing', editing);
   document.getElementById('edit-btn').textContent = editing ? '✓ Done' : '✎ Edit';
   document.getElementById('edit-hint').textContent = editing ? 'Editing — click ✓ Done when finished' : 'Read-only';
-  // Text nodes: only contenteditable in edit mode
   document.querySelectorAll('[data-path]').forEach(el => {
     if (editing) el.setAttribute('contenteditable', 'plaintext-only');
     else el.removeAttribute('contenteditable');
   });
-  // Dropdowns: disabled outside edit mode
   document.querySelectorAll('.dev-select').forEach(el => { el.disabled = !editing; });
 }
 
 /* ─── Bind (per-render event wiring) ──────────────────────────────── */
 function bind() {
-  // Editable text
   document.querySelectorAll('[data-path]').forEach(el => {
     el.onblur = () => {
       if (!editing) return;
@@ -418,7 +371,6 @@ function bind() {
     };
   });
 
-  // Dev dropdown
   document.querySelectorAll('.dev-select').forEach(el => {
     el.onchange = () => {
       if (!editing) return;
@@ -427,7 +379,6 @@ function bind() {
     };
   });
 
-  // Dev × remove
   document.querySelectorAll('[data-devdel]').forEach(el => {
     el.onclick = () => {
       if (!editing) return;
@@ -438,7 +389,6 @@ function bind() {
     };
   });
 
-  // Dev + add
   document.querySelectorAll('[data-devadd]').forEach(el => {
     el.onclick = () => {
       if (!editing) return;
@@ -447,7 +397,6 @@ function bind() {
     };
   });
 
-  // Pill toggle
   document.querySelectorAll('[data-stpath]').forEach(el => {
     el.onclick = () => {
       if (!editing) return;
@@ -459,7 +408,6 @@ function bind() {
     };
   });
 
-  // Card / row remove
   document.querySelectorAll('[data-del]').forEach(el => {
     el.onclick = () => {
       if (!editing) return;
@@ -470,7 +418,6 @@ function bind() {
     };
   });
 
-  // Priority reorder
   document.querySelectorAll('[data-up]').forEach(el => {
     el.onclick = () => {
       if (!editing) return;
@@ -486,7 +433,6 @@ function bind() {
     };
   });
 
-  // Add card / row buttons
   document.querySelectorAll('[data-add]').forEach(b => {
     b.onclick = () => {
       if (!editing) return;
@@ -499,30 +445,50 @@ function bind() {
     };
   });
 
-  // Verify-and-move-to-Done (Audun rule #5)
+  // Verify-and-move-to-Done (mechanism, not display)
   document.querySelectorAll('[data-verify]').forEach(b => {
     b.onclick = () => {
       if (!editing) return;
       const i = +b.dataset.verify;
       const p = data.progress[i];
       const ok = confirm(
-        `Audun's rule: "Done means YOU verified it — end-to-end, tested as a real user."\n\n` +
+        `Done means you verified it end-to-end as a real user.\n\n` +
         `Have you personally tested "${p.portal}" end-to-end as a real user?\n\n` +
-        `Click OK only if yes. Cancel keeps it in In Progress.`
+        `OK moves it to Done. Cancel keeps it in In Progress.`
       );
       if (!ok) return;
       data.progress.splice(i, 1);
       data.done.push({ portal: p.portal, devs: p.devs.slice(), note: p.note || 'Verified end-to-end.' });
       save();
-      location.hash = '#/done';
+      document.getElementById('done').scrollIntoView({ behavior: 'smooth' });
     };
   });
+}
 
-  // Stat-card jump on Overview
-  document.querySelectorAll('[data-jump]').forEach(el => {
-    el.onclick = () => { location.hash = '#/' + el.dataset.jump; };
+/* ─── Sidebar + stat-card scroll nav ──────────────────────────────── */
+document.querySelectorAll('[data-scroll]').forEach(el => {
+  el.addEventListener('click', (e) => {
+    const target = document.getElementById(el.dataset.scroll);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', '#' + el.dataset.scroll);
+  });
+});
+
+/* ─── Scroll-spy: highlight the sidebar item for the visible section  */
+function updateActiveNav() {
+  const y = window.scrollY + 140;
+  let current = 'overview-top';
+  for (const id of SECTIONS) {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top + window.scrollY <= y) current = id;
+  }
+  document.querySelectorAll('.nav-item').forEach(n => {
+    n.classList.toggle('active', n.dataset.scroll === current);
   });
 }
+window.addEventListener('scroll', updateActiveNav, { passive: true });
 
 /* ─── Edit-mode toggle ────────────────────────────────────────────── */
 document.getElementById('edit-btn').onclick = () => {
@@ -531,11 +497,10 @@ document.getElementById('edit-btn').onclick = () => {
 };
 
 /* ─── Boot ────────────────────────────────────────────────────────── */
-if (!location.hash) location.hash = '#/overview';
-swapView(parseHash());
 render();
 (async () => {
   await load();
   render();
   subscribeRealtime();
+  updateActiveNav();
 })();
