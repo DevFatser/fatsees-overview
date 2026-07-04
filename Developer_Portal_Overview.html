@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fatsees — Build Overview</title>
+<style>
+  :root{
+    --bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;
+    --txt:#e7ebf3;--muted:#9aa3b2;--accent:#5b8cff;
+    --done:#22c55e;--prog:#f59e0b;--todo:#6b7280;--na:#3a3f4b;--plan:#a855f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0f1115,#0c0e12);color:var(--txt);
+    font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:60px}
+  header{padding:22px 26px 8px;display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
+  h1{font-size:22px;margin:0;letter-spacing:.2px}
+  .sub{color:var(--muted);font-size:13px;margin-top:3px}
+  .banner{margin:2px 26px 6px;padding:9px 13px;background:#221c12;border:1px solid #4a3a1f;border-radius:9px;color:#e8d3a0;font-size:12.5px}
+  .savedflash{color:var(--done);font-size:12px;opacity:0;transition:opacity .2s}
+  .toolbar{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+  button{background:var(--panel2);color:var(--txt);border:1px solid var(--line);padding:8px 12px;border-radius:9px;cursor:pointer;font-size:13px}
+  button:hover{border-color:var(--accent)}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#0b0f1a;font-weight:600}
+  .section{padding:8px 26px 6px}
+  .sectionhead{display:flex;align-items:baseline;gap:12px;margin:14px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .sectionhead .bar{width:6px;height:22px;border-radius:3px}
+  .sectionhead h2{font-size:17px;margin:0}
+  .sectionhead .desc{color:var(--muted);font-size:12.5px;margin-left:auto;text-align:right;max-width:60%}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:13px 14px}
+  .card.done{border-color:#1f5136;background:linear-gradient(180deg,#14231a,#141821)}
+  .ptitle{font-weight:650;font-size:15.5px;margin-bottom:7px}
+  .devs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .dev{font-size:11px;padding:3px 9px;border-radius:20px;background:#232838;border:1px solid var(--line);display:flex;align-items:center;gap:6px}
+  .dev .d{width:8px;height:8px;border-radius:50%}
+  .tag{font-size:11px;color:var(--done);background:#12271b;border:1px solid #1f5136;border-radius:7px;padding:5px 9px;display:inline-block}
+  .note{color:var(--muted);font-size:13px;margin-top:6px}
+  .track{height:10px;background:#0c0e12;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin:2px 0 4px}
+  .fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#f59e0b,#eab308)}
+  .pctrow{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);margin-bottom:6px}
+  .pct{font-weight:700;color:var(--txt)}
+  .pills{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px}
+  .pill{font-size:11px;padding:3px 9px;border-radius:20px;background:#232838;border:1px solid var(--line);user-select:none}
+  .pill .k{color:var(--muted);margin-right:5px}
+  .pill.s-done{border-color:var(--done)} .pill.s-done b{color:var(--done)}
+  .pill.s-prog{border-color:var(--prog)} .pill.s-prog b{color:var(--prog)}
+  .pill.s-todo{border-color:var(--todo)} .pill.s-todo b{color:var(--todo)}
+  .pill.s-na{opacity:.5}
+  .planrow{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 13px;margin-bottom:9px}
+  .planrow .who{display:flex;align-items:center;gap:9px;min-width:150px;font-weight:600}
+  .planrow .arrow{color:var(--muted)}
+  .avatar{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#0b0f1a;font-size:13px;flex:none}
+  .prio{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 13px;margin-bottom:8px}
+  .rank{width:26px;height:26px;border-radius:8px;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;font-weight:700;flex:none}
+  .prio .body{flex:1}
+  .prio .pname{font-weight:600}
+  .badge{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid var(--line);white-space:nowrap;flex:none}
+  .badge.b-done{color:var(--done);border-color:#1f5136;background:#12271b}
+  .badge.b-prog{color:var(--prog);border-color:#4a3a1f;background:#241d10}
+  .badge.b-todo{color:var(--muted)}
+  .editing .badge{cursor:pointer}
+  .updown{display:flex;gap:4px}
+  .updown button{padding:3px 8px;font-size:12px}
+  .editing [contenteditable]{outline:1px dashed var(--line);border-radius:5px;padding:0 4px;cursor:text}
+  .editing [contenteditable]:focus{outline:1px solid var(--accent);background:#0d1017}
+  .editing .pill{cursor:pointer}
+  .mini{color:var(--muted);font-size:12px;cursor:pointer;margin-left:8px}
+  .mini:hover{color:#ff7a7a}
+  .addbtn{margin-top:4px}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Fatsees — Build Overview</h1>
+    <div class="sub"><span id="updated"></span> <span class="savedflash" id="flash">saved ✓</span></div>
+  </div>
+  <div class="toolbar">
+    <button id="editBtn" class="primary">✎ Edit</button>
+    <button id="exportBtn">⭳ Export</button>
+    <button id="importBtn">⭱ Import</button>
+    <button id="resetBtn">↺ Reset to draft</button>
+  </div>
+</header>
+<div class="banner">Draft generated by Cowork from the Discord threads — not authoritative, and not owned by Audun. Anyone can edit it (click ✎ Edit): fix status, %, priority order, and especially the developer names. Several builders are marked TBD — Shafi is project lead (front + UIUX), not the backend builder of these portals, so put the right people in.</div>
+
+<!-- DONE -->
+<div class="section">
+  <div class="sectionhead"><div class="bar" style="background:var(--done)"></div>
+    <h2>✅ Done — ready to test</h2>
+    <div class="desc">Done = core flow works end-to-end through the UI with two test accounts (buyer + seller, Identified where the portal requires it) — not "the API exists." Anyone can sign up and report bugs; every bug here is real.</div></div>
+  <div class="grid" id="doneGrid"></div>
+  <button class="addbtn hidden" data-add="done">+ Add done portal</button>
+</div>
+
+<!-- IN PROGRESS -->
+<div class="section">
+  <div class="sectionhead"><div class="bar" style="background:var(--prog)"></div>
+    <h2>🔨 In progress — being built now</h2>
+    <div class="desc">Not yet 100%. Bars show how far along. Not ready for open testing until they hit Done.</div></div>
+  <div class="grid" id="progGrid"></div>
+  <button class="addbtn hidden" data-add="progress">+ Add in-progress portal</button>
+</div>
+
+<!-- PLANNED -->
+<div class="section">
+  <div class="sectionhead"><div class="bar" style="background:var(--plan)"></div>
+    <h2>🗓 Planned next — after current work</h2>
+    <div class="desc">What each developer starts once their current portal is done.</div></div>
+  <div id="planList"></div>
+  <button class="addbtn hidden" data-add="planned">+ Add developer plan</button>
+</div>
+
+<!-- PRIORITY -->
+<div class="section">
+  <div class="sectionhead"><div class="bar" style="background:var(--accent)"></div>
+    <h2>📊 Priority order — what comes next</h2>
+    <div class="desc">Foundation first — everything rides on these: auth + Freja (Identified) + Mollie (escrow/payout/fee) + Profile /some + Fat /ai. Then, in this order (Audun's launch-readiness priority):</div></div>
+  <div id="prioList"></div>
+  <button class="addbtn hidden" data-add="priority">+ Add priority item</button>
+</div>
+
+<input type="file" id="fileInput" accept="application/json" style="display:none">
+
+<script>
+const DEVCOLORS={Shafi:"#5b8cff",Victor:"#22c55e",Apple:"#f59e0b",Nahid:"#a855f7",TBD:"#6b7280"};
+function dc(n){return DEVCOLORS[n]|| "#5b8cff";}
+const SEED={
+  updated:"2026-06-30 (from #dev-snapshot + #task-estimation — % are draft estimates)",
+  done:[
+    {portal:"Marketplace", devs:["TBD"], note:"Shipped — confirm builder"},
+    {portal:"Community", devs:["TBD"], note:"Shipped — confirm builder"},
+    {portal:"Social (/some)", devs:["TBD"], note:"Shipped — confirm builder"},
+    {portal:"My Profile", devs:["TBD"], note:"Shipped — confirm builder"}
+  ],
+  progress:[
+    {portal:"Fat for life", devs:["Victor"], pct:45, fe:"prog", be:"prog", note:"Text chat ~95%; voice (LiveKit, the launch target) ~5% — 2–3 wk"},
+    {portal:"VideoPay", devs:["Apple"], pct:70, fe:"done", be:"prog", note:"PR E escrow/dispute ~2 days + ~1 day e2e. Mollie connected — not blocked"},
+    {portal:"Founders", devs:["Nahid"], pct:90, fe:"done", be:"done", note:"Wrapped; e2e punchlist items to clear before it's Done"},
+    {portal:"Dashboard / custom URL", devs:["Nahid"], pct:65, fe:"prog", be:"done", note:"PR 4 (grace banner / audit log / SEO)"},
+    {portal:"Real Estate (/eiendom)", devs:["TBD"], pct:85, fe:"done", be:"done", note:"On dev branch; Fat AI integration remaining. Front/UIUX: Shafi; backend dev TBD"},
+    {portal:"Rent Anything (/leie)", devs:["TBD"], pct:85, fe:"done", be:"done", note:"Staging; Fat AI integration remaining. Front/UIUX: Shafi; backend dev TBD"},
+    {portal:"Property Rental (/leie-eiendom)", devs:["TBD"], pct:85, fe:"done", be:"done", note:"Staging; CRUD fix done; Fat AI integration remaining. Front/UIUX: Shafi; backend dev TBD"}
+  ],
+  planned:[
+    {dev:"Shafi", next:"UIUX design pass across portals + PR reviews"},
+    {dev:"Victor", next:"LiveKit voice worker (Phase 1, Fly.io)"},
+    {dev:"Apple", next:"Jobs + Motor (after Shafi redesign)"},
+    {dev:"Nahid", next:"Equity (/aksjer) — green-lit"}
+  ],
+  priority:[
+    {item:"Equity (/aksjer)", st:"todo", note:"TOP priority — rides on Freja Identified + escrow + dual-check moderation gate (all airtight)"},
+    {item:"Fat for life (/ai) + Founders (/founders)", st:"prog", note:"In progress — Fat for life ~45% (voice is the gap), Founders ~90%"},
+    {item:"Dashboard + custom handles", st:"prog", note:"In progress ~65% — bare-namespace fatsees.com/[name] → Dashboard"},
+    {item:"Community (/community)", st:"done", note:"Portal shipped; support / help surface still to add"},
+    {item:"VideoPay (/video)", st:"prog", note:"In progress ~70% (PR E + e2e)"},
+    {item:"Real Estate (/eiendom) + Motor (/motor)", st:"prog", note:"Real Estate ~85% (Fat AI integ left); Motor not started. Finn-parity, NL search"},
+    {item:"Marketplace (/marketplace)", st:"done", note:"Shipped — the buy/sell + escrow + fee reference path other transactional portals reuse"},
+    {item:"Jobs (/jobs) + Work Marketplace (/services)", st:"todo", note:""},
+    {item:"Suppliers (/suppliers)", st:"todo", note:"works with zero inventory (Fat web-search)"},
+    {item:"Rent Anything (/leie) + Property Rental (/leie-eiendom)", st:"prog", note:"In progress ~85% (Fat AI integ left)"},
+    {item:"Apps (/apps) + Charity (/charity)", st:"todo", note:""},
+    {item:"World of Business (/world)", st:"todo", note:""}
+  ]
+};
+const KEY="fatsees_build_overview_v7";
+let data=load(), editing=false;
+function load(){try{const s=localStorage.getItem(KEY);return s?JSON.parse(s):structuredClone(SEED);}catch(e){return structuredClone(SEED);}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){}data.updated=stamp();document.getElementById('updated').textContent="Updated "+data.updated;flash();}
+function stamp(){return new Date().toISOString().slice(0,16).replace('T',' ');}
+function flash(){const f=document.getElementById('flash');f.style.opacity=1;setTimeout(()=>f.style.opacity=0,900);}
+function getRef(p){const k=p.split('.');let o=data;for(let i=0;i<k.length-1;i++)o=o[k[i]];return[o,k[k.length-1]];}
+const STATES=["done","prog","todo","na"],LABEL={done:"Done",prog:"In prog",todo:"To do",na:"N/A"};
+const STLABEL={done:"Done",prog:"In progress",todo:"Not started"};
+function ed(t,p){return `<span ${editing?`contenteditable data-path="${p}"`:''}>${t||""}</span>`;}
+function devChips(list,path){return (list||[]).map((d,i)=>`<span class="dev"><span class="d" style="background:${dc(d)}"></span>${ed(d,`${path}.${i}`)}</span>`).join("");}
+function pill(kind,val,path){return `<span class="pill s-${val}" data-path="${path}"><span class="k">${kind}</span><b>${LABEL[val]}</b></span>`;}
+
+function render(){
+  // DONE
+  const dg=document.getElementById('doneGrid');dg.innerHTML="";
+  data.done.forEach((p,i)=>{const c=document.createElement('div');c.className="card done";
+    c.innerHTML=`<div class="ptitle">${ed(p.portal,`done.${i}.portal`)}</div>
+      <div class="devs">${devChips(p.devs,`done.${i}.devs`)}</div>
+      <span class="tag">Ready to test — anyone can sign up &amp; report bugs</span>
+      <div class="note">${ed(p.note,`done.${i}.note`)}</div>
+      ${editing?`<div style="margin-top:8px"><span class="mini" data-del="done.${i}">✕ remove</span></div>`:''}`;
+    dg.appendChild(c);});
+  // PROGRESS
+  const pg=document.getElementById('progGrid');pg.innerHTML="";
+  data.progress.forEach((p,i)=>{const c=document.createElement('div');c.className="card";
+    c.innerHTML=`<div class="ptitle">${ed(p.portal,`progress.${i}.portal`)}</div>
+      <div class="devs">${devChips(p.devs,`progress.${i}.devs`)}</div>
+      <div class="pctrow"><span>Progress</span><span class="pct">${ed(String(p.pct),`progress.${i}.pct`)}%</span></div>
+      <div class="track"><div class="fill" style="width:${Math.max(0,Math.min(100,p.pct))}%"></div></div>
+      <div class="pills">${pill("FE",p.fe,`progress.${i}.fe`)}${pill("BE",p.be,`progress.${i}.be`)}</div>
+      <div class="note">${ed(p.note,`progress.${i}.note`)}</div>
+      ${editing?`<div style="margin-top:8px"><span class="mini" data-del="progress.${i}">✕ remove</span></div>`:''}`;
+    pg.appendChild(c);});
+  // PLANNED
+  const pl=document.getElementById('planList');pl.innerHTML="";
+  data.planned.forEach((p,i)=>{const r=document.createElement('div');r.className="planrow";
+    const init=(p.dev||"?").charAt(0).toUpperCase();
+    r.innerHTML=`<div class="who"><span class="avatar" style="background:${dc(p.dev)}">${init}</span>${ed(p.dev,`planned.${i}.dev`)}</div>
+      <span class="arrow">→</span><div style="flex:1">${ed(p.next,`planned.${i}.next`)}</div>
+      ${editing?`<span class="mini" data-del="planned.${i}">✕</span>`:''}`;
+    pl.appendChild(r);});
+  // PRIORITY
+  const pr=document.getElementById('prioList');pr.innerHTML="";
+  data.priority.forEach((p,i)=>{const r=document.createElement('div');r.className="prio";const st=p.st||"todo";
+    r.innerHTML=`<div class="rank">${i+1}</div>
+      <div class="body"><div class="pname">${ed(p.item,`priority.${i}.item`)}</div><div class="note">${ed(p.note,`priority.${i}.note`)}</div></div>
+      <span class="badge b-${st}" data-stpath="priority.${i}.st">${STLABEL[st]}</span>
+      ${editing?`<div class="updown"><button data-up="${i}">↑</button><button data-down="${i}">↓</button><span class="mini" data-del="priority.${i}">✕</span></div>`:''}`;
+    pr.appendChild(r);});
+  document.getElementById('updated').textContent="Updated "+(data.updated||"");
+  document.querySelectorAll('.addbtn').forEach(b=>b.classList.toggle('hidden',!editing));
+  bind();
+}
+function bind(){
+  document.querySelectorAll('[contenteditable]').forEach(el=>{el.onblur=()=>{const[o,k]=getRef(el.dataset.path);
+    let v=el.innerText.trim(); if(k==='pct'){v=Math.max(0,Math.min(100,parseInt(v)||0));} o[k]=v; save(); if(k==='pct')render();};});
+  if(!editing)return;
+  document.querySelectorAll('.pill').forEach(el=>{el.onclick=()=>{const[o,k]=getRef(el.dataset.path);o[k]=STATES[(STATES.indexOf(o[k])+1)%STATES.length];save();render();};});
+  document.querySelectorAll('[data-del]').forEach(el=>{el.onclick=()=>{const p=el.dataset.del.split('.');const arr=p.slice(0,-1).reduce((o,x)=>o[x],data);arr.splice(+p[p.length-1],1);save();render();};});
+  document.querySelectorAll('[data-up]').forEach(el=>{el.onclick=()=>{const i=+el.dataset.up;if(i>0){[data.priority[i-1],data.priority[i]]=[data.priority[i],data.priority[i-1]];save();render();}};});
+  document.querySelectorAll('[data-down]').forEach(el=>{el.onclick=()=>{const i=+el.dataset.down;if(i<data.priority.length-1){[data.priority[i+1],data.priority[i]]=[data.priority[i],data.priority[i+1]];save();render();}};});
+  document.querySelectorAll('.badge[data-stpath]').forEach(el=>{el.onclick=()=>{const[o,k]=getRef(el.dataset.stpath);const S=["todo","prog","done"];o[k]=S[(S.indexOf(o[k]||"todo")+1)%3];save();render();};});
+}
+document.getElementById('editBtn').onclick=()=>{editing=!editing;const b=document.getElementById('editBtn');b.textContent=editing?"✓ Done":"✎ Edit";b.classList.toggle('primary',!editing);document.body.classList.toggle('editing',editing);render();};
+document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{const s=b.dataset.add;
+  if(s==='done')data.done.push({portal:"New portal",devs:["Shafi"],note:""});
+  if(s==='progress')data.progress.push({portal:"New portal",devs:["Shafi"],pct:0,fe:"todo",be:"todo",note:""});
+  if(s==='planned')data.planned.push({dev:"Shafi",next:""});
+  if(s==='priority')data.priority.push({item:"New item",note:""});
+  save();render();});
+document.getElementById('exportBtn').onclick=()=>{const b=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download="fatsees_build_overview.json";a.click();};
+document.getElementById('importBtn').onclick=()=>document.getElementById('fileInput').click();
+document.getElementById('fileInput').onchange=(e)=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data=JSON.parse(r.result);save();render();}catch(x){alert("Invalid JSON");}};r.readAsText(f);};
+document.getElementById('resetBtn').onclick=()=>{if(confirm("Reset to the seeded draft? Your edits will be lost.")){data=structuredClone(SEED);save();render();}};
+render();
+</script>
+</body>
+</html>
