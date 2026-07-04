@@ -1,0 +1,19 @@
+# Netlify config for the Fatsees Build Overview.
+# Static site, no build step. Netlify serves index.html at root.
+
+[build]
+  publish = "."
+
+# Keep the served HTML fresh so anyone reloading the page sees the latest
+# code + latest cached Supabase data. Supabase itself handles the "live"
+# state via realtime subscriptions.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Legacy path: some Discord links might still point at the old filename.
+[[redirects]]
+  from = "/Developer_Portal_Overview.html"
+  to = "/index.html"
+  status = 200
