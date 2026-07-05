@@ -135,8 +135,6 @@ async function load() {
 /* ─── Persist state (debounced) ───────────────────────────────────── */
 function save(opts) {
   data.updated = stamp();
-  document.getElementById('updated').textContent = data.updated;
-  flashSaved();
   render();
 
   clearTimeout(saveTimer);
@@ -155,13 +153,6 @@ function save(opts) {
     }
   }, opts && opts.immediate ? 0 : 400);
 }
-function flashSaved() {
-  const f = document.getElementById('saved-flash');
-  f.classList.add('show');
-  clearTimeout(flashSaved._t);
-  flashSaved._t = setTimeout(() => f.classList.remove('show'), 1000);
-}
-
 /* ─── Real-time subscription ──────────────────────────────────────── */
 function subscribeRealtime() {
   if (realtimeChannel) return;
@@ -185,22 +176,12 @@ function subscribeRealtime() {
 
 /* ─── Render ──────────────────────────────────────────────────────── */
 function render() {
-  document.getElementById('updated').textContent = data.updated || '—';
-  renderStats();
   renderDone();
   renderProgress();
   renderPlanned();
   renderPriority();
   applyEditGates();
   bind();
-}
-
-function renderStats() {
-  const dC = data.done.length, pC = data.progress.length, plC = data.planned.length, prC = data.priority.length;
-  document.getElementById('stat-done').textContent = dC;
-  document.getElementById('stat-progress').textContent = pC;
-  document.getElementById('stat-planned').textContent = plC;
-  document.getElementById('stat-priority').textContent = prC;
 }
 
 /* ─── Render helpers ──────────────────────────────────────────────── */

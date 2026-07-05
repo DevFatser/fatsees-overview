@@ -12,49 +12,17 @@
 </head>
 <body>
 
-<!-- One view, no navigation. Header at top → stats → 4 pipeline stages stacked. -->
-<main class="single-view">
-
-  <header class="page-header" id="overview-top">
-    <div class="header-left">
-      <div class="brand-line">
-        <div class="brand-logo">F</div>
-        <h1 class="page-title">Fatsees — Build Overview</h1>
-      </div>
-      <div class="page-sub">
-        <span>Updated <time id="updated">—</time></span>
-        <span class="saved-flash" id="saved-flash">✓ saved</span>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="sync-status" id="sync-status">
-        <span class="pulse"></span>
-        <span id="sync-text">Connected</span>
-      </div>
-      <span class="edit-hint" id="edit-hint">Read-only</span>
-      <button class="btn primary" id="edit-btn">✎ Edit</button>
-    </div>
-  </header>
-
-  <!-- Stats hero — clickable, scrolls to its section -->
-  <div class="stats-hero">
-    <div class="stat-card done" data-scroll="done">
-      <div class="stat-value" id="stat-done">—</div>
-      <div class="stat-label"><span class="stat-dot"></span>Done — ready to test</div>
-    </div>
-    <div class="stat-card progress" data-scroll="progress">
-      <div class="stat-value" id="stat-progress">—</div>
-      <div class="stat-label"><span class="stat-dot"></span>In progress</div>
-    </div>
-    <div class="stat-card planned" data-scroll="planned">
-      <div class="stat-value" id="stat-planned">—</div>
-      <div class="stat-label"><span class="stat-dot"></span>Planned next</div>
-    </div>
-    <div class="stat-card priority" data-scroll="priority">
-      <div class="stat-value" id="stat-priority">—</div>
-      <div class="stat-label"><span class="stat-dot"></span>Priority queue</div>
-    </div>
+<!-- Floating controls, always reachable while scrolling. No header, no stats hero. -->
+<div class="floating-controls">
+  <div class="sync-status" id="sync-status">
+    <span class="pulse"></span>
+    <span id="sync-text">Connected</span>
   </div>
+  <span class="edit-hint" id="edit-hint">Read-only</span>
+  <button class="btn primary" id="edit-btn">✎ Edit</button>
+</div>
+
+<main class="single-view">
 
   <!-- Pipeline stage 4: Done -->
   <section class="build-section" id="done">
