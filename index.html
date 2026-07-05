@@ -12,125 +12,99 @@
 </head>
 <body>
 
-<div class="app">
+<!-- One view, no navigation. Header at top → stats → 4 pipeline stages stacked. -->
+<main class="single-view">
 
-  <!-- ─── Sidebar ──────────────────────────────────────────────────── -->
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="brand-logo">F</div>
-      <div class="brand-text">
-        <div class="brand-name">Fatsees</div>
-        <div class="brand-sub">Build Overview</div>
+  <header class="page-header" id="overview-top">
+    <div class="header-left">
+      <div class="brand-line">
+        <div class="brand-logo">F</div>
+        <h1 class="page-title">Fatsees — Build Overview</h1>
+      </div>
+      <div class="page-sub">
+        <span>Updated <time id="updated">—</time></span>
+        <span class="saved-flash" id="saved-flash">✓ saved</span>
       </div>
     </div>
-
-    <nav class="nav">
-      <div class="nav-title">Sections</div>
-      <a class="nav-item active" data-scroll="overview-top" href="#overview-top"><span class="dot"></span>Overview<span class="count" id="nav-count-total"></span></a>
-      <a class="nav-item" data-scroll="done" href="#done"><span class="dot done"></span>Done<span class="count" id="nav-count-done"></span></a>
-      <a class="nav-item" data-scroll="progress" href="#progress"><span class="dot progress"></span>In progress<span class="count" id="nav-count-progress"></span></a>
-      <a class="nav-item" data-scroll="planned" href="#planned"><span class="dot planned"></span>Planned<span class="count" id="nav-count-planned"></span></a>
-      <a class="nav-item" data-scroll="priority" href="#priority"><span class="dot priority"></span>Priority<span class="count" id="nav-count-priority"></span></a>
-    </nav>
-
-    <div class="team-panel">
-      <div class="team-panel-head">
-        <div class="team-panel-title">Team</div>
+    <div class="header-right">
+      <div class="sync-status" id="sync-status">
+        <span class="pulse"></span>
+        <span id="sync-text">Connected</span>
       </div>
-      <div class="team-list" id="team-list"></div>
+      <span class="edit-hint" id="edit-hint">Read-only</span>
+      <button class="btn primary" id="edit-btn">✎ Edit</button>
     </div>
+  </header>
 
-    <div class="sync-status" id="sync-status">
-      <span class="pulse"></span>
-      <span id="sync-text">Connected</span>
+  <!-- Stats hero — clickable, scrolls to its section -->
+  <div class="stats-hero">
+    <div class="stat-card done" data-scroll="done">
+      <div class="stat-value" id="stat-done">—</div>
+      <div class="stat-label"><span class="stat-dot"></span>Done — ready to test</div>
     </div>
-  </aside>
-
-  <!-- ─── Main ─── One scroll: Done → Progress → Planned → Priority ── -->
-  <main>
-    <header class="page-header" id="overview-top">
-      <div>
-        <h1 class="page-title">Build Overview</h1>
-        <div class="page-sub">
-          <span>Updated <time id="updated">—</time></span>
-          <span class="saved-flash" id="saved-flash">✓ saved</span>
-        </div>
-      </div>
-      <div class="actions">
-        <span class="edit-hint" id="edit-hint">Read-only</span>
-        <button class="btn primary" id="edit-btn">✎ Edit</button>
-      </div>
-    </header>
-
-    <!-- Stats hero — clickable, scrolls to section -->
-    <div class="stats-hero">
-      <div class="stat-card done" data-scroll="done">
-        <div class="stat-value" id="stat-done">—</div>
-        <div class="stat-label"><span class="stat-dot"></span>Done — ready to test</div>
-      </div>
-      <div class="stat-card progress" data-scroll="progress">
-        <div class="stat-value" id="stat-progress">—</div>
-        <div class="stat-label"><span class="stat-dot"></span>In progress</div>
-      </div>
-      <div class="stat-card planned" data-scroll="planned">
-        <div class="stat-value" id="stat-planned">—</div>
-        <div class="stat-label"><span class="stat-dot"></span>Planned next</div>
-      </div>
-      <div class="stat-card priority" data-scroll="priority">
-        <div class="stat-value" id="stat-priority">—</div>
-        <div class="stat-label"><span class="stat-dot"></span>Priority queue</div>
-      </div>
+    <div class="stat-card progress" data-scroll="progress">
+      <div class="stat-value" id="stat-progress">—</div>
+      <div class="stat-label"><span class="stat-dot"></span>In progress</div>
     </div>
+    <div class="stat-card planned" data-scroll="planned">
+      <div class="stat-value" id="stat-planned">—</div>
+      <div class="stat-label"><span class="stat-dot"></span>Planned next</div>
+    </div>
+    <div class="stat-card priority" data-scroll="priority">
+      <div class="stat-value" id="stat-priority">—</div>
+      <div class="stat-label"><span class="stat-dot"></span>Priority queue</div>
+    </div>
+  </div>
 
-    <!-- Done section -->
-    <section class="build-section" id="done">
-      <div class="section-head">
-        <div class="section-title-wrap">
-          <div class="section-icon done">✓</div>
-          <h2 class="section-title">Done — ready to test</h2>
-        </div>
-        <div class="section-desc">Verified end-to-end. Anyone can sign up + report bugs.</div>
+  <!-- Pipeline stage 4: Done -->
+  <section class="build-section" id="done">
+    <div class="section-head">
+      <div class="section-title-wrap">
+        <div class="section-icon done">✓</div>
+        <h2 class="section-title">Done — ready to test</h2>
       </div>
-      <div class="cards-grid" id="done-grid"></div>
-    </section>
+      <div class="section-desc">Finished + verified end-to-end. Anyone can sign up + report bugs.</div>
+    </div>
+    <div class="cards-grid" id="done-grid"></div>
+  </section>
 
-    <!-- In progress section -->
-    <section class="build-section" id="progress">
-      <div class="section-head">
-        <div class="section-title-wrap">
-          <div class="section-icon progress">◐</div>
-          <h2 class="section-title">In progress — being built now</h2>
-        </div>
-        <div class="section-desc">Not 100% yet. Bars show how far along.</div>
+  <!-- Pipeline stage 3: In progress -->
+  <section class="build-section" id="progress">
+    <div class="section-head">
+      <div class="section-title-wrap">
+        <div class="section-icon progress">◐</div>
+        <h2 class="section-title">In progress — being built now</h2>
       </div>
-      <div class="cards-grid" id="progress-grid"></div>
-    </section>
+      <div class="section-desc">The builds actually being worked on right now — roughly one main card per developer.</div>
+    </div>
+    <div class="cards-grid" id="progress-grid"></div>
+  </section>
 
-    <!-- Planned section — what each dev starts next -->
-    <section class="build-section" id="planned">
-      <div class="section-head">
-        <div class="section-title-wrap">
-          <div class="section-icon planned">→</div>
-          <h2 class="section-title">Planned next — after current work</h2>
-        </div>
-        <div class="section-desc">What each developer starts once their current portal is done.</div>
+  <!-- Pipeline stage 2: Planned next -->
+  <section class="build-section" id="planned">
+    <div class="section-head">
+      <div class="section-title-wrap">
+        <div class="section-icon planned">→</div>
+        <h2 class="section-title">Planned next — after current work</h2>
       </div>
-      <div class="planned-list" id="planned-list"></div>
-    </section>
+      <div class="section-desc">Each developer's one realistic next card. One per person, two at most. Not a laundry list.</div>
+    </div>
+    <div class="cards-grid" id="planned-grid"></div>
+  </section>
 
-    <!-- Priority section — Audun's launch order -->
-    <section class="build-section" id="priority">
-      <div class="section-head">
-        <div class="section-title-wrap">
-          <div class="section-icon priority">▤</div>
-          <h2 class="section-title">Priority — ranked queue of untouched work</h2>
-        </div>
-        <div class="section-desc">Of the things nobody's building right now, what matters most next. When a portal moves to In progress, it leaves this queue.</div>
+  <!-- Pipeline stage 1: Priority -->
+  <section class="build-section" id="priority">
+    <div class="section-head">
+      <div class="section-title-wrap">
+        <div class="section-icon priority">▤</div>
+        <h2 class="section-title">Priority — ranked queue of untouched work</h2>
       </div>
-      <div class="priority-list" id="priority-list"></div>
-    </section>
-  </main>
-</div>
+      <div class="section-desc">Every not-yet-started build, ranked. Most work sits here — you can only actively build a few things at once.</div>
+    </div>
+    <div class="cards-grid" id="priority-grid"></div>
+  </section>
+
+</main>
 
 <div class="toast" id="toast"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>

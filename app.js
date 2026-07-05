@@ -13,62 +13,48 @@ const DEV_COLORS = {
 };
 const STATUS_STATES = ['todo', 'prog', 'done'];
 const STATUS_LABELS = { todo: 'To do', prog: 'In prog', done: 'Done' };
-const SECTIONS = ['overview-top', 'done', 'progress', 'planned', 'priority'];
 
-/* ─── Seed data ───────────────────────────────────────────────────── */
+/* ─── Seed data (fallback if the state row is empty on first load) ─── */
 const SEED = {
   updated: new Date().toISOString().slice(0, 16).replace('T', ' '),
   devs: ['Shafi', 'Victor', 'Apple', 'Nahid'],
   done: [
-    { portal: 'Marketplace',       devs: ['Shafi'],  note: 'Shipped — buy/sell + escrow + fee reference path' },
-    { portal: 'Community',         devs: ['Shafi'],  note: 'Shipped — Q&A threads; help surface still to add' },
-    { portal: 'Social (/some)',    devs: ['Victor'], note: 'Fatsees Profile portal' },
-    { portal: 'My Profile',        devs: ['Shafi'],  note: 'Shipped' },
-    { portal: 'Motor',             devs: ['Apple'],  note: 'Shipped' },
-    { portal: 'VideoPay',          devs: ['Apple'],  note: 'FE + BE done; testing ongoing by Shafi — ready to test' },
+    { portal: 'Community',                       devs: ['Shafi'],           note: 'Portal shipped; Q&A threads live; help surface still to add.' },
+    { portal: 'Social (/some)',                  devs: ['Victor'],          note: 'Fatsees Profile portal — shipped.' },
+    { portal: 'My Profile',                      devs: ['Shafi'],           note: 'Shipped.' },
+    { portal: 'fatsees-main — live prod server', devs: ['Shafi', 'Victor'], note: 'Ready to test. Shafi: separate Vercel project. Victor: Supabase Branching enabled today (~$9.68/mo, read-only replica later).' },
   ],
   progress: [
-    { portal: 'Fat for life',                    devs: ['Victor'],          pct: 50, fe: 'prog', be: 'prog', note: 'Text chat done; LiveKit voice: scaffold + STT + TTS + Phase 4 streaming shipped (PRs #289/#297/#310). Adapter + agent swap + frontend hook next.' },
-    { portal: 'Founders',                        devs: ['Nahid'],           pct: 90, fe: 'done', be: 'done', note: 'Wrapped; e2e punchlist to clear before Done.' },
-    { portal: 'Dashboard / custom URL',          devs: ['Nahid'],           pct: 65, fe: 'prog', be: 'done', note: 'PR 4 (grace banner / audit log / SEO).' },
-    { portal: 'Real Estate (/eiendom)',          devs: ['Shafi', 'Victor'], pct: 90, fe: 'done', be: 'done', note: 'On Dev; Fat AI integ = Victor.' },
-    { portal: 'Rent Anything (/leie)',           devs: ['Shafi', 'Victor'], pct: 85, fe: 'done', be: 'done', note: 'Staging; Mollie + Fat AI + dispute (Shafi 2026-07-04) = Victor.' },
-    { portal: 'Property Rental (/leie-eiendom)', devs: ['Shafi', 'Victor'], pct: 85, fe: 'done', be: 'done', note: 'Staging; Fat AI + Mollie checkout = Victor.' },
-    { portal: 'fatsees-main — live prod server', devs: ['Shafi', 'Victor'], pct: 60, fe: 'todo', be: 'todo', note: 'Shafi: separate Vercel project (fatsees-main). Victor: Supabase Branching dev branch enabled today (~$9.68/mo, read-only replica later).' },
-    { portal: 'Fat AI Integ + Mollie Checkout',  devs: ['Victor'],          pct: 0,  fe: 'prog', be: 'todo', note: 'Fat AI on (/eiendom) + (/leie) + (/leie-eiendom); Mollie checkout on /Marketplace, (/leie), (/leie-eiendom).' },
-    { portal: 'Freja Identity Verification Test',devs: ['Apple'],           pct: 50, fe: 'prog', be: 'todo', note: 'Identified-tier local test pass per _docs/FREJA_LOCAL_SETUP_GUIDE.md.' },
+    { portal: 'Fat for life',                     devs: ['Victor'], pct: 50, fe: 'prog', be: 'prog', note: 'Text chat done; LiveKit voice: scaffold + STT + TTS + Phase 4 streaming shipped (PRs #289/#297/#310). Adapter + agent swap + frontend hook next.' },
+    { portal: 'Founders',                         devs: ['Nahid'],  pct: 98, fe: 'done', be: 'done', note: 'Wrapped; e2e punchlist to clear before Done. Fix: feedback review from Shafi.' },
+    { portal: 'Dashboard / custom URL',           devs: ['Nahid'],  pct: 95, fe: 'prog', be: 'prog', note: 'PR 6 plan167 Analytics (Phase 4) branch: feat-dashboards-analytics--nahid. View-count + block-click endpoints + owner analytics tab dep: lowest priority.' },
+    { portal: 'Fat AI Integration',               devs: ['Victor'], pct: 0,  fe: 'prog', be: 'todo', note: 'Fat AI on (/eiendom) + (/leie) + (/leie-eiendom). Dispute handling tied in.' },
+    { portal: 'Freja Identity Verification Test', devs: ['Apple'],  pct: 10, fe: 'prog', be: 'todo', note: 'Setup ready (guide + sandbox PFX); testing not started yet. Identified-tier local test pass per _docs/FREJA_LOCAL_SETUP_GUIDE.md.' },
+    { portal: 'Mollie Checkout on each portal',   devs: ['Victor'], pct: 0,  fe: 'prog', be: 'todo', note: 'Mollie checkout on /Marketplace, /leie, /leie-eiendom.' },
+    { portal: 'VideoPay',                         devs: ['Apple'],  pct: 80, fe: 'prog', be: 'prog', note: 'Coding done + E2E tested (one-sided NET fee verified live). Received Shafi\'s testing feedback (F1–F14); working through remaining fixes.' },
+    { portal: 'Motor',                            devs: ['Apple'],  pct: 10, fe: 'prog', be: 'prog', note: 'Started Thursday. Server-side search API already merged (PR #300, Shafi-reviewed). Next: browse kit + /bil rebuild.' },
+    { portal: 'PR Reviews',                       devs: ['Shafi'],  pct: 50, fe: 'prog', be: 'prog', note: 'Rolling: review 12+ PRs.' },
   ],
   planned: [
-    // Shafi — 4 atomic cards
-    { dev: 'Shafi',  next: 'UIUX design pass across portals' },
-    { dev: 'Shafi',  next: 'Founders (final e2e review)' },
-    { dev: 'Shafi',  next: 'VideoPay (testing before ship)' },
-    { dev: 'Shafi',  next: 'Push Dev → main' },
-    // Victor — 4 atomic cards
-    { dev: 'Victor', next: 'Supabase Branching' },
-    { dev: 'Victor', next: 'LiveKit Phase 4c-2 adapter (Fat for life)' },
-    { dev: 'Victor', next: 'Mollie checkout on /leie, /leie-eiendom, /eiendom' },
-    { dev: 'Victor', next: 'Fat AI integration on /leie, /leie-eiendom, /eiendom' },
-    // Apple — 2 atomic cards
-    { dev: 'Apple',  next: 'Jobs' },
-    { dev: 'Apple',  next: 'Motor (after Shafi redesign)' },
-    // Nahid: next work is Equity (/aksjer), which lives in the Priority queue (#1).
+    // One realistic next card per developer (Audun's spec: 1 per dev, 2 at most).
+    { dev: 'Shafi',  next: 'Push Dev → main', note: 'After Video + Founders + Mollie + Fat AI integ completes.' },
+    { dev: 'Victor', next: 'Supabase Branching', note: 'Dev branch enabled; read-only replica later.' },
+    { dev: 'Apple',  next: 'Jobs (/jobs)', note: 'Kicks off after Motor + Freja test wrap.' },
+    { dev: 'Nahid',  next: 'Equity (/aksjer)', note: 'Green-lit; picks up after Founders 100% + Dashboard 100%.' },
   ],
   priority: [
-    { item: 'Equity (/aksjer)',                                        st: 'todo', note: 'TOP priority — rides on Freja Identified + escrow + dual-check moderation gate.' },
-    { item: 'Fat for life (/ai) + Founders (/founders)',               st: 'prog', note: 'Fat for life ~50% (LiveKit voice is the gap); Founders ~90% (e2e punchlist to close).' },
-    { item: 'Dashboard + custom handles',                              st: 'prog', note: '~65% — bare-namespace fatsees.com/[name] → Dashboard.' },
-    { item: 'Community (/community)',                                  st: 'done', note: 'Portal shipped; support / help surface still to add.' },
-    { item: 'VideoPay (/video)',                                       st: 'prog', note: '~70% (PR E + e2e). FE + BE done; testing ongoing.' },
-    { item: 'Real Estate (/eiendom) + Motor (/motor)',                 st: 'prog', note: 'Real Estate ~90% (Fat AI integ left); Motor shipped. Finn-parity, NL search.' },
-    { item: 'Marketplace (/marketplace)',                              st: 'done', note: 'Shipped — the buy/sell + escrow + fee reference path other transactional portals reuse.' },
-    { item: 'Jobs (/jobs)',                                            st: 'todo', note: '' },
-    { item: 'Work Marketplace (/services)',                            st: 'todo', note: '' },
-    { item: 'Suppliers (/suppliers)',                                  st: 'todo', note: 'Works with zero inventory (Fat web-search).' },
-    { item: 'Rent Anything (/leie) + Property Rental (/leie-eiendom)', st: 'prog', note: 'Both ~85% (Fat AI + Mollie integ left).' },
-    { item: 'Apps (/apps)',                                            st: 'todo', note: '' },
-    { item: 'Charity (/charity)',                                      st: 'todo', note: '' },
-    { item: 'World of Business (/world)',                              st: 'todo', note: '' },
+    // Ranked queue of untouched builds. Longest section by design.
+    { item: 'Marketplace (/marketplace)',       note: 'Buy/sell + escrow + fee reference path. Pulled from Done pending Mollie completion.' },
+    { item: 'Real Estate (/eiendom)',           note: 'Fat AI integ + Finn-parity NL search.' },
+    { item: 'Rent Anything (/leie)',            note: 'Mollie + Fat AI integ remaining.' },
+    { item: 'Property Rental (/leie-eiendom)',  note: 'Mollie + Fat AI integ remaining.' },
+    { item: 'Work Marketplace (/services)',     note: 'Splits from Jobs — separate deliverable.' },
+    { item: 'Suppliers (/suppliers)',           note: 'Works with zero inventory (Fat web-search).' },
+    { item: 'Apps (/apps)',                     note: '' },
+    { item: 'Charity (/charity)',               note: '' },
+    { item: 'World of Business (/world)',       note: '' },
+    { item: 'LiveKit Phase 4c-2 adapter',       note: 'Fat for life continuation — adapter + agent swap + frontend hook.' },
+    { item: 'UIUX design pass across portals',  note: 'Shafi-led sweep once Dev → main merges.' },
   ],
 };
 
@@ -205,7 +191,6 @@ function render() {
   renderProgress();
   renderPlanned();
   renderPriority();
-  renderTeamPanel();
   applyEditGates();
   bind();
 }
@@ -216,23 +201,16 @@ function renderStats() {
   document.getElementById('stat-progress').textContent = pC;
   document.getElementById('stat-planned').textContent = plC;
   document.getElementById('stat-priority').textContent = prC;
-  document.getElementById('nav-count-total').textContent = dC + pC + plC + prC;
-  document.getElementById('nav-count-done').textContent = dC;
-  document.getElementById('nav-count-progress').textContent = pC;
-  document.getElementById('nav-count-planned').textContent = plC;
-  document.getElementById('nav-count-priority').textContent = prC;
 }
 
 /* ─── Render helpers ──────────────────────────────────────────────── */
 function devChipsHTML(list, path) {
-  const chips = (list || []).map((d, i) => {
-    const rm = `<span class="dev-x" data-devdel="${path}.${i}" title="Remove">×</span>`;
-    return `<span class="dev-chip">
+  const chips = (list || []).map((d, i) => `
+    <span class="dev-chip">
       <span class="dev-avatar" style="background:${devColor(d)}">${initial(d)}</span>
       ${devSelectHTML(d, `${path}.${i}`)}
-      ${rm}
-    </span>`;
-  }).join('');
+      <span class="dev-x" data-devdel="${path}.${i}" title="Remove">×</span>
+    </span>`).join('');
   const add = `<span class="dev-add" data-devadd="${path}">+ add</span>`;
   return chips + add;
 }
@@ -250,7 +228,7 @@ function renderDone() {
     <div class="card done">
       <div class="card-title" data-path="done.${i}.portal">${escapeHTML(p.portal)}</div>
       <div class="devs">${devChipsHTML(p.devs, `done.${i}.devs`)}</div>
-      <div class="ready-badge">✓ Ready to test</div>
+      <div class="ready-badge">✓ Verified — ready to test</div>
       <div class="card-note" data-path="done.${i}.note">${escapeHTML(p.note || '')}</div>
       <div class="card-actions">
         <span class="card-remove" data-del="done.${i}">× remove</span>
@@ -289,58 +267,44 @@ function renderProgress() {
   }).join('') + `<button class="add-card-btn" data-add="progress">+ Add in-progress portal</button>`;
 }
 
+// Planned Next — visual cards (1 per dev per Audun's spec).
+// Each card has: dev chip, "next" title, optional short note.
 function renderPlanned() {
-  const list = document.getElementById('planned-list');
-  list.innerHTML = data.planned.map((p, i) => `
-    <div class="planned-row">
-      <div class="planned-who">
-        <span class="avatar" style="background:${devColor(p.dev)}">${initial(p.dev)}</span>
-        ${devSelectHTML(p.dev, `planned.${i}.dev`)}
+  const grid = document.getElementById('planned-grid');
+  grid.innerHTML = data.planned.map((p, i) => `
+    <div class="card planned">
+      <div class="card-title" data-path="planned.${i}.next">${escapeHTML(p.next || 'New')}</div>
+      <div class="devs">
+        <span class="dev-chip">
+          <span class="dev-avatar" style="background:${devColor(p.dev)}">${initial(p.dev)}</span>
+          ${devSelectHTML(p.dev, `planned.${i}.dev`)}
+        </span>
       </div>
-      <span class="planned-arrow">→</span>
-      <span class="planned-next" data-path="planned.${i}.next">${escapeHTML(p.next || '')}</span>
-      <span class="card-remove" data-del="planned.${i}">× remove</span>
+      <div class="planned-badge">→ picks up after current</div>
+      <div class="card-note" data-path="planned.${i}.note">${escapeHTML(p.note || '')}</div>
+      <div class="card-actions">
+        <span class="card-remove" data-del="planned.${i}">× remove</span>
+      </div>
     </div>
-  `).join('') + `<button class="add-card-btn" data-add="planned">+ Add developer plan</button>`;
+  `).join('') + `<button class="add-card-btn" data-add="planned">+ Add planned next</button>`;
 }
 
+// Priority — visual cards, ranked. No dev (queued = nobody on it).
+// Reorder via ↑↓ in edit mode.
 function renderPriority() {
-  const list = document.getElementById('priority-list');
-  // Audun's spec: priority = ranked queue of tasks nobody is working on right now.
-  // Items that move to prog/done leave the queue. Underlying data is preserved —
-  // toggling the status pill back to 'todo' brings them back into the visible queue.
-  const queue = data.priority
-    .map((p, i) => ({ p, i, st: p.st || 'todo' }))
-    .filter(x => x.st === 'todo');
-  const rowsHTML = queue.map(({ p, i }, displayIdx) => `
-    <div class="priority-row">
-      <div class="priority-rank">${displayIdx + 1}</div>
-      <div class="priority-body">
-        <div class="priority-item" data-path="priority.${i}.item">${escapeHTML(p.item)}</div>
-        <div class="priority-note" data-path="priority.${i}.note">${escapeHTML(p.note || '')}</div>
+  const grid = document.getElementById('priority-grid');
+  grid.innerHTML = data.priority.map((p, i) => `
+    <div class="card priority">
+      <div class="priority-rank-badge">${i + 1}</div>
+      <div class="card-title" data-path="priority.${i}.item">${escapeHTML(p.item || 'New')}</div>
+      <div class="card-note" data-path="priority.${i}.note">${escapeHTML(p.note || '')}</div>
+      <div class="card-actions">
+        <button data-up="${i}" title="Move up" class="rank-btn">↑</button>
+        <button data-down="${i}" title="Move down" class="rank-btn">↓</button>
+        <span class="card-remove" data-del="priority.${i}">× remove</span>
       </div>
-      <span class="priority-status todo" data-stpath="priority.${i}.st" title="Click in edit mode: mark 'In progress' to dequeue, or 'Done' if shipped">Not started</span>
-      <div class="priority-arrows">
-        <button data-up="${i}" title="Move up">↑</button>
-        <button data-down="${i}" title="Move down">↓</button>
-      </div>
-      <span class="priority-remove" data-del="priority.${i}" title="Remove">×</span>
     </div>
-  `).join('');
-  const emptyHTML = queue.length ? '' :
-    '<div class="empty-queue">Queue is empty — every priority item has been picked up. Add a new one, or unmark one in the data.</div>';
-  list.innerHTML = rowsHTML + emptyHTML + `<button class="add-card-btn" data-add="priority">+ Add priority item</button>`;
-}
-
-function renderTeamPanel() {
-  const list = document.getElementById('team-list');
-  const devs = (data.devs || SEED.devs).filter(d => d !== 'TBD');
-  list.innerHTML = devs.map(d => `
-    <div class="team-dev">
-      <span class="avatar" style="background:${devColor(d)}">${initial(d)}</span>
-      <span>${escapeHTML(d)}</span>
-    </div>
-  `).join('');
+  `).join('') + `<button class="add-card-btn" data-add="priority">+ Add priority</button>`;
 }
 
 /* ─── Edit-gate: strictly toggle editability based on `editing` ────── */
@@ -439,13 +403,13 @@ function bind() {
       const s = b.dataset.add;
       if (s === 'done')     data.done.push({ portal: 'New portal', devs: ['Shafi'], note: '' });
       if (s === 'progress') data.progress.push({ portal: 'New portal', devs: ['Shafi'], pct: 0, fe: 'todo', be: 'todo', note: '' });
-      if (s === 'planned')  data.planned.push({ dev: 'Shafi', next: '' });
-      if (s === 'priority') data.priority.push({ item: 'New priority', st: 'todo', note: '' });
+      if (s === 'planned')  data.planned.push({ dev: 'Shafi', next: 'New next task', note: '' });
+      if (s === 'priority') data.priority.push({ item: 'New priority', note: '' });
       save();
     };
   });
 
-  // Verify-and-move-to-Done (mechanism, not display)
+  // Verify-and-move-to-Done (rule #5: Done means YOU verified it end-to-end)
   document.querySelectorAll('[data-verify]').forEach(b => {
     b.onclick = () => {
       if (!editing) return;
@@ -463,32 +427,15 @@ function bind() {
       document.getElementById('done').scrollIntoView({ behavior: 'smooth' });
     };
   });
-}
 
-/* ─── Sidebar + stat-card scroll nav ──────────────────────────────── */
-document.querySelectorAll('[data-scroll]').forEach(el => {
-  el.addEventListener('click', (e) => {
-    const target = document.getElementById(el.dataset.scroll);
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.replaceState(null, '', '#' + el.dataset.scroll);
-  });
-});
-
-/* ─── Scroll-spy: highlight the sidebar item for the visible section  */
-function updateActiveNav() {
-  const y = window.scrollY + 140;
-  let current = 'overview-top';
-  for (const id of SECTIONS) {
-    const el = document.getElementById(id);
-    if (el && el.getBoundingClientRect().top + window.scrollY <= y) current = id;
-  }
-  document.querySelectorAll('.nav-item').forEach(n => {
-    n.classList.toggle('active', n.dataset.scroll === current);
+  // Stat-card jump on click
+  document.querySelectorAll('[data-scroll]').forEach(el => {
+    el.onclick = () => {
+      const target = document.getElementById(el.dataset.scroll);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
   });
 }
-window.addEventListener('scroll', updateActiveNav, { passive: true });
 
 /* ─── Edit-mode toggle ────────────────────────────────────────────── */
 document.getElementById('edit-btn').onclick = () => {
@@ -502,5 +449,4 @@ render();
   await load();
   render();
   subscribeRealtime();
-  updateActiveNav();
 })();
