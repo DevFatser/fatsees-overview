@@ -162,17 +162,46 @@ function diffAndLogEvents(before, after) {
   const who = getIdentity() || '(anonymous)';
   const at = new Date().toISOString();
   const changes = [];
+
+  // Path prefixes like `progress.3` identify a card. Snapshot the
+  // card's stable id + current title at event time so the history
+  // popover can filter reliably even after the card is reordered
+  // or renamed. `id` field itself is not a user-visible change.
+  const cardFromPath = (path) => {
+    const parts = path.split('.');
+    if (parts.length < 2) return null;
+    const section = parts[0], idx = parseInt(parts[1], 10);
+    if (!['done','progress','planned','priority'].includes(section)) return null;
+    if (Number.isNaN(idx)) return null;
+    return (after[section] && after[section][idx]) || (before[section] && before[section][idx]) || null;
+  };
+  const fieldFromPath = (path) => {
+    const parts = path.split('.');
+    return parts.length >= 3 ? parts.slice(2).join('.') : parts[parts.length - 1] || null;
+  };
+
+  const push = (path, from, to) => {
+    if (path.endsWith('.id') || path === 'id') return;
+    const card = cardFromPath(path);
+    changes.push({
+      at, by: who, path, from, to,
+      field: fieldFromPath(path),
+      card_id: card && card.id || null,
+      card_title: card && cardLabel(card) || null,
+    });
+  };
+
   const collect = (a, b, path) => {
     if (a === b) return;
     if (typeof a !== 'object' || typeof b !== 'object' || a === null || b === null) {
-      changes.push({ at, by: who, path, from: a, to: b });
+      push(path, a, b);
       return;
     }
     if (Array.isArray(a) || Array.isArray(b)) {
       // Arrays diffed shallowly by JSON so add/remove/reorder land as
       // one summary event rather than exploding into per-index noise.
       const aj = JSON.stringify(a), bj = JSON.stringify(b);
-      if (aj !== bj) changes.push({ at, by: who, path, from: aj.slice(0, 200), to: bj.slice(0, 200) });
+      if (aj !== bj) push(path, aj.slice(0, 200), bj.slice(0, 200));
       return;
     }
     const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
@@ -201,6 +230,10 @@ function getRef(path) {
 function escapeHTML(s) { return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
 /* ─── Data migrations (idempotent, run on every load) ─────────────── */
+function newId() {
+  try { return crypto.randomUUID(); }
+  catch { return 'c_' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36); }
+}
 function migrate(d) {
   if (!d) return null;
   if (!d.devs) d.devs = SEED.devs.slice();
@@ -209,7 +242,19 @@ function migrate(d) {
   if (!d.progress) d.progress = [];
   if (!d.planned) d.planned = [];
   if (!d.priority) d.priority = [];
+  // Victor 2026-07-21 — stable per-card ids so history survives
+  // reorder/delete. Cards created before this migration get one
+  // stamped on first load; new cards get one at add-time (see the
+  // [data-add] handler in bind()).
+  for (const section of ['done', 'progress', 'planned', 'priority']) {
+    for (const card of d[section]) {
+      if (!card.id) card.id = newId();
+    }
+  }
   return d;
+}
+function cardLabel(card) {
+  return card && (card.portal || card.next || card.item) || '(untitled)';
 }
 
 /* ─── Sync-status pill ────────────────────────────────────────────── */
@@ -319,6 +364,88 @@ function render() {
   bind();
 }
 
+/* ─── History popover (Victor 2026-07-21) ────────────────────────────
+   One shared popover element. Every card renders a small "🕒 history"
+   button carrying `data-history="<card_id>"`; clicking it filters
+   `data.events` down to that card and renders a compact log. Second
+   click on the same card, or clicking outside, closes it. */
+function historyBtnHTML(cardId) {
+  return `<button class="history-btn" data-history="${escapeHTML(cardId)}" title="Change history for this card">🕒 history</button>`;
+}
+function formatEventTime(iso) {
+  const d = new Date(iso);
+  const diff = Date.now() - d.getTime();
+  if (diff < 60_000) return 'just now';
+  if (diff < 3_600_000) return `${Math.floor(diff / 60_000)}m ago`;
+  if (diff < 86_400_000) return `${Math.floor(diff / 3_600_000)}h ago`;
+  return d.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+function truncateForDisplay(v) {
+  if (v === null || v === undefined) return '∅';
+  const s = String(v);
+  return s.length > 80 ? s.slice(0, 80) + '…' : s;
+}
+function renderHistoryFor(cardId, anchorEl) {
+  const pop = document.getElementById('history-popover');
+  if (!pop) return;
+  // Same card clicked twice → toggle closed.
+  if (pop.dataset.cardId === cardId && pop.style.display !== 'none') {
+    closeHistoryPopover(); return;
+  }
+  const events = (data.events || [])
+    .filter(e => e.card_id === cardId)
+    .slice()
+    .reverse(); // newest first
+  const rows = events.length === 0
+    ? `<div class="history-empty">No changes recorded yet.</div>`
+    : events.map(e => `
+        <div class="history-row">
+          <div class="history-row-head">
+            <span class="dev-avatar" style="background:${devColor(e.by)}">${initial(e.by)}</span>
+            <span class="history-by">${escapeHTML(e.by || '(anonymous)')}</span>
+            <span class="history-when">${escapeHTML(formatEventTime(e.at))}</span>
+          </div>
+          <div class="history-row-body">
+            <span class="history-field">${escapeHTML(e.field || e.path)}</span>
+            <span class="history-arrow">·</span>
+            <span class="history-from">${escapeHTML(truncateForDisplay(e.from))}</span>
+            <span class="history-arrow">→</span>
+            <span class="history-to">${escapeHTML(truncateForDisplay(e.to))}</span>
+          </div>
+        </div>`).join('');
+  pop.innerHTML = `
+    <div class="history-head">
+      <span class="history-title">Change history</span>
+      <button class="history-close" type="button" aria-label="Close">×</button>
+    </div>
+    <div class="history-list">${rows}</div>`;
+  pop.dataset.cardId = cardId;
+
+  // Anchor to the card's bounding box, right-align, appear just below.
+  const card = anchorEl.closest('.card') || anchorEl;
+  const r = card.getBoundingClientRect();
+  pop.style.display = 'block';
+  const popW = 360;
+  pop.style.width = popW + 'px';
+  pop.style.left = Math.max(8, Math.min(r.right - popW, window.innerWidth - popW - 8)) + 'px';
+  pop.style.top = (r.bottom + window.scrollY + 6) + 'px';
+
+  pop.querySelector('.history-close').onclick = closeHistoryPopover;
+}
+function closeHistoryPopover() {
+  const pop = document.getElementById('history-popover');
+  if (!pop) return;
+  pop.style.display = 'none';
+  pop.dataset.cardId = '';
+}
+document.addEventListener('click', (e) => {
+  const pop = document.getElementById('history-popover');
+  if (!pop || pop.style.display === 'none') return;
+  if (pop.contains(e.target)) return;
+  if (e.target.closest('[data-history]')) return; // handled by delegated bind()
+  closeHistoryPopover();
+});
+
 /* ─── Render helpers ──────────────────────────────────────────────── */
 function devChipsHTML(list, path) {
   const chips = (list || []).map((d, i) => `
@@ -341,12 +468,13 @@ function devSelectHTML(current, path) {
 function renderDone() {
   const grid = document.getElementById('done-grid');
   grid.innerHTML = data.done.map((p, i) => `
-    <div class="card done">
+    <div class="card done" data-cardid="${escapeHTML(p.id || '')}">
       <div class="card-title" data-path="done.${i}.portal">${escapeHTML(p.portal)}</div>
       <div class="devs">${devChipsHTML(p.devs, `done.${i}.devs`)}</div>
       <div class="ready-badge">✓ Verified — ready to test</div>
       <div class="card-note" data-path="done.${i}.note">${escapeHTML(p.note || '')}</div>
       <div class="card-actions">
+        ${historyBtnHTML(p.id || '')}
         <span class="card-remove" data-del="done.${i}">× remove</span>
       </div>
     </div>
@@ -359,7 +487,7 @@ function renderProgress() {
     const pct = Math.max(0, Math.min(100, p.pct || 0));
     const fillClass = pct === 100 ? 'done' : pct === 0 ? 'zero' : '';
     return `
-      <div class="card">
+      <div class="card" data-cardid="${escapeHTML(p.id || '')}">
         <div class="card-title" data-path="progress.${i}.portal">${escapeHTML(p.portal)}</div>
         <div class="devs">${devChipsHTML(p.devs, `progress.${i}.devs`)}</div>
         <div class="progress">
@@ -376,6 +504,7 @@ function renderProgress() {
         <div class="card-note" data-path="progress.${i}.note">${escapeHTML(p.note || '')}</div>
         <div class="card-actions">
           <button class="verify-done-btn" data-verify="${i}" title="Requires end-to-end verification">→ Move to Done</button>
+          ${historyBtnHTML(p.id || '')}
           <span class="card-remove" data-del="progress.${i}">× remove</span>
         </div>
       </div>
@@ -388,7 +517,7 @@ function renderProgress() {
 function renderPlanned() {
   const grid = document.getElementById('planned-grid');
   grid.innerHTML = data.planned.map((p, i) => `
-    <div class="card planned">
+    <div class="card planned" data-cardid="${escapeHTML(p.id || '')}">
       <div class="card-title" data-path="planned.${i}.next">${escapeHTML(p.next || 'New')}</div>
       <div class="devs">
         <span class="dev-chip">
@@ -399,6 +528,7 @@ function renderPlanned() {
       <div class="planned-badge">→ picks up after current</div>
       <div class="card-note" data-path="planned.${i}.note">${escapeHTML(p.note || '')}</div>
       <div class="card-actions">
+        ${historyBtnHTML(p.id || '')}
         <span class="card-remove" data-del="planned.${i}">× remove</span>
       </div>
     </div>
@@ -410,13 +540,14 @@ function renderPlanned() {
 function renderPriority() {
   const grid = document.getElementById('priority-grid');
   grid.innerHTML = data.priority.map((p, i) => `
-    <div class="card priority">
+    <div class="card priority" data-cardid="${escapeHTML(p.id || '')}">
       <div class="priority-rank-badge">${i + 1}</div>
       <div class="card-title" data-path="priority.${i}.item">${escapeHTML(p.item || 'New')}</div>
       <div class="card-note" data-path="priority.${i}.note">${escapeHTML(p.note || '')}</div>
       <div class="card-actions">
         <button data-up="${i}" title="Move up" class="rank-btn">↑</button>
         <button data-down="${i}" title="Move down" class="rank-btn">↓</button>
+        ${historyBtnHTML(p.id || '')}
         <span class="card-remove" data-del="priority.${i}">× remove</span>
       </div>
     </div>
@@ -517,10 +648,10 @@ function bind() {
     b.onclick = () => {
       if (!editing) return;
       const s = b.dataset.add;
-      if (s === 'done')     data.done.push({ portal: 'New portal', devs: ['Shafi'], note: '' });
-      if (s === 'progress') data.progress.push({ portal: 'New portal', devs: ['Shafi'], pct: 0, fe: 'todo', be: 'todo', note: '' });
-      if (s === 'planned')  data.planned.push({ dev: 'Shafi', next: 'New next task', note: '' });
-      if (s === 'priority') data.priority.push({ item: 'New priority', note: '' });
+      if (s === 'done')     data.done.push({ id: newId(), portal: 'New portal', devs: ['Shafi'], note: '' });
+      if (s === 'progress') data.progress.push({ id: newId(), portal: 'New portal', devs: ['Shafi'], pct: 0, fe: 'todo', be: 'todo', note: '' });
+      if (s === 'planned')  data.planned.push({ id: newId(), dev: 'Shafi', next: 'New next task', note: '' });
+      if (s === 'priority') data.priority.push({ id: newId(), item: 'New priority', note: '' });
       save();
     };
   });
@@ -538,9 +669,16 @@ function bind() {
       );
       if (!ok) return;
       data.progress.splice(i, 1);
-      data.done.push({ portal: p.portal, devs: p.devs.slice(), note: p.note || 'Verified end-to-end.' });
+      data.done.push({ id: p.id || newId(), portal: p.portal, devs: p.devs.slice(), note: p.note || 'Verified end-to-end.' });
       save();
       document.getElementById('done').scrollIntoView({ behavior: 'smooth' });
+    };
+  });
+
+  document.querySelectorAll('[data-history]').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      renderHistoryFor(btn.dataset.history, btn);
     };
   });
 
