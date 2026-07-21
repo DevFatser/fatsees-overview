@@ -417,16 +417,24 @@ body.editing .pill:hover { border-color: var(--accent); }
   box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
 }
 
-/* ─── Card actions (edit mode) ──────────────────────────────────────── */
+/* ─── Card actions ──────────────────────────────────────────────────── */
+/* Row is always visible now (Victor 2026-07-21) so the history button
+   can be reached in read-only mode. Edit-only affordances (remove,
+   verify-done, reorder arrows) still hide until body.editing. */
 .card-actions {
-  display: none;
+  display: flex;
   gap: 8px;
   margin-top: 4px;
   padding-top: 10px;
   border-top: 1px solid var(--border);
   align-items: center;
 }
-body.editing .card-actions { display: flex; }
+.card-actions .card-remove,
+.card-actions .verify-done-btn,
+.card-actions .rank-btn { display: none; }
+body.editing .card-actions .card-remove { display: inline; }
+body.editing .card-actions .verify-done-btn,
+body.editing .card-actions .rank-btn { display: inline-flex; }
 .card-remove {
   font-size: 11px;
   color: var(--text-subtle);
