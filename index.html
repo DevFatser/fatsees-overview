@@ -19,7 +19,20 @@
     <span id="sync-text">Connected</span>
   </div>
   <span class="edit-hint" id="edit-hint">Read-only</span>
+  <span class="identity-chip" id="identity-chip" style="display:none"></span>
   <button class="btn primary" id="edit-btn">✎ Edit</button>
+</div>
+
+<!-- First-visit identity picker (Victor 2026-07-21, Audun-approved).
+     Renders once on first load if localStorage.fatsees_overview_identity
+     is unset. No backdrop dismiss — user MUST pick before editing so
+     every event carries a `by` field. -->
+<div class="identity-modal" id="identity-modal" style="display:none">
+  <div class="identity-modal-card">
+    <h2>Who are you?</h2>
+    <p>Pick your name — we stamp it on every change you make so we know who did what. Stored on this browser only.</p>
+    <div class="identity-modal-body"></div>
+  </div>
 </div>
 
 <main class="single-view">

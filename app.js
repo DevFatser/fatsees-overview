@@ -10,6 +10,7 @@ const DEV_COLORS = {
   Victor: '#22c55e',
   Apple:  '#f59e0b',
   Nahid:  '#a855f7',
+  Audun:  '#ec4899',
 };
 const STATUS_STATES = ['todo', 'prog', 'done'];
 const STATUS_LABELS = { todo: 'To do', prog: 'In prog', done: 'Done' };
@@ -17,7 +18,7 @@ const STATUS_LABELS = { todo: 'To do', prog: 'In prog', done: 'Done' };
 /* ─── Seed data (fallback if the state row is empty on first load) ─── */
 const SEED = {
   updated: new Date().toISOString().slice(0, 16).replace('T', ' '),
-  devs: ['Shafi', 'Victor', 'Apple', 'Nahid'],
+  devs: ['Shafi', 'Victor', 'Apple', 'Nahid', 'Audun'],
   done: [
     { portal: 'Community',                       devs: ['Shafi'],           note: 'Portal shipped; Q&A threads live; help surface still to add.' },
     { portal: 'Social (/some)',                  devs: ['Victor'],          note: 'Fatsees Profile portal — shipped.' },
@@ -66,6 +67,93 @@ let data = structuredClone(SEED);
 let editing = false;
 let saveTimer = null;
 let realtimeChannel = null;
+
+/* ─── Identity (Victor 2026-07-21, Audun-approved) ────────────────────
+   First-visit: user picks their name from a fixed roster and it lands
+   in localStorage. No server change. Every subsequent card mutation
+   reads that identity and stamps the event log so silent reverts like
+   Motor 45→70 become traceable ("who changed what, when"). Explicitly
+   NOT auth — just an honesty-system attribution ping. */
+const IDENTITY_KEY = 'fatsees_overview_identity';
+const IDENTITY_ROSTER = ['Victor', 'Apple', 'Nahid', 'Shafi', 'Audun'];
+function getIdentity() {
+  try { return localStorage.getItem(IDENTITY_KEY) || ''; } catch { return ''; }
+}
+function setIdentity(name) {
+  try { localStorage.setItem(IDENTITY_KEY, name); } catch {}
+  renderIdentityChip();
+}
+function renderIdentityChip() {
+  const chip = document.getElementById('identity-chip');
+  if (!chip) return;
+  const who = getIdentity();
+  if (who) {
+    chip.innerHTML = `
+      <span class="dev-avatar" style="background:${devColor(who)}">${initial(who)}</span>
+      <span class="identity-name">${escapeHTML(who)}</span>
+      <span class="identity-change" title="Change identity">Change</span>`;
+    chip.style.display = '';
+  } else {
+    chip.style.display = 'none';
+  }
+}
+function showIdentityPicker() {
+  const modal = document.getElementById('identity-modal');
+  if (!modal) return;
+  modal.querySelector('.identity-modal-body').innerHTML = IDENTITY_ROSTER.map(n => `
+    <button class="identity-pick-btn" data-pick="${escapeHTML(n)}">
+      <span class="dev-avatar" style="background:${devColor(n)}">${initial(n)}</span>
+      <span>${escapeHTML(n)}</span>
+    </button>
+  `).join('');
+  modal.style.display = 'flex';
+  modal.querySelectorAll('[data-pick]').forEach(btn => {
+    btn.onclick = () => {
+      setIdentity(btn.dataset.pick);
+      modal.style.display = 'none';
+    };
+  });
+}
+
+/* ─── Event log (per-card edit history) ───────────────────────────────
+   `data.events` is an append-only ring buffer capped at 200 entries so
+   the state blob stays small. Every mutation goes through `save()`; we
+   diff prevState → data and append one event per changed path. Older
+   events fall off the front once we hit the cap. */
+const EVENT_CAP = 200;
+let prevSnapshot = null;
+function snap() { return JSON.parse(JSON.stringify(data)); }
+function diffAndLogEvents(before, after) {
+  if (!after.events) after.events = [];
+  const who = getIdentity() || '(anonymous)';
+  const at = new Date().toISOString();
+  const changes = [];
+  const collect = (a, b, path) => {
+    if (a === b) return;
+    if (typeof a !== 'object' || typeof b !== 'object' || a === null || b === null) {
+      changes.push({ at, by: who, path, from: a, to: b });
+      return;
+    }
+    if (Array.isArray(a) || Array.isArray(b)) {
+      // Arrays diffed shallowly by JSON so add/remove/reorder land as
+      // one summary event rather than exploding into per-index noise.
+      const aj = JSON.stringify(a), bj = JSON.stringify(b);
+      if (aj !== bj) changes.push({ at, by: who, path, from: aj.slice(0, 200), to: bj.slice(0, 200) });
+      return;
+    }
+    const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+    for (const k of keys) {
+      if (k === 'events' || k === 'updated' || k === 'updated_by') continue;
+      collect(a[k], b[k], path ? `${path}.${k}` : k);
+    }
+  };
+  collect(before, after, '');
+  if (changes.length === 0) return;
+  after.events.push(...changes);
+  if (after.events.length > EVENT_CAP) {
+    after.events = after.events.slice(after.events.length - EVENT_CAP);
+  }
+}
 
 /* ─── Utility ─────────────────────────────────────────────────────── */
 function stamp() { return new Date().toISOString().slice(0, 16).replace('T', ' '); }
@@ -123,18 +211,27 @@ async function load() {
       data = structuredClone(SEED);
       await supa.from('overview_state').upsert({ id: STATE_ROW_ID, data, updated_at: new Date().toISOString() });
     }
+    prevSnapshot = snap();
     setSyncStatus('', 'Connected');
   } catch (e) {
     console.error('load failed', e);
     setSyncStatus('error', 'Offline');
     toast('Could not load from server — showing seed', 'error');
     data = structuredClone(SEED);
+    prevSnapshot = snap();
   }
 }
 
 /* ─── Persist state (debounced) ───────────────────────────────────── */
 function save(opts) {
+  // Diff against the last-flushed snapshot and append events for the
+  // changed paths BEFORE stamping updated/updated_by (those are logged
+  // as noise otherwise). Runs synchronously so realtime pushes carry
+  // the events too.
+  if (prevSnapshot) diffAndLogEvents(prevSnapshot, data);
   data.updated = stamp();
+  data.updated_by = getIdentity() || '(anonymous)';
+  prevSnapshot = snap();
   render();
 
   clearTimeout(saveTimer);
@@ -167,8 +264,12 @@ function subscribeRealtime() {
       if (editing && document.activeElement && document.activeElement.matches('[contenteditable], input, select')) return;
       if (payload.new && payload.new.data) {
         data = migrate(payload.new.data);
+        // Reset the diff baseline so our next local save doesn't
+        // regenerate events for whatever the remote user just changed.
+        prevSnapshot = snap();
         render();
-        toast('Updated by another user');
+        const who = payload.new.data.updated_by ? ` by ${payload.new.data.updated_by}` : '';
+        toast(`Updated${who}`);
       }
     })
     .subscribe();
@@ -420,12 +521,23 @@ function bind() {
 
 /* ─── Edit-mode toggle ────────────────────────────────────────────── */
 document.getElementById('edit-btn').onclick = () => {
+  // Force a picked identity before entering edit mode. Read-only view
+  // is fine anonymously; but as soon as they can mutate we need a `by`
+  // for the event log.
+  if (!editing && !getIdentity()) { showIdentityPicker(); return; }
   editing = !editing;
   applyEditGates();
 };
 
+/* ─── Change-identity chip click ──────────────────────────────────── */
+document.getElementById('identity-chip').addEventListener('click', (e) => {
+  if (e.target.classList.contains('identity-change')) showIdentityPicker();
+});
+
 /* ─── Boot ────────────────────────────────────────────────────────── */
 render();
+renderIdentityChip();
+if (!getIdentity()) showIdentityPicker();
 (async () => {
   await load();
   render();

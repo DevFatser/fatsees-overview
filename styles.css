@@ -499,6 +499,104 @@ body.editing .add-card-btn { display: flex; }
 .toast.show { opacity: 1; transform: translateY(0); }
 .toast.error { border-color: rgba(239,68,68,.3); }
 
+/* ─── Identity chip + picker modal (Victor 2026-07-21) ───────────────── */
+.identity-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px 3px 3px;
+  border-radius: 999px;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text);
+}
+.identity-chip .dev-avatar {
+  width: 20px; height: 20px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+.identity-chip .identity-name { font-weight: 600; }
+.identity-chip .identity-change {
+  margin-left: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-left: 1px solid var(--border);
+  padding-left: 8px;
+}
+.identity-chip .identity-change:hover { color: var(--text); }
+
+.identity-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  padding: 16px;
+}
+.identity-modal-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+}
+.identity-modal-card h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+.identity-modal-card p {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.identity-modal-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.identity-pick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .12s, background .12s;
+}
+.identity-pick-btn:hover {
+  border-color: var(--border-strong);
+  background: var(--bg);
+}
+.identity-pick-btn .dev-avatar {
+  width: 26px; height: 26px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 /* ─── Responsive ────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .single-view { padding: 68px 16px 60px; }
@@ -506,4 +604,6 @@ body.editing .add-card-btn { display: flex; }
   .section-head { flex-direction: column; align-items: flex-start; gap: 8px; }
   .floating-controls { top: 8px; right: 8px; padding: 6px 8px; }
   .floating-controls .sync-status { display: none; }
+  .identity-chip .identity-name { display: none; }
+  .identity-modal-body { grid-template-columns: 1fr; }
 }
