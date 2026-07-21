@@ -100,19 +100,50 @@ function renderIdentityChip() {
 function showIdentityPicker() {
   const modal = document.getElementById('identity-modal');
   if (!modal) return;
-  modal.querySelector('.identity-modal-body').innerHTML = IDENTITY_ROSTER.map(n => `
-    <button class="identity-pick-btn" data-pick="${escapeHTML(n)}">
-      <span class="dev-avatar" style="background:${devColor(n)}">${initial(n)}</span>
-      <span>${escapeHTML(n)}</span>
-    </button>
-  `).join('');
+  const input = document.getElementById('identity-input');
+  const suggEl = document.getElementById('identity-suggestions');
+  const proceed = document.getElementById('identity-proceed');
+  // Pre-fill with any prior identity so Change → adjust flows work.
+  input.value = getIdentity() || '';
+
+  const commit = () => {
+    const name = input.value.trim();
+    if (!name) return;
+    setIdentity(name);
+    modal.style.display = 'none';
+  };
+
+  const renderSuggestions = () => {
+    const q = input.value.trim().toLowerCase();
+    const matches = q
+      ? IDENTITY_ROSTER.filter(n => n.toLowerCase().startsWith(q) && n.toLowerCase() !== q)
+      : IDENTITY_ROSTER.slice();
+    suggEl.innerHTML = matches.map(n => `
+      <button type="button" class="identity-suggestion" data-sugg="${escapeHTML(n)}">
+        <span class="dev-avatar" style="background:${devColor(n)}">${initial(n)}</span>
+        <span>${escapeHTML(n)}</span>
+      </button>`).join('');
+    suggEl.querySelectorAll('[data-sugg]').forEach(btn => {
+      btn.onclick = () => {
+        input.value = btn.dataset.sugg;
+        proceed.disabled = false;
+        renderSuggestions();
+        input.focus();
+      };
+    });
+    proceed.disabled = input.value.trim().length === 0;
+  };
+
+  input.oninput = renderSuggestions;
+  input.onkeydown = (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); commit(); }
+  };
+  proceed.onclick = commit;
+
   modal.style.display = 'flex';
-  modal.querySelectorAll('[data-pick]').forEach(btn => {
-    btn.onclick = () => {
-      setIdentity(btn.dataset.pick);
-      modal.style.display = 'none';
-    };
-  });
+  renderSuggestions();
+  // Defer focus one tick — some browsers race the display:flex layout.
+  setTimeout(() => input.focus(), 0);
 }
 
 /* ─── Event log (per-card edit history) ───────────────────────────────

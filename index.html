@@ -24,14 +24,23 @@
 </div>
 
 <!-- First-visit identity picker (Victor 2026-07-21, Audun-approved).
-     Renders once on first load if localStorage.fatsees_overview_identity
-     is unset. No backdrop dismiss — user MUST pick before editing so
-     every event carries a `by` field. -->
+     Solid black backdrop — modal fully blocks the board underneath so
+     you can't edit anything before picking a name. Freeform input with
+     roster suggestions; any typed name (roster or not) is accepted on
+     Proceed. Landed name shows in the header identity chip. -->
 <div class="identity-modal" id="identity-modal" style="display:none">
   <div class="identity-modal-card">
     <h2>Who are you?</h2>
-    <p>Pick your name — we stamp it on every change you make so we know who did what. Stored on this browser only.</p>
-    <div class="identity-modal-body"></div>
+    <p>Type your name — we stamp it on every change you make so we know who did what. Stored on this browser only.</p>
+    <input
+      type="text"
+      id="identity-input"
+      class="identity-input"
+      placeholder="Type your name"
+      autocomplete="off"
+      spellcheck="false" />
+    <div class="identity-suggestions" id="identity-suggestions"></div>
+    <button class="identity-proceed" id="identity-proceed" disabled>Proceed</button>
   </div>
 </div>
 

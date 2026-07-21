@@ -535,7 +535,9 @@ body.editing .add-card-btn { display: flex; }
 .identity-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.7);
+  /* Solid black backdrop — fully masks the board so the user cannot
+     see or edit anything before picking a name (Victor 2026-07-21). */
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -543,58 +545,96 @@ body.editing .add-card-btn { display: flex; }
   padding: 16px;
 }
 .identity-modal-card {
-  background: var(--bg-elevated);
+  background: #000;
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 24px;
-  max-width: 420px;
+  padding: 28px;
+  max-width: 440px;
   width: 100%;
   box-shadow: var(--shadow-lg);
 }
 .identity-modal-card h2 {
   margin: 0 0 6px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text);
 }
 .identity-modal-card p {
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.5;
 }
-.identity-modal-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
+.identity-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #0a0a0a;
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color .12s;
 }
-.identity-pick-btn {
-  display: inline-flex;
+.identity-input::placeholder { color: var(--text-subtle); }
+.identity-input:focus { border-color: #ec4899; }
+.identity-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+  min-height: 4px;
+}
+.identity-suggestion {
+  display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: var(--bg-hover);
-  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
   color: var(--text);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
+  text-align: left;
   cursor: pointer;
-  transition: border-color .12s, background .12s;
+  transition: background .12s, border-color .12s;
 }
-.identity-pick-btn:hover {
-  border-color: var(--border-strong);
-  background: var(--bg);
+.identity-suggestion:hover {
+  background: #101010;
+  border-color: var(--border);
 }
-.identity-pick-btn .dev-avatar {
-  width: 26px; height: 26px;
+.identity-suggestion .dev-avatar {
+  width: 22px; height: 22px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
+  flex-shrink: 0;
+}
+.identity-proceed {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #ec4899, #a855f7);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity .15s, filter .15s;
+}
+.identity-proceed:hover:not(:disabled) { filter: brightness(1.08); }
+.identity-proceed:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 /* ─── Responsive ────────────────────────────────────────────────────── */
@@ -605,5 +645,4 @@ body.editing .add-card-btn { display: flex; }
   .floating-controls { top: 8px; right: 8px; padding: 6px 8px; }
   .floating-controls .sync-status { display: none; }
   .identity-chip .identity-name { display: none; }
-  .identity-modal-body { grid-template-columns: 1fr; }
 }
