@@ -115,9 +115,12 @@ function showIdentityPicker() {
 
   const renderSuggestions = () => {
     const q = input.value.trim().toLowerCase();
+    // Victor 2026-07-21 — no roster preview. Suggestions only appear
+    // once the user has typed something AND the query prefix-matches
+    // a roster name that isn't already the exact input.
     const matches = q
       ? IDENTITY_ROSTER.filter(n => n.toLowerCase().startsWith(q) && n.toLowerCase() !== q)
-      : IDENTITY_ROSTER.slice();
+      : [];
     suggEl.innerHTML = matches.map(n => `
       <button type="button" class="identity-suggestion" data-sugg="${escapeHTML(n)}">
         <span class="dev-avatar" style="background:${devColor(n)}">${initial(n)}</span>
