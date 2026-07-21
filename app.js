@@ -63,7 +63,7 @@ const SEED = {
 const supa = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* ─── App state ───────────────────────────────────────────────────── */
-let data = structuredClone(SEED);
+let data = migrate(structuredClone(SEED));
 let editing = false;
 let saveTimer = null;
 let realtimeChannel = null;
@@ -198,10 +198,24 @@ function diffAndLogEvents(before, after) {
       return;
     }
     if (Array.isArray(a) || Array.isArray(b)) {
-      // Arrays diffed shallowly by JSON so add/remove/reorder land as
-      // one summary event rather than exploding into per-index noise.
-      const aj = JSON.stringify(a), bj = JSON.stringify(b);
-      if (aj !== bj) push(path, aj.slice(0, 200), bj.slice(0, 200));
+      const aa = Array.isArray(a) ? a : [];
+      const bb = Array.isArray(b) ? b : [];
+      // Same-length object arrays (e.g. `progress` cards, `priority`
+      // list) → recurse per index so a pct change on card 3 lands as
+      // `progress.3.pct` with a real card_id, not as one opaque
+      // `progress` blob. Different-length or primitive arrays (like
+      // a card's `devs: ['Victor','Apple']`) → JSON summary at the
+      // outer path (still gets a card_id from the outer segment,
+      // which is what history filtering needs).
+      const bothObjects = aa.every(x => x && typeof x === 'object') && bb.every(x => x && typeof x === 'object');
+      if (bothObjects && aa.length === bb.length) {
+        for (let i = 0; i < aa.length; i++) {
+          collect(aa[i], bb[i], `${path}.${i}`);
+        }
+      } else {
+        const aj = JSON.stringify(a), bj = JSON.stringify(b);
+        if (aj !== bj) push(path, aj.slice(0, 200), bj.slice(0, 200));
+      }
       return;
     }
     const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
@@ -287,7 +301,7 @@ async function load() {
     if (rows && rows.data) {
       data = migrate(rows.data);
     } else {
-      data = structuredClone(SEED);
+      data = migrate(structuredClone(SEED));
       await supa.from('overview_state').upsert({ id: STATE_ROW_ID, data, updated_at: new Date().toISOString() });
     }
     prevSnapshot = snap();
@@ -296,7 +310,7 @@ async function load() {
     console.error('load failed', e);
     setSyncStatus('error', 'Offline');
     toast('Could not load from server — showing seed', 'error');
-    data = structuredClone(SEED);
+    data = migrate(structuredClone(SEED));
     prevSnapshot = snap();
   }
 }
