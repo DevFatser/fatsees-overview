@@ -17,3 +17,16 @@
   from = "/Developer_Portal_Overview.html"
   to = "/index.html"
   status = 200
+
+# Board-state JSON endpoint for Audun's automated Claude report
+# (2026-07-23). Serves the current Supabase overview_state.data blob
+# reshaped into per-developer arrays. See netlify/functions/state.js.
+[[redirects]]
+  from = "/state.json"
+  to = "/.netlify/functions/state"
+  status = 200
+
+[functions]
+  directory = "netlify/functions"
+  # ESM function file; Netlify's Node 18+ runtime supports it natively.
+  node_bundler = "esbuild"
