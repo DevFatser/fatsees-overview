@@ -43,6 +43,10 @@ function summarize(card, kind) {
       pct: typeof card.pct === 'number' ? card.pct : null,
       fe: card.fe || null,
       be: card.be || null,
+      // Audun 2026-07-23 — remaining-work estimate. Devs update at
+      // EOD alongside %; either or both fields may be null.
+      estimate_days: typeof card.estimate_days === 'number' ? card.estimate_days : null,
+      target_date: card.target_date || null,
     };
   }
   return base;

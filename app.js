@@ -511,6 +511,19 @@ function renderProgress() {
           </div>
           <div class="progress-track"><div class="progress-fill ${fillClass}" style="width:${pct}%"></div></div>
         </div>
+        <!-- Time estimate (Audun ask 2026-07-23, via Fatsees Reporter):
+             each in-progress card carries a rough remaining-work
+             estimate. Either or both fields are optional. In edit mode
+             they render as free-text spans; state.json publishes the
+             raw values so his automated report can track drift. -->
+        <div class="estimate-row">
+          <span class="estimate-label">Est.</span>
+          <span class="estimate-days" data-path="progress.${i}.estimate_days">${escapeHTML(String(p.estimate_days ?? ''))}</span>
+          <span class="estimate-unit">days</span>
+          <span class="estimate-sep">·</span>
+          <span class="estimate-target-label">target</span>
+          <span class="estimate-target" data-path="progress.${i}.target_date">${escapeHTML(p.target_date || '')}</span>
+        </div>
         <div class="pills">
           <span class="pill ${p.fe}" data-stpath="progress.${i}.fe"><span class="pill-key">FE</span>${STATUS_LABELS[p.fe] || p.fe}</span>
           <span class="pill ${p.be}" data-stpath="progress.${i}.be"><span class="pill-key">BE</span>${STATUS_LABELS[p.be] || p.be}</span>
@@ -588,6 +601,13 @@ function bind() {
       const [o, k] = getRef(el.dataset.path);
       let v = el.innerText.trim();
       if (k === 'pct') v = Math.max(0, Math.min(100, parseInt(v) || 0));
+      // Audun 2026-07-23 — estimate_days is numeric-or-null; empty
+      // string clears the field so publish-state emits null instead
+      // of "". target_date stays as a free-form ISO/date string —
+      // the reporter handles empty as "no target".
+      if (k === 'estimate_days') {
+        v = v === '' ? null : Math.max(0, parseInt(v) || 0);
+      }
       if (o[k] !== v) { o[k] = v; save(); }
       else if (k === 'pct') render();
     };
