@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-23T16:24:41.823+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-07-23T19:33:32.97+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -180,12 +180,12 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Selling a car is now complete end-to-end on Dev — VIN scan, Vegvesen auto-fill, all the per-type fields, escrow payment wiring, listing detail, comparison, search, and multi-language. Today's create/sell + registry work (fields + VIN scanner + browse-count fix) is up for review (#382). Still to do before real users: the finn.no-style browse redesign, the full escrow test on a live preview (with Nahid), plus contract e-signing and rental escrow. Now top priority.",
-          "pct": 55,
+          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search. Today's fixes (escrow safety, duplicate-ad cleanup, verification) are in review. Left: (1) make the browse pages look like finn.no - biggest; (2) sale contract both buyer & seller e-sign; (3) vehicle-rental payments; (4) full buy-flow test on a live link (with Nahid).",
+          "pct": 57,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 7,
+          "target_date": "2026-08-03"
         }
       ],
       "planned_next": [
