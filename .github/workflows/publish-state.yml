@@ -1,0 +1,65 @@
+# Mirrors the Build Overview board state from Supabase into state.json
+# in this repo, so Audun's automated reporter (sandbox network permits
+# only discord.com + api.github.com) can pull it via the GitHub
+# Contents API. Netlify hosting is blocked in that sandbox — the
+# /state.json Netlify Function stays live for direct browsers, and
+# this workflow keeps a synchronised copy in git.
+#
+# Schedule: every 10 minutes. GitHub Actions cron granularity is 5m
+# (skew common), which is plenty for Audun's 3×/day poll cadence.
+# manual `workflow_dispatch` too, for immediate refreshes.
+
+name: publish-state
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch: {}
+  # Also refresh on every push to main so a code change on the board
+  # (SPA edit → deploy) triggers a re-mirror without waiting for cron.
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/publish-state.mjs'
+      - 'app.js'
+
+# Serialize runs so two overlapping cron ticks can't race on the commit.
+concurrency:
+  group: publish-state
+  cancel-in-progress: false
+
+# Only need the write scope to commit state.json back to main.
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          # Fetch full history so `git commit` doesn't complain about
+          # a shallow clone when it needs a valid HEAD to attach to.
+          fetch-depth: 1
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch board state → state.json
+        run: node scripts/publish-state.mjs
+
+      - name: Commit if changed
+        run: |
+          if [[ -z "$(git status --porcelain state.json)" ]]; then
+            echo "publish-state: state.json unchanged; nothing to commit."
+            exit 0
+          fi
+          git config user.name  'fatsees-overview-bot'
+          git config user.email 'bot@fatsees.com'
+          git add state.json
+          git commit -m "chore(state): refresh state.json from Supabase [skip ci]"
+          git push

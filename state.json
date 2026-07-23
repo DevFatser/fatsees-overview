@@ -1,0 +1,262 @@
+{
+  "updated_at": "2026-07-23T08:14:41.86+00:00",
+  "updated_by": "Shafi",
+  "developers": [
+    {
+      "name": "Shafi",
+      "done": [
+        {
+          "id": "18c3f117-e441-4bf2-96e6-9c32cfaa69d8",
+          "portal": "My Profile",
+          "note": "Shipped;"
+        },
+        {
+          "id": "9cd2cc4a-075c-4d25-8334-e16fa34ff45d",
+          "portal": "Community",
+          "note": "Shipped. testing done."
+        },
+        {
+          "id": "b7542ede-d494-41dc-916e-4e2778bb6911",
+          "portal": "Pricing Page",
+          "note": ""
+        },
+        {
+          "id": "6f191679-a7e2-4f15-beb9-fe0239a9e7ac",
+          "portal": "ad + legal pages",
+          "note": ""
+        }
+      ],
+      "in_progress": [
+        {
+          "id": "10eae2f2-0c6c-47f6-88f7-2b4bf26ac28d",
+          "portal": "PR Reviews",
+          "note": "TODO: review new",
+          "pct": 70,
+          "fe": "prog",
+          "be": "todo"
+        },
+        {
+          "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
+          "portal": "Main branch launch tasks",
+          "note": "Assigned victor to create the PR, shafi will merge to main",
+          "pct": 95,
+          "fe": "prog",
+          "be": "todo"
+        },
+        {
+          "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
+          "portal": "/eiendom + /leie + /leie-eiendom",
+          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
+          "pct": 90,
+          "fe": "prog",
+          "be": "todo"
+        },
+        {
+          "id": "d18ca28a-1474-4d04-a4db-483e0111544f",
+          "portal": "Founders portal test",
+          "note": "",
+          "pct": 50,
+          "fe": "prog",
+          "be": "todo"
+        },
+        {
+          "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
+          "portal": "PWA - «click here to add App on your home page» functionality",
+          "note": "",
+          "pct": 0,
+          "fe": "prog",
+          "be": "todo"
+        },
+        {
+          "id": "0ae4385f-5e49-4c2f-93a5-35795d9fbada",
+          "portal": "BUILD FATSEES WITH US",
+          "note": "",
+          "pct": 30,
+          "fe": "prog",
+          "be": "todo"
+        }
+      ],
+      "planned_next": [
+        {
+          "id": "66cba550-d239-4584-938e-e794aada230a",
+          "portal": "review nahid/apples DONE poral + main branch merging portal test",
+          "note": ""
+        }
+      ],
+      "priority": []
+    },
+    {
+      "name": "Victor",
+      "done": [
+        {
+          "id": "cfc495fb-004b-44a3-91f6-a61f7738d79c",
+          "portal": "messages + notification + auth",
+          "note": ""
+        },
+        {
+          "id": "7ebb5cf3-ebc0-4f18-a98f-5745b611646f",
+          "portal": "language & currency change",
+          "note": ""
+        },
+        {
+          "id": "a14255a7-e433-431a-a144-08317487b6c4",
+          "portal": "Homepage Fatai bubble",
+          "note": ""
+        },
+        {
+          "id": "ef8e566e-8747-4e66-9d55-720d6e3c0176",
+          "portal": "Freja Identity Verification Test",
+          "note": "freja verified tested by victor"
+        }
+      ],
+      "in_progress": [
+        {
+          "id": "12160ff0-fcf2-45f3-a316-e1df03fd2368",
+          "portal": "Fat for life",
+          "note": "Fat AI in-context on /marketplace, /eiendom, /leie, /leie-eiendom + dispute-handle path. Text chat proven end-to-end; hook, streaming, cost-guard already live. Portal-specific system prompts + per-surface tool routing next. Ships after Mollie checkout wiring lands",
+          "pct": 50,
+          "fe": "prog",
+          "be": "prog"
+        },
+        {
+          "id": "26067edb-a71e-4126-ae21-e4343c7524fa",
+          "portal": "Fat AI Integration",
+          "note": "Fat AI on /marketplace , (/eiendom) + (/leie) + (/leie-eiendom); \n+ dispute handle with fat;\n\n- Victor will start working on fat ai integration+testing after mollie checkout work done .",
+          "pct": 50,
+          "fe": "prog",
+          "be": "done"
+        },
+        {
+          "id": "68083120-6d9f-4817-8e2b-469dd0fc5caf",
+          "portal": "Mollie Checkout on each portal",
+          "note": "/marketplace ✅ PaymentModal → payin (live). \n/leie-eiendom ✅ book → Mollie redirectUrl (live).\n /leie ⏳ button visual-only; waiting on separate booking-wiring plan.",
+          "pct": 66,
+          "fe": "prog",
+          "be": "done"
+        },
+        {
+          "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
+          "portal": "Main branch launch tasks",
+          "note": "Assigned victor to create the PR, shafi will merge to main",
+          "pct": 95,
+          "fe": "prog",
+          "be": "todo"
+        },
+        {
+          "id": "8ffb2c09-feef-4d8c-bbd2-49bf2cf3c762",
+          "portal": "Marketplace (/marketplace)",
+          "note": "P2 chargeback auto-recovery shipped end-to-end (PR #320 + #327 merged today): cron ladder 30/90/180d, seller banner 3-state, admin queue with modal. PG v29 aksjer guard PR out for review.",
+          "pct": 95,
+          "fe": "prog",
+          "be": "prog"
+        },
+        {
+          "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
+          "portal": "/eiendom + /leie + /leie-eiendom",
+          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
+          "pct": 90,
+          "fe": "prog",
+          "be": "todo"
+        }
+      ],
+      "planned_next": [
+        {
+          "id": "57333df6-c48d-4c87-8294-fd71c1b804d5",
+          "portal": "Fat memory infrastructure (L2 + L3)",
+          "note": "Pgvector activation on prod (schema already live in _introspected.ts), fact-extraction chunker, embeddings write-path, deep-dive search endpoint. Audun's 2026-06-01 non-shared lane lock — the substrate Fat AI Integration reads from once it's on every portal."
+        }
+      ],
+      "priority": []
+    },
+    {
+      "name": "Apple",
+      "done": [
+        {
+          "id": "cfc495fb-004b-44a3-91f6-a61f7738d79c",
+          "portal": "messages + notification + auth",
+          "note": ""
+        }
+      ],
+      "in_progress": [
+        {
+          "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
+          "portal": "VideoPay",
+          "note": "Booking a paid video call and paying works today. Two things still needed before real users: (1) after-call buttons to confirm \"all good\" or report a problem — right now the money just auto-goes to the seller after 7 days, even after a bad call; (2) sellers setting their own available times. Buttons first, calendar next.",
+          "pct": 80,
+          "fe": "prog",
+          "be": "done"
+        },
+        {
+          "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
+          "portal": "Motor",
+          "note": "Selling a car is now complete end-to-end on Dev — VIN scan, Vegvesen auto-fill, all the per-type fields, escrow payment wiring, listing detail, comparison, search, and multi-language. Today's create/sell + registry work (fields + VIN scanner + browse-count fix) is up for review (#382). Still to do before real users: the finn.no-style browse redesign, the full escrow test on a live preview (with Nahid), plus contract e-signing and rental escrow. Now top priority.",
+          "pct": 55,
+          "fe": "prog",
+          "be": "prog"
+        }
+      ],
+      "planned_next": [
+        {
+          "id": "b31a1b52-08fb-40d4-b8f4-d8594e7ee9cc",
+          "portal": "Jobs",
+          "note": ""
+        }
+      ],
+      "priority": []
+    },
+    {
+      "name": "Nahid",
+      "done": [
+        {
+          "id": "b2b6d1c6-b571-4929-b294-292b3032d894",
+          "portal": "Dashboard / custom URL",
+          "note": "Dashboards / Custom URL —  launch-ready."
+        }
+      ],
+      "in_progress": [
+        {
+          "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
+          "portal": "Equity (/aksjer)",
+          "note": "WHAT I'M WORKING ON — Equity, in plain language\n\nWhat Equity is:\nA section of Fatsees where people who already own shares in private companies\n(companies not on the stock exchange) can advertise them for sale, and others\ncan browse those ads. Think Finn.no, but for shares: a noticeboard, nothing more.\n\nWhy the noticeboard idea matters so much:\nRunning a stock exchange requires a government licence (Finanstilsynet). We\ndon't have one and don't want one. The law allows a plain noticeboard without\na licence — but ONLY if the platform never brings buyers and sellers together.\nThat means: no chat between buyer and seller on the platform, no \"buy\" button,\nno live share price, no handling of money. The buyer sees an ad, contacts the\nseller, and the two of them do the deal completely outside Fatsees. Fatsees\nearns from subscriptions, never from the trades themselves.\n\nIf we build even one \"convenient\" marketplace feature too many — a message\nthread, an offer button, a price ticker — we legally stop being a noticeboard\nand become an unlicensed trading venue. That's a regulator problem, not a bug.\n\nWhat I'm doing now, in three steps:\n\n1. SAFETY FIRST — add the missing legal guardrails:\n   - Block any company from selling its own shares (money must never flow to\n     the company itself — that would be fundraising, which is regulated)\n   - Lock the doors: visitors who aren't logged in see nothing; free accounts\n     can only look; paid accounts can participate\n   - Make sure the platform's chat can never be used for share deals\n\n2. CLEAN-UP — remove leftovers from an older design that are no longer allowed:\n   things like an order book, live prices, price alerts, on-platform trade\n   confirmations, dispute handling, and \"verified by Fatsees\" badges. On this\n   portal, Fatsees verifies nothing and touches nothing — sellers declare, and\n   buyers check for themselves.\n\n3. BUILD — finish the allowed features: a protected \"show contact details\"\n   button (paid users only, so contact info can't be scraped and abused),\n   \"wanted to buy\" ads, a history chart of past completed sales (clearly\n   labelled as history, never a share price), company pages, alerts for new\n   listings, and downloadable contract templates.\n\nThe one-line summary:\nI'm making sure Fatsees Equity works like a noticeboard and can never\naccidentally behave like a stock exchange — because a noticeboard is legal\nwithout a licence, and a stock exchange isn't.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "prog"
+        }
+      ],
+      "planned_next": [],
+      "priority": []
+    }
+  ],
+  "priority_queue": [
+    {
+      "id": "42cb7ce9-029c-429f-8d73-59719a65dee6",
+      "portal": "Jobs (/jobs)",
+      "note": ""
+    },
+    {
+      "id": "9c24a110-f8ae-47f0-a255-da4890364075",
+      "portal": "Suppliers (/suppliers) - @Nahid - future task ~ TBA",
+      "note": "Works with zero inventory (Fat web-search)."
+    },
+    {
+      "id": "faa9e395-3902-438d-ad9a-c134ab971ed2",
+      "portal": "+ Work Marketplace (/services) - @Nahid - future task",
+      "note": ""
+    },
+    {
+      "id": "60e83ded-ca05-4161-9f2b-cb41b4549446",
+      "portal": "+ Charity (/charity) - @Apple - future task ~ TBA",
+      "note": ""
+    },
+    {
+      "id": "26cf1a7b-54d1-4ff0-87d4-67a73eaec900",
+      "portal": "Apps (/apps) - @Apple - future task",
+      "note": ""
+    },
+    {
+      "id": "6296e316-b16f-4da0-9142-b5744f68480b",
+      "portal": "World of Business (/world) - @Nahid - future task",
+      "note": ""
+    }
+  ]
+}
