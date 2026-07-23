@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-23T10:18:09.405+00:00",
+  "updated_at": "2026-07-23T16:05:45.742+00:00",
   "updated_by": "Shafi",
   "developers": [
     {
@@ -9,11 +9,6 @@
           "id": "18c3f117-e441-4bf2-96e6-9c32cfaa69d8",
           "portal": "My Profile",
           "note": "Shipped;"
-        },
-        {
-          "id": "9cd2cc4a-075c-4d25-8334-e16fa34ff45d",
-          "portal": "Community",
-          "note": "Shipped. testing done."
         },
         {
           "id": "b7542ede-d494-41dc-916e-4e2778bb6911",
@@ -38,39 +33,9 @@
           "target_date": null
         },
         {
-          "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
-          "portal": "Main branch launch tasks",
-          "note": "Assigned victor to create the PR, shafi will merge to main",
-          "pct": 95,
-          "fe": "prog",
-          "be": "todo",
-          "estimate_days": null,
-          "target_date": null
-        },
-        {
-          "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
-          "portal": "/eiendom + /leie + /leie-eiendom",
-          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
-          "pct": 90,
-          "fe": "prog",
-          "be": "todo",
-          "estimate_days": null,
-          "target_date": null
-        },
-        {
-          "id": "d18ca28a-1474-4d04-a4db-483e0111544f",
-          "portal": "Founders portal test",
-          "note": "",
-          "pct": 50,
-          "fe": "prog",
-          "be": "todo",
-          "estimate_days": null,
-          "target_date": null
-        },
-        {
           "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
           "portal": "PWA - «click here to add App on your home page» functionality",
-          "note": "",
+          "note": "SHAFI PICK THIS AFTER COMMUNITY WORK",
           "pct": 0,
           "fe": "prog",
           "be": "todo",
@@ -78,10 +43,10 @@
           "target_date": null
         },
         {
-          "id": "0ae4385f-5e49-4c2f-93a5-35795d9fbada",
-          "portal": "BUILD FATSEES WITH US",
-          "note": "Community - deepl translation work remaining",
-          "pct": 50,
+          "id": "fd57004a-e4ab-4ecc-8f66-499348298b6e",
+          "portal": "COMMUNITY PORTAL - REWORK",
+          "note": "ETA:4 DAYS",
+          "pct": 60,
           "fe": "prog",
           "be": "todo",
           "estimate_days": null,
@@ -243,11 +208,21 @@
       ],
       "in_progress": [
         {
+          "id": "d18ca28a-1474-4d04-a4db-483e0111544f",
+          "portal": "Founders portal",
+          "note": "REVIEW DONE FROM SHAFI'S SIDE. NAHID PICK THIS UP AFTER EQUITY WORK",
+          "pct": 90,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
           "note": "WHAT I'M WORKING ON — Equity, in plain language\n\nWhat Equity is:\nA section of Fatsees where people who already own shares in private companies\n(companies not on the stock exchange) can advertise them for sale, and others\ncan browse those ads. Think Finn.no, but for shares: a noticeboard, nothing more.\n\nWhy the noticeboard idea matters so much:\nRunning a stock exchange requires a government licence (Finanstilsynet). We\ndon't have one and don't want one. The law allows a plain noticeboard without\na licence — but ONLY if the platform never brings buyers and sellers together.\nThat means: no chat between buyer and seller on the platform, no \"buy\" button,\nno live share price, no handling of money. The buyer sees an ad, contacts the\nseller, and the two of them do the deal completely outside Fatsees. Fatsees\nearns from subscriptions, never from the trades themselves.\n\nIf we build even one \"convenient\" marketplace feature too many — a message\nthread, an offer button, a price ticker — we legally stop being a noticeboard\nand become an unlicensed trading venue. That's a regulator problem, not a bug.\n\nWhat I'm doing now, in three steps:\n\n1. SAFETY FIRST — add the missing legal guardrails:\n   - Block any company from selling its own shares (money must never flow to\n     the company itself — that would be fundraising, which is regulated)\n   - Lock the doors: visitors who aren't logged in see nothing; free accounts\n     can only look; paid accounts can participate\n   - Make sure the platform's chat can never be used for share deals\n\n2. CLEAN-UP — remove leftovers from an older design that are no longer allowed:\n   things like an order book, live prices, price alerts, on-platform trade\n   confirmations, dispute handling, and \"verified by Fatsees\" badges. On this\n   portal, Fatsees verifies nothing and touches nothing — sellers declare, and\n   buyers check for themselves.\n\n3. BUILD — finish the allowed features: a protected \"show contact details\"\n   button (paid users only, so contact info can't be scraped and abused),\n   \"wanted to buy\" ads, a history chart of past completed sales (clearly\n   labelled as history, never a share price), company pages, alerts for new\n   listings, and downloadable contract templates.\n\nThe one-line summary:\nI'm making sure Fatsees Equity works like a noticeboard and can never\naccidentally behave like a stock exchange — because a noticeboard is legal\nwithout a licence, and a stock exchange isn't.",
           "pct": 0,
-          "fe": "todo",
+          "fe": "prog",
           "be": "prog",
           "estimate_days": null,
           "target_date": null
