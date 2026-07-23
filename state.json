@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-23T19:33:32.97+00:00",
+  "updated_at": "2026-07-23T19:45:32.97+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -170,8 +170,8 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Booking a paid video call and paying works today. Two things still needed before real users: (1) after-call buttons to confirm \"all good\" or report a problem — right now the money just auto-goes to the seller after 7 days, even after a bad call; (2) sellers setting their own available times. Buttons first, calendar next.",
-          "pct": 80,
+          "note": "Paused - Motor is top priority; VideoPay resumes after Motor. Why 80->50: the old 80 was against the 1-on-1-only spec; v31 grew VideoPay to 4 offering types + showcase rows, so honest progress vs the bigger scope is ~50 (scope moved, not a regression). Merged on Dev: live 1-on-1 calls (book, pay, escrow, rating), availability calendar, prerecorded videos (buy + watch). Left: paid comments (PR in review), content ratings, view counts, top-5 showcase rows, podcasts, free intro call, seller price control.",
+          "pct": 50,
           "fe": "prog",
           "be": "done",
           "estimate_days": null,
