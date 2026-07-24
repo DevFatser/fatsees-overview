@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-24T10:21:37.298+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-07-24T15:42:51.91+00:00",
+  "updated_by": "Victor",
   "developers": [
     {
       "name": "Shafi",
@@ -45,7 +45,7 @@
         {
           "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
           "portal": "/eiendom + /leie + /leie-eiendom",
-          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
+          "note": "Testing remaining on:\n Fat ai, end-to-end test",
           "pct": 90,
           "fe": "prog",
           "be": "todo",
@@ -121,21 +121,21 @@
           "id": "12160ff0-fcf2-45f3-a316-e1df03fd2368",
           "portal": "Fat for life",
           "note": "Fat AI in-context on /marketplace, /eiendom, /leie, /leie-eiendom + dispute-handle path. Text chat proven end-to-end; hook, streaming, cost-guard already live. Portal-specific system prompts + per-surface tool routing next. Ships after Mollie checkout wiring lands",
-          "pct": 50,
+          "pct": 60,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 2,
+          "target_date": "1"
         },
         {
           "id": "26067edb-a71e-4126-ae21-e4343c7524fa",
           "portal": "Fat AI Integration",
           "note": "Fat AI on /marketplace , (/eiendom) + (/leie) + (/leie-eiendom); \n+ dispute handle with fat;\n\n- Victor will start working on fat ai integration+testing after mollie checkout work done .",
-          "pct": 50,
+          "pct": 90,
           "fe": "prog",
           "be": "done",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 2,
+          "target_date": "1"
         },
         {
           "id": "68083120-6d9f-4817-8e2b-469dd0fc5caf",
@@ -144,8 +144,8 @@
           "pct": 66,
           "fe": "prog",
           "be": "done",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 1,
+          "target_date": "1"
         },
         {
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
@@ -170,11 +170,21 @@
         {
           "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
           "portal": "/eiendom + /leie + /leie-eiendom",
-          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
+          "note": "Testing remaining on:\n Fat ai, end-to-end test",
           "pct": 90,
           "fe": "prog",
           "be": "todo",
           "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "de6ee198-240a-40e1-8e3f-d3e32c977ee9",
+          "portal": "jobs",
+          "note": "",
+          "pct": 97,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 1,
           "target_date": null
         }
       ],
