@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-24T05:03:52.72+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-07-24T10:21:37.298+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -33,9 +33,39 @@
           "target_date": null
         },
         {
+          "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
+          "portal": "Main branch launch tasks",
+          "note": "Assigned victor to create the PR, shafi will merge to main",
+          "pct": 95,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
+          "portal": "/eiendom + /leie + /leie-eiendom",
+          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
+          "pct": 90,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "d18ca28a-1474-4d04-a4db-483e0111544f",
+          "portal": "Founders portal test",
+          "note": "",
+          "pct": 50,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
           "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
           "portal": "PWA - «click here to add App on your home page» functionality",
-          "note": "SHAFI PICK THIS AFTER COMMUNITY WORK",
+          "note": "",
           "pct": 0,
           "fe": "prog",
           "be": "todo",
@@ -43,9 +73,9 @@
           "target_date": null
         },
         {
-          "id": "fd57004a-e4ab-4ecc-8f66-499348298b6e",
-          "portal": "COMMUNITY PORTAL - REWORK",
-          "note": "ETA:4 DAYS",
+          "id": "683acdcd-ebc3-4281-9e02-557894c6d70c",
+          "portal": "Community",
+          "note": "Community portal rework as per audun",
           "pct": 60,
           "fe": "prog",
           "be": "todo",
@@ -170,8 +200,8 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Paused - Motor is top priority; VideoPay resumes after Motor. Why 80->50: the old 80 was against the 1-on-1-only spec; v31 grew VideoPay to 4 offering types + showcase rows, so honest progress vs the bigger scope is ~50 (scope moved, not a regression). Merged on Dev: live 1-on-1 calls (book, pay, escrow, rating), availability calendar, prerecorded videos (buy + watch). Left: paid comments (PR in review), content ratings, view counts, top-5 showcase rows, podcasts, free intro call, seller price control.",
-          "pct": 50,
+          "note": "Booking a paid video call and paying works today. Two things still needed before real users: (1) after-call buttons to confirm \"all good\" or report a problem — right now the money just auto-goes to the seller after 7 days, even after a bad call; (2) sellers setting their own available times. Buttons first, calendar next.",
+          "pct": 80,
           "fe": "prog",
           "be": "done",
           "estimate_days": null,
@@ -180,12 +210,12 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search. Today's fixes (escrow safety, duplicate-ad cleanup, verification) are in review. Left: (1) make the browse pages look like finn.no - biggest; (2) sale contract both buyer & seller e-sign; (3) vehicle-rental payments; (4) full buy-flow test on a live link (with Nahid).",
-          "pct": 57,
+          "note": "Selling a car is now complete end-to-end on Dev — VIN scan, Vegvesen auto-fill, all the per-type fields, escrow payment wiring, listing detail, comparison, search, and multi-language. Today's create/sell + registry work (fields + VIN scanner + browse-count fix) is up for review (#382). Still to do before real users: the finn.no-style browse redesign, the full escrow test on a live preview (with Nahid), plus contract e-signing and rental escrow. Now top priority.",
+          "pct": 55,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 7,
-          "target_date": "03-08-2026"
+          "estimate_days": null,
+          "target_date": null
         }
       ],
       "planned_next": [
@@ -208,24 +238,14 @@
       ],
       "in_progress": [
         {
-          "id": "d18ca28a-1474-4d04-a4db-483e0111544f",
-          "portal": "Founders portal",
-          "note": "REVIEW DONE FROM SHAFI'S SIDE. NAHID PICK THIS UP AFTER EQUITY WORK",
-          "pct": 90,
-          "fe": "todo",
-          "be": "todo",
-          "estimate_days": 1,
-          "target_date": null
-        },
-        {
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
           "note": "WHAT I'M WORKING ON — Equity, in plain language\n\nWhat Equity is:\nA section of Fatsees where people who already own shares in private companies\n(companies not on the stock exchange) can advertise them for sale, and others\ncan browse those ads. Think Finn.no, but for shares: a noticeboard, nothing more.\n\nWhy the noticeboard idea matters so much:\nRunning a stock exchange requires a government licence (Finanstilsynet). We\ndon't have one and don't want one. The law allows a plain noticeboard without\na licence — but ONLY if the platform never brings buyers and sellers together.\nThat means: no chat between buyer and seller on the platform, no \"buy\" button,\nno live share price, no handling of money. The buyer sees an ad, contacts the\nseller, and the two of them do the deal completely outside Fatsees. Fatsees\nearns from subscriptions, never from the trades themselves.\n\nIf we build even one \"convenient\" marketplace feature too many — a message\nthread, an offer button, a price ticker — we legally stop being a noticeboard\nand become an unlicensed trading venue. That's a regulator problem, not a bug.\n\nWhat I'm doing now, in three steps:\n\n1. SAFETY FIRST — add the missing legal guardrails:\n   - Block any company from selling its own shares (money must never flow to\n     the company itself — that would be fundraising, which is regulated)\n   - Lock the doors: visitors who aren't logged in see nothing; free accounts\n     can only look; paid accounts can participate\n   - Make sure the platform's chat can never be used for share deals\n\n2. CLEAN-UP — remove leftovers from an older design that are no longer allowed:\n   things like an order book, live prices, price alerts, on-platform trade\n   confirmations, dispute handling, and \"verified by Fatsees\" badges. On this\n   portal, Fatsees verifies nothing and touches nothing — sellers declare, and\n   buyers check for themselves.\n\n3. BUILD — finish the allowed features: a protected \"show contact details\"\n   button (paid users only, so contact info can't be scraped and abused),\n   \"wanted to buy\" ads, a history chart of past completed sales (clearly\n   labelled as history, never a share price), company pages, alerts for new\n   listings, and downloadable contract templates.\n\nThe one-line summary:\nI'm making sure Fatsees Equity works like a noticeboard and can never\naccidentally behave like a stock exchange — because a noticeboard is legal\nwithout a licence, and a stock exchange isn't.",
-          "pct": 6,
-          "fe": "prog",
+          "pct": 0,
+          "fe": "todo",
           "be": "prog",
-          "estimate_days": 10,
-          "target_date": "06-08-2026"
+          "estimate_days": null,
+          "target_date": null
         }
       ],
       "planned_next": [],
