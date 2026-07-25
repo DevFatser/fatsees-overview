@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-25T00:06:46.408+00:00",
-  "updated_by": "Victor",
+  "updated_at": "2026-07-25T09:54:54.686+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -9,6 +9,11 @@
           "id": "18c3f117-e441-4bf2-96e6-9c32cfaa69d8",
           "portal": "My Profile",
           "note": "Shipped;"
+        },
+        {
+          "id": "9cd2cc4a-075c-4d25-8334-e16fa34ff45d",
+          "portal": "Community",
+          "note": "This card is keeps getting back to DONE section. but its not DONE, needs audun's assigned work. progress 80%. ETA: monday"
         },
         {
           "id": "b7542ede-d494-41dc-916e-4e2778bb6911",
@@ -23,34 +28,24 @@
       ],
       "in_progress": [
         {
-          "id": "10eae2f2-0c6c-47f6-88f7-2b4bf26ac28d",
-          "portal": "PR Reviews",
-          "note": "TODO: review new",
-          "pct": 70,
+          "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
+          "portal": "Main branch launch tasks",
+          "note": "Assigned victor to create the PR, shafi will merge to main",
+          "pct": 95,
           "fe": "prog",
           "be": "todo",
           "estimate_days": null,
           "target_date": null
         },
         {
-          "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
-          "portal": "Main branch launch tasks",
-          "note": "Prod migrations 0157–0179 + 0180 all landed on main + dev, schema.ts in sync. Massive dark-mode sweep (~350 files) pushed.",
-          "pct": 98,
-          "fe": "prog",
-          "be": "prog",
-          "estimate_days": null,
-          "target_date": null
-        },
-        {
           "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
           "portal": "/eiendom + /leie + /leie-eiendom",
-          "note": "Dark mode + Fat Hero PG-parity across all three. Fat search chip on /eiendom. End-to-end Fat AI + Mollie test still pending.",
-          "pct": 95,
+          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
+          "pct": 90,
           "fe": "prog",
-          "be": "prog",
-          "estimate_days": 1,
-          "target_date": "1"
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
         },
         {
           "id": "d18ca28a-1474-4d04-a4db-483e0111544f",
@@ -65,7 +60,7 @@
         {
           "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
           "portal": "PWA - «click here to add App on your home page» functionality",
-          "note": "",
+          "note": "i'll start after finishing community portal, then pwa, then real-state",
           "pct": 0,
           "fe": "prog",
           "be": "todo",
@@ -73,10 +68,10 @@
           "target_date": null
         },
         {
-          "id": "683acdcd-ebc3-4281-9e02-557894c6d70c",
-          "portal": "Community",
-          "note": "Community portal rework as per audun",
-          "pct": 60,
+          "id": "cff4a2d5-cfa6-42cd-87b9-d246f3ae727d",
+          "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
+          "note": "",
+          "pct": 0,
           "fe": "prog",
           "be": "todo",
           "estimate_days": null,
@@ -121,21 +116,21 @@
           "id": "12160ff0-fcf2-45f3-a316-e1df03fd2368",
           "portal": "Fat for life",
           "note": "Fat AI in-context on /marketplace, /eiendom, /leie, /leie-eiendom + dispute-handle path. Text chat proven end-to-end; hook, streaming, cost-guard already live. Portal-specific system prompts + per-surface tool routing next. Ships after Mollie checkout wiring lands",
-          "pct": 60,
+          "pct": 50,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 2,
-          "target_date": "1"
+          "estimate_days": null,
+          "target_date": null
         },
         {
           "id": "26067edb-a71e-4126-ae21-e4343c7524fa",
           "portal": "Fat AI Integration",
           "note": "Fat AI on /marketplace , (/eiendom) + (/leie) + (/leie-eiendom); \n+ dispute handle with fat;\n\n- Victor will start working on fat ai integration+testing after mollie checkout work done .",
-          "pct": 90,
+          "pct": 50,
           "fe": "prog",
           "be": "done",
-          "estimate_days": 2,
-          "target_date": "1"
+          "estimate_days": null,
+          "target_date": null
         },
         {
           "id": "68083120-6d9f-4817-8e2b-469dd0fc5caf",
@@ -144,16 +139,16 @@
           "pct": 66,
           "fe": "prog",
           "be": "done",
-          "estimate_days": 1,
-          "target_date": "1"
+          "estimate_days": null,
+          "target_date": null
         },
         {
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
           "portal": "Main branch launch tasks",
-          "note": "Prod migrations 0157–0179 + 0180 all landed on main + dev, schema.ts in sync. Massive dark-mode sweep (~350 files) pushed.",
-          "pct": 98,
+          "note": "Assigned victor to create the PR, shafi will merge to main",
+          "pct": 95,
           "fe": "prog",
-          "be": "prog",
+          "be": "todo",
           "estimate_days": null,
           "target_date": null
         },
@@ -170,21 +165,11 @@
         {
           "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
           "portal": "/eiendom + /leie + /leie-eiendom",
-          "note": "Dark mode + Fat Hero PG-parity across all three. Fat search chip on /eiendom. End-to-end Fat AI + Mollie test still pending.",
-          "pct": 95,
+          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
+          "pct": 90,
           "fe": "prog",
-          "be": "prog",
-          "estimate_days": 1,
-          "target_date": "1"
-        },
-        {
-          "id": "de6ee198-240a-40e1-8e3f-d3e32c977ee9",
-          "portal": "jobs",
-          "note": "\"Dark mode + Fat Hero rewired via bubble (3 lanes) + CV upload/parse/experience + PG scrubber. Awaiting post-job flow test.\"",
-          "pct": 99,
-          "fe": "prog",
-          "be": "prog",
-          "estimate_days": 1,
+          "be": "todo",
+          "estimate_days": null,
           "target_date": null
         }
       ],
@@ -263,6 +248,11 @@
     }
   ],
   "priority_queue": [
+    {
+      "id": "42cb7ce9-029c-429f-8d73-59719a65dee6",
+      "portal": "Jobs (/jobs)",
+      "note": ""
+    },
     {
       "id": "9c24a110-f8ae-47f0-a255-da4890364075",
       "portal": "Suppliers (/suppliers) - @Nahid - future task ~ TBA",
