@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-26T14:37:15.53+00:00",
+  "updated_at": "2026-07-26T18:48:38.563+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -175,13 +175,13 @@
           "fe": "prog",
           "be": "done",
           "estimate_days": 7,
-          "target_date": null
+          "target_date": "12-08-2026"
         },
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow (now race-safe), details, search; duplicate ads removed. Left: (1) browse pages look like finn.no - biggest; (2) sale contract both e-sign; (3) vehicle-rental payments; (4) full buy-flow test on a live link (with Nahid).",
-          "pct": 60,
+          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search; duplicate ads removed. Today's work (the finn.no-style browse components, one-account-per-phone, migration renumbering) is in review. Left: (1) wire the new browse components onto the 5 sub-portal pages - biggest; (2) sale contract both buyer & seller e-sign; (3) vehicle-rental payments; (4) full buy-flow test on a live link (with Nahid).",
+          "pct": 62,
           "fe": "prog",
           "be": "prog",
           "estimate_days": 6,
