@@ -67,6 +67,22 @@ let data = migrate(structuredClone(SEED));
 let editing = false;
 let saveTimer = null;
 let realtimeChannel = null;
+// Victor 2026-07-26 save-protection —
+//   lastServerUpdatedAt: the row's updated_at ISO string as of the last
+//     confirmed sync (load, successful save, or accepted realtime push).
+//     Used as the CAS token on save — if the DB row's updated_at no
+//     longer matches, someone else saved in between and we merge instead
+//     of clobbering.
+//   lastServerData: the row's `data` snapshot at the same moment. Diffing
+//     (localData, lastServerData) gives us exactly the fields THIS user
+//     touched — those override on merge; every other field survives.
+//   activeFieldPath: the DOM path (contenteditable dataset or input's
+//     data-field) the user is currently focused on. On incoming realtime
+//     updates we merge ALL remote fields EXCEPT this one — so if two
+//     devs edit different fields simultaneously, both changes stick.
+let lastServerUpdatedAt = null;
+let lastServerData = null;
+let activeFieldPath = null;
 
 /* ─── Identity (Victor 2026-07-21, Audun-approved) ────────────────────
    First-visit: user picks their name from a fixed roster and it lands
@@ -294,15 +310,20 @@ async function load() {
   try {
     const { data: rows, error } = await supa
       .from('overview_state')
-      .select('data')
+      .select('data, updated_at')
       .eq('id', STATE_ROW_ID)
       .maybeSingle();
     if (error) throw error;
     if (rows && rows.data) {
       data = migrate(rows.data);
+      lastServerUpdatedAt = rows.updated_at;
+      lastServerData = structuredClone(data);
     } else {
       data = migrate(structuredClone(SEED));
-      await supa.from('overview_state').upsert({ id: STATE_ROW_ID, data, updated_at: new Date().toISOString() });
+      const nowIso = new Date().toISOString();
+      await supa.from('overview_state').upsert({ id: STATE_ROW_ID, data, updated_at: nowIso });
+      lastServerUpdatedAt = nowIso;
+      lastServerData = structuredClone(data);
     }
     prevSnapshot = snap();
     setSyncStatus('', 'Connected');
@@ -316,6 +337,33 @@ async function load() {
 }
 
 /* ─── Persist state (debounced) ───────────────────────────────────── */
+// Deep JSON merge — `mine` (this session's local mutations) overrides
+// `theirs` (fresh server state) at the leaf level, keyed on paths.
+// Arrays are treated as opaque values: if `mine` touched an array,
+// mine's version wins entirely for that array (we don't try to reconcile
+// per-element card ordering — that way madness lies). Object keys we
+// didn't touch fall through to `theirs`. Missing-in-mine (i.e. mine
+// deleted the key) also wins (JSON `undefined` roundtrips as absent).
+function deepMerge(mine, theirs, base) {
+  // If mine and base differ, mine is the intent — use mine.
+  // If mine and base match, mine didn't touch this branch — use theirs.
+  if (mine === theirs) return theirs;
+  const mineIsObj = mine && typeof mine === 'object' && !Array.isArray(mine);
+  const theirsIsObj = theirs && typeof theirs === 'object' && !Array.isArray(theirs);
+  const baseIsObj = base && typeof base === 'object' && !Array.isArray(base);
+  if (!mineIsObj || !theirsIsObj) {
+    // Leaf or array — if mine differs from base, mine wins; else theirs.
+    return JSON.stringify(mine) === JSON.stringify(base) ? theirs : mine;
+  }
+  // Merge keys from both sides.
+  const out = {};
+  const keys = new Set([...Object.keys(mine), ...Object.keys(theirs)]);
+  for (const k of keys) {
+    out[k] = deepMerge(mine[k], theirs[k], baseIsObj ? base[k] : undefined);
+  }
+  return out;
+}
+
 function save(opts) {
   // Diff against the last-flushed snapshot and append events for the
   // changed paths BEFORE stamping updated/updated_by (those are logged
@@ -329,21 +377,100 @@ function save(opts) {
 
   clearTimeout(saveTimer);
   saveTimer = setTimeout(async () => {
-    setSyncStatus('saving', 'Saving…');
-    try {
-      const { error } = await supa
-        .from('overview_state')
-        .upsert({ id: STATE_ROW_ID, data, updated_at: new Date().toISOString() });
-      if (error) throw error;
-      setSyncStatus('', 'Connected');
-    } catch (e) {
-      console.error('save failed', e);
-      setSyncStatus('error', 'Save failed');
-      toast('Save failed — check console', 'error');
-    }
+    await performSave();
   }, opts && opts.immediate ? 0 : 400);
 }
+
+// Extracted so we can retry on CAS conflict. Uses .update().eq('updated_at', ...)
+// as the compare-and-swap — Postgres returns zero rows if updated_at
+// changed between our load and our write, which means someone else saved
+// in between. On conflict: fetch latest, deep-merge our local mutations
+// on top, retry ONCE. If the second attempt also conflicts (rare — two
+// concurrent writers hammering the same tick), give up and surface the
+// error so the user can reload.
+async function performSave(retryCount = 0) {
+  setSyncStatus('saving', 'Saving…');
+  const newUpdatedAt = new Date().toISOString();
+  try {
+    // First attempt: CAS on lastServerUpdatedAt. `.select()` forces the
+    // client to return the affected rows so we can detect zero-match.
+    const { data: rows, error } = await supa
+      .from('overview_state')
+      .update({ data, updated_at: newUpdatedAt })
+      .eq('id', STATE_ROW_ID)
+      .eq('updated_at', lastServerUpdatedAt)
+      .select('updated_at');
+    if (error) throw error;
+
+    if (rows && rows.length > 0) {
+      // Won the race — commit the new baseline.
+      lastServerUpdatedAt = rows[0].updated_at;
+      lastServerData = structuredClone(data);
+      setSyncStatus('', 'Connected');
+      return;
+    }
+
+    // Zero rows returned → CAS mismatch. Someone else saved between our
+    // load and our write. Fetch latest and merge.
+    if (retryCount >= 1) {
+      // Already retried once — bail out rather than loop forever. This
+      // only fires if a third writer races us on the retry too, which
+      // is extremely rare for a 5-person team but the safety valve
+      // matters.
+      console.warn('[save] CAS conflict persisted after retry — aborting');
+      setSyncStatus('error', 'Save conflict — reload page');
+      toast('Save collision — please reload to pick up latest changes', 'error');
+      return;
+    }
+
+    setSyncStatus('saving', 'Merging…');
+    const { data: latestRow, error: fetchErr } = await supa
+      .from('overview_state')
+      .select('data, updated_at')
+      .eq('id', STATE_ROW_ID)
+      .maybeSingle();
+    if (fetchErr) throw fetchErr;
+    if (!latestRow || !latestRow.data) {
+      throw new Error('overview_state row disappeared during merge');
+    }
+
+    // Merge: my local mutations on top of the fresh remote. lastServerData
+    // is the base — fields I changed vs it override; fields I didn't touch
+    // fall through to whatever the other writer put there.
+    const merged = deepMerge(data, migrate(latestRow.data), lastServerData);
+    merged.updated = stamp();
+    merged.updated_by = getIdentity() || '(anonymous)';
+    data = merged;
+    prevSnapshot = snap();
+    // Rebase to the winner's timestamp so the retry CAS matches.
+    lastServerUpdatedAt = latestRow.updated_at;
+    lastServerData = structuredClone(migrate(latestRow.data));
+    render();
+
+    // Retry with the merged data. Recursive call bounded by retryCount.
+    await performSave(retryCount + 1);
+  } catch (e) {
+    console.error('save failed', e);
+    setSyncStatus('error', 'Save failed');
+    toast('Save failed — check console', 'error');
+  }
+}
 /* ─── Real-time subscription ──────────────────────────────────────── */
+// Victor 2026-07-26 save-protection fix.
+//
+// Old behavior: if the user was focused on ANY contenteditable/input/
+// select the incoming remote update was DROPPED entirely. That's the
+// root of Audun's "estimate_days + target_date got wiped" bug: while
+// user A was editing, user B saved. User A's page kept its stale copy
+// (never learned about B's estimate_days changes), then when A saved
+// they clobbered B's fields because their local `data` never held them.
+//
+// New behavior: ALWAYS merge the remote payload into local `data`.
+// Fields the user has locally mutated (deepMerge detects via base
+// comparison) stay theirs; every other field picks up the remote value.
+// Also always advance the CAS baseline (lastServerUpdatedAt +
+// lastServerData) so the next save is checking against reality, not a
+// stale snapshot.
 function subscribeRealtime() {
   if (realtimeChannel) return;
   realtimeChannel = supa
@@ -354,19 +481,50 @@ function subscribeRealtime() {
       table: 'overview_state',
       filter: `id=eq.${STATE_ROW_ID}`,
     }, (payload) => {
-      if (editing && document.activeElement && document.activeElement.matches('[contenteditable], input, select')) return;
-      if (payload.new && payload.new.data) {
-        data = migrate(payload.new.data);
-        // Reset the diff baseline so our next local save doesn't
-        // regenerate events for whatever the remote user just changed.
-        prevSnapshot = snap();
-        render();
-        const who = payload.new.data.updated_by ? ` by ${payload.new.data.updated_by}` : '';
-        toast(`Updated${who}`);
+      if (!payload.new || !payload.new.data) return;
+      const remoteData = migrate(payload.new.data);
+      const remoteUpdatedAt = payload.new.updated_at;
+      const who = payload.new.data.updated_by ? ` by ${payload.new.data.updated_by}` : '';
+
+      // If the incoming payload is our own echo (we just saved and the
+      // realtime channel replayed it), lastServerUpdatedAt will already
+      // match — skip the merge and just advance the baseline.
+      if (remoteUpdatedAt === lastServerUpdatedAt) return;
+
+      // Merge remote on top of local, using lastServerData as the base.
+      // Any field this session has locally mutated (mine !== base) is
+      // preserved; every other field snaps to remote. This is the same
+      // deepMerge used on save-conflict retry — one code path.
+      const merged = deepMerge(data, remoteData, lastServerData || remoteData);
+      data = merged;
+
+      // Advance CAS baseline so the user's next save is comparing against
+      // the fresh remote state, not the pre-merge one.
+      lastServerUpdatedAt = remoteUpdatedAt;
+      lastServerData = structuredClone(remoteData);
+      prevSnapshot = snap();
+
+      // If the user is actively typing in an editable, DO NOT re-render
+      // — that would wipe their cursor mid-word. Data is already merged
+      // silently into `data` so save-protection is intact. A re-render
+      // will fire on blur (see the blur listener attached in init()).
+      const isTyping = document.activeElement && document.activeElement.matches(
+        '[contenteditable], input, select, textarea',
+      );
+      if (isTyping) {
+        pendingRenderAfterBlur = true;
+        return;
       }
+      render();
+      toast(`Updated${who}`);
     })
     .subscribe();
 }
+
+// Set by the realtime handler when a merge lands while the user is
+// typing. The document-level blur listener reads this and fires the
+// deferred render as soon as focus leaves the editable.
+let pendingRenderAfterBlur = false;
 
 /* ─── Render ──────────────────────────────────────────────────────── */
 function render() {
@@ -749,3 +907,25 @@ if (!getIdentity()) showIdentityPicker();
   render();
   subscribeRealtime();
 })();
+
+// Deferred-render listener for save-protection. When the realtime
+// handler merges a remote update while the user is typing, it skips
+// render() (to preserve their cursor) and sets pendingRenderAfterBlur.
+// As soon as focus leaves an editable, we run the deferred render so
+// the merged remote fields show up. `focusout` bubbles (unlike `blur`).
+document.addEventListener('focusout', (e) => {
+  if (!pendingRenderAfterBlur) return;
+  if (e.target && e.target.matches && e.target.matches('[contenteditable], input, select, textarea')) {
+    // Defer one tick so focus can move to another editable (e.g. tabbing
+    // between fields) without us re-rendering mid-transition.
+    setTimeout(() => {
+      const stillEditing = document.activeElement && document.activeElement.matches(
+        '[contenteditable], input, select, textarea',
+      );
+      if (stillEditing) return;
+      pendingRenderAfterBlur = false;
+      render();
+      toast('Merged remote changes');
+    }, 0);
+  }
+});
