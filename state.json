@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-27T14:03:53.465+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-07-27T21:53:23.497+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -176,21 +176,21 @@
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
           "note": "Booking a paid video call and paying works today. Two things still needed before real users: (1) after-call buttons to confirm \"all good\" or report a problem — right now the money just auto-goes to the seller after 7 days, even after a bad call; (2) sellers setting their own available times. Buttons first, calendar next.",
-          "pct": 80,
+          "pct": 50,
           "fe": "prog",
           "be": "done",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 7,
+          "target_date": "12-08-2026"
         },
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Selling a car is now complete end-to-end on Dev — VIN scan, Vegvesen auto-fill, all the per-type fields, escrow payment wiring, listing detail, comparison, search, and multi-language. Today's create/sell + registry work (fields + VIN scanner + browse-count fix) is up for review (#382). Still to do before real users: the finn.no-style browse redesign, the full escrow test on a live preview (with Nahid), plus contract e-signing and rental escrow. Now top priority.",
-          "pct": 55,
+          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search. Today's work (saving cars to your own lists, with the heart and save count on the cards and detail page, and \"Most popular\" now ordered by saves) is in review. Left: (1) make the browse pages look like finn.no - biggest; (2) sale contract both buyer & seller e-sign; (3) vehicle-rental payments; (4) full buy-flow test on a live link (with Nahid).",
+          "pct": 65,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 6,
+          "target_date": "04-08-2026"
         }
       ],
       "planned_next": [
