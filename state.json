@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-27T08:13:50.921+00:00",
+  "updated_at": "2026-07-27T09:40:05.492+00:00",
   "updated_by": "Shafi",
   "developers": [
     {
@@ -50,8 +50,8 @@
         {
           "id": "2f2eee64-f3ee-479b-9a61-60a44af55a0c",
           "portal": "Shafi Front-end Work",
-          "note": "TODO: Addendum to the save/favourite spec: marketplace;\nNEW TASK — REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab (decided, spec below);\nPR review: 6",
-          "pct": 20,
+          "note": "TODO: 1) Addendum to the save/favourite spec: marketplace - DONE; new portals-todo;\n2)NEW TASK — REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab (decided, spec below);\n3)PR review: 6",
+          "pct": 30,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
