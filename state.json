@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-26T18:48:38.563+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-07-27T08:13:50.921+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -19,14 +19,19 @@
           "id": "6f191679-a7e2-4f15-beb9-fe0239a9e7ac",
           "portal": "ad + legal pages",
           "note": ""
+        },
+        {
+          "id": "fd57004a-e4ab-4ecc-8f66-499348298b6e",
+          "portal": "COMMUNITY PORTAL - REWORK",
+          "note": "Build Fatsees With Us done and tested"
         }
       ],
       "in_progress": [
         {
-          "id": "10eae2f2-0c6c-47f6-88f7-2b4bf26ac28d",
-          "portal": "PR Reviews",
-          "note": "TODO: review new",
-          "pct": 70,
+          "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
+          "portal": "/eiendom + /leie + /leie-eiendom",
+          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test\nNEW TASK — REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab (decided, spec below)\nAddendum to the save/favourite spec — the exact flow, benchmarked: ETA: 3Days",
+          "pct": 90,
           "fe": "prog",
           "be": "todo",
           "estimate_days": null,
@@ -43,13 +48,13 @@
           "target_date": null
         },
         {
-          "id": "fd57004a-e4ab-4ecc-8f66-499348298b6e",
-          "portal": "COMMUNITY PORTAL - REWORK",
-          "note": "ETA:4 DAYS",
-          "pct": 60,
+          "id": "2f2eee64-f3ee-479b-9a61-60a44af55a0c",
+          "portal": "Shafi Front-end Work",
+          "note": "TODO: Addendum to the save/favourite spec: marketplace;\nNEW TASK — REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab (decided, spec below);\nPR review: 6",
+          "pct": 20,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": null,
+          "estimate_days": 1,
           "target_date": null
         }
       ],
@@ -140,7 +145,7 @@
         {
           "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
           "portal": "/eiendom + /leie + /leie-eiendom",
-          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
+          "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test\nNEW TASK — REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab (decided, spec below)\nAddendum to the save/favourite spec — the exact flow, benchmarked: ETA: 3Days",
           "pct": 90,
           "fe": "prog",
           "be": "todo",
