@@ -86,29 +86,38 @@ async function fetchRow() {
   return { data: rows[0].data, updated_at: rows[0].updated_at };
 }
 
-// Apply the deltas idempotently to a fresh copy of the state.
-// Both operations are safe to re-run on a CAS-retry:
-//   - Object.assign into a card by portal-name is idempotent
-//   - the NEW_CARD append is guarded by a portal-name existence check
+// Victor 2026-07-28 audit fix — Supabase overview_state.data is
+// SECTION-first ({ progress:[card,...], done:[...], ... }), NOT
+// dev-first. The prior version targeted `remote.developers[].in_progress`
+// (a reader shape produced by netlify/functions/state.js) and aborted
+// with "Victor block missing" — never actually wrote. Walking
+// data.progress[] + filtering by card ownership matches how app.js
+// reads and where every existing card actually lives.
+function cardOwnedBy(card, name) {
+  if (!card) return false;
+  if (card.dev === name) return true;
+  if (Array.isArray(card.devs) && card.devs.includes(name)) return true;
+  return false;
+}
+
 function applyDeltas(remote) {
-  const devs = Array.isArray(remote.developers) ? remote.developers : [];
-  const victor = devs.find((d) => d.name === 'Victor');
-  if (!victor) {
-    console.error('Victor block missing from state. Aborting.');
-    process.exit(1);
-  }
-  const inprog = Array.isArray(victor.in_progress) ? victor.in_progress : [];
-  for (const card of inprog) {
+  const progress = Array.isArray(remote.progress) ? remote.progress : [];
+  for (const card of progress) {
+    if (!cardOwnedBy(card, 'Victor')) continue;
     const patch = UPDATES.get(card.portal);
     if (!patch) continue;
     Object.assign(card, patch);
   }
-  const hasSaveProtection = inprog.some((c) => c.portal === NEW_CARD.portal);
+  const hasSaveProtection = progress.some((c) => c.portal === NEW_CARD.portal);
   if (!hasSaveProtection) {
-    inprog.push({ id: crypto.randomUUID(), ...NEW_CARD });
+    progress.push({
+      id: crypto.randomUUID(),
+      devs: ['Victor'],
+      ...NEW_CARD,
+    });
   }
-  victor.in_progress = inprog;
-  return victor;
+  remote.progress = progress;
+  return remote;
 }
 
 // CAS-guarded PATCH. Returns the new updated_at on success, or null
@@ -141,10 +150,13 @@ while (true) {
   const { data: remote, updated_at: baseUpdatedAt } = await fetchRow();
   console.log(`Fetched row (attempt ${attempt}, updated_at=${baseUpdatedAt}).`);
 
+  // Snapshot every Victor-owned card in progress[] for the diff log.
+  // Same shape both sides so the operator can eyeball what changed.
+  const snapshotVictorProgress = (row) =>
+    (Array.isArray(row.progress) ? row.progress : []).filter((c) => cardOwnedBy(c, 'Victor'));
+
   const beforeSnapshot = attempt === 1
-    ? JSON.parse(JSON.stringify(
-        (remote.developers || []).find((d) => d.name === 'Victor')?.in_progress ?? [],
-      ))
+    ? JSON.parse(JSON.stringify(snapshotVictorProgress(remote)))
     : null;
 
   applyDeltas(remote);
@@ -152,9 +164,8 @@ while (true) {
   remote.updated_by = 'Victor';
 
   if (beforeSnapshot) {
-    log('BEFORE (Victor.in_progress)', beforeSnapshot);
-    const victorAfter = (remote.developers || []).find((d) => d.name === 'Victor');
-    log('AFTER  (Victor.in_progress)', victorAfter?.in_progress ?? []);
+    log('BEFORE (Victor cards in progress)', beforeSnapshot);
+    log('AFTER  (Victor cards in progress)', snapshotVictorProgress(remote));
   }
 
   const newUpdatedAt = await casPatch(baseUpdatedAt, remote);

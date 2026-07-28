@@ -344,15 +344,80 @@ async function load() {
 // per-element card ordering — that way madness lies). Object keys we
 // didn't touch fall through to `theirs`. Missing-in-mine (i.e. mine
 // deleted the key) also wins (JSON `undefined` roundtrips as absent).
+// Victor 2026-07-28 audit — id-keyed reconciliation for card arrays.
+// Before: arrays were opaque leaves. If BOTH mine and theirs added a
+// (different) card to progress[], mine's array wins entirely and
+// theirs' new card silently drops. That's the "things going missing"
+// class of bug Audun kept flagging.
+//
+// After: when both arrays are cards-with-ids, we merge by id:
+//   - card exists on both sides → recurse (per-field merge)
+//   - card only on mine → keep mine (I added it or theirs deleted it —
+//     tiebreak favours preservation; deletion via BO is rare, adds
+//     are common)
+//   - card only on theirs → keep theirs (they added; we haven't seen it)
+// Cards that were on `base` but on neither side → treated as
+// deliberately deleted, dropped.
+// Cards on base but only on one side → depends: if the side still has
+// it, keep it; if only one side dropped, honour the drop (single
+// deleter wins). Concurrent adds now coexist.
+//
+// Any array whose first element does NOT look like an id-keyed card
+// falls back to the old opaque-leaf behaviour so this doesn't leak
+// out to non-card arrays (e.g. events[], devs[]).
+function isCardArray(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return false;
+  const first = arr[0];
+  return first && typeof first === 'object' && typeof first.id === 'string' && first.id.length > 0;
+}
+
+function mergeCardArrays(mine, theirs, base) {
+  // Union of ids present in either mine or theirs.
+  const mineById   = new Map((mine   || []).filter((c) => c && c.id).map((c) => [c.id, c]));
+  const theirsById = new Map((theirs || []).filter((c) => c && c.id).map((c) => [c.id, c]));
+  const baseById   = new Map((base   || []).filter((c) => c && c.id).map((c) => [c.id, c]));
+
+  const order = [];
+  const seen = new Set();
+  // Preserve mine's ordering first (user's local view stays visually
+  // stable), then append any ids only in theirs at the end. This keeps
+  // reorder-in-progress behaviour intuitive.
+  for (const c of mine   || []) if (c && c.id && !seen.has(c.id)) { order.push(c.id); seen.add(c.id); }
+  for (const c of theirs || []) if (c && c.id && !seen.has(c.id)) { order.push(c.id); seen.add(c.id); }
+
+  const out = [];
+  for (const id of order) {
+    const inMine   = mineById.has(id);
+    const inTheirs = theirsById.has(id);
+    const inBase   = baseById.has(id);
+    if (inMine && inTheirs) {
+      out.push(deepMerge(mineById.get(id), theirsById.get(id), baseById.get(id)));
+    } else if (inMine && !inTheirs) {
+      // Only mine has it. If it WAS on base, theirs deleted it — honour delete.
+      // If not on base, mine added it — keep.
+      if (!inBase) out.push(mineById.get(id));
+    } else if (!inMine && inTheirs) {
+      // Only theirs has it. If it WAS on base, mine deleted it — honour delete.
+      // If not on base, theirs added it — keep.
+      if (!inBase) out.push(theirsById.get(id));
+    }
+  }
+  return out;
+}
+
 function deepMerge(mine, theirs, base) {
-  // If mine and base differ, mine is the intent — use mine.
-  // If mine and base match, mine didn't touch this branch — use theirs.
   if (mine === theirs) return theirs;
+
+  // Id-keyed card arrays get real reconciliation instead of opaque leaf.
+  if (isCardArray(mine) || isCardArray(theirs)) {
+    return mergeCardArrays(mine, theirs, base);
+  }
+
   const mineIsObj = mine && typeof mine === 'object' && !Array.isArray(mine);
   const theirsIsObj = theirs && typeof theirs === 'object' && !Array.isArray(theirs);
   const baseIsObj = base && typeof base === 'object' && !Array.isArray(base);
   if (!mineIsObj || !theirsIsObj) {
-    // Leaf or array — if mine differs from base, mine wins; else theirs.
+    // Leaf or non-card array — if mine differs from base, mine wins; else theirs.
     return JSON.stringify(mine) === JSON.stringify(base) ? theirs : mine;
   }
   // Merge keys from both sides.
