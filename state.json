@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-28T15:33:26.774+00:00",
-  "updated_by": "Victor",
+  "updated_at": "2026-07-28T17:18:29.924+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -190,11 +190,11 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search. Today's work (saving cars to your own lists, with the heart and save count on the cards and detail page, and \"Most popular\" now ordered by saves) is in review. Left: (1) make the browse pages look like finn.no - biggest; (2) sale contract both buyer & seller e-sign; (3) vehicle-rental payments; (4) full buy-flow test on a live link (with Nahid).",
-          "pct": 65,
+          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search, and saving cars to your own lists. Today's work is in review: all five browse pages rebuilt to look like finn.no, with filter counts on every option, plus the new hero sections and per-portal create routes. Left: (1) sale contract both buyer & seller e-sign; (2) vehicle-rental payments; (3) full buy-flow test on a live link (with Nahid).",
+          "pct": 72,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 6,
+          "estimate_days": 5,
           "target_date": "04-08-2026"
         }
       ],
