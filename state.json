@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-28T17:18:29.924+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-07-28T21:33:42.341+00:00",
+  "updated_by": "Victor",
   "developers": [
     {
       "name": "Shafi",
@@ -150,7 +150,7 @@
         {
           "id": "55340422-21d4-4f98-bd3b-903922303c97",
           "portal": "Marketplace escrow E2E log",
-          "note": "Audun 2026-07-28 — gates purchases, must be named not implied. Full flow: buyer pay via Mollie → funds held in escrow → delivery confirmation → release to seller; plus the dispute → refund branch. Playwright spec + persistent audit log so we can point at green runs. Depends on \"Mollie Checkout on each portal\" landing (target 2026-08-01) — 3 days after that to script + stabilise.",
+          "note": "Audun 2026-07-28 — gates purchases, must be named not implied. Full flow: buyer pay via Mollie → funds held in escrow → BOTH release legs covered: (a) buyer-confirm → payout (user-triggered) AND (b) day-14 auto-release → payout (no user action; clock simulated, we do not wait 14 real days — Audun 2026-07-28: \"the auto-release leg pays out without anyone clicking, it can't be the untested one\"). Plus the dispute → refund branch. Playwright spec + persistent audit log as the deliverable artifact so we can point at green runs. Depends on \"Mollie Checkout on each portal\" landing (target 2026-08-01) — 3 days after that to script + stabilise.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
