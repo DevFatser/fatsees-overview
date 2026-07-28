@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-27T23:42:38.75+00:00",
-  "updated_by": "Victor",
+  "updated_at": "2026-07-28T08:47:14.406+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -24,6 +24,11 @@
           "id": "6f191679-a7e2-4f15-beb9-fe0239a9e7ac",
           "portal": "ad + legal pages",
           "note": ""
+        },
+        {
+          "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
+          "portal": "PWA - «click here to add App on your home page» functionality + fix mobile responsive issues on main branch pages",
+          "note": "TOdo: pwa, then real-state"
         }
       ],
       "in_progress": [
@@ -38,23 +43,13 @@
           "target_date": null
         },
         {
-          "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
-          "portal": "PWA - «click here to add App on your home page» functionality + fix mobile responsive issues on main branch pages",
-          "note": "TOdo: pwa, then real-state",
-          "pct": 80,
-          "fe": "prog",
-          "be": "todo",
-          "estimate_days": null,
-          "target_date": null
-        },
-        {
           "id": "cff4a2d5-cfa6-42cd-87b9-d246f3ae727d",
           "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
           "note": "",
-          "pct": 0,
+          "pct": 20,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": null,
+          "estimate_days": 1,
           "target_date": null
         }
       ],
