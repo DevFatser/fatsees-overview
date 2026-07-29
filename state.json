@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-28T21:33:42.341+00:00",
-  "updated_by": "Victor",
+  "updated_at": "2026-07-29T09:21:38.546+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -39,8 +39,8 @@
           "pct": 98,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "2026-07-29"
+          "estimate_days": null,
+          "target_date": null
         },
         {
           "id": "cff4a2d5-cfa6-42cd-87b9-d246f3ae727d",
@@ -50,7 +50,7 @@
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": null
+          "target_date": "29-07-26"
         }
       ],
       "planned_next": [
@@ -94,8 +94,8 @@
           "pct": 50,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 8,
-          "target_date": "2026-08-07"
+          "estimate_days": 1,
+          "target_date": "2026-07-29 (Tue)"
         },
         {
           "id": "26067edb-a71e-4126-ae21-e4343c7524fa",
@@ -104,18 +104,18 @@
           "pct": 100,
           "fe": "prog",
           "be": "done",
-          "estimate_days": 1,
-          "target_date": "2026-07-29"
+          "estimate_days": null,
+          "target_date": null
         },
         {
           "id": "68083120-6d9f-4817-8e2b-469dd0fc5caf",
-          "portal": "Mollie Checkout on each portal",
+          "portal": "Mollie Checkout",
           "note": "/marketplace ✅ PaymentModal → payin (live). \n/leie-eiendom ✅ book → Mollie redirectUrl (live).\n /leie ⏳ button visual-only; waiting on separate booking-wiring plan.",
           "pct": 66,
           "fe": "prog",
           "be": "done",
-          "estimate_days": 4,
-          "target_date": "2026-08-01"
+          "estimate_days": null,
+          "target_date": null
         },
         {
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
@@ -124,8 +124,8 @@
           "pct": 98,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "2026-07-29"
+          "estimate_days": null,
+          "target_date": null
         },
         {
           "id": "8ffb2c09-feef-4d8c-bbd2-49bf2cf3c762",
@@ -134,28 +134,38 @@
           "pct": 95,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 1,
-          "target_date": "2026-07-29"
+          "estimate_days": null,
+          "target_date": null
         },
         {
-          "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
-          "portal": "Test: fatai,mollie,e2e - /eiendom + /leie + /leie-eiendom",
+          "id": "b2aa4107-a763-4dfd-8316-a68ea8b36ad1",
+          "portal": "/eiendom",
+          "note": "Testing remaining on:\n Fat ai,  end-to-end test",
+          "pct": 90,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "7-8-26"
+        },
+        {
+          "id": "9c30b558-be1e-4970-8bdf-84192c0b3cf0",
+          "portal": "/leie",
           "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
           "pct": 90,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": 2,
-          "target_date": "2026-07-30"
+          "estimate_days": 1,
+          "target_date": "7-8-26"
         },
         {
-          "id": "55340422-21d4-4f98-bd3b-903922303c97",
-          "portal": "Marketplace escrow E2E log",
-          "note": "Audun 2026-07-28 — gates purchases, must be named not implied. Full flow: buyer pay via Mollie → funds held in escrow → BOTH release legs covered: (a) buyer-confirm → payout (user-triggered) AND (b) day-14 auto-release → payout (no user action; clock simulated, we do not wait 14 real days — Audun 2026-07-28: \"the auto-release leg pays out without anyone clicking, it can't be the untested one\"). Plus the dispute → refund branch. Playwright spec + persistent audit log as the deliverable artifact so we can point at green runs. Depends on \"Mollie Checkout on each portal\" landing (target 2026-08-01) — 3 days after that to script + stabilise.",
-          "pct": 0,
-          "fe": "todo",
+          "id": "6b3ae034-03e0-41e7-8d8e-7467e9771e4f",
+          "portal": "/leie-eiendom",
+          "note": "Testing remaining on:\n Fat ai, end-to-end test",
+          "pct": 90,
+          "fe": "prog",
           "be": "todo",
-          "estimate_days": 3,
-          "target_date": "2026-08-04"
+          "estimate_days": 1,
+          "target_date": "7-8-26"
         }
       ],
       "planned_next": [
@@ -180,7 +190,7 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Paused - Motor is top priority; VideoPay resumes after Motor. Why 80->50: the old 80 was against the 1-on-1-only spec; v31 grew VideoPay to 4 offering types + showcase rows, so honest progress vs the bigger scope is ~50 (scope moved, not a regression). Working on Dev: live 1-on-1 calls (book, pay, escrow, rating), availability calendar, prerecorded videos, and the buyer's after-call confirm/dispute step with the seller's session-completed action. Not yet proven end-to-end: the notification that tells the buyer to confirm or dispute within 7 days - until that's verified I'm not treating auto-release as cleared. Left: paid comments, content ratings, view counts, top-5 rows, podcasts, free intro call, seller price control.",
+          "note": "Booking a paid video call and paying works today. Two things still needed before real users: (1) after-call buttons to confirm \"all good\" or report a problem — right now the money just auto-goes to the seller after 7 days, even after a bad call; (2) sellers setting their own available times. Buttons first, calendar next.",
           "pct": 50,
           "fe": "prog",
           "be": "done",
@@ -190,11 +200,11 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search, and saving cars to your own lists. Today's work is in review: all five browse pages rebuilt to look like finn.no, with filter counts on every option, plus the new hero sections and per-portal create routes. Left: (1) sale contract both buyer & seller e-sign; (2) vehicle-rental payments; (3) full buy-flow test on a live link (with Nahid).",
-          "pct": 72,
+          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search. Today's work (saving cars to your own lists, with the heart and save count on the cards and detail page, and \"Most popular\" now ordered by saves) is in review. Left: (1) make the browse pages look like finn.no - biggest; (2) sale contract both buyer & seller e-sign; (3) vehicle-rental payments; (4) full buy-flow test on a live link (with Nahid).",
+          "pct": 65,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 5,
+          "estimate_days": 6,
           "target_date": "04-08-2026"
         }
       ],
