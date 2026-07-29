@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-29T11:06:46.573+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-07-29T13:18:47.524+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -46,11 +46,11 @@
           "id": "cff4a2d5-cfa6-42cd-87b9-d246f3ae727d",
           "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
           "note": "",
-          "pct": 20,
+          "pct": 80,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": null
+          "target_date": "29-7-26"
         }
       ],
       "planned_next": [
@@ -139,7 +139,7 @@
         },
         {
           "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
-          "portal": "Test: fatai,mollie,e2e - /eiendom + /leie + /leie-eiendom",
+          "portal": "/leie",
           "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
           "pct": 90,
           "fe": "prog",
@@ -156,6 +156,26 @@
           "be": "todo",
           "estimate_days": 3,
           "target_date": "2026-08-04"
+        },
+        {
+          "id": "1143ae67-6767-4677-b449-fb6e36d6bc6f",
+          "portal": "/eiendom",
+          "note": "Test: e2e, fat ai",
+          "pct": 90,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "7-8-26"
+        },
+        {
+          "id": "c82ecaf9-9dcf-4c21-bf03-bdccbffc669d",
+          "portal": "/leie-eiendom",
+          "note": "Test: fatai e2e",
+          "pct": 0,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "7-8-26"
         }
       ],
       "planned_next": [
