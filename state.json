@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-29T09:21:38.546+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-07-29T11:06:46.573+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -39,8 +39,8 @@
           "pct": 98,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 1,
+          "target_date": "2026-07-29"
         },
         {
           "id": "cff4a2d5-cfa6-42cd-87b9-d246f3ae727d",
@@ -50,7 +50,7 @@
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "29-07-26"
+          "target_date": null
         }
       ],
       "planned_next": [
@@ -94,8 +94,8 @@
           "pct": 50,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 1,
-          "target_date": "2026-07-29 (Tue)"
+          "estimate_days": 8,
+          "target_date": "2026-08-07"
         },
         {
           "id": "26067edb-a71e-4126-ae21-e4343c7524fa",
@@ -104,18 +104,18 @@
           "pct": 100,
           "fe": "prog",
           "be": "done",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 1,
+          "target_date": "2026-07-29"
         },
         {
           "id": "68083120-6d9f-4817-8e2b-469dd0fc5caf",
-          "portal": "Mollie Checkout",
+          "portal": "Mollie Checkout on each portal",
           "note": "/marketplace ✅ PaymentModal → payin (live). \n/leie-eiendom ✅ book → Mollie redirectUrl (live).\n /leie ⏳ button visual-only; waiting on separate booking-wiring plan.",
           "pct": 66,
           "fe": "prog",
           "be": "done",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 4,
+          "target_date": "2026-08-01"
         },
         {
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
@@ -124,8 +124,8 @@
           "pct": 98,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 1,
+          "target_date": "2026-07-29"
         },
         {
           "id": "8ffb2c09-feef-4d8c-bbd2-49bf2cf3c762",
@@ -134,38 +134,28 @@
           "pct": 95,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": null,
-          "target_date": null
-        },
-        {
-          "id": "b2aa4107-a763-4dfd-8316-a68ea8b36ad1",
-          "portal": "/eiendom",
-          "note": "Testing remaining on:\n Fat ai,  end-to-end test",
-          "pct": 90,
-          "fe": "prog",
-          "be": "todo",
           "estimate_days": 1,
-          "target_date": "7-8-26"
+          "target_date": "2026-07-29"
         },
         {
-          "id": "9c30b558-be1e-4970-8bdf-84192c0b3cf0",
-          "portal": "/leie",
+          "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
+          "portal": "Test: fatai,mollie,e2e - /eiendom + /leie + /leie-eiendom",
           "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
           "pct": 90,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "7-8-26"
+          "estimate_days": 2,
+          "target_date": "2026-07-30"
         },
         {
-          "id": "6b3ae034-03e0-41e7-8d8e-7467e9771e4f",
-          "portal": "/leie-eiendom",
-          "note": "Testing remaining on:\n Fat ai, end-to-end test",
-          "pct": 90,
-          "fe": "prog",
+          "id": "55340422-21d4-4f98-bd3b-903922303c97",
+          "portal": "Marketplace escrow E2E log",
+          "note": "Audun 2026-07-28 — gates purchases, must be named not implied. Full flow: buyer pay via Mollie → funds held in escrow → delivery confirmation → release to seller; plus the dispute → refund branch. Playwright spec + persistent audit log so we can point at green runs. Depends on \"Mollie Checkout on each portal\" landing (target 2026-08-01) — 3 days after that to script + stabilise.",
+          "pct": 0,
+          "fe": "todo",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "7-8-26"
+          "estimate_days": 3,
+          "target_date": "2026-08-04"
         }
       ],
       "planned_next": [
@@ -190,7 +180,7 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Booking a paid video call and paying works today. Two things still needed before real users: (1) after-call buttons to confirm \"all good\" or report a problem — right now the money just auto-goes to the seller after 7 days, even after a bad call; (2) sellers setting their own available times. Buttons first, calendar next.",
+          "note": "Paused - Motor is top priority; VideoPay resumes after Motor. Why 80->50: the old 80 was against the 1-on-1-only spec; v31 grew VideoPay to 4 offering types + showcase rows, so honest progress vs the bigger scope is ~50 (scope moved, not a regression). Working on Dev: live 1-on-1 calls (book, pay, escrow, rating), availability calendar, prerecorded videos, and the buyer's after-call confirm/dispute step with the seller's session-completed action. Not yet proven end-to-end: the notification that tells the buyer to confirm or dispute within 7 days - until that's verified I'm not treating auto-release as cleared. Left: paid comments, content ratings, view counts, top-5 rows, podcasts, free intro call, seller price control.",
           "pct": 50,
           "fe": "prog",
           "be": "done",
@@ -200,11 +190,11 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search. Today's work (saving cars to your own lists, with the heart and save count on the cards and detail page, and \"Most popular\" now ordered by saves) is in review. Left: (1) make the browse pages look like finn.no - biggest; (2) sale contract both buyer & seller e-sign; (3) vehicle-rental payments; (4) full buy-flow test on a live link (with Nahid).",
-          "pct": 65,
+          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search, and saving cars to your own lists. Today's work is in review: all five browse pages rebuilt to look like finn.no, with filter counts on every option, plus the new hero sections and per-portal create routes. Left: (1) sale contract both buyer & seller e-sign; (2) vehicle-rental payments; (3) full buy-flow test on a live link (with Nahid).",
+          "pct": 72,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 6,
+          "estimate_days": 5,
           "target_date": "04-08-2026"
         }
       ],
@@ -240,7 +230,7 @@
         {
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
-          "note": "WHAT I'M WORKING ON — Equity, in plain language\n\nWhat Equity is:\nA section of Fatsees where people who already own shares in private companies\n(companies not on the stock exchange) can advertise them for sale, and others\ncan browse those ads. Think Finn.no, but for shares: a noticeboard, nothing more.\n\nWhy the noticeboard idea matters so much:\nRunning a stock exchange requires a government licence (Finanstilsynet). We\ndon't have one and don't want one. The law allows a plain noticeboard without\na licence — but ONLY if the platform never brings buyers and sellers together.\nThat means: no chat between buyer and seller on the platform, no \"buy\" button,\nno live share price, no handling of money. The buyer sees an ad, contacts the\nseller, and the two of them do the deal completely outside Fatsees. Fatsees\nearns from subscriptions, never from the trades themselves.\n\nIf we build even one \"convenient\" marketplace feature too many — a message\nthread, an offer button, a price ticker — we legally stop being a noticeboard\nand become an unlicensed trading venue. That's a regulator problem, not a bug.\n\nWhat I'm doing now, in three steps:\n\n1. SAFETY FIRST — add the missing legal guardrails:\n   - Block any company from selling its own shares (money must never flow to\n     the company itself — that would be fundraising, which is regulated)\n   - Lock the doors: visitors who aren't logged in see nothing; free accounts\n     can only look; paid accounts can participate\n   - Make sure the platform's chat can never be used for share deals\n\n2. CLEAN-UP — remove leftovers from an older design that are no longer allowed:\n   things like an order book, live prices, price alerts, on-platform trade\n   confirmations, dispute handling, and \"verified by Fatsees\" badges. On this\n   portal, Fatsees verifies nothing and touches nothing — sellers declare, and\n   buyers check for themselves.\n\n3. BUILD — finish the allowed features: a protected \"show contact details\"\n   button (paid users only, so contact info can't be scraped and abused),\n   \"wanted to buy\" ads, a history chart of past completed sales (clearly\n   labelled as history, never a share price), company pages, alerts for new\n   listings, and downloadable contract templates.\n\nThe one-line summary:\nI'm making sure Fatsees Equity works like a noticeboard and can never\naccidentally behave like a stock exchange — because a noticeboard is legal\nwithout a licence, and a stock exchange isn't.",
+          "note": "Fatsees Equity is a noticeboard where owners of private-company shares advertise\nthem for sale — legal without a licence only if we never match buyers and sellers,\nhost deal chat, show live prices, or touch the money.\nI'm adding those legal guardrails, removing old features that crossed the line,\nand building the allowed ones (contact reveal, wanted ads, history chart, alerts).\nIn short: Equity must always behave like a noticeboard, never like a stock exchange.",
           "pct": 31,
           "fe": "prog",
           "be": "prog",
