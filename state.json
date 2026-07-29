@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-29T17:12:51.887+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-07-29T19:11:03.482+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -46,11 +46,11 @@
           "id": "cff4a2d5-cfa6-42cd-87b9-d246f3ae727d",
           "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
           "note": "",
-          "pct": 80,
+          "pct": 20,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "29-7-26"
+          "target_date": null
         }
       ],
       "planned_next": [
@@ -139,7 +139,7 @@
         },
         {
           "id": "2253ffd9-19e9-42bc-9dd4-1dc285deab1f",
-          "portal": "/leie",
+          "portal": "Test: fatai,mollie,e2e - /eiendom + /leie + /leie-eiendom",
           "note": "Testing remaining on:\n Fat ai, mollie, end-to-end test",
           "pct": 90,
           "fe": "prog",
@@ -156,26 +156,6 @@
           "be": "todo",
           "estimate_days": 3,
           "target_date": "2026-08-04"
-        },
-        {
-          "id": "1143ae67-6767-4677-b449-fb6e36d6bc6f",
-          "portal": "/eiendom",
-          "note": "Test: e2e, fat ai",
-          "pct": 90,
-          "fe": "prog",
-          "be": "todo",
-          "estimate_days": 1,
-          "target_date": "7-8-26"
-        },
-        {
-          "id": "c82ecaf9-9dcf-4c21-bf03-bdccbffc669d",
-          "portal": "/leie-eiendom",
-          "note": "Test: fatai e2e",
-          "pct": 0,
-          "fe": "prog",
-          "be": "todo",
-          "estimate_days": 1,
-          "target_date": "7-8-26"
         }
       ],
       "planned_next": [
@@ -210,12 +190,12 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search, and the new finn-style browse pages on all five portals with favourites. Today's fix (sale contract that both buyer and seller sign digitally) is in review. Left: (1) making a car ad from the site - the buttons still open the general marketplace form, found today; (2) small browse fixes - a saved heart must stay red after reload, plus some English wording; (3) vehicle-rental payments; (4) full buy-flow test on a live link (with Nahid).",
+          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search, and saving cars to your own lists. Today's work is in review: all five browse pages rebuilt to look like finn.no, with filter counts on every option, plus the new hero sections and per-portal create routes. Left: (1) sale contract both buyer & seller e-sign; (2) vehicle-rental payments; (3) full buy-flow test on a live link (with Nahid).",
           "pct": 72,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 6,
-          "target_date": "06-08-2026"
+          "estimate_days": 5,
+          "target_date": "04-08-2026"
         }
       ],
       "planned_next": [
@@ -251,7 +231,7 @@
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
           "note": "Fatsees Equity is a noticeboard where owners of private-company shares advertise\nthem for sale — legal without a licence only if we never match buyers and sellers,\nhost deal chat, show live prices, or touch the money.\nI'm adding those legal guardrails, removing old features that crossed the line,\nand building the allowed ones (contact reveal, wanted ads, history chart, alerts).\nIn short: Equity must always behave like a noticeboard, never like a stock exchange.",
-          "pct": 31,
+          "pct": 44,
           "fe": "prog",
           "be": "prog",
           "estimate_days": 10,
