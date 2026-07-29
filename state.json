@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-29T13:18:47.524+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-07-29T17:12:51.887+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -210,12 +210,12 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search, and saving cars to your own lists. Today's work is in review: all five browse pages rebuilt to look like finn.no, with filter counts on every option, plus the new hero sections and per-portal create routes. Left: (1) sale contract both buyer & seller e-sign; (2) vehicle-rental payments; (3) full buy-flow test on a live link (with Nahid).",
+          "note": "Buying and selling a car works on Dev - scan, auto-fill, fields, pay with escrow, details, search, and the new finn-style browse pages on all five portals with favourites. Today's fix (sale contract that both buyer and seller sign digitally) is in review. Left: (1) making a car ad from the site - the buttons still open the general marketplace form, found today; (2) small browse fixes - a saved heart must stay red after reload, plus some English wording; (3) vehicle-rental payments; (4) full buy-flow test on a live link (with Nahid).",
           "pct": 72,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 5,
-          "target_date": "04-08-2026"
+          "estimate_days": 6,
+          "target_date": "06-08-2026"
         }
       ],
       "planned_next": [
