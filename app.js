@@ -4,6 +4,36 @@ const SUPABASE_URL = 'https://cgfrvzhnkxrhuqjgsfgl.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNnZnJ2emhua3hyaHVxamdzZmdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMxNjI4NTMsImV4cCI6MjA5ODczODg1M30.ob3Pq_baRN7zOQeM8y8dOdPQOVAaLwQHngbNBAvmB1g';
 const STATE_ROW_ID = 'main';
 
+/* ─── Stale-tab detection ──────────────────────────────────────────────
+   Victor 2026-07-29 (Shafi 11:21 split reverted at 19:11 by Nahid).
+   Root cause: Nahid's tab was open since before the id-keyed
+   deepMerge (commit d9bc78a, 2026-07-28) landed. His stale app.js
+   opaque-array-merged Shafi's realtime split, dropped the new cards
+   from local state, then his next save wrote a state without them.
+   The fix (id-keyed merge) is deployed, but existing tabs still run
+   whatever bundle they loaded on first open — indefinitely.
+
+   BUNDLE_VERSION is bumped on every change to app.js that affects
+   save/merge/realtime behaviour. Any tab whose BUNDLE_VERSION is
+   older than the server-observed one refuses to save + shows a
+   modal telling the user to reload. Better UX than silently losing
+   edits every time someone leaves a tab open across a deploy.
+
+   Every performSave() stamps `data.app_version = BUNDLE_VERSION`.
+   The realtime + load handlers read `remoteData.app_version`; if it
+   parses to a NEWER date than ours, we know a newer tab wrote, so
+   the deploy has moved forward. Same-or-older newer-writes don't
+   trigger the modal (they can only happen from tabs running same
+   or older code — no upgrade needed on our side).
+
+   Bump this on EVERY app.js change that touches:
+     - deepMerge / mergeCardArrays
+     - performSave / CAS handling
+     - realtime subscription handler
+     - migrate() shape
+   Cosmetic-only edits don't need a bump. */
+const BUNDLE_VERSION = '2026-07-29-1';
+
 /* ─── Constants ────────────────────────────────────────────────────── */
 const DEV_COLORS = {
   Shafi:  '#5b8cff',
@@ -83,6 +113,48 @@ let realtimeChannel = null;
 let lastServerUpdatedAt = null;
 let lastServerData = null;
 let activeFieldPath = null;
+// Highest BUNDLE_VERSION we've seen the SERVER row carry. Updated by
+// load() and the realtime subscription. Used by isStaleTab() to
+// decide whether this tab is running an out-of-date bundle. Compared
+// lexicographically — BUNDLE_VERSION strings are date-first
+// ('YYYY-MM-DD-N') so plain string > works.
+let serverAppVersion = null;
+
+// True when the server row's app_version is greater than ours. That
+// means a newer-code tab has already written; our old-code writes
+// would silently drop what it added (the exact bug that lost
+// Shafi's split 2026-07-29). Prompt reload instead.
+function isStaleTab() {
+  if (!serverAppVersion) return false;
+  return serverAppVersion > BUNDLE_VERSION;
+}
+
+// Show a full-screen modal telling the user to reload. Idempotent —
+// re-called on every attempted save while stale, but only mounts one
+// modal element.
+function showStaleTabModal() {
+  if (typeof document === 'undefined') return;
+  if (document.getElementById('bo-stale-tab-modal')) return;
+  const overlay = document.createElement('div');
+  overlay.id = 'bo-stale-tab-modal';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:100000;display:flex;align-items:center;justify-content:center;padding:20px;font-family:system-ui,sans-serif;';
+  overlay.innerHTML = `
+    <div style="max-width:420px;background:#1a1a20;color:#fff;border-radius:12px;padding:24px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+      <div style="font-size:18px;font-weight:700;margin-bottom:8px;">Board updated — please reload</div>
+      <div style="font-size:14px;line-height:1.5;opacity:0.85;margin-bottom:16px;">
+        This tab is running an older version of the board (loaded before the latest deploy).
+        Saving from here would silently overwrite other people's edits.
+        Reload to pick up the newest version.
+      </div>
+      <button id="bo-stale-tab-reload" style="padding:10px 20px;border:none;border-radius:8px;background:linear-gradient(135deg,#e0294a,#6b21a8);color:#fff;font-weight:700;font-size:14px;cursor:pointer;">
+        Reload now
+      </button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  const btn = overlay.querySelector('#bo-stale-tab-reload');
+  if (btn) btn.addEventListener('click', () => location.reload());
+}
 
 /* ─── Identity (Victor 2026-07-21, Audun-approved) ────────────────────
    First-visit: user picks their name from a fixed roster and it lands
@@ -318,6 +390,14 @@ async function load() {
       data = migrate(rows.data);
       lastServerUpdatedAt = rows.updated_at;
       lastServerData = structuredClone(data);
+      // Track the highest app_version we've seen on the server. If
+      // it's newer than ours on load, we're already stale — prompt
+      // reload immediately rather than let the user type into a
+      // doomed session.
+      if (typeof rows.data.app_version === 'string') {
+        serverAppVersion = rows.data.app_version;
+        if (isStaleTab()) showStaleTabModal();
+      }
     } else {
       data = migrate(structuredClone(SEED));
       const nowIso = new Date().toISOString();
@@ -454,7 +534,20 @@ function save(opts) {
 // concurrent writers hammering the same tick), give up and surface the
 // error so the user can reload.
 async function performSave(retryCount = 0) {
+  // Stale-tab defense: if a newer BUNDLE_VERSION has been observed on
+  // the server (via realtime or the initial load), refuse to write.
+  // This tab is running out-of-date code and its save WILL clobber
+  // whatever the newer-code tabs did that this tab doesn't know how
+  // to preserve. Prompt reload instead.
+  if (isStaleTab()) {
+    setSyncStatus('error', 'Reload needed');
+    showStaleTabModal();
+    return;
+  }
   setSyncStatus('saving', 'Saving…');
+  // Stamp OUR bundle version so newer-code tabs can detect stale
+  // writes from older-code tabs on realtime.
+  data.app_version = BUNDLE_VERSION;
   const newUpdatedAt = new Date().toISOString();
   try {
     // First attempt: CAS on lastServerUpdatedAt. `.select()` forces the
@@ -550,6 +643,19 @@ function subscribeRealtime() {
       const remoteData = migrate(payload.new.data);
       const remoteUpdatedAt = payload.new.updated_at;
       const who = payload.new.data.updated_by ? ` by ${payload.new.data.updated_by}` : '';
+
+      // Track the newest app_version we've seen on the server. If a
+      // newer-code tab wrote (their BUNDLE_VERSION > ours), we flip
+      // to stale-tab mode: block saves + show reload modal. This
+      // catches the bug where a stale tab receives realtime updates
+      // from a newer tab, drops fields it doesn't understand
+      // (opaque-array merge era), then clobbers them on the next
+      // save.
+      if (typeof payload.new.data.app_version === 'string' &&
+          (!serverAppVersion || payload.new.data.app_version > serverAppVersion)) {
+        serverAppVersion = payload.new.data.app_version;
+        if (isStaleTab()) showStaleTabModal();
+      }
 
       // If the incoming payload is our own echo (we just saved and the
       // realtime channel replayed it), lastServerUpdatedAt will already
