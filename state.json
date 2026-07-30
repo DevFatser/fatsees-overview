@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-29T22:35:35.928+00:00",
-  "updated_by": "Victor (re-applying Shafi split)",
+  "updated_at": "2026-07-30T07:55:04.398+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -29,6 +29,11 @@
           "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
           "portal": "PWA - «click here to add App on your home page» functionality + fix mobile responsive issues on main branch pages",
           "note": "TOdo: pwa, then real-state"
+        },
+        {
+          "id": "cff4a2d5-cfa6-42cd-87b9-d246f3ae727d",
+          "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
+          "note": "Verified end-to-end."
         }
       ],
       "in_progress": [
@@ -43,14 +48,14 @@
           "target_date": "2026-07-29"
         },
         {
-          "id": "cff4a2d5-cfa6-42cd-87b9-d246f3ae727d",
-          "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
-          "note": "",
-          "pct": 20,
+          "id": "de98196c-c6aa-4ed9-8ac8-88a862e2ff0f",
+          "portal": "Test - My Profile + Some portal for soft launch",
+          "note": "Find Bugs and fix changes in these two portal",
+          "pct": 10,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": null
+          "estimate_days": 5,
+          "target_date": "6-8-26"
         }
       ],
       "planned_next": [
@@ -150,12 +155,12 @@
         {
           "id": "0e998d6a-ee4d-4e1c-9a77-f053b7ab8bdd",
           "portal": "/leie",
-          "note": "Testing remaining on: Fat ai, mollie, end-to-end test",
+          "note": "TODO: check Fat ai response, mollie integration, end-to-end test",
           "pct": 90,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": 2,
-          "target_date": "2026-07-30"
+          "estimate_days": 6,
+          "target_date": "06-08-26"
         },
         {
           "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
