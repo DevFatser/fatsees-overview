@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-30T07:55:04.398+00:00",
+  "updated_at": "2026-07-30T12:42:03.747+00:00",
   "updated_by": "Shafi",
   "developers": [
     {
@@ -28,19 +28,14 @@
         {
           "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
           "portal": "PWA - «click here to add App on your home page» functionality + fix mobile responsive issues on main branch pages",
-          "note": "TOdo: pwa, then real-state"
-        },
-        {
-          "id": "cff4a2d5-cfa6-42cd-87b9-d246f3ae727d",
-          "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
-          "note": "Verified end-to-end."
+          "note": "Lead dev Victor: Victor is responsible for fixing in Main branch issues for PWA. PWA code done from Shafi's side."
         }
       ],
       "in_progress": [
         {
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
           "portal": "Main branch launch tasks",
-          "note": "PR pushed on feat-main-branch-gate--victor including full Fat scan pipeline (0181 migration). Awaiting Shafi merge to main.",
+          "note": "Lead dev Victor: PR pushed on feat-main-branch-gate--victor including full Fat scan pipeline (0181 migration). Awaiting Shafi merge to main.",
           "pct": 98,
           "fe": "prog",
           "be": "todo",
@@ -48,14 +43,44 @@
           "target_date": "2026-07-29"
         },
         {
+          "id": "0e998d6a-ee4d-4e1c-9a77-f053b7ab8bdd",
+          "portal": "/leie",
+          "note": "Lead dev Victor to check Fat ai response, mollie integration, end-to-end test",
+          "pct": 90,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": 6,
+          "target_date": "06-08-26"
+        },
+        {
+          "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
+          "portal": "/eiendom",
+          "note": "Lead dev Victor toTest: e2e, fat ai",
+          "pct": 90,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "2026-08-07"
+        },
+        {
           "id": "de98196c-c6aa-4ed9-8ac8-88a862e2ff0f",
-          "portal": "Test - My Profile + Some portal for soft launch",
+          "portal": "Test - Some portal e2e",
           "note": "Find Bugs and fix changes in these two portal",
           "pct": 10,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 5,
           "target_date": "6-8-26"
+        },
+        {
+          "id": "5c429408-722f-4cf0-92be-776e0a3ef3d9",
+          "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
+          "note": "PROPERTY TYPES extended, \"WANTED\" TAB on long-term rental, PROPERTY TYPES extended, \"WANTED\" TAB on long-term rental, -  code is done by shafi. Victor will test paid subscription: Posting a wanted-ad requires a PAID plan (entry plan is under €4/month);",
+          "pct": 90,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "7-8-26"
         }
       ],
       "planned_next": [
@@ -89,6 +114,11 @@
           "id": "ef8e566e-8747-4e66-9d55-720d6e3c0176",
           "portal": "Freja Identity Verification Test",
           "note": "freja verified tested by victor"
+        },
+        {
+          "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
+          "portal": "PWA - «click here to add App on your home page» functionality + fix mobile responsive issues on main branch pages",
+          "note": "Lead dev Victor: Victor is responsible for fixing in Main branch issues for PWA. PWA code done from Shafi's side."
         }
       ],
       "in_progress": [
@@ -125,7 +155,7 @@
         {
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
           "portal": "Main branch launch tasks",
-          "note": "PR pushed on feat-main-branch-gate--victor including full Fat scan pipeline (0181 migration). Awaiting Shafi merge to main.",
+          "note": "Lead dev Victor: PR pushed on feat-main-branch-gate--victor including full Fat scan pipeline (0181 migration). Awaiting Shafi merge to main.",
           "pct": 98,
           "fe": "prog",
           "be": "todo",
@@ -155,7 +185,7 @@
         {
           "id": "0e998d6a-ee4d-4e1c-9a77-f053b7ab8bdd",
           "portal": "/leie",
-          "note": "TODO: check Fat ai response, mollie integration, end-to-end test",
+          "note": "Lead dev Victor to check Fat ai response, mollie integration, end-to-end test",
           "pct": 90,
           "fe": "prog",
           "be": "todo",
@@ -165,7 +195,7 @@
         {
           "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
           "portal": "/eiendom",
-          "note": "Test: e2e, fat ai",
+          "note": "Lead dev Victor toTest: e2e, fat ai",
           "pct": 90,
           "fe": "prog",
           "be": "todo",
@@ -175,12 +205,22 @@
         {
           "id": "c20081d6-29f1-459e-91c5-c1e859dcbad8",
           "portal": "/leie-eiendom",
-          "note": "Test: fatai e2e",
+          "note": "Lead dev Victor to Test: fatai e2e",
           "pct": 0,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
           "target_date": "2026-08-07"
+        },
+        {
+          "id": "5c429408-722f-4cf0-92be-776e0a3ef3d9",
+          "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
+          "note": "PROPERTY TYPES extended, \"WANTED\" TAB on long-term rental, PROPERTY TYPES extended, \"WANTED\" TAB on long-term rental, -  code is done by shafi. Victor will test paid subscription: Posting a wanted-ad requires a PAID plan (entry plan is under €4/month);",
+          "pct": 90,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "7-8-26"
         }
       ],
       "planned_next": [
