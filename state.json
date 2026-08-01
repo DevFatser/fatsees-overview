@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T12:07:26.231+00:00",
+  "updated_at": "2026-08-01T13:27:14.184+00:00",
   "updated_by": "Shafi",
   "developers": [
     {
@@ -221,6 +221,16 @@
           "be": "todo",
           "estimate_days": 1,
           "target_date": "2026-08-07"
+        },
+        {
+          "id": "5c429408-722f-4cf0-92be-776e0a3ef3d9",
+          "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
+          "note": "Lead Dev Shafi: coded - PROPERTY TYPES extended, \"WANTED\" TAB on long-term rental, PROPERTY TYPES extended, \"WANTED\" TAB on long-term rental, -  code is done by shafi. Victor will test paid subscription: Posting a wanted-ad requires a PAID plan (entry plan is under €4/month);\nAwaiting Victor to check 4$/month subscription",
+          "pct": 90,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "7-8-26"
         }
       ],
       "planned_next": [
