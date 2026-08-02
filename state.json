@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-02T12:56:37.865+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-02T20:08:13.893+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -255,21 +255,21 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Paused - Motor is top priority; VideoPay resumes after Motor. Why 80->50: the old 80 was against the 1-on-1-only spec; v31 grew VideoPay to 4 offering types + showcase rows, so honest progress vs the bigger scope is ~50 (scope moved, not a regression). Working on Dev: live 1-on-1 calls (book, pay, escrow, rating), availability calendar, prerecorded videos, and the buyer's after-call confirm/dispute step with the seller's session-completed action. Not yet proven end-to-end: the notification that tells the buyer to confirm or dispute within 7 days - until that's verified I'm not treating auto-release as cleared. Left: paid comments, content ratings, view counts, top-5 rows, podcasts, free intro call, seller price control.",
-          "pct": 50,
+          "note": "Paused - resumes when Motor is finished. I checked it properly today(03-08-2026), so two numbers changed: 50 to 41, and the size is 18 days, or 24 if seminars and podcasts stay in the first release. Works on Dev: the video pages, provider profiles, availability calendar, prerecorded videos for sale, ratings, and the fee rule. What looked finished but is not: paying for a live call never reaches the payment provider, so the call room, the confirm and dispute steps and the 7-day release are all built but unreachable. Left: (1) join up the payment path and prove it end to end; (2) free intro call and seller price adjustment; (3) paid comments and content ratings on videos; (4) view counts and the top-five rows; (5) seminars and podcasts, not started.",
+          "pct": 41,
           "fe": "prog",
           "be": "done",
-          "estimate_days": 7,
-          "target_date": "12-08-2026"
+          "estimate_days": 18,
+          "target_date": null
         },
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying a car works on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites, and the sale contract both buyer and seller sign digitally. Today's work (making a car ad from the site, extra proof of who signed each contract, saved hearts staying red after reload, and coming back to the page you were on after login) is in review. Left: (1) vehicle-rental payments; (2) full buy-flow test on a live link (with Nahid).",
-          "pct": 80,
+          "note": "Buying and selling a car both work on Dev now - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites, making an ad from the site, and the sale contract both buyer and seller sign digitally. Today's fixes (the Norwegian registry panel now only shows for cars with a Norwegian plate, an unverified signer is sent to verify and brought back to the same contract, and the car category now reaches search) are in review. Left: (1) vehicle-rental payments; (2) full buy-flow test on a live link (with Nahid).",
+          "pct": 88,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 5,
+          "estimate_days": 4,
           "target_date": "06-08-2026"
         }
       ],
