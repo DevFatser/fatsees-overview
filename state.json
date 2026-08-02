@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-01T13:27:14.184+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-08-02T12:56:37.865+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -299,17 +299,17 @@
           "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 1,
+          "estimate_days": 9,
           "target_date": "11-08-2026"
         },
         {
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
           "note": "Fatsees Equity is a noticeboard where owners of private-company shares advertise\nthem for sale — legal without a licence only if we never match buyers and sellers,\nhost deal chat, show live prices, or touch the money.\nI'm adding those legal guardrails, removing old features that crossed the line,\nand building the allowed ones (contact reveal, wanted ads, history chart, alerts).\nIn short: Equity must always behave like a noticeboard, never like a stock exchange.",
-          "pct": 56,
+          "pct": 63,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 10,
+          "estimate_days": 8,
           "target_date": "10-08-2026"
         }
       ],
