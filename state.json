@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-02T20:08:13.893+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-03T07:56:55.542+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -74,9 +74,9 @@
         },
         {
           "id": "de98196c-c6aa-4ed9-8ac8-88a862e2ff0f",
-          "portal": "Test - Fatsees Some portal e2e",
-          "note": "Find Bugs and fix changes in the portal",
-          "pct": 30,
+          "portal": "/Some- Fatsees Profile portal e2e test",
+          "note": "Find Bugs and fix changes in the portal:\nFixing: input bugs & ui translations\npayment flow task handed over to apple",
+          "pct": 40,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 5,
@@ -91,6 +91,16 @@
           "be": "todo",
           "estimate_days": 1,
           "target_date": "7-8-26"
+        },
+        {
+          "id": "b1c7cbe7-43c7-40bb-9848-11f9e3338c12",
+          "portal": "Fatsees Owners",
+          "note": "Fatsees Owners\" is\n\nA brand-new portal with two jobs behind one card:\n\nSell shares — users buy shares in the company (Fatsees AS) directly. The company itself is the seller. It's B shares (no voting rights).\nA members-only \"Owners area\" — anyone who bought shares gets into a closed community. This part reuses the Some/Profile-feed + team-space code you built (posts, likes, moderation, closed membership) — that's why Audun gave it to you.\n\nIt is completely separate from Equity — different code, tables, and payment. Equity is a shareholder noticeboard; Owners is the company selling its own shares at a fixed offer price. Never mix them.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": "12-08-26"
         }
       ],
       "planned_next": [
@@ -112,7 +122,7 @@
         },
         {
           "id": "7ebb5cf3-ebc0-4f18-a98f-5745b611646f",
-          "portal": "language & currency change",
+          "portal": "currency change",
           "note": ""
         },
         {
@@ -311,6 +321,16 @@
           "be": "prog",
           "estimate_days": 8,
           "target_date": "10-08-2026"
+        },
+        {
+          "id": "9c0d6dcb-c722-4a85-9192-7698bd801210",
+          "portal": "Currency Change",
+          "note": "To-do for Nahid (the fix):\n\nVerify end-to-end on prod + Dev Vercel (both now on the paid Growth key): change each language on the homepage, and observe exactly when/if the daily cap trips.\n\nStructural fix — priority: per-string cache keys. Rework /api/translations + the cache table so editing one string re-translates only that string, not all ~4,800 × every language. This is the fix.\n\nRaise the cap\n\nPre-warm all launch languages on a schedule so the cache is always full and no visitor triggers a live call.\n\nConfirm the silent fallback is live on prod (no quota toast, any user, any wording) — coordinate with the front-end change already made; verify signed-out.\n\nAcceptance test : prod, signed-out, pick Norsk → full Norwegian, no toast; edit a UI string → still Norwegian within seconds, stays Norwegian day to day.\ntarget Dev by Aug 8 (pending his confirmation as he closes equity",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 2,
+          "target_date": "8/8/26"
         }
       ],
       "planned_next": [],
