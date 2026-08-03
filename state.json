@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-03T07:56:55.542+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-08-03T14:59:53.501+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -309,8 +309,8 @@
           "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 9,
-          "target_date": "11-08-2026"
+          "estimate_days": 11,
+          "target_date": "13-08-2026"
         },
         {
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
@@ -329,8 +329,8 @@
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 2,
-          "target_date": "8/8/26"
+          "estimate_days": 9,
+          "target_date": "12-08-2026"
         }
       ],
       "planned_next": [],
