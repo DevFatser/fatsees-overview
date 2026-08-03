@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-03T14:59:53.501+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-03T17:21:59.625+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -265,8 +265,8 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Paused - resumes when Motor is finished. I checked it properly today(03-08-2026), so two numbers changed: 50 to 41, and the size is 18 days, or 24 if seminars and podcasts stay in the first release. Works on Dev: the video pages, provider profiles, availability calendar, prerecorded videos for sale, ratings, and the fee rule. What looked finished but is not: paying for a live call never reaches the payment provider, so the call room, the confirm and dispute steps and the 7-day release are all built but unreachable. Left: (1) join up the payment path and prove it end to end; (2) free intro call and seller price adjustment; (3) paid comments and content ratings on videos; (4) view counts and the top-five rows; (5) seminars and podcasts, not started.",
-          "pct": 41,
+          "note": "Paused - resumes when Motor is finished. Two numbers changed after the new guide: seminars are out of this build, so the honest figure is 48 rather than 41 and the size is 19 days. Works on Dev: the video pages, provider profiles, availability calendar, prerecorded videos for sale, ratings, and the fee rule. What looked finished but is not: paying for a live call never reaches the payment provider, so the call room, the confirm and dispute steps and the 7-day release are all built but unreachable. Left: (1) join up the payment path and prove it end to end; (2) free intro call and seller price adjustment; (3) paid comments and content ratings on videos; (4) view counts and the top-five rows; (5) podcasts, not started.",
+          "pct": 48,
           "fe": "prog",
           "be": "done",
           "estimate_days": 18,
@@ -275,11 +275,11 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying and selling a car both work on Dev now - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites, making an ad from the site, and the sale contract both buyer and seller sign digitally. Today's fixes (the Norwegian registry panel now only shows for cars with a Norwegian plate, an unverified signer is sent to verify and brought back to the same contract, and the car category now reaches search) are in review. Left: (1) vehicle-rental payments; (2) full buy-flow test on a live link (with Nahid).",
-          "pct": 88,
+          "note": "Buying and selling a car both work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites, making an ad from the site, and the sale contract both buyer and seller sign digitally. Today's work (renting a vehicle - deposit held safely and released when both sides confirm, with the tax role worked out first) is in review. Left: (1) full buy-flow test on a live link (with Nahid); (2) wiring Fat into the car-ad form, which Audun ruled in yesterday.",
+          "pct": 90,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 4,
+          "estimate_days": 3,
           "target_date": "06-08-2026"
         }
       ],
@@ -316,10 +316,10 @@
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
           "note": "Fatsees Equity is a noticeboard where owners of private-company shares advertise\nthem for sale — legal without a licence only if we never match buyers and sellers,\nhost deal chat, show live prices, or touch the money.\nI'm adding those legal guardrails, removing old features that crossed the line,\nand building the allowed ones (contact reveal, wanted ads, history chart, alerts).\nIn short: Equity must always behave like a noticeboard, never like a stock exchange.",
-          "pct": 63,
+          "pct": 69,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 8,
+          "estimate_days": 7,
           "target_date": "10-08-2026"
         },
         {
