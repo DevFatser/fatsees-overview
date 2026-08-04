@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-04T08:09:03.852+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-08-04T10:47:51.289+00:00",
+  "updated_by": "Victor",
   "developers": [
     {
       "name": "Shafi",
@@ -166,9 +166,9 @@
           "id": "68083120-6d9f-4817-8e2b-469dd0fc5caf",
           "portal": "Mollie Checkout",
           "note": "/marketplace ✅ PaymentModal → payin (live). \n/leie-eiendom ✅ book → Mollie redirectUrl (live).\n /leie ⏳ button visual-only; waiting on separate booking-wiring plan.",
-          "pct": 66,
-          "fe": "prog",
-          "be": "done",
+          "pct": 100,
+          "fe": "done",
+          "be": "prog",
           "estimate_days": 4,
           "target_date": "2026-08-01"
         },
