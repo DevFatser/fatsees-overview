@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-04T13:12:45.924+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-04T17:45:23.339+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -275,11 +275,11 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying and selling a car both work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites, making an ad from the site, and the sale contract both buyer and seller sign digitally. Today's work (renting a vehicle - deposit held safely and released when both sides confirm, with the tax role worked out first) is in review. Left: (1) full buy-flow test on a live link (with Nahid); (2) wiring Fat into the car-ad form, which Audun ruled in yesterday.",
-          "pct": 90,
+          "note": "Buying and selling a car both work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites, making an ad from the site, and the sale contract both buyer and seller sign digitally. Today's work (renting a vehicle is now bookable - the deposit is asked for when the ad is made - and Fat helps write the ad, reading the photos and offering a description) is in review. Left: (1) prove a rental payment end to end with the payment provider; (2) full buy-flow test on a live link (with Nahid).",
+          "pct": 92,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 3,
+          "estimate_days": 2,
           "target_date": "06-08-2026"
         }
       ],
