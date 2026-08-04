@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-03T17:21:59.625+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-04T08:09:03.852+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -74,13 +74,13 @@
         },
         {
           "id": "de98196c-c6aa-4ed9-8ac8-88a862e2ff0f",
-          "portal": "/Some- Fatsees Profile portal e2e test",
-          "note": "Find Bugs and fix changes in the portal:\nFixing: input bugs & ui translations\npayment flow task handed over to apple",
-          "pct": 40,
+          "portal": "/Some- Fatsees Profile portal - money flow e2e",
+          "note": "task: payment flow",
+          "pct": 60,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": 5,
-          "target_date": "6-8-26"
+          "estimate_days": 6,
+          "target_date": "10-8-26"
         },
         {
           "id": "5c429408-722f-4cf0-92be-776e0a3ef3d9",
