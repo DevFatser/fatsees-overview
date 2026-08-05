@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-05T16:44:37.92+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-05T21:49:23.763+00:00",
+  "updated_by": "Victor",
   "developers": [
     {
       "name": "Shafi",
@@ -167,8 +167,8 @@
           "portal": "Mollie Checkout",
           "note": "/marketplace ✅ PaymentModal → payin (live). \n/leie-eiendom ✅ book → Mollie redirectUrl (live).\n /leie ⏳ button visual-only; waiting on separate booking-wiring plan.",
           "pct": 100,
-          "fe": "done",
-          "be": "done",
+          "fe": "prog",
+          "be": "prog",
           "estimate_days": 4,
           "target_date": "2026-08-01"
         },
