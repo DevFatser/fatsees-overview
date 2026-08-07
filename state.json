@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-06T17:47:13.145+00:00",
+  "updated_at": "2026-08-07T19:32:45.995+00:00",
   "updated_by": "Nahid",
   "developers": [
     {
@@ -346,10 +346,10 @@
           "id": "c0ec885b-d94f-4a93-abf1-8c1d2859ef1d",
           "portal": "Cloudinary orphan cleanup — ownership evidence (GDPR)",
           "note": "Ownership-evidence files remain in Cloudinary after their tables were dropped. No DB reference means no erasure path, no GDPR export coverage, no §13.4 retention reach.\n\nIdentify dropped tables + migration; confirm real-user vs test data\nInventory Cloudinary folder via Admin API — \"before\" count\nReconcile public_ids against surviving tables; confirm nothing live renders them\nDelete with invalidate: true; purge S3 IA backup copies separately\nPost before/after counts + smoke queries in open channel\nAdd migration/asset-cleanup line to PR_REVIEW_CHECKLIST.md",
-          "pct": 0,
+          "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 2,
+          "estimate_days": 0,
           "target_date": "7-08-2026"
         }
       ],
