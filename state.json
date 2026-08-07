@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T19:32:45.995+00:00",
+  "updated_at": "2026-08-07T19:36:23.481+00:00",
   "updated_by": "Nahid",
   "developers": [
     {
@@ -345,7 +345,7 @@
         {
           "id": "c0ec885b-d94f-4a93-abf1-8c1d2859ef1d",
           "portal": "Cloudinary orphan cleanup — ownership evidence (GDPR)",
-          "note": "Ownership-evidence files remain in Cloudinary after their tables were dropped. No DB reference means no erasure path, no GDPR export coverage, no §13.4 retention reach.\n\nIdentify dropped tables + migration; confirm real-user vs test data\nInventory Cloudinary folder via Admin API — \"before\" count\nReconcile public_ids against surviving tables; confirm nothing live renders them\nDelete with invalidate: true; purge S3 IA backup copies separately\nPost before/after counts + smoke queries in open channel\nAdd migration/asset-cleanup line to PR_REVIEW_CHECKLIST.md",
+          "note": "Closed — nothing to clean up.\n\nWhen we removed the share-ownership verification feature on 27 July, we deleted the database records but not the documents users had uploaded with them. Those documents would have been left sitting in our file storage with no owner attached — which GDPR doesn't allow, because nobody could find them to delete them if a user asked.\n\nChecked, and there are none. The file storage account has never held a single uploaded document of any kind, on any part of the site. Nothing was left behind, so there is nothing to delete.\n\nShipped anyway so it can't happen next time: a reusable cleanup tool, plus a new question on the PR review checklist — if this change deletes a table that points at uploaded files, where do the files get cleaned up?\n\nStill open, on me: the backup snapshot we were supposed to take before deleting those records doesn't look like it was taken. Tracked on its own card.",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
