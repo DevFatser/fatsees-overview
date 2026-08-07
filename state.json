@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-06T08:39:46.94+00:00",
+  "updated_at": "2026-08-06T17:47:13.145+00:00",
   "updated_by": "Nahid",
   "developers": [
     {
@@ -285,12 +285,12 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Board: Motor 94 (est 1, target 2026-08-06) · VideoPay 48 (est 18, no date) · /Some earnings payment flow 0 (est 2, no date). My own work fits tomorrow: the two tests. The 6th holding also needs #437 and #439 reviewed — if that does not land tomorrow, the date moves and I will say so at EOD.",
+          "note": "Buying and selling a car both work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites, making an ad from the site, and the sale contract both buyer and seller sign digitally. This week's work (renting a vehicle is bookable with the deposit asked for when the ad is made, Fat helps write the ad from the photos, and every private seller's ad now carries a postal code so ads can be found by distance) is in review, and today both flows were walked in the browser end to end with proof posted. Left: (1) the real payment run once the payment provider test account exists; (2) a sign-in glitch that hides the buy and book buttons from logged-in users.",
           "pct": 94,
           "fe": "prog",
           "be": "prog",
           "estimate_days": 1,
-          "target_date": "06-08-2026"
+          "target_date": "09-08-2026"
         }
       ],
       "planned_next": [
@@ -326,20 +326,20 @@
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
           "note": "Fatsees Equity is a noticeboard where owners of private-company shares advertise\nthem for sale — legal without a licence only if we never match buyers and sellers,\nhost deal chat, show live prices, or touch the money.\nI'm adding those legal guardrails, removing old features that crossed the line,\nand building the allowed ones (contact reveal, wanted ads, history chart, alerts).\nIn short: Equity must always behave like a noticeboard, never like a stock exchange.",
-          "pct": 81,
+          "pct": 85,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 5,
+          "estimate_days": 4,
           "target_date": "10-08-2026"
         },
         {
           "id": "9c0d6dcb-c722-4a85-9192-7698bd801210",
           "portal": "Currency Change",
-          "note": "To-do for Nahid (the fix):\n\nVerify end-to-end on prod + Dev Vercel (both now on the paid Growth key): change each language on the homepage, and observe exactly when/if the daily cap trips.\n\nStructural fix — priority: per-string cache keys. Rework /api/translations + the cache table so editing one string re-translates only that string, not all ~4,800 × every language. This is the fix.\n\nRaise the cap\n\nPre-warm all launch languages on a schedule so the cache is always full and no visitor triggers a live call.\n\nConfirm the silent fallback is live on prod (no quota toast, any user, any wording) — coordinate with the front-end change already made; verify signed-out.\n\nAcceptance test : prod, signed-out, pick Norsk → full Norwegian, no toast; edit a UI string → still Norwegian within seconds, stays Norwegian day to day.\ntarget Dev by Aug 8 (pending his confirmation as he closes equity",
-          "pct": 0,
+          "note": "Prod-gated: silent-fallback confirmation and the full acceptance test on prod — waits on Victor's main-branch merge.",
+          "pct": 70,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 9,
+          "estimate_days": 6,
           "target_date": "12-08-2026"
         },
         {
