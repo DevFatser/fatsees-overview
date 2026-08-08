@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-07T19:36:23.481+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-08T13:49:33.456+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -251,6 +251,16 @@
           "be": "todo",
           "estimate_days": 3,
           "target_date": "2026-08-07"
+        },
+        {
+          "id": "72dc6b3d-b2c3-49d6-b890-68f64ea753d2",
+          "portal": "replacing the identity-display model, platform-wide",
+          "note": "launch portal wise task for each dev. Reply Audun's QA",
+          "pct": 0,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
         }
       ],
       "planned_next": [
@@ -351,6 +361,16 @@
           "be": "todo",
           "estimate_days": 0,
           "target_date": "7-08-2026"
+        },
+        {
+          "id": "72dc6b3d-b2c3-49d6-b890-68f64ea753d2",
+          "portal": "replacing the identity-display model, platform-wide",
+          "note": "launch portal wise task for each dev. Reply Audun's QA",
+          "pct": 0,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
         }
       ],
       "planned_next": [],
