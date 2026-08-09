@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-08T13:49:33.456+00:00",
+  "updated_at": "2026-08-09T15:34:12.178+00:00",
   "updated_by": "Shafi",
   "developers": [
     {
@@ -28,7 +28,7 @@
         {
           "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
           "portal": "PWA - «click here to add App on your home page» functionality + fix mobile responsive issues on main branch pages",
-          "note": "Lead dev Shafi: Victor is assigned for fixing in Main branch issues for PWA."
+          "note": "Lead dev Shafi: PWA / app shell + §10.16 permission flow (status needed — sweep)"
         }
       ],
       "in_progress": [
@@ -101,6 +101,26 @@
           "be": "todo",
           "estimate_days": null,
           "target_date": "12-08-26"
+        },
+        {
+          "id": "59ce2c1b-5e53-4f57-bb8f-8c8207076b19",
+          "portal": "VAT at checkout (gated by OSS registration)",
+          "note": "",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "b8852b70-9196-4e53-abbb-fae85783cf39",
+          "portal": "Fatsees Stores (frame, front-page rows, intro ad)",
+          "note": "",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
         }
       ],
       "planned_next": [
@@ -133,12 +153,12 @@
         {
           "id": "ef8e566e-8747-4e66-9d55-720d6e3c0176",
           "portal": "Freja Identity Verification Test",
-          "note": "freja verified tested by victor"
+          "note": "freja DEV - verified tested by victor;\nTODO: PROD - — Freja prod is unblocked. Contract's signed both sides and Jesper cleared us for production on 28 July (\"you can start from now in production\"). Two things left to send partnersupport@frejaeid.com on the existing ticket, plus one code fix:\n\nNew CSR without emailAddress. Freja rejected the first one because it carries emailAddress=s@fatsees.com and is missing their required fields (their \"Obtaining a client TLS certificate\" doc). From the existing prod key:\nopenssl req -new -key Fatser_AS_prod.key -out Fatser_AS_prod_v2.csr -subj \"/C=NO/O=Fatser AS/CN=fatsees.com\"\nCheck it against that doc's field list before sending; private key stays on our infra.\nSubmit the \"Registering your service with Freja eID\" form — Fatser AS, org 917730334, Elganeveien 1, 4373 Egersund; RP ID (test is \"probe\"); features Auth, Signing, Org ID, Temp Device.\nRepoint the integration to the confirmed prod host. Freja confirmed prod is https://services.prod.frejaeid.com/ (not services.frejaeid.com, which we're anchored to). Wrong host = silent 404 on every call."
         },
         {
           "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
           "portal": "PWA - «click here to add App on your home page» functionality + fix mobile responsive issues on main branch pages",
-          "note": "Lead dev Shafi: Victor is assigned for fixing in Main branch issues for PWA."
+          "note": "Lead dev Shafi: PWA / app shell + §10.16 permission flow (status needed — sweep)"
         }
       ],
       "in_progress": [
@@ -261,6 +281,36 @@
           "be": "todo",
           "estimate_days": null,
           "target_date": null
+        },
+        {
+          "id": "204ffcf1-1ec0-4d21-a40d-001c07818bc3",
+          "portal": "Escrow E2E green on real Mollie",
+          "note": "gate condition requires the day-14 auto-release leg to run in real time on the two-account log. Escrow E2E green on real Mollie is the run that uses it: the two-account log showing both legs in the real flow — buyer-confirm → payout, and the day-14 auto-release. That's what flips MARKETPLACE_ESCROW_E2E_GREEN to true. Function #1",
+          "pct": 0,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "db42ab99-e0e7-4485-8218-da762ddef64d",
+          "portal": "Mollie test org (KYC) -",
+          "note": "a KYC-verified test seller organisation + a real Mollie test key wired on both sides (the platform payin side and the seller payout side). Victor flagged this doesn't exist in his scope yet — \"Real-Mollie E2E needs a KYC'd seller org + real test key on both sides; neither exists today.\" On Audun's plan it's function #2, \"the single unlock behind five cards.\"",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "a0118044-99d8-42f2-bf36-8fcb5386de81",
+          "portal": "Fat — platform AI, verified portal-by-portal as each closes (sweep)",
+          "note": "",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
         }
       ],
       "planned_next": [
@@ -301,6 +351,26 @@
           "be": "prog",
           "estimate_days": 1,
           "target_date": "09-08-2026"
+        },
+        {
+          "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
+          "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
+          "note": "",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "a059bea8-b328-4ad8-a04f-215130ee5c5f",
+          "portal": "Listing import (Marketplace + Motor)",
+          "note": "",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
         }
       ],
       "planned_next": [
@@ -317,7 +387,7 @@
       "done": [
         {
           "id": "b2b6d1c6-b571-4929-b294-292b3032d894",
-          "portal": "Dashboard / custom URL",
+          "portal": "Dashboard custom URLs (status needed — sweep)",
           "note": "Dashboards / Custom URL —  launch-ready."
         }
       ],
@@ -368,6 +438,46 @@
           "note": "launch portal wise task for each dev. Reply Audun's QA",
           "pct": 0,
           "fe": "prog",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "d26ed81a-556b-4de8-b5c3-694d7661ebcb",
+          "portal": "Admin-granted subscriptions",
+          "note": "",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "f37c9d00-64f5-45fe-ba45-4264ec529143",
+          "portal": "Sponsored placements §3.17 (cron in build — sweep)",
+          "note": "",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "d7746c37-11bc-4a5b-8cbb-201c3db7ab4b",
+          "portal": "Admin panel",
+          "note": "(confirm — sweep)",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "e26f78e4-3948-449a-b4b6-eddf8309eff8",
+          "portal": "Identity display model §10.18 (own workstream)",
+          "note": "",
+          "pct": 0,
+          "fe": "todo",
           "be": "todo",
           "estimate_days": null,
           "target_date": null
