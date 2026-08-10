@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10T15:52:52.653+00:00",
+  "updated_at": "2026-08-10T16:34:20.766+00:00",
   "updated_by": "Victor",
   "developers": [
     {
@@ -216,7 +216,7 @@
           "id": "55340422-21d4-4f98-bd3b-903922303c97",
           "portal": "Marketplace escrow E2E log",
           "note": "Audun 2026-07-28 — gates purchases, must be named not implied. Full flow: buyer pay via Mollie → funds held in escrow → delivery confirmation → release to seller; plus the dispute → refund branch. Playwright spec + persistent audit log so we can point at green runs. Depends on \"Mollie Checkout on each portal\" landing (target 2026-08-01) — 3 days after that to script + stabilise.",
-          "pct": 60,
+          "pct": 70,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 3,
@@ -286,7 +286,7 @@
           "id": "204ffcf1-1ec0-4d21-a40d-001c07818bc3",
           "portal": "Escrow E2E green on real Mollie",
           "note": "gate condition requires the day-14 auto-release leg to run in real time on the two-account log. Escrow E2E green on real Mollie is the run that uses it: the two-account log showing both legs in the real flow — buyer-confirm → payout, and the day-14 auto-release. That's what flips MARKETPLACE_ESCROW_E2E_GREEN to true. Function #1",
-          "pct": 0,
+          "pct": 20,
           "fe": "prog",
           "be": "todo",
           "estimate_days": null,
@@ -296,8 +296,8 @@
           "id": "db42ab99-e0e7-4485-8218-da762ddef64d",
           "portal": "Mollie test org (KYC) -",
           "note": "a KYC-verified test seller organisation + a real Mollie test key wired on both sides (the platform payin side and the seller payout side). Victor flagged this doesn't exist in his scope yet — \"Real-Mollie E2E needs a KYC'd seller org + real test key on both sides; neither exists today.\" On Audun's plan it's function #2, \"the single unlock behind five cards.\"",
-          "pct": 0,
-          "fe": "todo",
+          "pct": 100,
+          "fe": "prog",
           "be": "todo",
           "estimate_days": null,
           "target_date": null
