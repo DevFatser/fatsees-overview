@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-10T01:58:04.369+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-10T15:52:52.653+00:00",
+  "updated_by": "Victor",
   "developers": [
     {
       "name": "Shafi",
@@ -36,7 +36,7 @@
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
           "portal": "Main branch launch tasks",
           "note": "Lead dev Victor: PR pushed on feat-main-branch-gate--victor including full Fat scan pipeline (0181 migration). Awaiting Shafi merge to main.",
-          "pct": 99,
+          "pct": 100,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
@@ -166,7 +166,7 @@
           "id": "12160ff0-fcf2-45f3-a316-e1df03fd2368",
           "portal": "Fat for life",
           "note": "Fat AI in-context on /marketplace, /eiendom, /leie, /leie-eiendom + dispute-handle path. Text chat proven end-to-end; hook, streaming, cost-guard already live. Portal-specific system prompts + per-surface tool routing next. Ships after Mollie checkout wiring lands",
-          "pct": 50,
+          "pct": 55,
           "fe": "prog",
           "be": "prog",
           "estimate_days": 8,
@@ -196,7 +196,7 @@
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
           "portal": "Main branch launch tasks",
           "note": "Lead dev Victor: PR pushed on feat-main-branch-gate--victor including full Fat scan pipeline (0181 migration). Awaiting Shafi merge to main.",
-          "pct": 99,
+          "pct": 100,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
@@ -265,10 +265,10 @@
         {
           "id": "e067ece1-2205-44b9-9e0c-754b816fa323",
           "portal": "Audun copy-rule sweep",
-          "note": "Audun 2026-08-04 wife-test lock — user-facing copy rule: no HTTP codes, no vendor jargon, no internal vocab, no \"likely / probably\" hedges. To-do state ≠ error. Pattern: \"what happened in the user's world → button that fixes it\". Rule saved to persistent memory so it applies to every future user-facing string.\nPR 1/3 shipped: payout-setup rewrite (404 → \"One more step before you can get paid\") + payment/checkout sweep — 8 files (commit 10757334).\nPR 2/3 pending: listings/create-edit sweep (~15 files), once Audun signs off on PR 1.\nPR 3/3 pending: my-profile/business-dashboard sweep (~15 files), after PR 2.",
-          "pct": 33,
-          "fe": "prog",
-          "be": "todo",
+          "note": "All 3 batches merged. PR #447 (toast removal), PR #450 (batch 3).\n        Audun approved batch 3 in #auduns-corner 2026-08-08 1:12 PM.",
+          "pct": 100,
+          "fe": "done",
+          "be": "prog",
           "estimate_days": 3,
           "target_date": "2026-08-07"
         },
