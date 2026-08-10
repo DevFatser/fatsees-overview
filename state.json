@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-10T16:34:20.766+00:00",
-  "updated_by": "Victor",
+  "updated_at": "2026-08-10T18:02:52.72+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -335,17 +335,17 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Paused - resumes when Motor is finished. Two numbers changed after the new guide: seminars are out of this build, so the honest figure is 48 rather than 41 and the size is 19 days. Works on Dev: the video pages, provider profiles, availability calendar, prerecorded videos for sale, ratings, and the fee rule. What looked finished but is not: paying for a live call never reaches the payment provider, so the call room, the confirm and dispute steps and the 7-day release are all built but unreachable. Left: (1) join up the payment path and prove it end to end; (2) free intro call and seller price adjustment; (3) paid comments and content ratings on videos; (4) view counts and the top-five rows; (5) podcasts, not started.",
-          "pct": 48,
+          "note": "Finding someone to talk to works on Dev - the provider pages, their calendar, picking a time, the video room itself, the ratings both sides give, and the complaint route with its admin screen. Today's work (a buyer can now pay for a call, the payment marks the booking as real, and the money releases when the buyer confirms or after the waiting period - plus the paid comments that sat unmerged for two weeks) is in review. Left: (1) proving the money reaches the seller on two real accounts, including the wait; (2) the free introduction call and quiet price lowering; (3) podcasts and the top-five rows, built by a second developer; (4) prices in the visitor's own currency; (5) the heart for saving a video page; (6) plain-language error messages.",
+          "pct": 55,
           "fe": "prog",
-          "be": "done",
-          "estimate_days": 18,
-          "target_date": null
+          "be": "prog",
+          "estimate_days": 9,
+          "target_date": "20-08-2026"
         },
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying, selling and renting a car all work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites, making an ad from the site, the sale contract both buyer and seller sign digitally, renting with the deposit asked for when the ad is made, Fat helping write the ad from the photos, and every private seller's ad carrying a postal code so ads can be found by distance. Today's fix (a sign-in glitch that hid the buy and book buttons from logged-in users) is in review. Left: (1) the real payment run once the payment provider test account exists; (2) small polish on the browse pages - loading placeholders - which rides next week's work on the same pages.",
+          "note": "Buying, selling and renting a car all work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites, making an ad from the site, the sale contract both buyer and seller sign digitally, renting with the deposit asked for when the ad is made, Fat helping write the ad from the photos, and every private seller's ad carrying a postal code so ads can be found by distance. The sign-in fix (it hid the buy and book buttons from logged-in users) is in review. Left: (1) the real payment run once the payment provider test account exists; (2) small polish on the browse pages - loading placeholders; (3) plain-language error messages.",
           "pct": 96,
           "fe": "prog",
           "be": "prog",
@@ -355,21 +355,31 @@
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
-          "note": "",
+          "note": "Nothing built yet. Two jobs in one: first every portal's ad has to say where the item is with a country and postal code - only Motor does that today, the rest store a typed-in place name or nothing at all - and only then can \"nearest to me\" sort anything. Roughly half the time is the sweep across the other portals, half is the location service itself: asking permission the moment someone presses Nearest and never before, and the three ways to answer - share where you are, type a postal code, or point at a map.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": null,
+          "estimate_days": 6,
           "target_date": null
         },
         {
           "id": "a059bea8-b328-4ad8-a04f-215130ee5c5f",
           "portal": "Listing import (Marketplace + Motor)",
-          "note": "",
+          "note": "Nothing built yet. A seller pastes the address of their own ad from another site and we bring across the pictures, the text, the price and the plate number, and hand it back as a draft to check and publish. A business can point at its whole list of ads and get them all at once. Waiting on identity verification going live, because only a verified person or a registered business may import.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": null,
+          "estimate_days": 7,
+          "target_date": "31-08-2026"
+        },
+        {
+          "id": "48a4a1eb-dcb9-47ad-ac7e-baed693a4f16",
+          "portal": "Cloudinary signed delivery",
+          "note": "Nothing built yet. Files people upload as evidence in a complaint, or with a business application, sit in storage anyone with the address could open. This puts them behind expiring private links and makes the document store private. Photos and profile pictures stay public, which is fine.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 1,
           "target_date": null
         }
       ],
@@ -377,7 +387,7 @@
         {
           "id": "b31a1b52-08fb-40d4-b8f4-d8594e7ee9cc",
           "portal": "Jobs",
-          "note": ""
+          "note": "A lot is on Dev already - browsing and posting jobs, applying, the quick apply, Fat helping write an application, searching candidates, and a CV builder - but none of it was ever checked end to end and it has no honest percentage. First job is a day of going through it and reporting what actually works, the same way I did with VideoPay."
         }
       ],
       "priority": []
