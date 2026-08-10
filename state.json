@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-10T18:02:52.72+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-10T19:55:42.717+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -409,18 +409,18 @@
           "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 11,
-          "target_date": "13-08-2026"
+          "estimate_days": 14,
+          "target_date": "25-08-2026"
         },
         {
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
           "note": "Fatsees Equity is a noticeboard where owners of private-company shares advertise\nthem for sale — legal without a licence only if we never match buyers and sellers,\nhost deal chat, show live prices, or touch the money.\nI'm adding those legal guardrails, removing old features that crossed the line,\nand building the allowed ones (contact reveal, wanted ads, history chart, alerts).\nIn short: Equity must always behave like a noticeboard, never like a stock exchange.",
-          "pct": 88,
+          "pct": 90,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 1,
-          "target_date": "10-08-2026"
+          "estimate_days": 6,
+          "target_date": "16-08-2026"
         },
         {
           "id": "9c0d6dcb-c722-4a85-9192-7698bd801210",
@@ -455,42 +455,42 @@
         {
           "id": "d26ed81a-556b-4de8-b5c3-694d7661ebcb",
           "portal": "Admin-granted subscriptions",
-          "note": "",
+          "note": "Lets an admin give a business account a paid plan for free until a chosen date — useful for launch partners and campaigns. Reminders go out 30, 14, 7 and 1 days before it runs out. If nobody pays after that, their ads go quiet rather than being deleted, and come straight back the moment payment arrives.\n\nThe one thing that must not go wrong: if a granted business saves a card to buy something small — an ad, some tokens — the system must not read that as \"start charging them for the subscription\". They were given the period; the date decides, nothing else.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 16,
+          "target_date": "27-08-2026"
         },
         {
           "id": "f37c9d00-64f5-45fe-ba45-4264ec529143",
           "portal": "Sponsored placements §3.17 (cron in build — sweep)",
-          "note": "",
+          "note": "Paid promotion slots, and the free ones that fill in when nobody has paid. This is already built; the job is proving each rule behaves as written — how many slots show, what order they appear in, and that the three places where paid promotion is banned really do reject it. Equity is one of those three: paying to promote an investment to ordinary people is exactly what that portal must never do.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 18,
+          "target_date": "29-08-2026"
         },
         {
           "id": "d7746c37-11bc-4a5b-8cbb-201c3db7ab4b",
           "portal": "Admin panel",
-          "note": "(confirm — sweep)",
+          "note": "The back-office screens used to run the platform: find a user, handle a refund, work through reported content, answer a data request. Most of it is already built. The job is checking that the four things we can't launch without actually work, and confirming that every admin action is written to a log nobody can edit afterwards — that one is a legal requirement, not a nice-to-have.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 18,
+          "target_date": "29-08-2026"
         },
         {
           "id": "e26f78e4-3948-449a-b4b6-eddf8309eff8",
           "portal": "Identity display model §10.18 (own workstream)",
-          "note": "",
+          "note": "Right now a person's real name appears on their ads, their profile, their comments — everywhere. That exposes honest sellers to being scraped and searched by name, and it proves nothing to a buyer, because a name on Fatsees is just free text nobody checked.\n\nEvery account gets a nickname instead. That nickname becomes the only thing the public sees, on every portal. The real name survives in exactly two places: inside a private message thread once both people have actually written to each other, and on the paperwork where it's legally required — agreements, receipts, checkout. Businesses are not affected: a company selling to consumers has to identify itself by law, so business names stay visible.\n\nThere's also one trust mark left on the site — \"Identified\", meaning that person confirmed who they are with Freja eID. Every other badge goes. Under it sits a tappable line showing how far a person has come: email confirmed, phone confirmed, active profile, fully identified.\n\nThe first piece — giving every account a nickname — lands 13 August, because Apple can't build the front end until it exists. The rest follows on 15 August.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 5,
+          "target_date": "15-08-2026"
         }
       ],
       "planned_next": [],
