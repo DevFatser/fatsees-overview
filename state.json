@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-11T16:09:22.504+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-11T17:51:24.567+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -96,11 +96,11 @@
           "id": "b1c7cbe7-43c7-40bb-9848-11f9e3338c12",
           "portal": "Fatsees Owners",
           "note": "Fatsees Owners\" is\n\nA brand-new portal with two jobs behind one card:\n\nSell shares — users buy shares in the company (Fatsees AS) directly. The company itself is the seller. It's B shares (no voting rights).\nA members-only \"Owners area\" — anyone who bought shares gets into a closed community. This part reuses the Some/Profile-feed + team-space code you built (posts, likes, moderation, closed membership) — that's why Audun gave it to you.\n\nIt is completely separate from Equity — different code, tables, and payment. Equity is a shareholder noticeboard; Owners is the company selling its own shares at a fixed offer price. Never mix them.",
-          "pct": 0,
-          "fe": "todo",
+          "pct": 90,
+          "fe": "prog",
           "be": "todo",
           "estimate_days": null,
-          "target_date": "12-08-26"
+          "target_date": "16-08-26"
         },
         {
           "id": "59ce2c1b-5e53-4f57-bb8f-8c8207076b19",
@@ -116,11 +116,11 @@
           "id": "b8852b70-9196-4e53-abbb-fae85783cf39",
           "portal": "Fatsees Stores (frame, front-page rows, intro ad)",
           "note": "",
-          "pct": 0,
-          "fe": "todo",
+          "pct": 90,
+          "fe": "prog",
           "be": "todo",
           "estimate_days": null,
-          "target_date": null
+          "target_date": "13-8"
         }
       ],
       "planned_next": [
