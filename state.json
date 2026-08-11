@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-10T19:55:42.717+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-11T16:09:22.504+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -335,11 +335,11 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Finding someone to talk to works on Dev - the provider pages, their calendar, picking a time, the video room itself, the ratings both sides give, and the complaint route with its admin screen. Today's work (a buyer can now pay for a call, the payment marks the booking as real, and the money releases when the buyer confirms or after the waiting period - plus the paid comments that sat unmerged for two weeks) is in review. Left: (1) proving the money reaches the seller on two real accounts, including the wait; (2) the free introduction call and quiet price lowering; (3) podcasts and the top-five rows, built by a second developer; (4) prices in the visitor's own currency; (5) the heart for saving a video page; (6) plain-language error messages.",
-          "pct": 55,
+          "note": "Finding someone to talk to works on Dev - the provider pages, their calendar, booking a time, paying for a call with the money held safely until the buyer confirms or the waiting period ends, the video room, ratings both ways, comments on paid videos, and the complaint route with its admin screen. Today's work (a free introduction call before committing, sellers quietly lowering a price to close a deal, prices shown in the visitor's own currency, star ratings on recorded videos, the save heart, and video searches staying on the video page) is in review. Left: (1) proving the money reaches the seller on two real accounts, including the wait period; (2) podcasts and the top-five rows on the front page, built by a second developer; (3) plain-language error messages.",
+          "pct": 60,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 9,
+          "estimate_days": 6,
           "target_date": "20-08-2026"
         },
         {
