@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-12T08:28:18.36+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-12T17:14:35.115+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -335,22 +335,22 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Finding someone to talk to works on Dev - the provider pages, their calendar, booking a time, paying for a call with the money held safely until the buyer confirms or the waiting period ends, the video room, ratings both ways, comments on paid videos, and the complaint route with its admin screen. Today's work (a free introduction call before committing, sellers quietly lowering a price to close a deal, prices shown in the visitor's own currency, star ratings on recorded videos, the save heart, and video searches staying on the video page) is in review. Left: (1) proving the money reaches the seller on two real accounts, including the wait period; (2) podcasts and the top-five rows on the front page, built by a second developer; (3) plain-language error messages.",
-          "pct": 60,
+          "note": "Booking someone's time on video works on Dev - browsing providers, their calendar, paying with the money held safely until the buyer confirms or the waiting period ends, the video room, ratings, comments on paid videos, a free introduction call before committing, and the complaint route with its admin screen. Today's work (plain-language messages instead of technical errors, and a room page that was showing Norwegian to everyone) is in review. Left: (1) proving the money reaches the seller on two real accounts, including the wait period; (2) podcasts and the top-five rows on the front page, built by a second developer; (3) the tax split on video payments - classified but not yet separated out, closed by the platform-wide checkout task.",
+          "pct": 70,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 6,
+          "estimate_days": 2,
           "target_date": "20-08-2026"
         },
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying, selling and renting a car all work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites, making an ad from the site, the sale contract both buyer and seller sign digitally, renting with the deposit asked for when the ad is made, Fat helping write the ad from the photos, and every private seller's ad carrying a postal code so ads can be found by distance. The sign-in fix (it hid the buy and book buttons from logged-in users) is in review. Left: (1) the real payment run once the payment provider test account exists; (2) small polish on the browse pages - loading placeholders; (3) plain-language error messages.",
+          "note": "Buying, selling and renting a car all work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites and loading placeholders, making an ad from the site, the sale contract both buyer and seller sign digitally, renting with the deposit asked for when the ad is made, Fat helping write the ad from the photos, every private seller's ad carrying a postal code so ads can be found by distance, and plain-language messages when something goes wrong. Left: (1) the real payment run once the payment provider test account exists.",
           "pct": 96,
           "fe": "prog",
           "be": "prog",
           "estimate_days": 1,
-          "target_date": "11-08-2026"
+          "target_date": "26-08-2026"
         },
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
