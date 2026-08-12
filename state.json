@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-11T17:51:24.567+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-08-12T08:28:18.36+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -475,7 +475,7 @@
         {
           "id": "d7746c37-11bc-4a5b-8cbb-201c3db7ab4b",
           "portal": "Admin panel",
-          "note": "The back-office screens used to run the platform: find a user, handle a refund, work through reported content, answer a data request. Most of it is already built. The job is checking that the four things we can't launch without actually work, and confirming that every admin action is written to a log nobody can edit afterwards — that one is a legal requirement, not a nice-to-have.",
+          "note": "The back-office screens used to run the platform: find a user, handle a refund, work through reported content, answer a data request. Most of it is already built. The job is checking that the four things we can't launch without actually work, and confirming that every admin action is written to a log nobody can edit afterwards — that one is a legal requirement, not a nice-to-have.\n\nAdmin panel + usage panel — not started. This is Audun's §11.10: admin grants a business a plan with an expiry + no card on file, reminders at 30/14/7/1 days, at expiry listings go inactive not deleted with one-click restore — plus a usage/consumption view. Real build, s. This is also Audun's reassigned \"A3 admin subscriptions.\" this task is assigned to u about admin panel",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
