@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-13T11:41:54.939+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-08-13T18:19:06.363+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -419,8 +419,8 @@
           "pct": 90,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 6,
-          "target_date": "16-08-2026"
+          "estimate_days": 4,
+          "target_date": "18-08-2026"
         },
         {
           "id": "9c0d6dcb-c722-4a85-9192-7698bd801210",
