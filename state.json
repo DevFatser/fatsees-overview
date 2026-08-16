@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-15T19:26:07.717+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-16T11:18:06.117+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -365,11 +365,11 @@
         {
           "id": "a059bea8-b328-4ad8-a04f-215130ee5c5f",
           "portal": "Listing import (Marketplace + Motor)",
-          "note": "Nothing built yet. A seller pastes the address of their own ad from another site and we bring across the pictures, the text, the price and the plate number, and hand it back as a draft to check and publish. A business can point at its whole list of ads and get them all at once. Waiting on identity verification going live, because only a verified person or a registered business may import.",
-          "pct": 0,
+          "note": "The engine works on Dev: paste the address of your advert on another site and it comes back as a draft in our own create form - text, price and photos in order - with a lock so the same advert can never be imported twice, and a gate so only verified people and registered businesses can import. Where the source does not state the location reliably, country and postal code arrive empty and the seller fills them before publishing, so nothing publishes without them. Left: (1) the button users will actually see - Motor first, then Real Estate, short-term rent and Marketplace; (2) the seller overview import - paste a seller's page and Fat finds every advert on it; (3) the copy-protection review queue - until it lands, first to publish holds a URL.",
+          "pct": 55,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 7,
+          "estimate_days": 5,
           "target_date": "31-08-2026"
         },
         {
