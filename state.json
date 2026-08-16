@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-16T11:18:06.117+00:00",
+  "updated_at": "2026-08-16T16:26:47.384+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -325,7 +325,7 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Booking someone's time on video works on Dev - browsing providers, their calendar, paying with the money held safely until the buyer confirms or the waiting period ends, the video room, ratings, comments on paid videos, a free introduction call before committing, and the complaint route with its admin screen. Today's work (plain-language messages instead of technical errors, and a room page that was showing Norwegian to everyone) is in review. Left: (1) proving the money reaches the seller on two real accounts, including the wait period; (2) podcasts and the top-five rows on the front page, built by a second developer; (3) the tax split on video payments - classified but not yet separated out, closed by the platform-wide checkout task.",
+          "note": "Booking someone's time on video works on Dev - browsing providers, their calendar, paying with the money held safely until the buyer confirms or the waiting period ends, the video room, ratings, comments on paid videos, a free introduction call before committing, and the complaint route with its admin screen. Today's work (the tax on video payments is now separated out properly) is in review. Left: (1) proving the money reaches the seller on two real accounts, including the wait period; (2) podcasts and the top-five rows on the front page, built by a second developer.",
           "pct": 70,
           "fe": "prog",
           "be": "prog",
@@ -345,12 +345,12 @@
         {
           "id": "59ce2c1b-5e53-4f57-bb8f-8c8207076b19",
           "portal": "VAT at checkout (gated by OSS registration)",
-          "note": "",
-          "pct": 0,
+          "note": "The tax handling on payments is built and in review. Every kind of purchase on the site now has a written tax answer taken straight from Audun's specification - who the seller is in law, which country's rate applies, and what is left for the seller after our fee - and anything without an answer refuses to take money instead of guessing. Buyers see the tax line where it belongs and nothing where the rules say there is none. Left: (1) the pricing page still shows two different price lists at once, one of them the old kroner figures.",
+          "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 1,
+          "target_date": "17-08-2026"
         },
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
