@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-17T20:21:10.93+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-17T23:23:19.166+00:00",
+  "updated_by": "Victor",
   "developers": [
     {
       "name": "Shafi",
@@ -156,11 +156,11 @@
           "id": "12160ff0-fcf2-45f3-a316-e1df03fd2368",
           "portal": "Fat for life",
           "note": "Fat AI in-context on /marketplace, /eiendom, /leie, /leie-eiendom + dispute-handle path. Text chat proven end-to-end; hook, streaming, cost-guard already live. Portal-specific system prompts + per-surface tool routing next. Ships after Mollie checkout wiring lands",
-          "pct": 55,
+          "pct": 90,
           "fe": "prog",
-          "be": "prog",
-          "estimate_days": 8,
-          "target_date": "2026-08-07"
+          "be": "done",
+          "estimate_days": 2,
+          "target_date": "2026-08-20"
         },
         {
           "id": "26067edb-a71e-4126-ae21-e4343c7524fa",
