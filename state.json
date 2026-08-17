@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-16T20:24:53.058+00:00",
+  "updated_at": "2026-08-17T20:21:10.93+00:00",
   "updated_by": "Nahid",
   "developers": [
     {
@@ -416,7 +416,7 @@
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
           "note": "Fatsees Equity is a noticeboard where owners of private-company shares advertise\nthem for sale — legal without a licence only if we never match buyers and sellers,\nhost deal chat, show live prices, or touch the money.\nI'm adding those legal guardrails, removing old features that crossed the line,\nand building the allowed ones (contact reveal, wanted ads, history chart, alerts).\nIn short: Equity must always behave like a noticeboard, never like a stock exchange.",
-          "pct": 90,
+          "pct": 95,
           "fe": "prog",
           "be": "prog",
           "estimate_days": 4,
@@ -486,7 +486,7 @@
           "id": "e26f78e4-3948-449a-b4b6-eddf8309eff8",
           "portal": "Identity display model §10.18 (own workstream)",
           "note": "Right now a person's real name appears on their ads, their profile, their comments — everywhere. That exposes honest sellers to being scraped and searched by name, and it proves nothing to a buyer, because a name on Fatsees is just free text nobody checked.\n\nEvery account gets a nickname instead. That nickname becomes the only thing the public sees, on every portal. The real name survives in exactly two places: inside a private message thread once both people have actually written to each other, and on the paperwork where it's legally required — agreements, receipts, checkout. Businesses are not affected: a company selling to consumers has to identify itself by law, so business names stay visible.\n\nThere's also one trust mark left on the site — \"Identified\", meaning that person confirmed who they are with Freja eID. Every other badge goes. Under it sits a tappable line showing how far a person has come: email confirmed, phone confirmed, active profile, fully identified.\n\nThe first piece — giving every account a nickname — lands 13 August, because Apple can't build the front end until it exists. The rest follows on 15 August.",
-          "pct": 85,
+          "pct": 95,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 3,
