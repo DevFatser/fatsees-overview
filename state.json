@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T04:04:14.73+00:00",
+  "updated_at": "2026-08-18T18:39:18.123+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -381,6 +381,16 @@
           "be": "todo",
           "estimate_days": 1,
           "target_date": "18-08-2026"
+        },
+        {
+          "id": "4da68792-18d1-4d72-8477-87d23607b6b0",
+          "portal": "Pre-launch portal testing - Apple",
+          "note": "Daily pre-launch portal testing log — Apple + Nahid, from 24 Aug, min 30–40 min/day each.\nFormat per entry:\nDate — Tester — Portal/Page — What was tested — Result (works / bug found → reported where / fix scheduled when)",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
         }
       ],
       "planned_next": [
