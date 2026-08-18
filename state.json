@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-17T23:23:19.166+00:00",
-  "updated_by": "Victor",
+  "updated_at": "2026-08-18T04:04:14.73+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -325,8 +325,8 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Booking someone's time on video works on Dev - browsing providers, their calendar, paying with the money held safely until the buyer confirms or the waiting period ends, the video room, ratings, comments on paid videos, a free introduction call before committing, and the complaint route with its admin screen. Today's work (the tax on video payments is now separated out properly) is in review. Left: (1) proving the money reaches the seller on two real accounts, including the wait period; (2) podcasts and the top-five rows on the front page, built by a second developer.",
-          "pct": 70,
+          "note": "Booking someone's time on video works on Dev - browsing providers, their calendar, paying with the money held safely until the buyer confirms or the waiting period ends, the video room, ratings, comments on paid videos, a free introduction call before committing, the complaint route with its admin screen, and the tax on video payments now separated out properly. Left: (1) proving the money reaches the seller on two accounts - the code path runs Thursday, the true split waits on a second test company; (2) podcasts and the top-five rows, built by a second developer.",
+          "pct": 72,
           "fe": "prog",
           "be": "prog",
           "estimate_days": 2,
@@ -335,8 +335,8 @@
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying, selling and renting a car all work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites and loading placeholders, making an ad from the site, the sale contract both buyer and seller sign digitally, renting with the deposit asked for when the ad is made, Fat helping write the ad from the photos, every private seller's ad carrying a postal code so ads can be found by distance, and plain-language messages when something goes wrong. Left: (1) the real payment run once the payment provider test account exists.",
-          "pct": 96,
+          "note": "Buying, selling and renting a car all work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites and loading placeholders, making an ad from the site, the sale contract both buyer and seller sign digitally, renting with the deposit asked for when the ad is made, Fat helping write the ad from the photos, every private seller's ad carrying a postal code, plain-language messages when something goes wrong, and the sign-in fix that was hiding the buy and book buttons. Left: (1) the real payment run - the code path runs Thursday against the dev seller, and the true payment-provider split waits on a second test company.",
+          "pct": 97,
           "fe": "prog",
           "be": "prog",
           "estimate_days": 1,
@@ -345,8 +345,8 @@
         {
           "id": "59ce2c1b-5e53-4f57-bb8f-8c8207076b19",
           "portal": "VAT at checkout (gated by OSS registration)",
-          "note": "The tax handling on payments is built and in review. Every kind of purchase on the site now has a written tax answer taken straight from Audun's specification - who the seller is in law, which country's rate applies, and what is left for the seller after our fee - and anything without an answer refuses to take money instead of guessing. Buyers see the tax line where it belongs and nothing where the rules say there is none. Left: (1) the pricing page still shows two different price lists at once, one of them the old kroner figures.",
-          "pct": 90,
+          "note": "Merged. Every kind of purchase on the site now has a written tax answer taken straight from Audun's specification - who the seller is in law, which country's rate applies, and what is left for the seller after our fee - and anything without an answer refuses to take money instead of guessing. Review hardening means a payer can never influence the tax role or the fee from their side. Left: (1) the database check against production posted as proof; (2) the pricing page still shows two price lists at once - logged with Shafi.",
+          "pct": 98,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
@@ -375,12 +375,12 @@
         {
           "id": "48a4a1eb-dcb9-47ad-ac7e-baed693a4f16",
           "portal": "Cloudinary signed delivery",
-          "note": "Nothing built yet. Files people upload as evidence in a complaint, or with a business application, sit in storage anyone with the address could open. This puts them behind expiring private links and makes the document store private. Photos and profile pictures stay public, which is fine.",
+          "note": "Built and in review: files people upload as evidence in a complaint or with a business application no longer sit at permanent open addresses - uploads are signed by the server, the files are private, and reading one takes a short-lived link that only the people already allowed on that page can mint. Photos and profile pictures stay public as intended. Left: (1) the cleanup run that deletes the old test files from the open addresses, with the before-and-after proof posted.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": null
+          "target_date": "18-08-2026"
         }
       ],
       "planned_next": [
