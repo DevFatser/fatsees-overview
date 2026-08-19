@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T18:39:18.123+00:00",
+  "updated_at": "2026-08-19T09:38:05.74+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -355,18 +355,18 @@
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
-          "note": "Nothing built yet. Two jobs in one: first every portal's ad has to say where the item is with a country and postal code - only Motor does that today, the rest store a typed-in place name or nothing at all - and only then can \"nearest to me\" sort anything. Roughly half the time is the sweep across the other portals, half is the location service itself: asking permission the moment someone presses Nearest and never before, and the three ways to answer - share where you are, type a postal code, or point at a map.",
+          "note": "Starts Sunday 23: roughly half is the sweep giving every portal's ad a country and postal code, half is the location service itself — permission asked only at the moment someone presses Nearest, never before, with three ways to answer: share your position, type a postal code, or point at a map.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 6,
-          "target_date": null
+          "target_date": "27-08-2026"
         },
         {
           "id": "a059bea8-b328-4ad8-a04f-215130ee5c5f",
           "portal": "Listing import (Marketplace + Motor)",
-          "note": "The engine works on Dev: paste the address of your advert on another site and it comes back as a draft in our own create form - text, price and photos in order - with a lock so the same advert can never be imported twice, and a gate so only verified people and registered businesses can import. Where the source does not state the location reliably, country and postal code arrive empty and the seller fills them before publishing, so nothing publishes without them. Left: (1) the button users will actually see - Motor first, then Real Estate, short-term rent and Marketplace; (2) the seller overview import - paste a seller's page and Fat finds every advert on it; (3) the copy-protection review queue - until it lands, first to publish holds a URL.",
-          "pct": 55,
+          "note": "The engine works on Dev: paste the address of your advert on another site and it comes back as a draft in our own create form — text, price and photos in order, a lock so the same advert can never be imported twice, and a gate so only verified people and registered businesses can import. New today, in review: the whole-page import — paste a seller's overview page and every advert on it comes back as its own draft, with progress shown and any that could not come over named with the reason. Country and postal code always arrive empty and the seller fills them before publishing, so nothing publishes without them. Left: (1) the copy-protection review queue — until it lands, first to publish holds a URL; (2) the entry on the remaining portals — Real Estate, short-term rent, Marketplace; (3) Fat running the import from chat.",
+          "pct": 65,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 5,
@@ -375,8 +375,8 @@
         {
           "id": "48a4a1eb-dcb9-47ad-ac7e-baed693a4f16",
           "portal": "Cloudinary signed delivery",
-          "note": "Built and in review: files people upload as evidence in a complaint or with a business application no longer sit at permanent open addresses - uploads are signed by the server, the files are private, and reading one takes a short-lived link that only the people already allowed on that page can mint. Photos and profile pictures stay public as intended. Left: (1) the cleanup run that deletes the old test files from the open addresses, with the before-and-after proof posted.",
-          "pct": 0,
+          "note": "Files people upload as evidence in a complaint or with a business application no longer sit at permanent open addresses — uploads are signed, the files are private, and reading one takes a short-lived link that only the people already allowed on that page can mint. The cleanup ran and the proof is posted: the photo store held no open documents anywhere, and the one document store that was publicly readable is now closed and proven closed with a fresh read. Left: one already-written change that switches the finished portals' production gate on — waiting on a review slot.",
+          "pct": 95,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
@@ -386,6 +386,16 @@
           "id": "4da68792-18d1-4d72-8477-87d23607b6b0",
           "portal": "Pre-launch portal testing - Apple",
           "note": "Daily pre-launch portal testing log — Apple + Nahid, from 24 Aug, min 30–40 min/day each.\nFormat per entry:\nDate — Tester — Portal/Page — What was tested — Result (works / bug found → reported where / fix scheduled when)",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "1c6cf222-058f-4dee-988b-1d47617d7a02",
+          "portal": "/Some money flow e2e",
+          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
