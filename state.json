@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-20T22:10:51.253+00:00",
+  "updated_at": "2026-08-20T22:15:37.689+00:00",
   "updated_by": "Shafi",
   "developers": [
     {
@@ -71,16 +71,6 @@
           "be": "todo",
           "estimate_days": 1,
           "target_date": "2026-08-26"
-        },
-        {
-          "id": "de98196c-c6aa-4ed9-8ac8-88a862e2ff0f",
-          "portal": "/Some- Fatsees Profile portal",
-          "note": "Remaining: Test all money flow in prod\nOwner: Shafi.\nDate: 2026-08-29 (Tue).",
-          "pct": 80,
-          "fe": "prog",
-          "be": "todo",
-          "estimate_days": 2,
-          "target_date": "28-8-29"
         },
         {
           "id": "5c429408-722f-4cf0-92be-776e0a3ef3d9",
@@ -255,12 +245,12 @@
         {
           "id": "204ffcf1-1ec0-4d21-a40d-001c07818bc3",
           "portal": "Escrow E2E green on real Mollie",
-          "note": "gate condition requires the day-14 auto-release leg to run in real time on the two-account log. Escrow E2E green on real Mollie is the run that uses it: the two-account log showing both legs in the real flow — buyer-confirm → payout, and the day-14 auto-release. That's what flips MARKETPLACE_ESCROW_E2E_GREEN to true. Function #1",
+          "note": "Remaining: two-account log showing both legs in the real flow — buyer-confirm → payout AND day-14 auto-release. Function #1 in your plan.\nOwner: Victor (Mollie test-org KYC per BO shows 100%, so the unlock is landed and I can drive this).\nDate: 2026-08-26 \ngate condition requires the day-14 auto-release leg to run in real time on the two-account log. Escrow E2E green on real Mollie is the run that uses it: the two-account log showing both legs in the real flow — buyer-confirm → payout, and the day-14 auto-release. That's what flips MARKETPLACE_ESCROW_E2E_GREEN to true. Function #1",
           "pct": 20,
           "fe": "prog",
           "be": "todo",
           "estimate_days": null,
-          "target_date": null
+          "target_date": "26-08-2026"
         },
         {
           "id": "db42ab99-e0e7-4485-8218-da762ddef64d",
@@ -275,12 +265,12 @@
         {
           "id": "a0118044-99d8-42f2-bf36-8fcb5386de81",
           "portal": "Fat — platform AI, verified portal-by-portal as each closes (sweep)",
-          "note": "",
+          "note": "Remaining: Prove PG §3.0 \"Fat everywhere\" — verify each portal has Fat present (bubble + header + hero) with the right per-surface system prompt and per-surface tool routing, and that Fat sees the right context on each surface (listing detail, edit, dispute, checkout). Portal-by-portal pass with a green checklist per portal.\nOwner: Victor.\nDate: 2026-08-22 (Sat).",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
-          "target_date": null
+          "target_date": "22-08-26"
         }
       ],
       "planned_next": [
@@ -323,6 +313,16 @@
           "target_date": "26-08-2026"
         },
         {
+          "id": "de98196c-c6aa-4ed9-8ac8-88a862e2ff0f",
+          "portal": "/Some- Fatsees Profile portal",
+          "note": "Remaining: Test all money flow in prod\nOwner: Shafi. Test author: APPLE;\nThe three money paths (tip, paid-follower, sponsored deal) run end-to-end as real buyer + seller with proof logged.\nDate: 2026-08-29 (Tue).",
+          "pct": 80,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": 2,
+          "target_date": "28-8-29"
+        },
+        {
           "id": "59ce2c1b-5e53-4f57-bb8f-8c8207076b19",
           "portal": "VAT at checkout (gated by OSS registration)",
           "note": "Merged. Every kind of purchase on the site now has a written tax answer taken straight from Audun's specification - who the seller is in law, which country's rate applies, and what is left for the seller after our fee - and anything without an answer refuses to take money instead of guessing. Review hardening means a payer can never influence the tax role or the fee from their side. Left: (1) the database check against production posted as proof; (2) the pricing page still shows two price lists at once - logged with Shafi.",
@@ -335,7 +335,7 @@
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
-          "note": "Starts Sunday 23: roughly half is the sweep giving every portal's ad a country and postal code, half is the location service itself — permission asked only at the moment someone presses Nearest, never before, with three ways to answer: share your position, type a postal code, or point at a map.",
+          "note": "Remaining: On Apple's board per the BO, not on my Victor+Shafi board — flagging in case it landed on this ruling by mistake.\nOwner: Apple.\nDate: 2026-08-27 (per BO).\nStarts Sunday 23: roughly half is the sweep giving every portal's ad a country and postal code, half is the location service itself — permission asked only at the moment someone presses Nearest, never before, with three ways to answer: share your position, type a postal code, or point at a map.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
