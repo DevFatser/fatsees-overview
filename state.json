@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-19T18:20:19.251+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-20T12:05:13.094+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -365,7 +365,7 @@
         {
           "id": "a059bea8-b328-4ad8-a04f-215130ee5c5f",
           "portal": "Listing import (Marketplace + Motor)",
-          "note": "The engine works on Dev: paste the address of your advert on another site and it comes back as a draft in our own create form — text, price and photos in order, a lock so the same advert can never be imported twice, and a gate so only verified people and registered businesses can import. New today, in review: the whole-page import — paste a seller's overview page and every advert on it comes back as its own draft, with progress shown and any that could not come over named with the reason. Country and postal code always arrive empty and the seller fills them before publishing, so nothing publishes without them. Left: (1) the copy-protection review queue — until it lands, first to publish holds a URL; (2) the entry on the remaining portals — Real Estate, short-term rent, Marketplace; (3) Fat running the import from chat.",
+          "note": "The engine works on Dev: paste the address of your advert on another site and it comes back as a draft in our own create form — text, price and photos in order, a lock so the same advert can never be imported twice, and a gate so only verified people and registered businesses can import. In review now: the whole-page import — paste a seller's overview page and every advert on it comes back as its own draft, with progress shown and any that could not come over named with the reason. An advert comes across exactly as it stands on the other site: no text is rewritten on its own. Country and postal code always arrive empty and the seller fills them before publishing, so nothing publishes without them. Left: (1) the side-by-side rewrite — on one draft the seller presses a button, sees the original and a suggestion next to each other, and chooses; (2) the copy-protection review queue — until it lands, first to publish holds a URL; (3) the entry on the remaining portals — Real Estate, short-term rent, Marketplace.",
           "pct": 65,
           "fe": "todo",
           "be": "todo",
