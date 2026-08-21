@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-20T22:15:37.689+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-08-21T03:49:07.389+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -295,17 +295,17 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Booking someone's time on video works on Dev - browsing providers, their calendar, paying with the money held safely until the buyer confirms or the waiting period ends, the video room, ratings, comments on paid videos, a free introduction call before committing, the complaint route with its admin screen, and the tax on video payments now separated out properly. Left: (1) proving the money reaches the seller on two accounts - the code path runs Thursday, the true split waits on a second test company; (2) podcasts and the top-five rows, built by a second developer.",
+          "note": "Booking someone's time on video works on Dev - browsing providers, their calendar, paying with the money held safely until the buyer confirms or the waiting period ends, the video room, ratings, comments on paid videos, a free introduction call before committing, the complaint route with its admin screen, and the tax on video payments now separated out properly. Left: (1) proving the money reaches the seller on two accounts - the code path run is written and re-runs Sunday after a fault in the test harness was found and corrected, and the true split waits on a second test company; (2) podcasts and the top-five rows, built by a second developer.",
           "pct": 72,
           "fe": "prog",
           "be": "prog",
           "estimate_days": 2,
-          "target_date": "20-08-2026"
+          "target_date": "23-08-2026"
         },
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying, selling and renting a car all work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites and loading placeholders, making an ad from the site, the sale contract both buyer and seller sign digitally, renting with the deposit asked for when the ad is made, Fat helping write the ad from the photos, every private seller's ad carrying a postal code, plain-language messages when something goes wrong, and the sign-in fix that was hiding the buy and book buttons. Left: (1) the real payment run - the code path runs Thursday against the dev seller, and the true payment-provider split waits on a second test company.",
+          "note": "Buying, selling and renting a car all work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites and loading placeholders, making an ad from the site, the sale contract both buyer and seller sign digitally, renting with the deposit asked for when the ad is made, Fat helping write the ad from the photos, every private seller's ad carrying a postal code, plain-language messages when something goes wrong, and the sign-in fix that was hiding the buy and book buttons. Left: (1) the real payment run - the code path run is written and re-runs Sunday against the dev seller after a fault in the test harness was found and corrected, and the true payment-provider split waits on a second test company.",
           "pct": 97,
           "fe": "prog",
           "be": "prog",
@@ -335,7 +335,7 @@
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
-          "note": "Remaining: On Apple's board per the BO, not on my Victor+Shafi board — flagging in case it landed on this ruling by mistake.\nOwner: Apple.\nDate: 2026-08-27 (per BO).\nStarts Sunday 23: roughly half is the sweep giving every portal's ad a country and postal code, half is the location service itself — permission asked only at the moment someone presses Nearest, never before, with three ways to answer: share your position, type a postal code, or point at a map.",
+          "note": "Nothing built yet. Two jobs in one: first every portal’s ad has to say where the item is with a country and postal code — only Motor does that today, the rest store a typed-in place name or nothing at all — and only then can “nearest to me” sort anything. Roughly half the time is the sweep across the other portals, half is the location service itself: asking permission the moment someone presses Nearest and never before, and the three ways to answer — share where you are, type a postal code, or point at a map.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
@@ -379,8 +379,8 @@
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": null,
-          "target_date": null
+          "estimate_days": 2,
+          "target_date": "30-08-2026"
         }
       ],
       "planned_next": [
