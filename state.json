@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-21T03:49:07.389+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-22T08:48:14.757+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -50,17 +50,17 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "23-08-26"
+          "target_date": "23-08-28"
         },
         {
           "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
           "portal": "/eiendom",
-          "note": "Remaining: Fat AI response check + dispute path + end-to-end test.\nOwner: Shafi.\nDate: 2026-08-24 (Mon",
+          "note": "Remaining: Victor-> Fat AI response check + dispute path + Shafi: end-to-end test.\nOwner: Shafi.\nDate: 2026-08-24 (Mon",
           "pct": 95,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-08-24"
+          "target_date": "2026-08-28"
         },
         {
           "id": "c20081d6-29f1-459e-91c5-c1e859dcbad8",
@@ -70,7 +70,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-08-26"
+          "target_date": "2026-08-28"
         },
         {
           "id": "5c429408-722f-4cf0-92be-776e0a3ef3d9",
@@ -90,7 +90,7 @@
           "fe": "prog",
           "be": "todo",
           "estimate_days": null,
-          "target_date": "14-08-26"
+          "target_date": "28-08-26"
         },
         {
           "id": "b8852b70-9196-4e53-abbb-fae85783cf39",
@@ -100,7 +100,7 @@
           "fe": "prog",
           "be": "todo",
           "estimate_days": null,
-          "target_date": "13-8"
+          "target_date": "26-8-26"
         }
       ],
       "planned_next": [
@@ -203,6 +203,26 @@
           "target_date": "2026-08-04"
         },
         {
+          "id": "0e998d6a-ee4d-4e1c-9a77-f053b7ab8bdd",
+          "portal": "/leie",
+          "note": "Remaining: Fat AI response check + Mollie integration end-to-end test on live prod.\nOwner: Shafi (lead dev per card; Victor is Fat-check on top). Date: 2026-08-23 (Sun)",
+          "pct": 95,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "23-08-28"
+        },
+        {
+          "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
+          "portal": "/eiendom",
+          "note": "Remaining: Victor-> Fat AI response check + dispute path + Shafi: end-to-end test.\nOwner: Shafi.\nDate: 2026-08-24 (Mon",
+          "pct": 95,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "2026-08-28"
+        },
+        {
           "id": "c20081d6-29f1-459e-91c5-c1e859dcbad8",
           "portal": "/leie-eiendom",
           "note": "Remaining: Fat AI response check + dispute path + end-to-end test (same shape as /leie / /eiendom).\nOwner: Shafi.\nDate: 2026-08-26 (Tue).",
@@ -210,17 +230,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-08-26"
-        },
-        {
-          "id": "5c429408-722f-4cf0-92be-776e0a3ef3d9",
-          "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
-          "note": "Remaining: Victor's paid-subscription test (wanted-ad requires PAID plan under €4/mo).\nOwner: Shafi (code done); Victor's subscription-check gate on top.\nDate: 2026-08-26 (Wed).",
-          "pct": 90,
-          "fe": "todo",
-          "be": "todo",
-          "estimate_days": 1,
-          "target_date": "26-8-26"
+          "target_date": "2026-08-28"
         },
         {
           "id": "e067ece1-2205-44b9-9e0c-754b816fa323",
@@ -231,16 +241,6 @@
           "be": "prog",
           "estimate_days": 3,
           "target_date": "2026-08-07"
-        },
-        {
-          "id": "72dc6b3d-b2c3-49d6-b890-68f64ea753d2",
-          "portal": "replacing the identity-display model, platform-wide",
-          "note": "Remaining: Fat AI response check + dispute path + end-to-end test (same shape as /leie / /eiendom).\nOwner: Shafi.\nDate: 2026-08-26 (Tue).",
-          "pct": 0,
-          "fe": "prog",
-          "be": "todo",
-          "estimate_days": null,
-          "target_date": null
         },
         {
           "id": "204ffcf1-1ec0-4d21-a40d-001c07818bc3",
@@ -320,7 +320,7 @@
           "fe": "prog",
           "be": "todo",
           "estimate_days": 2,
-          "target_date": "28-8-29"
+          "target_date": "28-8-30"
         },
         {
           "id": "59ce2c1b-5e53-4f57-bb8f-8c8207076b19",
@@ -445,7 +445,7 @@
         {
           "id": "72dc6b3d-b2c3-49d6-b890-68f64ea753d2",
           "portal": "replacing the identity-display model, platform-wide",
-          "note": "Remaining: Fat AI response check + dispute path + end-to-end test (same shape as /leie / /eiendom).\nOwner: Shafi.\nDate: 2026-08-26 (Tue).",
+          "note": "Remaining: \nOwner: \nDate:",
           "pct": 0,
           "fe": "prog",
           "be": "todo",
