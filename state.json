@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T08:48:14.757+00:00",
+  "updated_at": "2026-08-23T16:34:31.273+00:00",
   "updated_by": "Shafi",
   "developers": [
     {
@@ -85,7 +85,7 @@
         {
           "id": "b1c7cbe7-43c7-40bb-9848-11f9e3338c12",
           "portal": "Fatsees Owners",
-          "note": "Remaining: Testing on prod, buying shares, freja verification\nOwner: Shafi.\nDate: 2026-08-26 (Tue).",
+          "note": "Remaining: Testing on prod, buying shares, freja verification\nOwner: Shafi.\nDate: 2026-08-26 (Tue).\nPending: flip OWNERS_FREJA_ENABLED + OWNERS_PAYMENT_ENABLED (need prod Freja cert + live Mollie), verify real price vs config, one end-to-end prod purchase. Optional: explicit Fat/RAG exclusion guard.\n\nEverything runs in TEST MODE until two flags flip, and each needs its backing config present (a flag alone can't turn on a half-configured leg):\n\nOWNERS_FREJA_ENABLED — needs the Freja prod cert + key in env → then real freja verification.\nOWNERS_PAYMENT_ENABLED — needs live Mollie → then real share purchase.\n\nSo \"testing on prod, buying shares, freja verification\" is a go-live checklist, not dev work: set the two env flags, run one real purchase end-to-end (reserve → Freja verify → pay → signed agreement PDF → my-shares), confirm the release cron.\n\nTwo things to verify before go-live:\n\nPrice placeholder — Audun required a checklist line confirming the real share price on-screen matches config (the \"kr 0.25\" is a placeholder). Confirm the live number before flipping payment.\nFat zero-access — owners tables aren't in the embed/RAG pipeline (so Fat de-facto can't see them, which is correct), but §3.22 wants an explicit exclusion. Low risk, but worth a one-line guard/comment so a future source-add can't accidentally sweep Owners in. I can add that now if you want.",
           "pct": 85,
           "fe": "prog",
           "be": "todo",
@@ -95,12 +95,32 @@
         {
           "id": "b8852b70-9196-4e53-abbb-fae85783cf39",
           "portal": "Fatsees Stores (frame, front-page rows, intro ad)",
-          "note": "",
+          "note": "To close it, the only coding left is wiring <StoresRow /> into the Marketplace and Motor front pages. components/stores/StoresRow.tsx and its feed app/api/stores/featured/route.ts are fully built — free, mechanical newest-active fill, never buyable (Audun's 2026-08-17 lock). But <StoresRow /> is not dropped into any front yet — it's imported nowhere.\nPending: one line — drop <StoresRow /> into Marketplace + Motor fronts. (Combined shipping is a separate deferred build.)",
           "pct": 90,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": null,
-          "target_date": "26-8-26"
+          "estimate_days": 1,
+          "target_date": "29-8-26"
+        },
+        {
+          "id": "45d32ae3-63b4-4e5d-8fbb-b974b06d4b03",
+          "portal": "GDPR erasure — PG §10.19 (three signed additions)",
+          "note": "Built on Dev, flag still OFF. All three additions in:\n\nRetention mechanism — lib/retention.ts (5-yr clock per record class + purge cron), retention-purge route + cron 0 5 * * *, migration 20260823120000_gdpr_retention_holds.sql.\nFraud reporter_email strip on the reporter's own erasure — in lib/gdpr-erasure.ts (scheduleRetentionHolds wired in).\nSole-owner gate — app/api/account/route.ts returns 409 before erasure, never auto-closes.\n\nPending (yours, not code): apply the retention migration on prod → Dev dry-run → Apple's green rerun → only then flip GDPR_ERASE_ENABLED.",
+          "pct": 0,
+          "fe": "done",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "30-08-26"
+        },
+        {
+          "id": "4ca75218-bc31-4e7c-8af2-25c25901742d",
+          "portal": "Payout model — PG §6.10.3 (daily, final form)",
+          "note": "Done, on Dev. T41 replaced the interim weekly-Friday model with daily business-day payouts. lib/payouts.ts: WEEKLY_PAYOUT_DAY removed (0 refs), isPayoutBusinessDay() / nextAutoPayoutAt() added, pull-forward window gone, €5 floor is auto-run-only, every payout free. Cron 0 9 * * 1-5. Reconcile hardened with the partial-routed settle guard (Apple's finding). T43 stripped the false €0.25 payout-fee line from the ledger (PayoutLedger.tsx, 0 refs) — Fatsees fee now shows effective %. Test auto-payout-gate.test.ts rewritten (pays Wed, no-op Sun).\n\nPending: nothing code-side — it's live-verified.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "30-08-26"
         }
       ],
       "planned_next": [
@@ -381,6 +401,16 @@
           "be": "todo",
           "estimate_days": 2,
           "target_date": "30-08-2026"
+        },
+        {
+          "id": "45d32ae3-63b4-4e5d-8fbb-b974b06d4b03",
+          "portal": "GDPR erasure — PG §10.19 (three signed additions)",
+          "note": "Built on Dev, flag still OFF. All three additions in:\n\nRetention mechanism — lib/retention.ts (5-yr clock per record class + purge cron), retention-purge route + cron 0 5 * * *, migration 20260823120000_gdpr_retention_holds.sql.\nFraud reporter_email strip on the reporter's own erasure — in lib/gdpr-erasure.ts (scheduleRetentionHolds wired in).\nSole-owner gate — app/api/account/route.ts returns 409 before erasure, never auto-closes.\n\nPending (yours, not code): apply the retention migration on prod → Dev dry-run → Apple's green rerun → only then flip GDPR_ERASE_ENABLED.",
+          "pct": 0,
+          "fe": "done",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "30-08-26"
         }
       ],
       "planned_next": [
