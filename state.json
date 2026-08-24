@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-23T16:34:31.273+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-08-24T05:15:58.815+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -356,7 +356,7 @@
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
           "note": "Nothing built yet. Two jobs in one: first every portal’s ad has to say where the item is with a country and postal code — only Motor does that today, the rest store a typed-in place name or nothing at all — and only then can “nearest to me” sort anything. Roughly half the time is the sweep across the other portals, half is the location service itself: asking permission the moment someone presses Nearest and never before, and the three ways to answer — share where you are, type a postal code, or point at a map.",
-          "pct": 0,
+          "pct": 30,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 6,
