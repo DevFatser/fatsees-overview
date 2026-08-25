@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-25T02:49:53.633+00:00",
+  "updated_at": "2026-08-25T14:20:26.045+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -340,7 +340,7 @@
           "fe": "prog",
           "be": "todo",
           "estimate_days": 2,
-          "target_date": "28-8-30"
+          "target_date": "31-08-2026"
         },
         {
           "id": "59ce2c1b-5e53-4f57-bb8f-8c8207076b19",
@@ -459,8 +459,8 @@
           "pct": 95,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 4,
-          "target_date": "18-08-2026"
+          "estimate_days": 1,
+          "target_date": "26-08-2026"
         },
         {
           "id": "9c0d6dcb-c722-4a85-9192-7698bd801210",
@@ -470,27 +470,17 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 6,
-          "target_date": "12-08-2026"
+          "target_date": "31-08-2026"
         },
         {
           "id": "c0ec885b-d94f-4a93-abf1-8c1d2859ef1d",
           "portal": "Cloudinary orphan cleanup — ownership evidence (GDPR)",
           "note": "Closed — nothing to clean up.\n\nWhen we removed the share-ownership verification feature on 27 July, we deleted the database records but not the documents users had uploaded with them. Those documents would have been left sitting in our file storage with no owner attached — which GDPR doesn't allow, because nobody could find them to delete them if a user asked.\n\nChecked, and there are none. The file storage account has never held a single uploaded document of any kind, on any part of the site. Nothing was left behind, so there is nothing to delete.\n\nShipped anyway so it can't happen next time: a reusable cleanup tool, plus a new question on the PR review checklist — if this change deletes a table that points at uploaded files, where do the files get cleaned up?\n\nStill open, on me: the backup snapshot we were supposed to take before deleting those records doesn't look like it was taken. Tracked on its own card.",
-          "pct": 90,
+          "pct": 100,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 0,
           "target_date": "7-08-2026"
-        },
-        {
-          "id": "72dc6b3d-b2c3-49d6-b890-68f64ea753d2",
-          "portal": "replacing the identity-display model, platform-wide",
-          "note": "Remaining: \nOwner: \nDate:",
-          "pct": 0,
-          "fe": "prog",
-          "be": "todo",
-          "estimate_days": null,
-          "target_date": null
         },
         {
           "id": "d26ed81a-556b-4de8-b5c3-694d7661ebcb",
@@ -505,11 +495,11 @@
         {
           "id": "f37c9d00-64f5-45fe-ba45-4264ec529143",
           "portal": "Sponsored placements §3.17 (cron in build — sweep)",
-          "note": "Paid promotion slots, and the free ones that fill in when nobody has paid. This is already built; the job is proving each rule behaves as written — how many slots show, what order they appear in, and that the three places where paid promotion is banned really do reject it. Equity is one of those three: paying to promote an investment to ordinary people is exactly what that portal must never do.",
+          "note": "Verification sweep; the crons are\n  already built.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 18,
+          "estimate_days": 4,
           "target_date": "29-08-2026"
         },
         {
@@ -519,7 +509,7 @@
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 18,
+          "estimate_days": 4,
           "target_date": "29-08-2026"
         },
         {
