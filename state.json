@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-25T02:45:47.414+00:00",
+  "updated_at": "2026-08-25T02:49:53.633+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -359,13 +359,13 @@
           "pct": 60,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 6,
+          "estimate_days": 3,
           "target_date": "27-08-2026"
         },
         {
           "id": "a059bea8-b328-4ad8-a04f-215130ee5c5f",
           "portal": "Listing import (Marketplace + Motor)",
-          "note": "Left: (1) the side-by-side rewrite — on one draft the seller presses a button, sees the original and a suggestion next to each other, and chooses; (2) Real Estate added to the whole-page import, then Marketplace — Audun's order is Motor, Real Estate, Marketplace, and the feature stays closed to users until all three are built.",
+          "note": "The engine works on Dev: paste the address of your advert on another site and it comes back as a draft in our own create form — text, price and photos in order, a lock so the same advert can never be imported twice, and a gate so only verified people and registered businesses can import. In review: the whole-page import — paste a seller's overview page and every advert on it comes back as its own draft, with progress shown and any that could not come over named with the reason. An advert comes across exactly as it stands on the other site: no text is rewritten on its own, and a genuinely short description is kept as the seller wrote it — only a site's own strapline is dropped. Nothing can go live by itself; the seller's own publish click is the only way, and that click is the check. Country and postal code always arrive empty and the seller fills them before publishing. Left: (1) the side-by-side rewrite — on one draft the seller presses a button, sees the original and a suggestion next to each other, and chooses; (2) Real Estate added to the whole-page import, then Marketplace — the order is Motor, Real Estate, Marketplace, and the feature stays closed to users until all three are built.",
           "pct": 65,
           "fe": "todo",
           "be": "todo",
@@ -411,6 +411,16 @@
           "be": "todo",
           "estimate_days": 1,
           "target_date": "30-08-26"
+        },
+        {
+          "id": "fb1b96b0-b723-4e7c-90a9-70631e20ada3",
+          "portal": "Admin & compliance screen",
+          "note": "The back-office screen where a data-deletion request is handled showed internal code words instead of labels, and no developer account could open it at all — so that queue had never been used by anyone. It now reads properly in English, the assistant panel is no longer titled in Norwegian, and there is a script that gives a developer access on the test site. In review. Left: nothing to build — it closes on the merge.",
+          "pct": 90,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": "25-08-2026"
         }
       ],
       "planned_next": [
