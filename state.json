@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-25T15:16:19.513+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-25T19:11:05.829+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -385,7 +385,7 @@
         {
           "id": "4da68792-18d1-4d72-8477-87d23607b6b0",
           "portal": "Pre-launch portal testing - Apple",
-          "note": "Daily pre-launch portal testing log — Apple + Nahid, from 24 Aug, min 30–40 min/day each.\nFormat per entry:\nDate — Tester — Portal/Page — What was tested — Result (works / bug found → reported where / fix scheduled when)",
+          "note": "25 Aug — Apple — /some — profile setup, display name, public profile; text/image/poll posting; earnings and data screens — profile and posting worked, all amounts in EUR\n\n25 Aug — Apple — /some — the intro on /some/create reads \"you become a Verified user\" — PG §10.18 bans that word on any user-facing screen, and it is the only place left in the code that still shows it → logged, needs an owner\n\n25 Aug — Apple — /some — a post cannot be edited or deleted; the ⋯ menu offers Report only, on posts and polls alike, while the API already supports both and comments can be edited and deleted → logged, needs an owner",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
