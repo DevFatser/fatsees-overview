@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-24T05:15:58.815+00:00",
+  "updated_at": "2026-08-25T02:45:47.414+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -355,8 +355,8 @@
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
-          "note": "Nothing built yet. Two jobs in one: first every portal’s ad has to say where the item is with a country and postal code — only Motor does that today, the rest store a typed-in place name or nothing at all — and only then can “nearest to me” sort anything. Roughly half the time is the sweep across the other portals, half is the location service itself: asking permission the moment someone presses Nearest and never before, and the three ways to answer — share where you are, type a postal code, or point at a map.",
-          "pct": 30,
+          "note": "Two jobs in one. First: every ad has to say where the item is, with a country and postal code — only cars did that before. Marketplace, both rental portals and property are done now and in review: the form asks in its own section, the answer is checked three ways so it cannot slip through, and the buyer sees the country on the listing. Two real faults turned up on the way and are fixed: the two rental edit forms had been throwing away 26 of their fields while telling the seller it saved — rental price and deposit among them — and the property form's own save door never checked the location at all. Postal fields that only accepted the Norwegian four-digit shape are gone, so a landlord in Berlin or London can finally type his own. Left: the location service itself — asking permission the moment someone presses \"Nearest\" and never before, the three ways to answer, and the sort.",
+          "pct": 60,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 6,
@@ -365,7 +365,7 @@
         {
           "id": "a059bea8-b328-4ad8-a04f-215130ee5c5f",
           "portal": "Listing import (Marketplace + Motor)",
-          "note": "The engine works on Dev: paste the address of your advert on another site and it comes back as a draft in our own create form — text, price and photos in order, a lock so the same advert can never be imported twice, and a gate so only verified people and registered businesses can import. In review now: the whole-page import — paste a seller's overview page and every advert on it comes back as its own draft, with progress shown and any that could not come over named with the reason. An advert comes across exactly as it stands on the other site: no text is rewritten on its own. Country and postal code always arrive empty and the seller fills them before publishing, so nothing publishes without them. Left: (1) the side-by-side rewrite — on one draft the seller presses a button, sees the original and a suggestion next to each other, and chooses; (2) the copy-protection review queue — until it lands, first to publish holds a URL; (3) the entry on the remaining portals — Real Estate, short-term rent, Marketplace.",
+          "note": "Left: (1) the side-by-side rewrite — on one draft the seller presses a button, sees the original and a suggestion next to each other, and chooses; (2) Real Estate added to the whole-page import, then Marketplace — Audun's order is Motor, Real Estate, Marketplace, and the feature stays closed to users until all three are built.",
           "pct": 65,
           "fe": "todo",
           "be": "todo",
