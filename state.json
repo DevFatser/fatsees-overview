@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-25T14:20:26.045+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-25T15:16:19.513+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -50,7 +50,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "23-08-28"
+          "target_date": "29-08-26"
         },
         {
           "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
@@ -70,7 +70,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-08-28"
+          "target_date": "29-08-26"
         },
         {
           "id": "5c429408-722f-4cf0-92be-776e0a3ef3d9",
@@ -230,7 +230,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "23-08-28"
+          "target_date": "29-08-26"
         },
         {
           "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
@@ -250,7 +250,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-08-28"
+          "target_date": "29-08-26"
         },
         {
           "id": "e067ece1-2205-44b9-9e0c-754b816fa323",
@@ -320,7 +320,7 @@
           "fe": "prog",
           "be": "prog",
           "estimate_days": 2,
-          "target_date": "23-08-2026"
+          "target_date": "01-09-2026"
         },
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
@@ -380,7 +380,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "18-08-2026"
+          "target_date": "27-08-2026"
         },
         {
           "id": "4da68792-18d1-4d72-8477-87d23607b6b0",
@@ -390,7 +390,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
-          "target_date": null
+          "target_date": "04-09-2026"
         },
         {
           "id": "1c6cf222-058f-4dee-988b-1d47617d7a02",
@@ -445,11 +445,11 @@
         {
           "id": "d18ca28a-1474-4d04-a4db-483e0111544f",
           "portal": "Founders portal",
-          "note": "BUG: the progress bar keeps down to 50%, it was done,then reviewed, &i gave feedback. Nahid will fix ui issues later, so it's kept at 90%",
+          "note": "Shaif's review list build and pushed also the ui issues, need testing now",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 14,
+          "estimate_days": 0,
           "target_date": "25-08-2026"
         },
         {
@@ -516,11 +516,21 @@
           "id": "e26f78e4-3948-449a-b4b6-eddf8309eff8",
           "portal": "Identity display model §10.18 (own workstream)",
           "note": "Built and merged — needs testing.\n\nNicknames replace real names everywhere public, one badge (Identified),\nverification % panel, email-only signup, \"Show name\" in threads, and\nthree privacy toggles.\n\nTest: sign up with email only · check a listing, a profile and a search\nresult show nicknames · message someone and try \"Show name\" · open your\nverification panel · try the privacy toggles in settings · try a\nnickname in Arabic or Korean.\n\nNot a bug: your real name still shows on agreements, escrow, checkout,\nreceipts and your own GDPR export — required by §10.18.",
-          "pct": 95,
+          "pct": 100,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 3,
           "target_date": "18-08-2026"
+        },
+        {
+          "id": "ee58e56d-311d-4a8c-8e0b-db4cfbe09fb0",
+          "portal": "Test: /aksjer",
+          "note": "Date: 19Aug\n — Equity portal, read-only sweep (portal front, wanted list, wanted create,\n  listing create, company profile)\nTest details / report:\n  - Asking price field hardcoded \"NOK / share\" while account currency is EUR — BUG,\n    Norway scrub + currency. Auto-yes per Audun 11Aug. Schedule to fix: 26Aug\n  - Skip-link renders \"Hopp til hovedinnhold\" on every page (global layout, outside the\n    equity language census) — BUG. Schedule to fix: 26Aug\n  - Company profile chart copy \"after the first trade closes via Fatsees\" — contradicts\n    §3.11 off-platform settlement — BUG. Schedule to fix: 26Aug\n  - Same sentence says \"a Pro user voluntarily reports\" — Audun 04Aug removed the\n    higher-plan gate, any paid plan may report — BUG. Schedule to fix: 26Aug\n  - LAST TRADE / PERIOD LOW / PERIOD HIGH / VOLUME tiles + 1W-ALL period selectors on\n    company profile — reads as a quote panel. §3.11 price-signal question, raised to\n    Audun, not fixed unilaterally\n  - Contact channel checkboxes unavailable (\"Verify this channel on your account\") on\n    both create forms — blocks publishing. Confirm test-account state before logging\n  - \"Not available on the Free tier\" banner shows on a Pro account — minor\n  - PASS: English sector labels, Transaction history title + disclaimer placement,\n    \"not confirmed by Fatsees\" wording, documents block copy, aggregate holdings,\n    no price field on wanted ads, More share listings empty state with no badge,\n    Confirmed-by wording in third-party dropdown",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "26-08-2026"
         }
       ],
       "planned_next": [],
