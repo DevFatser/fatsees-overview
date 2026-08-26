@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-26T07:09:16.218+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-26T09:06:16.864+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -170,7 +170,7 @@
           "fe": "prog",
           "be": "done",
           "estimate_days": 2,
-          "target_date": "2026-08-20"
+          "target_date": "27-08-2026"
         },
         {
           "id": "26067edb-a71e-4126-ae21-e4343c7524fa",
@@ -210,7 +210,7 @@
           "fe": "prog",
           "be": "prog",
           "estimate_days": 1,
-          "target_date": "2026-07-29"
+          "target_date": "2026-08-28"
         },
         {
           "id": "55340422-21d4-4f98-bd3b-903922303c97",
@@ -220,7 +220,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 3,
-          "target_date": "2026-08-04"
+          "target_date": "2026-08-28"
         },
         {
           "id": "0e998d6a-ee4d-4e1c-9a77-f053b7ab8bdd",
@@ -290,7 +290,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
-          "target_date": "22-08-26"
+          "target_date": "2026-08-27"
         }
       ],
       "planned_next": [
