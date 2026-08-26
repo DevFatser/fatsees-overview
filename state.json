@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-26T11:40:47.718+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-26T16:36:37.384+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -110,7 +110,7 @@
           "fe": "done",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "30-08-26"
+          "target_date": "31-08-2026"
         },
         {
           "id": "4ca75218-bc31-4e7c-8af2-25c25901742d",
@@ -335,7 +335,7 @@
         {
           "id": "de98196c-c6aa-4ed9-8ac8-88a862e2ff0f",
           "portal": "/Some- Fatsees Profile portal",
-          "note": "Remaining: Test all money flow in prod\nOwner: Shafi. Test author: APPLE;\nThe three money paths (tip, paid-follower, sponsored deal) run end-to-end as real buyer + seller with proof logged.\nDate: 2026-08-29 (Tue).",
+          "note": "01-09-2026Owner: Shafi. Test author: APPLE;\nThe three money paths (tip, paid-follower, sponsored deal) run end-to-end as real buyer + seller with proof logged.\nDate: 2026-08-29 (Tue).",
           "pct": 80,
           "fe": "prog",
           "be": "todo",
@@ -355,7 +355,7 @@
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
-          "note": "Two jobs in one. First: every ad has to say where the item is, with a country and postal code — only cars did that before. Marketplace, both rental portals and property are done now and in review: the form asks in its own section, the answer is checked three ways so it cannot slip through, and the buyer sees the country on the listing. Two real faults turned up on the way and are fixed: the two rental edit forms had been throwing away 26 of their fields while telling the seller it saved — rental price and deposit among them — and the property form's own save door never checked the location at all. Postal fields that only accepted the Norwegian four-digit shape are gone, so a landlord in Berlin or London can finally type his own. Left: the location service itself — asking permission the moment someone presses \"Nearest\" and never before, the three ways to answer, and the sort.",
+          "note": "Remaining: the \"Nearest\" sort, day two — a platform-wide distance-ascending sort on every listing surface, Founders included. The service itself is in review as #546: one service for every surface, a place stated in the query winning with no prompt, the browser's own dialog only at the moment of need, and the three choices when nothing is known. Area only, coordinates discarded on arrival. Found while building and not fixed here: /my-profile already stores a user's latitude and longitude and sends the raw coordinate to an outside geocoder over a branded URL — a live §10.16 and §10.2 breach, flagged to Shafi because it changes an API contract and a stored column on a live surface. The app-format check §10.16 asks for is still owed.",
           "pct": 60,
           "fe": "todo",
           "be": "todo",
@@ -365,17 +365,17 @@
         {
           "id": "a059bea8-b328-4ad8-a04f-215130ee5c5f",
           "portal": "Listing import (Marketplace + Motor)",
-          "note": "The engine works on Dev: paste the address of your advert on another site and it comes back as a draft in our own create form — text, price and photos in order, a lock so the same advert can never be imported twice, and a gate so only verified people and registered businesses can import. In review: the whole-page import — paste a seller's overview page and every advert on it comes back as its own draft, with progress shown and any that could not come over named with the reason. An advert comes across exactly as it stands on the other site: no text is rewritten on its own, and a genuinely short description is kept as the seller wrote it — only a site's own strapline is dropped. Nothing can go live by itself; the seller's own publish click is the only way, and that click is the check. Country and postal code always arrive empty and the seller fills them before publishing. Left: (1) the side-by-side rewrite — on one draft the seller presses a button, sees the original and a suggestion next to each other, and chooses; (2) Real Estate added to the whole-page import, then Marketplace — the order is Motor, Real Estate, Marketplace, and the feature stays closed to users until all three are built.",
+          "note": "Remaining: the Marketplace half — the last of the three portals. Audun's 25 Aug ruling: Motor and Real Estate first, then Marketplace, and the feature stays shut to users until all three are in. Marketplace's composer has no paste box yet, and that is what the switch is waiting for. In review as #542: the side-by-side rewrite (the seller presses a button on one draft, sees the source's own words beside Fat's, and chooses — never automatic), Real Estate through the whole-page import, and the provenance label that could read \"From your listing\" over text Fat wrote. An advert still comes across exactly as it stands elsewhere, a genuinely short description is kept, and country and postal code arrive empty for the seller to fill before publishing.",
           "pct": 65,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 5,
-          "target_date": "31-08-2026"
+          "target_date": "02-09-2026"
         },
         {
           "id": "48a4a1eb-dcb9-47ad-ac7e-baed693a4f16",
           "portal": "Cloudinary signed delivery",
-          "note": "Files people upload as evidence in a complaint or with a business application no longer sit at permanent open addresses — uploads are signed, the files are private, and reading one takes a short-lived link that only the people already allowed on that page can mint. The cleanup ran and the proof is posted: the photo store held no open documents anywhere, and the one document store that was publicly readable is now closed and proven closed with a fresh read. Left: one already-written change that switches the finished portals' production gate on — waiting on a review slot.",
+          "note": "Files people upload as evidence in a complaint or with a business application no longer sit at permanent open addresses — uploads are signed, the files are private, and reading one takes a short-lived link that only the people already allowed on that page can mint. The cleanup ran and the proof is posted: the photo store held no open documents anywhere, and the one document store that was publicly readable is now closed and proven closed with a fresh read. Remaining: nothing from me — one already-written change switches the finished portals' production gate on, and it closes on the merge of #511, which has now been open eight days. Owner: Apple. Date: 2026-08-27 (Thu).",
           "pct": 95,
           "fe": "todo",
           "be": "todo",
@@ -385,22 +385,22 @@
         {
           "id": "4da68792-18d1-4d72-8477-87d23607b6b0",
           "portal": "Pre-launch portal testing - Apple",
-          "note": "25 Aug — Apple — /some — profile setup, display name, public profile; text/image/poll posting; earnings and data screens — profile and posting worked, all amounts in EUR\n\n25 Aug — Apple — /some — the intro on /some/create reads \"you become a Verified user\" — PG §10.18 bans that word on any user-facing screen, and it is the only place left in the code that still shows it → logged, needs an owner\n\n25 Aug — Apple — /some — a post cannot be edited or deleted; the ⋯ menu offers Report only, on posts and polls alike, while the API already supports both and comments can be edited and deleted → logged, needs an owner",
+          "note": "26 Aug — Apple — /marketplace — browse and search signed out; listing an item with the new country and postal code; viewing it as a buyer — price, location and escrow line all correct, seller shown by display name\n\n26 Aug — Apple — /marketplace — the Edit button on a published listing — it opens an empty new-listing form instead, so a published price or postal code cannot be corrected, and no other way back to my own advert → raised in all-team chat today\n\n26 Aug — Apple — /marketplace — the category in the breadcrumb shows in Norwegian on an English page → logged, needs an owner\n\n26 Aug — Apple — /marketplace — two location fields in the same form, one labelled only \"Location\" — filling that one does not satisfy the required one and Publish stays disabled → logged, needs an owner\n\n25 Aug — Apple — /some — profile setup, display name, public profile; text, image and poll posting; earnings and data screens — profile and posting worked, all amounts in EUR\n\n25 Aug — Apple — /some — the intro on /some/create reads \"you become a Verified user\" — that word is not allowed on any screen a user reads, and it is the only place left that still shows it → logged, needs an owner\n\n25 Aug — Apple — /some — a post cannot be edited or deleted; the menu on my own post offers Report only, on posts and polls alike, while comments can be edited and deleted → logged, needs an owner",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
-          "target_date": "04-09-2026"
+          "target_date": "03-09-2026"
         },
         {
           "id": "1c6cf222-058f-4dee-988b-1d47617d7a02",
           "portal": "/Some money flow e2e",
-          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof.",
+          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof. Remaining: the whole run; not started, it sits behind the location service and the GDPR rerun. Owner: Apple. Date: 2026-09-01 (Tue).",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 2,
-          "target_date": "30-08-2026"
+          "target_date": "01-09-2026"
         },
         {
           "id": "45d32ae3-63b4-4e5d-8fbb-b974b06d4b03",
@@ -410,7 +410,7 @@
           "fe": "done",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "30-08-26"
+          "target_date": "31-08-2026"
         },
         {
           "id": "fb1b96b0-b723-4e7c-90a9-70631e20ada3",
