@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-26T09:16:09.885+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-08-26T11:40:47.718+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -445,8 +445,8 @@
         {
           "id": "d18ca28a-1474-4d04-a4db-483e0111544f",
           "portal": "Founders portal",
-          "note": "Shaif's review list build and pushed also the ui issues, need testing now",
-          "pct": 90,
+          "note": "Remaining: Code merged (#541), migration applied Dev + prod with smoke\nposted (eur_column=1 · old_columns_left=0 · both idempotent), follow-up\nPR #545 open. Two things left, in this order: (1) seed two users +\npitches on Dev — Dev currently has ZERO pitches, which is why the\nembedding query can't answer anything yet; (2) then run the embedding\ndiagnosis for Ventures recruiting / NL search — all-false means a silent\nwrite-path failure and becomes its own plan, embedded-but-zero-results\nmeans ranking and lands here. Then the two-account matrix: express\ninterest, the four invite paths, member chat, applications.",
+          "pct": 95,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 0,
@@ -455,7 +455,7 @@
         {
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
-          "note": "Fatsees Equity is a noticeboard where owners of private-company shares advertise\nthem for sale — legal without a licence only if we never match buyers and sellers,\nhost deal chat, show live prices, or touch the money.\nI'm adding those legal guardrails, removing old features that crossed the line,\nand building the allowed ones (contact reveal, wanted ads, history chart, alerts).\nIn short: Equity must always behave like a noticeboard, never like a stock exchange.",
+          "note": "Remaining: Code merged (#544) — badge now renders Audun's wording\nthrough ui-strings, the hardcoded sentence at client.tsx:274 is gone,\ncensus built and wired, tests/aksjer green at 634. BLOCKED on a ruling:\nthe census found 137 pre-existing hardcoded strings across 18 files, so\nnpm run check is red for everyone. Burn-down plan or reviewed\nallow-list — needs Shafi/Audun. Estimate follows the ruling.\nOwner: Nahid (blocked: Shafi/Audun). Date: pending ruling.",
           "pct": 95,
           "fe": "prog",
           "be": "prog",
@@ -465,7 +465,7 @@
         {
           "id": "9c0d6dcb-c722-4a85-9192-7698bd801210",
           "portal": "Currency Change",
-          "note": "Prod-gated: silent-fallback confirmation and the full acceptance test on prod — waits on Victor's main-branch merge.",
+          "note": "Remaining: Silent-fallback confirmation and the full acceptance test on\nprod. Blocked on Victor's main-branch merge — the only item of mine\nwaiting on someone else.",
           "pct": 70,
           "fe": "todo",
           "be": "todo",
@@ -475,7 +475,7 @@
         {
           "id": "c0ec885b-d94f-4a93-abf1-8c1d2859ef1d",
           "portal": "Cloudinary orphan cleanup — ownership evidence (GDPR)",
-          "note": "Closed — nothing to clean up.\n\nWhen we removed the share-ownership verification feature on 27 July, we deleted the database records but not the documents users had uploaded with them. Those documents would have been left sitting in our file storage with no owner attached — which GDPR doesn't allow, because nobody could find them to delete them if a user asked.\n\nChecked, and there are none. The file storage account has never held a single uploaded document of any kind, on any part of the site. Nothing was left behind, so there is nothing to delete.\n\nShipped anyway so it can't happen next time: a reusable cleanup tool, plus a new question on the PR review checklist — if this change deletes a table that points at uploaded files, where do the files get cleaned up?\n\nStill open, on me: the backup snapshot we were supposed to take before deleting those records doesn't look like it was taken. Tracked on its own card.",
+          "note": "Remaining: Nothing. Nothing was ever orphaned — the storage account has\nnever held an uploaded document anywhere on the site. Cleanup tool and\nPR-checklist question shipped. The pre-delete backup snapshot is tracked\non its own card.",
           "pct": 100,
           "fe": "todo",
           "be": "todo",
@@ -485,17 +485,17 @@
         {
           "id": "d26ed81a-556b-4de8-b5c3-694d7661ebcb",
           "portal": "Admin-granted subscriptions",
-          "note": "Lets an admin give a business account a paid plan for free until a chosen date — useful for launch partners and campaigns. Reminders go out 30, 14, 7 and 1 days before it runs out. If nobody pays after that, their ads go quiet rather than being deleted, and come straight back the moment payment arrives.\n\nThe one thing that must not go wrong: if a granted business saves a card to buy something small — an ad, some tokens — the system must not read that as \"start charging them for the subscription\". They were given the period; the date decides, nothing else.",
+          "note": "Remaining: Grant screen (account + plan + date, nothing else) and the\n30/14/7/1 reminder ladder. At expiry listings go inactive, never\ndeleted, one-click restore. The trap: a granted account saving a card\nto buy tokens or an ad must NOT start a subscription charge — the\nexpiry date governs alone.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 16,
+          "estimate_days": 1,
           "target_date": "27-08-2026"
         },
         {
           "id": "f37c9d00-64f5-45fe-ba45-4264ec529143",
           "portal": "Sponsored placements §3.17 (cron in build — sweep)",
-          "note": "Verification sweep; the crons are\n  already built.",
+          "note": "Remaining: Verification sweep — it is already built (SponsoredPageBottom\nwired into 20 files, auto-sponsored pool, first-100 notification, both\ncrons). Prove each rule: 20 slots, Load-more disappearing when the pool\nempties, paid-random-then-auto-newest order, the per-portal first-100\ncounter actually disabling, and that /ai, /aksjer, /community and\n/some/[username] reject placement server-side rather than merely not\nimporting the component.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
@@ -505,7 +505,7 @@
         {
           "id": "d7746c37-11bc-4a5b-8cbb-201c3db7ab4b",
           "portal": "Admin panel",
-          "note": "The back-office screens used to run the platform: find a user, handle a\nrefund, work through reported content, answer a data request. Most of it\nis already built. The job is checking that the four things we can't\nlaunch without actually work, and confirming that every admin action is\nwritten to a log nobody can edit afterwards — that one is a legal\nrequirement, not a nice-to-have.\n\nTwo known gaps: the audit log is not tamper-proof (one policy grants\nservice_role ALL operations, so a row can be edited or deleted; §11.6\nneeds insert + select only, 7 years), and 16 of 48 admin routes write\nto it.",
+          "note": "Remaining: Verification, not a build — the four §11.2 pre-launch\nmust-haves. Two real gaps: the audit log is not tamper-proof (one\npolicy grants service_role ALL operations, so a row can be edited or\ndeleted; §11.6 needs insert+select only, 7 years), and 16 of 48 admin\nroutes write to it. §11.10 removed from this card — it has its own.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
@@ -515,22 +515,12 @@
         {
           "id": "e26f78e4-3948-449a-b4b6-eddf8309eff8",
           "portal": "Identity display model §10.18 (own workstream)",
-          "note": "Built and merged — needs testing.\n\nNicknames replace real names everywhere public, one badge (Identified),\nverification % panel, email-only signup, \"Show name\" in threads, and\nthree privacy toggles.\n\nTest: sign up with email only · check a listing, a profile and a search\nresult show nicknames · message someone and try \"Show name\" · open your\nverification panel · try the privacy toggles in settings · try a\nnickname in Arabic or Korean.\n\nNot a bug: your real name still shows on agreements, escrow, checkout,\nreceipts and your own GDPR export — required by §10.18.",
+          "note": "Remaining: Nothing to build. Five plans shipped and merged — nicknames\nplatform-wide, one Identified badge, verification % panel, email-only\nsignup, \"Show name\" in threads, three privacy toggles. Needs testing\nonly. Not a bug: the real name still shows on agreements, escrow,\ncheckout, receipts and your own GDPR export.",
           "pct": 100,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 3,
           "target_date": "18-08-2026"
-        },
-        {
-          "id": "ee58e56d-311d-4a8c-8e0b-db4cfbe09fb0",
-          "portal": "Test: /aksjer",
-          "note": "Date: 19Aug\n — Equity portal, read-only sweep (portal front, wanted list, wanted create,\n  listing create, company profile)\nTest details / report:\n  - Asking price field hardcoded \"NOK / share\" while account currency is EUR — BUG,\n    Norway scrub + currency. Auto-yes per Audun 11Aug. Schedule to fix: 26Aug\n  - Skip-link renders \"Hopp til hovedinnhold\" on every page (global layout, outside the\n    equity language census) — BUG. Schedule to fix: 26Aug\n  - Company profile chart copy \"after the first trade closes via Fatsees\" — contradicts\n    §3.11 off-platform settlement — BUG. Schedule to fix: 26Aug\n  - Same sentence says \"a Pro user voluntarily reports\" — Audun 04Aug removed the\n    higher-plan gate, any paid plan may report — BUG. Schedule to fix: 26Aug\n  - LAST TRADE / PERIOD LOW / PERIOD HIGH / VOLUME tiles + 1W-ALL period selectors on\n    company profile — reads as a quote panel. §3.11 price-signal question, raised to\n    Audun, not fixed unilaterally\n  - Contact channel checkboxes unavailable (\"Verify this channel on your account\") on\n    both create forms — blocks publishing. Confirm test-account state before logging\n  - \"Not available on the Free tier\" banner shows on a Pro account — minor\n  - PASS: English sector labels, Transaction history title + disclaimer placement,\n    \"not confirmed by Fatsees\" wording, documents block copy, aggregate holdings,\n    no price field on wanted ads, More share listings empty state with no badge,\n    Confirmed-by wording in third-party dropdown",
-          "pct": 0,
-          "fe": "todo",
-          "be": "todo",
-          "estimate_days": 1,
-          "target_date": "26-08-2026"
         }
       ],
       "planned_next": [],
@@ -571,7 +561,7 @@
     {
       "id": "4259bd67-21ba-48b3-b99a-42461fb8f184",
       "portal": "Usage / consumption view @Nahid",
-      "note": ""
+      "note": "Remaining: Scope and estimate — not started. Approved by Audun 25 Aug\nas needed but NOT before 1 Sept; first in line after the current plan\ncloses. Split out of the Admin panel card."
     }
   ]
 }
