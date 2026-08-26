@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-25T19:11:05.829+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-26T07:09:16.218+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -505,7 +505,7 @@
         {
           "id": "d7746c37-11bc-4a5b-8cbb-201c3db7ab4b",
           "portal": "Admin panel",
-          "note": "The back-office screens used to run the platform: find a user, handle a refund, work through reported content, answer a data request. Most of it is already built. The job is checking that the four things we can't launch without actually work, and confirming that every admin action is written to a log nobody can edit afterwards — that one is a legal requirement, not a nice-to-have.\n\nAdmin panel + usage panel — not started. This is Audun's §11.10: admin grants a business a plan with an expiry + no card on file, reminders at 30/14/7/1 days, at expiry listings go inactive not deleted with one-click restore — plus a usage/consumption view. Real build, s. This is also Audun's reassigned \"A3 admin subscriptions.\" this task is assigned to u about admin panel",
+          "note": "The back-office screens used to run the platform: find a user, handle a\nrefund, work through reported content, answer a data request. Most of it\nis already built. The job is checking that the four things we can't\nlaunch without actually work, and confirming that every admin action is\nwritten to a log nobody can edit afterwards — that one is a legal\nrequirement, not a nice-to-have.\n\nTwo known gaps: the audit log is not tamper-proof (one policy grants\nservice_role ALL operations, so a row can be edited or deleted; §11.6\nneeds insert + select only, 7 years), and 16 of 48 admin routes write\nto it.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
@@ -566,6 +566,11 @@
     {
       "id": "6296e316-b16f-4da0-9142-b5744f68480b",
       "portal": "World of Business (/world) - @Nahid - future task",
+      "note": ""
+    },
+    {
+      "id": "4259bd67-21ba-48b3-b99a-42461fb8f184",
+      "portal": "Usage / consumption view @Nahid",
       "note": ""
     }
   ]
