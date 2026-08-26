@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26T09:06:16.864+00:00",
+  "updated_at": "2026-08-26T09:16:09.885+00:00",
   "updated_by": "Shafi",
   "developers": [
     {
@@ -35,12 +35,12 @@
         {
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
           "portal": "Main branch launch tasks",
-          "note": "Lead dev Victor: PR pushed on feat-main-branch-gate--victor including full Fat scan pipeline (0181 migration). Awaiting Shafi merge to main.",
+          "note": "Lead dev Victor: PR pushed on feat-main-branch-gate",
           "pct": 100,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-07-29"
+          "target_date": "ONGOING"
         },
         {
           "id": "0e998d6a-ee4d-4e1c-9a77-f053b7ab8bdd",
@@ -60,7 +60,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-08-28"
+          "target_date": "2026-08-29"
         },
         {
           "id": "c20081d6-29f1-459e-91c5-c1e859dcbad8",
@@ -70,7 +70,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "29-08-26"
+          "target_date": "29-08-29"
         },
         {
           "id": "5c429408-722f-4cf0-92be-776e0a3ef3d9",
@@ -159,6 +159,16 @@
           "id": "5c7c1257-2608-42ab-853b-deb75b13e23c",
           "portal": "PWA - «click here to add App on your home page» functionality + fix mobile responsive issues on main branch pages",
           "note": "Lead dev Shafi: PWA / app shell + §10.16 permission flow (status needed — sweep)"
+        },
+        {
+          "id": "26067edb-a71e-4126-ae21-e4343c7524fa",
+          "portal": "Fat AI Integration",
+          "note": "Auto-scan-on-publish (all plans), vision-captioned embeddings, semantic search rerank, per-listing rescan, and Fat insights chips + polished description on detail page — all four Audun asks (#2, #3, #4a, #4b) shipped. PR out for Shafi review."
+        },
+        {
+          "id": "68083120-6d9f-4817-8e2b-469dd0fc5caf",
+          "portal": "Mollie Checkout",
+          "note": "/marketplace ✅ PaymentModal → payin (live). \n/leie-eiendom ✅ book → Mollie redirectUrl (live).\n /leie ⏳"
         }
       ],
       "in_progress": [
@@ -173,34 +183,14 @@
           "target_date": "27-08-2026"
         },
         {
-          "id": "26067edb-a71e-4126-ae21-e4343c7524fa",
-          "portal": "Fat AI Integration",
-          "note": "Auto-scan-on-publish (all plans), vision-captioned embeddings, semantic search rerank, per-listing rescan, and Fat insights chips + polished description on detail page — all four Audun asks (#2, #3, #4a, #4b) shipped. PR out for Shafi review.",
-          "pct": 100,
-          "fe": "prog",
-          "be": "done",
-          "estimate_days": 1,
-          "target_date": "2026-07-29"
-        },
-        {
-          "id": "68083120-6d9f-4817-8e2b-469dd0fc5caf",
-          "portal": "Mollie Checkout",
-          "note": "/marketplace ✅ PaymentModal → payin (live). \n/leie-eiendom ✅ book → Mollie redirectUrl (live).\n /leie ⏳ button visual-only; waiting on separate booking-wiring plan.",
-          "pct": 100,
-          "fe": "prog",
-          "be": "prog",
-          "estimate_days": 4,
-          "target_date": "2026-08-01"
-        },
-        {
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
           "portal": "Main branch launch tasks",
-          "note": "Lead dev Victor: PR pushed on feat-main-branch-gate--victor including full Fat scan pipeline (0181 migration). Awaiting Shafi merge to main.",
+          "note": "Lead dev Victor: PR pushed on feat-main-branch-gate",
           "pct": 100,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-07-29"
+          "target_date": "ONGOING"
         },
         {
           "id": "8ffb2c09-feef-4d8c-bbd2-49bf2cf3c762",
@@ -210,7 +200,7 @@
           "fe": "prog",
           "be": "prog",
           "estimate_days": 1,
-          "target_date": "2026-08-28"
+          "target_date": "28-08-2026"
         },
         {
           "id": "55340422-21d4-4f98-bd3b-903922303c97",
@@ -240,7 +230,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-08-28"
+          "target_date": "2026-08-29"
         },
         {
           "id": "c20081d6-29f1-459e-91c5-c1e859dcbad8",
@@ -250,7 +240,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "29-08-26"
+          "target_date": "29-08-29"
         },
         {
           "id": "e067ece1-2205-44b9-9e0c-754b816fa323",
@@ -291,6 +281,16 @@
           "be": "todo",
           "estimate_days": null,
           "target_date": "2026-08-27"
+        },
+        {
+          "id": "33762444-4848-4ef1-822a-97470af02adc",
+          "portal": "Portal-by-portal Fat check",
+          "note": "Remaining: Fat AI response check +\nOwner: Victor\nDate: 2026-08-26 (Tue).",
+          "pct": 0,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "27-08-2026"
         }
       ],
       "planned_next": [
