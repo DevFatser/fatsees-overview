@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-26T16:36:37.384+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-27T20:25:00.36+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -315,7 +315,7 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Booking someone's time on video works on Dev - browsing providers, their calendar, paying with the money held safely until the buyer confirms or the waiting period ends, the video room, ratings, comments on paid videos, a free introduction call before committing, the complaint route with its admin screen, and the tax on video payments now separated out properly. Left: (1) proving the money reaches the seller on two accounts - the code path run is written and re-runs Sunday after a fault in the test harness was found and corrected, and the true split waits on a second test company; (2) podcasts and the top-five rows, built by a second developer.",
+          "note": "Remaining: the escrow proof to artifact. Blocked on Delayed Routing being enabled on the Mollie organisation — the release cannot run in test or production until it is on.\nOwner: Apple\nDate: 2026-09-01 (Tue)",
           "pct": 72,
           "fe": "prog",
           "be": "prog",
@@ -355,7 +355,7 @@
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
-          "note": "Remaining: the \"Nearest\" sort, day two — a platform-wide distance-ascending sort on every listing surface, Founders included. The service itself is in review as #546: one service for every surface, a place stated in the query winning with no prompt, the browser's own dialog only at the moment of need, and the three choices when nothing is known. Area only, coordinates discarded on arrival. Found while building and not fixed here: /my-profile already stores a user's latitude and longitude and sends the raw coordinate to an outside geocoder over a branded URL — a live §10.16 and §10.2 breach, flagged to Shafi because it changes an API contract and a stored column on a live surface. The app-format check §10.16 asks for is still owed.",
+          "note": "Remaining: the \"Nearest\" sort, and the /eiendom wanted-tab country change — written on the #538 branch, not committed. Found on the way: /eiendom browse has no country filter at all, so the country this ruling makes mandatory has nothing behind it on the browse side; raised for a decision. Owner: Apple. Date: 2026-08-30 (Sun).",
           "pct": 60,
           "fe": "todo",
           "be": "todo",
@@ -385,7 +385,7 @@
         {
           "id": "4da68792-18d1-4d72-8477-87d23607b6b0",
           "portal": "Pre-launch portal testing - Apple",
-          "note": "26 Aug — Apple — /marketplace — browse and search signed out; listing an item with the new country and postal code; viewing it as a buyer — price, location and escrow line all correct, seller shown by display name\n\n26 Aug — Apple — /marketplace — the Edit button on a published listing — it opens an empty new-listing form instead, so a published price or postal code cannot be corrected, and no other way back to my own advert → raised in all-team chat today\n\n26 Aug — Apple — /marketplace — the category in the breadcrumb shows in Norwegian on an English page → logged, needs an owner\n\n26 Aug — Apple — /marketplace — two location fields in the same form, one labelled only \"Location\" — filling that one does not satisfy the required one and Publish stays disabled → logged, needs an owner\n\n25 Aug — Apple — /some — profile setup, display name, public profile; text, image and poll posting; earnings and data screens — profile and posting worked, all amounts in EUR\n\n25 Aug — Apple — /some — the intro on /some/create reads \"you become a Verified user\" — that word is not allowed on any screen a user reads, and it is the only place left that still shows it → logged, needs an owner\n\n25 Aug — Apple — /some — a post cannot be edited or deleted; the menu on my own post offers Report only, on posts and polls alike, while comments can be edited and deleted → logged, needs an owner",
+          "note": "27 Aug — Apple — /admin — all 20 pages opened and reachable by clicking; escrow, costs, cron, kill-switch, platform settings and banned words walked; narrow window and dark mode — five findings below, plus one raised the same day\n27 Aug — Apple — /admin — DeepL is at 94% of its monthly translation cap and nothing on the page flags it → raised in team chat the same day\n27 Aug — Apple — /admin — the Escrow tab heading shows a raw text key, \"Admin escrowfailures title\" → logged, needs an owner\n27 Aug — Apple — /admin — the Chargeback recoveries link lands on the Cron Jobs screen instead → logged, needs an owner\n27 Aug — Apple — /admin — the API Cost Dashboard shows no cost anywhere, only usage counts and percentages → logged, needs an owner\n27 Aug — Apple — /admin — the kill-switch state line cannot be read in dark mode → logged, needs an owner\n27 Aug — Apple — /admin — the cron page does not show whether a job is running or stopped, and the jobs carry an owner no longer on the team → logged, needs an owner\n\n26 Aug — Apple — /marketplace — browsing and searching signed out, listing an item with the new country and postal code, viewing it as a buyer, and trying to edit it — price, listing location, escrow line and display-name-not-real-name all correct; three findings below\n26 Aug — Apple — /marketplace — the Edit button on a published listing does not edit; it opens an empty new-listing form, so a wrong price or postal code cannot be corrected and there is no other route back to your own advert → logged, needs an owner\n26 Aug — Apple — /marketplace — the create form carries two location fields, one labelled only \"Location\"; filling that one leaves Publish disabled with nothing explaining why → logged, needs an owner\n26 Aug — Apple — /marketplace — the breadcrumb category renders in Norwegian on an English page → logged, needs an owner\n\n25 Aug — Apple — /some — profile setup, display name, public profile; text, image and poll posting; earnings and data screens — profile and posting worked, all amounts in the viewer's own currency\n25 Aug — Apple — /some — the intro on /some/create reads \"you become a Verified user\"; PG §10.18 bans that word on any user-facing screen and it is the only place left in the code still showing it → logged, needs an owner\n25 Aug — Apple — /some — a post cannot be edited or deleted; the menu on your own post offers Report only, on posts and polls alike, while the API already supports both and comments can be edited and deleted → logged, needs an owner\n\nRemaining: a rolling card, 30 minutes every working day, one portal at a time — /agreements next, then /motor, /my-profile, /eiendom, the two rental portals, /videopay, and the pricing and legal pages. Carried over and still owed: follow and connect on /some, the payout wording on the earnings screen, and the Norwegian and dark-mode pass on /some and /marketplace. The date is when the first pass through the list finishes; the routine does not stop there.\nOwner: Apple\nDate: 2026-09-03 (Thu)",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
@@ -415,7 +415,7 @@
         {
           "id": "fb1b96b0-b723-4e7c-90a9-70631e20ada3",
           "portal": "Admin & compliance screen",
-          "note": "The back-office screen where a data-deletion request is handled showed internal code words instead of labels, and no developer account could open it at all — so that queue had never been used by anyone. It now reads properly in English, the assistant panel is no longer titled in Norwegian, and there is a script that gives a developer access on the test site. In review. Left: nothing to build — it closes on the merge.",
+          "note": "Remaining: nothing to build — #536 merged 24 Aug. Should move to Done at 100.\nOwner: Apple\nDate: 2026-08-24 (Mon)",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
@@ -485,8 +485,8 @@
         {
           "id": "d26ed81a-556b-4de8-b5c3-694d7661ebcb",
           "portal": "Admin-granted subscriptions",
-          "note": "Remaining: Grant screen (account + plan + date, nothing else) and the\n30/14/7/1 reminder ladder. At expiry listings go inactive, never\ndeleted, one-click restore. The trap: a granted account saving a card\nto buy tokens or an ad must NOT start a subscription charge — the\nexpiry date governs alone.",
-          "pct": 0,
+          "note": "Remaining: Migration slot applied to Dev + prod, smoke\nposted to #execution-pipeline. Blocked on Audun: §11.10\n\"one-click restore\" vs §6.9.2 per-listing reactivate —\nbuilt as per-listing, asked 27 Aug. Code, tests and\n§11.7 re-auth helper complete.",
+          "pct": 85,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
