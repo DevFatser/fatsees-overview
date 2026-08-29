@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-27T20:25:00.36+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-08-29T13:52:55.695+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -44,7 +44,7 @@
         },
         {
           "id": "0e998d6a-ee4d-4e1c-9a77-f053b7ab8bdd",
-          "portal": "/leie",
+          "portal": "/leie - Rent anything",
           "note": "Remaining: Fat AI response check + Mollie integration end-to-end test on live prod.\nOwner: Shafi (lead dev per card; Victor is Fat-check on top). Date: 2026-08-23 (Sun)",
           "pct": 95,
           "fe": "todo",
@@ -54,33 +54,23 @@
         },
         {
           "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
-          "portal": "/eiendom",
-          "note": "Remaining: Victor-> Fat AI response check + dispute path + Shafi: end-to-end test.\nOwner: Shafi.\nDate: 2026-08-24 (Mon",
+          "portal": "REAL ESTATE (/eiendom)",
+          "note": "Remaining: Victor-> Fat AI response check + dispute path + Shafi: end-to-end test.\n: long-term rental upgrade — rental terms + Wanted tab\n:Victor's paid-subscription test (wanted-ad requires PAID plan under €4/mo).\nOwner: Shafi (code done); Victor's subscription-check gate on top.\nDate: 2026-08-24 (Mon",
           "pct": 95,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-08-29"
+          "target_date": "2026-08-30"
         },
         {
           "id": "c20081d6-29f1-459e-91c5-c1e859dcbad8",
-          "portal": "/leie-eiendom",
+          "portal": "/leie-eiendom: Rent a home — short term",
           "note": "Remaining: Fat AI response check + dispute path + end-to-end test (same shape as /leie / /eiendom).\nOwner: Shafi.\nDate: 2026-08-26 (Tue).",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "29-08-29"
-        },
-        {
-          "id": "5c429408-722f-4cf0-92be-776e0a3ef3d9",
-          "portal": "REAL ESTATE (/eiendom): long-term rental upgrade — rental terms + Wanted tab",
-          "note": "Remaining: Victor's paid-subscription test (wanted-ad requires PAID plan under €4/mo).\nOwner: Shafi (code done); Victor's subscription-check gate on top.\nDate: 2026-08-26 (Wed).",
-          "pct": 90,
-          "fe": "todo",
-          "be": "todo",
-          "estimate_days": 1,
-          "target_date": "26-8-26"
+          "target_date": "29-08-30"
         },
         {
           "id": "b1c7cbe7-43c7-40bb-9848-11f9e3338c12",
@@ -89,7 +79,7 @@
           "pct": 85,
           "fe": "prog",
           "be": "todo",
-          "estimate_days": null,
+          "estimate_days": 1,
           "target_date": "28-08-26"
         },
         {
@@ -101,6 +91,16 @@
           "be": "todo",
           "estimate_days": 1,
           "target_date": "29-8-26"
+        },
+        {
+          "id": "1c6cf222-058f-4dee-988b-1d47617d7a02",
+          "portal": "/Some money flow e2e",
+          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof. Remaining: the whole run; not started, it sits behind the location service and the GDPR rerun.  run end-to-end as real buyer + seller with proof logged.\n\nOwner: Shafi; Apple testing on top.\n\nDate: 2026-09-01 (Tue).",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 2,
+          "target_date": "01-09-2026"
         },
         {
           "id": "45d32ae3-63b4-4e5d-8fbb-b974b06d4b03",
@@ -120,7 +120,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "30-08-26"
+          "target_date": "31-08-26"
         }
       ],
       "planned_next": [
@@ -214,7 +214,7 @@
         },
         {
           "id": "0e998d6a-ee4d-4e1c-9a77-f053b7ab8bdd",
-          "portal": "/leie",
+          "portal": "/leie - Rent anything",
           "note": "Remaining: Fat AI response check + Mollie integration end-to-end test on live prod.\nOwner: Shafi (lead dev per card; Victor is Fat-check on top). Date: 2026-08-23 (Sun)",
           "pct": 95,
           "fe": "todo",
@@ -224,23 +224,23 @@
         },
         {
           "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
-          "portal": "/eiendom",
-          "note": "Remaining: Victor-> Fat AI response check + dispute path + Shafi: end-to-end test.\nOwner: Shafi.\nDate: 2026-08-24 (Mon",
+          "portal": "REAL ESTATE (/eiendom)",
+          "note": "Remaining: Victor-> Fat AI response check + dispute path + Shafi: end-to-end test.\n: long-term rental upgrade — rental terms + Wanted tab\n:Victor's paid-subscription test (wanted-ad requires PAID plan under €4/mo).\nOwner: Shafi (code done); Victor's subscription-check gate on top.\nDate: 2026-08-24 (Mon",
           "pct": 95,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "2026-08-29"
+          "target_date": "2026-08-30"
         },
         {
           "id": "c20081d6-29f1-459e-91c5-c1e859dcbad8",
-          "portal": "/leie-eiendom",
+          "portal": "/leie-eiendom: Rent a home — short term",
           "note": "Remaining: Fat AI response check + dispute path + end-to-end test (same shape as /leie / /eiendom).\nOwner: Shafi.\nDate: 2026-08-26 (Tue).",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "29-08-29"
+          "target_date": "29-08-30"
         },
         {
           "id": "e067ece1-2205-44b9-9e0c-754b816fa323",
@@ -333,16 +333,6 @@
           "target_date": "26-08-2026"
         },
         {
-          "id": "de98196c-c6aa-4ed9-8ac8-88a862e2ff0f",
-          "portal": "/Some- Fatsees Profile portal",
-          "note": "01-09-2026Owner: Shafi. Test author: APPLE;\nThe three money paths (tip, paid-follower, sponsored deal) run end-to-end as real buyer + seller with proof logged.\nDate: 2026-08-29 (Tue).",
-          "pct": 80,
-          "fe": "prog",
-          "be": "todo",
-          "estimate_days": 2,
-          "target_date": "31-08-2026"
-        },
-        {
           "id": "59ce2c1b-5e53-4f57-bb8f-8c8207076b19",
           "portal": "VAT at checkout (gated by OSS registration)",
           "note": "Merged. Every kind of purchase on the site now has a written tax answer taken straight from Audun's specification - who the seller is in law, which country's rate applies, and what is left for the seller after our fee - and anything without an answer refuses to take money instead of guessing. Review hardening means a payer can never influence the tax role or the fee from their side. Left: (1) the database check against production posted as proof; (2) the pricing page still shows two price lists at once - logged with Shafi.",
@@ -395,7 +385,7 @@
         {
           "id": "1c6cf222-058f-4dee-988b-1d47617d7a02",
           "portal": "/Some money flow e2e",
-          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof. Remaining: the whole run; not started, it sits behind the location service and the GDPR rerun. Owner: Apple. Date: 2026-09-01 (Tue).",
+          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof. Remaining: the whole run; not started, it sits behind the location service and the GDPR rerun.  run end-to-end as real buyer + seller with proof logged.\n\nOwner: Shafi; Apple testing on top.\n\nDate: 2026-09-01 (Tue).",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
