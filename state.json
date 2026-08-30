@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T03:39:52.759+00:00",
+  "updated_at": "2026-08-30T20:40:17.217+00:00",
   "updated_by": "Nahid",
   "developers": [
     {
@@ -495,8 +495,8 @@
         {
           "id": "d7746c37-11bc-4a5b-8cbb-201c3db7ab4b",
           "portal": "Admin panel",
-          "note": "Remaining: Verification, not a build — the four §11.2 pre-launch\nmust-haves. Two real gaps: the audit log is not tamper-proof (one\npolicy grants service_role ALL operations, so a row can be edited or\ndeleted; §11.6 needs insert+select only, 7 years), and 16 of 48 admin\nroutes write to it. §11.10 removed from this card — it has its own.",
-          "pct": 0,
+          "note": "Remaining (PLAN274n — code done, 6 commits):\n\n Apply slot 20260830120000 to Dev + prod, run smoke INCLUDING\n   the UPDATE/DELETE probes, post to #execution-pipeline.\n DATABASE_URL=<dev> vitest tests/admin/audit-immutability\n   → 3 skips must become 3 passes.\nUntil 4+5, audit immutability is designed, not demonstrated.\nOpen with Audun: D3 (7-yr admin uuid vs §10.19). Open with\nShafi: content moderation ownership (§11.2 #2).",
+          "pct": 75,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 4,
