@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-29T13:52:55.695+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-08-30T03:39:52.759+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -475,8 +475,8 @@
         {
           "id": "d26ed81a-556b-4de8-b5c3-694d7661ebcb",
           "portal": "Admin-granted subscriptions",
-          "note": "Remaining: Migration slot applied to Dev + prod, smoke\nposted to #execution-pipeline. Blocked on Audun: §11.10\n\"one-click restore\" vs §6.9.2 per-listing reactivate —\nbuilt as per-listing, asked 27 Aug. Code, tests and\n§11.7 re-auth helper complete.",
-          "pct": 85,
+          "note": "Migration slot applied to Dev + prod, smoke\nposted. §11.10 restore conflict resolved by Audun 27 Aug —\nper-listing reactivate confirmed, build.",
+          "pct": 95,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
@@ -486,7 +486,7 @@
           "id": "f37c9d00-64f5-45fe-ba45-4264ec529143",
           "portal": "Sponsored placements §3.17 (cron in build — sweep)",
           "note": "Remaining: Verification sweep — it is already built (SponsoredPageBottom\nwired into 20 files, auto-sponsored pool, first-100 notification, both\ncrons). Prove each rule: 20 slots, Load-more disappearing when the pool\nempties, paid-random-then-auto-newest order, the per-portal first-100\ncounter actually disabling, and that /ai, /aksjer, /community and\n/some/[username] reject placement server-side rather than merely not\nimporting the component.",
-          "pct": 0,
+          "pct": 90,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 4,
