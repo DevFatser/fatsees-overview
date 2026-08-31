@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-31T06:02:39.702+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-08-31T18:23:29.495+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -315,7 +315,7 @@
         {
           "id": "f8287fbc-83f4-4403-ac69-e548c236dee8",
           "portal": "VideoPay",
-          "note": "Remaining: the escrow proof to artifact. Blocked on Delayed Routing being enabled on the Mollie organisation — the release cannot run in test or production until it is on.\nOwner: Apple\nDate: 2026-09-01 (Tue)",
+          "note": "Remaining: the escrow proof to artifact. On hold — Audun stopped all Mollie-specific build work on 31 Aug, escrow runs against the real account included. It resumes when he lifts the hold; nothing is unwound.\nOwner: Apple\nDate: on hold",
           "pct": 72,
           "fe": "prog",
           "be": "prog",
@@ -345,8 +345,8 @@
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
-          "note": "Remaining: the \"Nearest\" sort, day two — a platform-wide distance-ascending sort on every listing surface, Founders included. It starts the day #546 merges; building it now would stack on an unmerged branch. #538 now also carries the wanted-ad country change (committed 4827a3cb, pushed) and #546 the location service itself. Merging 546 lands the plumbing, not the feature — nothing renders the choices yet, remembering an area is write-only, and Fat has no nearby-question hook. The app-format check §10.16 asks for is still owed.\nOwner: Apple\nDate: 2026-09-01 (Tue)",
-          "pct": 60,
+          "note": "Remaining: the \"Nearest\" sort is in review as #560 — it connects the control /leie already shipped rather than defining a second sort under the same name, and a listing with no area sorts last but is never hidden. #538 carries the wanted-ad country change and also waits on review. The app-format check §10.16 asks for is still owed, and the place resolver was measured against invented queries rather than real searches.\nOwner: Apple\nDate: 2026-09-01 (Tue)",
+          "pct": 80,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 3,
@@ -375,7 +375,7 @@
         {
           "id": "4da68792-18d1-4d72-8477-87d23607b6b0",
           "portal": "Pre-launch portal testing - Apple",
-          "note": "30 Aug — Apple — /agreements + payouts — walked signed out and signed in: empty states, settings menu, payout screen, Norwegian, mobile width, dark mode — payout model wording all correct; four findings below\n\n30 Aug — Apple — payouts — the screen prints \"Auto explainer\" and \"Withdraw note\" as visible text; the two sentences telling a seller withdrawing is free are missing from the language file → raised in team chat today\n\n30 Aug — Apple — settings menu — choosing a language silently changes the display currency; Norsk sets NOK, English sets EUR, both ways, no notice → raised in team chat today\n\n30 Aug — Apple — /agreements — the page is not behind sign-in; a signed-out visitor sees it and is told \"No active agreements yet\" → logged, needs an owner\n\n30 Aug — Apple — settings menu — \"For business\" and \"Add Fatsees to home screen\" stay in English in Norwegian → logged, needs an owner\n\n30 Aug — Apple — /agreements + my profile — minor: English browser tab title, \"My Agreements\" and \"Verification level\" each printed twice, a price shown as 100002 EUR without separators → post-launch\n\n30 Aug — Apple — /agreements — NOT tested: tracking, confirm-receipt, dispute and the fee line — no agreement rows exist on the account  \n27 Aug — Apple — /admin — all 20 pages opened and reachable by clicking; escrow, costs, cron, kill-switch, platform settings and banned words walked; narrow window and dark mode — five findings below, plus one raised the same day\n27 Aug — Apple — /admin — DeepL is at 94% of its monthly translation cap and nothing on the page flags it → raised in team chat the same day\n27 Aug — Apple — /admin — the Escrow tab heading shows a raw text key, \"Admin escrowfailures title\" → logged, needs an owner\n27 Aug — Apple — /admin — the Chargeback recoveries link lands on the Cron Jobs screen instead → logged, needs an owner\n27 Aug — Apple — /admin — the API Cost Dashboard shows no cost anywhere, only usage counts and percentages → logged, needs an owner\n27 Aug — Apple — /admin — the kill-switch state line cannot be read in dark mode → logged, needs an owner\n27 Aug — Apple — /admin — the cron page does not show whether a job is running or stopped, and the jobs carry an owner no longer on the team → logged, needs an owner\n\n26 Aug — Apple — /marketplace — browsing and searching signed out, listing an item with the new country and postal code, viewing it as a buyer, and trying to edit it — price, listing location, escrow line and display-name-not-real-name all correct; three findings below\n26 Aug — Apple — /marketplace — the Edit button on a published listing does not edit; it opens an empty new-listing form, so a wrong price or postal code cannot be corrected and there is no other route back to your own advert → logged, needs an owner\n26 Aug — Apple — /marketplace — the create form carries two location fields, one labelled only \"Location\"; filling that one leaves Publish disabled with nothing explaining why → logged, needs an owner\n26 Aug — Apple — /marketplace — the breadcrumb category renders in Norwegian on an English page → logged, needs an owner\n\n25 Aug — Apple — /some — profile setup, display name, public profile; text, image and poll posting; earnings and data screens — profile and posting worked, all amounts in the viewer's own currency\n25 Aug — Apple — /some — the intro on /some/create reads \"you become a Verified user\"; PG §10.18 bans that word on any user-facing screen and it is the only place left in the code still showing it → logged, needs an owner\n25 Aug — Apple — /some — a post cannot be edited or deleted; the menu on your own post offers Report only, on posts and polls alike, while the API already supports both and comments can be edited and deleted → logged, needs an owner\n\nRemaining: a rolling card, 30 minutes every working day, one portal at a time — /agreements next, then /motor, /my-profile, /eiendom, the two rental portals, /videopay, and the pricing and legal pages. Carried over and still owed: follow and connect on /some, the payout wording on the earnings screen, and the Norwegian and dark-mode pass on /some and /marketplace. The date is when the first pass through the list finishes; the routine does not stop there.\nOwner: Apple\nDate: 2026-09-03 (Thu)",
+          "note": "Remaining: rolling, 30 minutes a day. Six of eleven portals walked — /some, /marketplace, /admin, /agreements, /motor, /bil. Next /my-profile, then /eiendom, the two rental portals, /videopay, and the pricing and legal pages.\nOwner: Apple\nDate: 2026-09-07 (Mon)",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
@@ -495,8 +495,8 @@
         {
           "id": "d7746c37-11bc-4a5b-8cbb-201c3db7ab4b",
           "portal": "Admin panel",
-          "note": "Remaining (PLAN274n — code done, 6 commits):\n\n Apply slot 20260830120000 to Dev + prod, run smoke INCLUDING\n   the UPDATE/DELETE probes, post to #execution-pipeline.\n DATABASE_URL=<dev> vitest tests/admin/audit-immutability\n   → 3 skips must become 3 passes.\nUntil 4+5, audit immutability is designed, not demonstrated.\nOpen with Audun: D3 (7-yr admin uuid vs §10.19). Open with\nShafi: content moderation ownership (§11.2 #2).",
-          "pct": 75,
+          "note": "PLAN274n COMPLETE. Applied Dev + prod, smoke green on both, UPDATE and DELETE\nprobes both refuse, trap spec 3 passed / 0 skipped, posted to #execution-pipeline.\nD3 closed by Audun (30 Aug). Full typecheck + lint:i18n inherited-red confirmation\nboth satisfied in the PLAN281n run (31 Aug).\n\nSpun out, tracked separately: PLAN282n (system-actor audit hole + §10.19 erasure\nblock — Audun ruled 31 Aug, build next), content moderation §11.2 #2 (unowned,\npre-launch non-negotiable), community_threads hard delete, prod schema-parity guards.",
+          "pct": 100,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 4,
