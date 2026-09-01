@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-31T18:23:29.495+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-09-01T14:21:05.192+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -320,37 +320,37 @@
           "fe": "prog",
           "be": "prog",
           "estimate_days": 2,
-          "target_date": "01-09-2026"
+          "target_date": "ON HOLD"
         },
         {
           "id": "52cd3536-4185-4b97-8947-86419aa1e4a1",
           "portal": "Motor",
-          "note": "Buying, selling and renting a car all work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites and loading placeholders, making an ad from the site, the sale contract both buyer and seller sign digitally, renting with the deposit asked for when the ad is made, Fat helping write the ad from the photos, every private seller's ad carrying a postal code, plain-language messages when something goes wrong, and the sign-in fix that was hiding the buy and book buttons. Left: (1) the real payment run - the code path run is written and re-runs Sunday against the dev seller after a fault in the test harness was found and corrected, and the true payment-provider split waits on a second test company.",
+          "note": "Buying, selling and renting a car all work on Dev - scan, fields, pay with escrow, details, search, the finn-style browse pages on all five portals with favourites and loading placeholders, making an ad from the site, the sale contract both buyer and seller sign digitally, renting with the deposit asked for when the ad is made, Fat helping write the ad from the photos, every private seller's ad carrying a postal code, plain-language messages when something goes wrong, and the sign-in fix that was hiding the buy and book buttons. Left: (1) the real payment run - the code path run is written and re-runs Sunday against the dev seller after a fault in the test harness was found and corrected, and the true payment-provider split waits on a second test company. Remaining: only that real payment run, and it is stopped by Audun's 31 Aug hold on all Mollie build work — no escrow runs against the real account, and the second test organisation cannot be created while the hold stands. Nothing is unwound; it resumes when he lifts it. Owner: Apple. Date: on hold.",
           "pct": 97,
           "fe": "prog",
           "be": "prog",
           "estimate_days": 1,
-          "target_date": "26-08-2026"
+          "target_date": "ON HOLD"
         },
         {
           "id": "59ce2c1b-5e53-4f57-bb8f-8c8207076b19",
           "portal": "VAT at checkout (gated by OSS registration)",
-          "note": "Merged. Every kind of purchase on the site now has a written tax answer taken straight from Audun's specification - who the seller is in law, which country's rate applies, and what is left for the seller after our fee - and anything without an answer refuses to take money instead of guessing. Review hardening means a payer can never influence the tax role or the fee from their side. Left: (1) the database check against production posted as proof; (2) the pricing page still shows two price lists at once - logged with Shafi.",
+          "note": "Merged (#503). Every kind of purchase on the site now has a written tax answer taken straight from Audun's specification — who the seller is in law, which country's rate applies, and what is left for the seller after our fee — and anything without an answer refuses to take money instead of guessing. Review hardening means a payer can never influence the tax role or the fee from their side. Remaining: nothing from me. The database check against production was posted as proof on 18 Aug, and the pricing page still showing two price lists at once sits on Shafi's card, not this one. The card cannot close before the OSS registration, which is an external queue nobody here can finish. Owner: Apple. Date: waiting on OSS registration.",
           "pct": 98,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "17-08-2026"
+          "target_date": "OSS PENDING"
         },
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
-          "note": "Remaining: the \"Nearest\" sort is in review as #560 — it connects the control /leie already shipped rather than defining a second sort under the same name, and a listing with no area sorts last but is never hidden. #538 carries the wanted-ad country change and also waits on review. The app-format check §10.16 asks for is still owed, and the place resolver was measured against invented queries rather than real searches.\nOwner: Apple\nDate: 2026-09-01 (Tue)",
-          "pct": 80,
+          "note": "Remaining: the follow-ups Shafi booked on #560, all real. Round 3 — it did not converge, and round 2 found two fatals inside round 1's fixes. §10.16's app-format verification, which the spec requires and for which I have only browser evidence. The forget-area opt-out UI (GDPR Art. 7(3)), which has no screen today. The ?sort=nearest URL restore. And Motor Nearest, which by Audun's 1 Sept ruling ships at postal-code level to our own servers only, with its off switch in the same delivery and never a later one. Scope so far is 4 of about 16 surfaces. Merged: #546 the service, #560 the sort. Found on the way and ownerless: /leie-eiendom's cross-portal fetch sends params the API ignores, so \"Rent a home\" shows marketplace items. Owner: Apple. Date: 2026-09-07 (Mon).",
+          "pct": 85,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 3,
-          "target_date": "27-08-2026"
+          "estimate_days": 1,
+          "target_date": "07-09-2026"
         },
         {
           "id": "a059bea8-b328-4ad8-a04f-215130ee5c5f",
