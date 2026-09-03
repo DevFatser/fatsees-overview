@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-02T05:47:53.911+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-09-03T08:49:50.4+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -511,6 +511,16 @@
           "be": "todo",
           "estimate_days": 3,
           "target_date": "18-08-2026"
+        },
+        {
+          "id": "5fe01344-cb26-4433-9bf3-3f3b4db476e0",
+          "portal": "Portal testing",
+          "note": "/aksjer (Equity) — pre-launch bug batch\nRemaining, (1) min-side Grant source + Pending sections\nrender key names (\"Grant source title (0)\", \"Pending empty\") — five ui-strings keys\nare called but don't exist; the sections themselves are fully built, so it's entries\nin lib/ui-strings.ts, not a build. (2) Literal &apos; in string VALUES — 6 across\nui-strings.ts (4431, 4887, 5119, 5661, 5951, 5953) plus 3 keys with the entity in\nthe name; found on /aksjer but platform-wide, and it's being translated into 19\nlanguages and billed. (3) min-side has no \"add holding\" control — §3.11 manual entry\n(company, quantity, share class, acquisition date + method, optional doc); blocks all\nholdings CRUD. (4) opprett \"Selling as\" lost the registered entities — Gate Test AS\nand Other Holdings AS were listed 19 Aug, gone by 26 Aug; with the contact-channel\nblocker this makes publishing impossible, so the issuer gate, binding-declaration\nblock and forbidden-vocabulary guard remain UNTESTED. (5) handel copy \"completed\ntrades on Fatsees Equity\" implies on-platform execution — §3.11, trades are reported,\nnever executed (client.tsx:131). (6) \"Transaction history\" heading renders twice —\ncosmetic, re-check first, PLAN281n removed the chips.\nCLOSED, not in scope: the \"not a verified ownership record\" conflict (Audun ruled\n1 Sept, page unchanged, PG 41 #5) and the price tiles + period selectors (ruled\n30 Aug, removed in PLAN281n / #561).\nOwner: Nahid. Est: 2d.\n/founders — pre-launch bug batch\nRemaining, (1) Create wizard has no Scope picker —\n§3.15 lists Country/Europe/World, the scope column and the discovery filter both\nexist, but app/founders/create/client.tsx has no field, so every pitch silently\ndefaults to \"world\". (2) A pitch cannot be edited or deleted from the UI — owner view\nsays \"manage from Founder Meetingplace\" but no control exists, while\n/api/founders/[id] already supports PATCH and DELETE. (3) \"Make this venture public\"\nmints no public link — no /v/<slug> appears after toggling, and the link only renders\nwhen a slug exists, so the slug isn't being generated; the public venture page is\nunreachable.\nNOT MINE: \"Suggest with Fat\" times out on Pro — error UI is correct, the Fat/AI route\ndoesn't respond. Victor.\nOwner: Nahid. Est: 1d.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": "14-09-2026"
         }
       ],
       "planned_next": [],
