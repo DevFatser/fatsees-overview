@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T21:34:33.454+00:00",
+  "updated_at": "2026-09-06T23:00:55.757+00:00",
   "updated_by": "Emmy",
   "developers": [
     {
@@ -532,10 +532,20 @@
       "in_progress": [
         {
           "id": "4f88364e-9e23-437b-99ee-acbabe3d0dbf",
+          "portal": "Podcast format — AI co-host feasibility & cost",
+          "note": "AI co-host podcast — testing whether a podcast can be built where Audun is filmed on a real green screen with an AI-generated background behind him, and an AI co-host (a different character each episode) appears in its own frame, lip-synced to speech, subtitled in multiple languages. Currently scoped down to avatar plus subtitles only, background and header dropped. Remaining: BLOCKED on Audun's price approval. Real-footage compositing test (4 Sept) proved chroma-key plus AI background composites cleanly on a well-lit, fully-covered green screen; degrades with uneven lighting or partial screen coverage — report delivered. Cost research done to Audun's spec: Hedra avatar ~$18/episode (5 min Fat talking = 300 sec x 6 credits/sec = 1,800 credits x $0.01/credit on the Basic tier — ESTIMATE, render rate is third-party sourced). Sonix subtitles $5/episode (30 min audio x $10/hour, includes translation to 39 languages — VERIFIED). No purchase or render made anywhere: ElevenLabs used one free generation with an unknown ceiling before charging, Hedra stopped at its subscription paywall. Nothing further — no avatar render, no test video, no spend — until Audun signs off on a price.",
+          "pct": 30,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "48aab966-a5bd-4a2b-94fe-f31add320436",
           "portal": "New portal",
           "note": "",
-          "pct": 50,
-          "fe": "prog",
+          "pct": 0,
+          "fe": "todo",
           "be": "todo",
           "estimate_days": null,
           "target_date": null
