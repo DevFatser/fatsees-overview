@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-06T19:09:01.037+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-09-06T21:34:33.454+00:00",
+  "updated_by": "Emmy",
   "developers": [
     {
       "name": "Shafi",
@@ -435,32 +435,32 @@
         {
           "id": "d18ca28a-1474-4d04-a4db-483e0111544f",
           "portal": "Founders portal",
-          "note": "Remaining: Code merged (#541), migration applied Dev + prod with smoke\nposted (eur_column=1 · old_columns_left=0 · both idempotent), follow-up\nPR #545 open. Two things left, in this order: (1) seed two users +\npitches on Dev — Dev currently has ZERO pitches, which is why the\nembedding query can't answer anything yet; (2) then run the embedding\ndiagnosis for Ventures recruiting / NL search — all-false means a silent\nwrite-path failure and becomes its own plan, embedded-but-zero-results\nmeans ranking and lands here. Then the two-account matrix: express\ninterest, the four invite paths, member chat, applications.",
-          "pct": 95,
+          "note": "Remaining: Code merged (#541 + #545), migration applied Dev +\nprod with smoke posted.\nTwo DB-side, in order: (1) seed two users + pitches on Dev —\nDev has ZERO pitches, which is why the embedding query can't\nanswer anything; (2) the F8 embedding diagnosis — all-false\nmeans a silent write-path failure and becomes its own plan.\nThen the two-account matrix: express interest, four invite\npaths, member chat, applications.\nThree UI gaps confirmed in code, not yet built: the create\nwizard has NO scope field (§3.15 Country/Europe/World — every\npitch silently defaults to \"world\"); a pitch cannot be edited\nor deleted from the UI though /api/founders/[id] supports PATCH\nand DELETE; \"Make this venture public\" mints no /v/<slug>\nbecause the slug is never generated.",
+          "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 0,
-          "target_date": "25-08-2026"
+          "estimate_days": 3,
+          "target_date": "09-09-2026"
         },
         {
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
-          "note": "Remaining: Code merged (#544) — badge now renders Audun's wording\nthrough ui-strings, the hardcoded sentence at client.tsx:274 is gone,\ncensus built and wired, tests/aksjer green at 634. BLOCKED on a ruling:\nthe census found 137 pre-existing hardcoded strings across 18 files, so\nnpm run check is red for everyone. Burn-down plan or reviewed\nallow-list — needs Shafi/Audun. Estimate follows the ruling.\nOwner: Nahid (blocked: Shafi/Audun). Date: pending ruling.",
+          "note": "Remaining: UNBLOCKED — the 137-string ruling landed as a\nreviewed allow-list (#545, census baselined at 135),\nlint:equity-strings is green. PLAN280n (trade currency, §10.15\npair) and PLAN281n (KPI tiles removed per Audun 30 Aug) both\nmerged.\nLeft is the pre-launch bug batch, tracked in detail on Portal\ntesting: five missing ui-strings keys rendering as key names,\n6 literal &apos; in string VALUES (platform-wide, being\ntranslated into 19 languages), no \"add holding\" control\n(§3.11 manual entry), and \"Selling as\" lost its registered\nentities — which leaves the issuer gate and binding-declaration\nblock untested.",
           "pct": 95,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 1,
-          "target_date": "26-08-2026"
+          "estimate_days": 5,
+          "target_date": "12-09-2026"
         },
         {
           "id": "9c0d6dcb-c722-4a85-9192-7698bd801210",
           "portal": "Currency Change",
-          "note": "Remaining: Silent-fallback confirmation and the full acceptance test on\nprod. Blocked on Victor's main-branch merge — the only item of mine\nwaiting on someone else.",
-          "pct": 70,
+          "note": "Remaining: UNBLOCKED — Victor's main-branch work merged (#569).\nSilent-fallback confirmation plus the full acceptance test on\nprod.",
+          "pct": 85,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 6,
-          "target_date": "31-08-2026"
+          "estimate_days": 3,
+          "target_date": "10-09-2026"
         },
         {
           "id": "c0ec885b-d94f-4a93-abf1-8c1d2859ef1d",
@@ -485,12 +485,12 @@
         {
           "id": "f37c9d00-64f5-45fe-ba45-4264ec529143",
           "portal": "Sponsored placements §3.17 (cron in build — sweep)",
-          "note": "Remaining: Verification sweep — it is already built (SponsoredPageBottom\nwired into 20 files, auto-sponsored pool, first-100 notification, both\ncrons). Prove each rule: 20 slots, Load-more disappearing when the pool\nempties, paid-random-then-auto-newest order, the per-portal first-100\ncounter actually disabling, and that /ai, /aksjer, /community and\n/some/[username] reject placement server-side rather than merely not\nimporting the component.",
+          "note": "Remaining: Verification sweep found four real gaps, not zero.\n1. The exceptions do not hard-reject. /api/ads/sponsored takes\n   ?portal raw with no allow-list; /aksjer and /community return\n   empty only because equity lives in another table. §3.17's\n   point is that paid placement there is impossible, not absent.\n2. The paid rotation is biased. `sort(() => Math.random()-0.5)`\n   is not a uniform shuffle — newest paid advertisers get\n   systematically more top slots, and billing is per-impression.\n3. lib/sponsored-ranking.ts claims property tests at a path that\n   does not exist. The canonical formula module has zero tests,\n   and cites PLATFORM_GUIDE_LATEST.md, not in the repo.\n4. \"More from this seller\" sorts by recency, not most-clicks —\n   see the listing-telemetry card for why it can't yet.\nStill to prove: 20 slots, Load-more disappearing on an exhausted\npool, per-portal first-100 counter actually disabling, /some\nstrict 4/8 alternation in all three feed modes.",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 4,
-          "target_date": "29-08-2026"
+          "estimate_days": 7,
+          "target_date": "13-09-2026"
         },
         {
           "id": "d7746c37-11bc-4a5b-8cbb-201c3db7ab4b",
@@ -523,6 +523,31 @@
           "target_date": "14-09-2026"
         }
       ],
+      "planned_next": [],
+      "priority": []
+    },
+    {
+      "name": "Emmy",
+      "done": [],
+      "in_progress": [
+        {
+          "id": "4f88364e-9e23-437b-99ee-acbabe3d0dbf",
+          "portal": "New portal",
+          "note": "",
+          "pct": 50,
+          "fe": "prog",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        }
+      ],
+      "planned_next": [],
+      "priority": []
+    },
+    {
+      "name": "Audun",
+      "done": [],
+      "in_progress": [],
       "planned_next": [],
       "priority": []
     }
