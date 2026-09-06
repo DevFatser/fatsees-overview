@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-03T17:23:17.598+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-09-06T08:34:43.295+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -470,17 +470,17 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 0,
-          "target_date": "7-08-2026"
+          "target_date": null
         },
         {
           "id": "d26ed81a-556b-4de8-b5c3-694d7661ebcb",
           "portal": "Admin-granted subscriptions",
           "note": "Migration slot applied to Dev + prod, smoke\nposted. §11.10 restore conflict resolved by Audun 27 Aug —\nper-listing reactivate confirmed, build.",
-          "pct": 95,
+          "pct": 100,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "27-08-2026"
+          "target_date": null
         },
         {
           "id": "f37c9d00-64f5-45fe-ba45-4264ec529143",
@@ -500,7 +500,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 4,
-          "target_date": "29-08-2026"
+          "target_date": null
         },
         {
           "id": "e26f78e4-3948-449a-b4b6-eddf8309eff8",
@@ -510,7 +510,7 @@
           "fe": "todo",
           "be": "todo",
           "estimate_days": 3,
-          "target_date": "18-08-2026"
+          "target_date": null
         },
         {
           "id": "5fe01344-cb26-4433-9bf3-3f3b4db476e0",
