@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T23:33:32.114+00:00",
+  "updated_at": "2026-09-09T19:21:48.325+00:00",
   "updated_by": "Emmy",
   "developers": [
     {
@@ -544,7 +544,7 @@
           "id": "48aab966-a5bd-4a2b-94fe-f31add320436",
           "portal": "Brand — secure Fatsees social media handles",
           "note": "Register the Fatsees name and @fatsees handle across every platform we'll ever post on — Facebook, YouTube, Instagram, TikTok, LinkedIn, X, Snapchat, plus any others judged worth holding. Fallback handle @fatseesAI only where @fatsees is taken, reported to Audun. Signups use emmy@fatsees.com and Audun's phone for verification. No content posted — name-holding only. Same logo, one-line description, and fatsees.com link on every profile. All logins tracked in one shared doc in the company Drive's Marketing folder while in progress, then migrated to password managers and the doc deleted once every account exists.\nEstimated days: 2-4 days of active work — the account creation and setup itself is a few hours across all platforms, but the timeline depends on how quickly verification codes come through from Audun's phone and whether any platform flags the signups for manual review, which can add delay outside your control.",
-          "pct": 0,
+          "pct": 40,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
