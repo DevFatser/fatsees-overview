@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-16T09:15:23.006+00:00",
-  "updated_by": "Emmy",
+  "updated_at": "2026-10-11T17:24:34.416+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -445,32 +445,32 @@
         {
           "id": "d18ca28a-1474-4d04-a4db-483e0111544f",
           "portal": "Founders portal",
-          "note": "Remaining: Code merged (#541 + #545), migration applied Dev +\nprod with smoke posted.\nTwo DB-side, in order: (1) seed two users + pitches on Dev —\nDev has ZERO pitches, which is why the embedding query can't\nanswer anything; (2) the F8 embedding diagnosis — all-false\nmeans a silent write-path failure and becomes its own plan.\nThen the two-account matrix: express interest, four invite\npaths, member chat, applications.\nThree UI gaps confirmed in code, not yet built: the create\nwizard has NO scope field (§3.15 Country/Europe/World — every\npitch silently defaults to \"world\"); a pitch cannot be edited\nor deleted from the UI though /api/founders/[id] supports PATCH\nand DELETE; \"Make this venture public\" mints no /v/<slug>\nbecause the slug is never generated.",
-          "pct": 90,
+          "note": "Checked against Dev code 11 Oct. Remaining: (1) Edit/delete a pitch: the API has PATCH + DELETE on /api/founders/[id], but there is no button; the owner only sees a link back to /founders. (2) The create wizard has no Scope field (§3.15 Country/Europe/World), so every pitch defaults to \"world\". (3) Public venture link: the server mints /founders/v/<slug> only when \"public\" is switched from off to on. A venture already public with no slug never gets one. Fix: also mint when public and slug is empty. (4) Dev seed: two users + pitches, then the F8 embedding diagnosis, then the two-account matrix (interest, invites, member chat, applications). Order: after Fat series items 12–26. Owner: Nahid. Date: 01-11-2026.",
+          "pct": 80,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 3,
-          "target_date": "09-09-2026"
+          "estimate_days": 15,
+          "target_date": "01-11-2026"
         },
         {
           "id": "09e3df6c-3b91-4afa-b2c9-ac14307fa00c",
           "portal": "Equity (/aksjer)",
-          "note": "Remaining: UNBLOCKED — the 137-string ruling landed as a\nreviewed allow-list (#545, census baselined at 135),\nlint:equity-strings is green. PLAN280n (trade currency, §10.15\npair) and PLAN281n (KPI tiles removed per Audun 30 Aug) both\nmerged.\nLeft is the pre-launch bug batch, tracked in detail on Portal\ntesting: five missing ui-strings keys rendering as key names,\n6 literal &apos; in string VALUES (platform-wide, being\ntranslated into 19 languages), no \"add holding\" control\n(§3.11 manual entry), and \"Selling as\" lost its registered\nentities — which leaves the issuer gate and binding-declaration\nblock untested.",
-          "pct": 95,
+          "note": "Checked against Dev code 11 Oct. Remaining: (1) 23 ui-strings keys are missing, not 5 (all aksjer_grant_source_* and aksjer_pending_*), so the min-side Grant source and Pending sections show key names. (2) 6 literal &apos; in string values (ui-strings.ts 4545, 5001, 5233, 5775, 6065, 6067). (3) No §3.11 manual \"add holding\" form; the POST API exists, but the only way in is Report trade → bought → \"add to my shares\". (4) handel/client.tsx:131 still says \"completed trades on Fatsees Equity\" (§3.11: trades are reported, never executed), in hard-coded English. (5) Search: the typed search is never sent when the list reloads, the FatHero search box has no submit, and the page gate checks login only (cards xzXS73kK, nHv43uYC, i22tgTDL). (6) \"Selling as\" lost its registered entities: a data check on Dev (/api/me/business-entities). Likely closed: \"Transaction history\" shows once per page in code; re-check on screen. Owner: Nahid. Date: 28-10-2026.",
+          "pct": 80,
           "fe": "prog",
           "be": "prog",
-          "estimate_days": 5,
-          "target_date": "12-09-2026"
+          "estimate_days": 13,
+          "target_date": "28-10-2026"
         },
         {
           "id": "9c0d6dcb-c722-4a85-9192-7698bd801210",
           "portal": "Currency Change",
-          "note": "Remaining: UNBLOCKED — Victor's main-branch work merged (#569).\nSilent-fallback confirmation plus the full acceptance test on\nprod.",
-          "pct": 85,
+          "note": "Checked against Dev code 11 Oct. Done: money paths refuse backup rates (lib/fx-money-rate.ts), Victor's main-branch work merged (#569). Remaining: (1) On-screen prices switch to the hand-typed backup rate table (FALLBACK_RATES) without a log or alarm when the live rate fetch fails. Add an admin alarm. (2) Full acceptance test on prod, run with Shafi. Owner: Nahid. Date: 05-11-2026.",
+          "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 3,
-          "target_date": "10-09-2026"
+          "estimate_days": 19,
+          "target_date": "05-11-2026"
         },
         {
           "id": "c0ec885b-d94f-4a93-abf1-8c1d2859ef1d",
@@ -495,12 +495,12 @@
         {
           "id": "f37c9d00-64f5-45fe-ba45-4264ec529143",
           "portal": "Sponsored placements §3.17 (cron in build — sweep)",
-          "note": "Remaining: Verification sweep found four real gaps, not zero.\n1. The exceptions do not hard-reject. /api/ads/sponsored takes\n   ?portal raw with no allow-list; /aksjer and /community return\n   empty only because equity lives in another table. §3.17's\n   point is that paid placement there is impossible, not absent.\n2. The paid rotation is biased. `sort(() => Math.random()-0.5)`\n   is not a uniform shuffle — newest paid advertisers get\n   systematically more top slots, and billing is per-impression.\n3. lib/sponsored-ranking.ts claims property tests at a path that\n   does not exist. The canonical formula module has zero tests,\n   and cites PLATFORM_GUIDE_LATEST.md, not in the repo.\n4. \"More from this seller\" sorts by recency, not most-clicks —\n   see the listing-telemetry card for why it can't yet.\nStill to prove: 20 slots, Load-more disappearing on an exhausted\npool, per-portal first-100 counter actually disabling, /some\nstrict 4/8 alternation in all three feed modes.",
-          "pct": 90,
+          "note": "Checked against Dev code 11 Oct. All four gaps are still open: (1) /api/ads/sponsored takes ?portal raw with no allow-list. Paid placement on /aksjer and /community has to be impossible, not just empty. (2) Biased shuffle sort(() => Math.random()-0.5) in /api/ads/sponsored (and in sellers/[id]/listings/cross-portal). Needs a uniform shuffle, since billing is per impression. (3) lib/sponsored-ranking.ts has no test file and cites PLATFORM_GUIDE_LATEST.md, which isn't in the repo. (4) \"More from this seller\" sorts by newest + random, with no listing click counts. Still to prove: 20 slots, Load-more disappearing on an empty pool, the per-portal first-100 counter, and the /some 4/8 alternation in all three feed modes. Owner: Nahid. Date: 04-11-2026.",
+          "pct": 75,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 7,
-          "target_date": "13-09-2026"
+          "estimate_days": 18,
+          "target_date": "04-11-2026"
         },
         {
           "id": "d7746c37-11bc-4a5b-8cbb-201c3db7ab4b",
@@ -521,16 +521,6 @@
           "be": "todo",
           "estimate_days": null,
           "target_date": null
-        },
-        {
-          "id": "5fe01344-cb26-4433-9bf3-3f3b4db476e0",
-          "portal": "Portal testing",
-          "note": "/aksjer (Equity) — pre-launch bug batch\nRemaining, (1) min-side Grant source + Pending sections\nrender key names (\"Grant source title (0)\", \"Pending empty\") — five ui-strings keys\nare called but don't exist; the sections themselves are fully built, so it's entries\nin lib/ui-strings.ts, not a build. (2) Literal &apos; in string VALUES — 6 across\nui-strings.ts (4431, 4887, 5119, 5661, 5951, 5953) plus 3 keys with the entity in\nthe name; found on /aksjer but platform-wide, and it's being translated into 19\nlanguages and billed. (3) min-side has no \"add holding\" control — §3.11 manual entry\n(company, quantity, share class, acquisition date + method, optional doc); blocks all\nholdings CRUD. (4) opprett \"Selling as\" lost the registered entities — Gate Test AS\nand Other Holdings AS were listed 19 Aug, gone by 26 Aug; with the contact-channel\nblocker this makes publishing impossible, so the issuer gate, binding-declaration\nblock and forbidden-vocabulary guard remain UNTESTED. (5) handel copy \"completed\ntrades on Fatsees Equity\" implies on-platform execution — §3.11, trades are reported,\nnever executed (client.tsx:131). (6) \"Transaction history\" heading renders twice —\ncosmetic, re-check first, PLAN281n removed the chips.\nCLOSED, not in scope: the \"not a verified ownership record\" conflict (Audun ruled\n1 Sept, page unchanged, PG 41 #5) and the price tiles + period selectors (ruled\n30 Aug, removed in PLAN281n / #561).\nOwner: Nahid. Est: 2d.\n/founders — pre-launch bug batch\nRemaining, (1) Create wizard has no Scope picker —\n§3.15 lists Country/Europe/World, the scope column and the discovery filter both\nexist, but app/founders/create/client.tsx has no field, so every pitch silently\ndefaults to \"world\". (2) A pitch cannot be edited or deleted from the UI — owner view\nsays \"manage from Founder Meetingplace\" but no control exists, while\n/api/founders/[id] already supports PATCH and DELETE. (3) \"Make this venture public\"\nmints no public link — no /v/<slug> appears after toggling, and the link only renders\nwhen a slug exists, so the slug isn't being generated; the public venture page is\nunreachable.\nNOT MINE: \"Suggest with Fat\" times out on Pro — error UI is correct, the Fat/AI route\ndoesn't respond. Victor.\nOwner: Nahid. Est: 1d.",
-          "pct": 0,
-          "fe": "todo",
-          "be": "todo",
-          "estimate_days": null,
-          "target_date": "14-09-2026"
         }
       ],
       "planned_next": [],
