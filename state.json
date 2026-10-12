@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-11T17:24:34.416+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-10-12T00:08:22.297+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -95,22 +95,22 @@
         {
           "id": "1c6cf222-058f-4dee-988b-1d47617d7a02",
           "portal": "/Some money flow e2e",
-          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof. Remaining: the whole run; not started, it sits behind the location service and the GDPR rerun.  run end-to-end as real buyer + seller with proof logged.\n\nOwner: Shafi; Apple testing on top.\n\nDate: 2026-09-01 (Tue).",
+          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof. Remaining: the whole run; not started, it sits behind the location service and the GDPR rerun.  run end-to-end as real buyer + seller with proof logged.\n\nOwner: Shafi; Apple testing on top.\n\nNot started — behind Fat AI.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 2,
-          "target_date": "01-09-2026"
+          "target_date": "AFTER THE FAT SERIES"
         },
         {
           "id": "45d32ae3-63b4-4e5d-8fbb-b974b06d4b03",
           "portal": "GDPR erasure — PG §10.19 (three signed additions)",
-          "note": "Built on Dev, flag still OFF. All three additions in:\n\nRetention mechanism — lib/retention.ts (5-yr clock per record class + purge cron), retention-purge route + cron 0 5 * * *, migration 20260823120000_gdpr_retention_holds.sql.\nFraud reporter_email strip on the reporter's own erasure — in lib/gdpr-erasure.ts (scheduleRetentionHolds wired in).\nSole-owner gate — app/api/account/route.ts returns 409 before erasure, never auto-closes.\n\nPending (yours, not code): apply the retention migration on prod → Dev dry-run → Apple's green rerun → only then flip GDPR_ERASE_ENABLED.",
+          "note": "Built on Dev, flag still OFF. All three additions in:\n\nRetention mechanism — lib/retention.ts (5-yr clock per record class + purge cron), retention-purge route + cron 0 5 * * *, migration 20260823120000_gdpr_retention_holds.sql.\nFraud reporter_email strip on the reporter's own erasure — in lib/gdpr-erasure.ts (scheduleRetentionHolds wired in).\nSole-owner gate — app/api/account/route.ts returns 409 before erasure, never auto-closes.\n\nPending (yours, not code): apply the retention migration on prod → Dev dry-run → Apple's green rerun → only then flip GDPR_ERASE_ENABLED.\nNot started as a card — the three signed additions are built on Dev with GDPR_ERASE_ENABLED off; what is left is the Dev dry-run and Apple's green rerun against the four rulings, parked behind the Fat AI series.",
           "pct": 0,
           "fe": "done",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "31-08-2026"
+          "target_date": "AFTER THE FAT SERIES"
         },
         {
           "id": "4ca75218-bc31-4e7c-8af2-25c25901742d",
@@ -138,6 +138,11 @@
           "id": "66cba550-d239-4584-938e-e794aada230a",
           "portal": "review nahid/apples DONE poral + main branch merging portal test",
           "note": ""
+        },
+        {
+          "id": "fbc5183b-5f02-43cd-afd2-7f8d9b9f64b6",
+          "portal": "API-credits agent — Feedback backlog re-verification",
+          "note": "Status: waiting on Console. Apple's idea, in Audun's \"build first\" batch on 11 Oct. Starts only after Shafi posts the Console setup; the card is Shafi's. No date yet."
         }
       ],
       "priority": []
@@ -319,6 +324,11 @@
           "id": "cfc495fb-004b-44a3-91f6-a61f7738d79c",
           "portal": "messages + notification + auth",
           "note": ""
+        },
+        {
+          "id": "a888d91c-bd61-4816-826b-f5de55d7db3d",
+          "portal": "MO-1 — Motor grid consumes FAT_RESULT (/bil, /mc-atv, /bobil, /nyttekjoretoy, /bat) — PR #687",
+          "note": "Done: merged to Dev on 9 Oct — 100%. The Motor browse grid on all five portals now shows the results Fat finds. Left: nothing. Next: MO-2, Motor into the Fat library."
         }
       ],
       "in_progress": [
@@ -355,72 +365,132 @@
         {
           "id": "7f2d14e4-9962-4f86-8a5e-486e2fed882e",
           "portal": "Location service + \"Nearest\" sort (§10.16), cross-platform",
-          "note": "Remaining: the follow-ups Shafi booked on #560, all real. Round 3 — it did not converge, and round 2 found two fatals inside round 1's fixes. §10.16's app-format verification, which the spec requires and for which I have only browser evidence. The forget-area opt-out UI (GDPR Art. 7(3)), which has no screen today. The ?sort=nearest URL restore. And Motor Nearest, which by Audun's 1 Sept ruling ships at postal-code level to our own servers only, with its off switch in the same delivery and never a later one. Scope so far is 4 of about 16 surfaces. Merged: #546 the service, #560 the sort. Found on the way and ownerless: /leie-eiendom's cross-portal fetch sends params the API ignores, so \"Rent a home\" shows marketplace items. Owner: Apple. Date: 2026-09-07 (Mon).",
+          "note": "Remaining: the follow-ups Shafi booked on #560, all real. Round 3 — it did not converge, and round 2 found two fatals inside round 1's fixes. §10.16's app-format verification, which the spec requires and for which I have only browser evidence. The forget-area opt-out UI (GDPR Art. 7(3)), which has no screen today. The ?sort=nearest URL restore. And Motor Nearest, which by Audun's 1 Sept ruling ships at postal-code level to our own servers only, with its off switch in the same delivery and never a later one. Scope so far is 4 of about 16 surfaces. Merged: #546 the service, #560 the sort. Found on the way and ownerless: /leie-eiendom's cross-portal fetch sends params the API ignores, so \"Rent a home\" shows marketplace items. Owner: Apple.\nParked behind the Fat AI series (FAT ORDER v4); resumes after A-4, target set then.",
           "pct": 85,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "07-09-2026"
+          "target_date": "AFTER THE FAT SERIES"
         },
         {
           "id": "a059bea8-b328-4ad8-a04f-215130ee5c5f",
           "portal": "Listing import (Marketplace + Motor)",
-          "note": "Remaining: flipping the switch, which is one line and belongs after #567 merges — PG 40 item 3 makes shipping shut until all three portals are built the rule itself. Three pieces §3.24 names and nobody has built: the Fat-in-chat import door, \"reuse a previous listing\" on the same engine (§3.1), and publish-all-in-one-click on a business batch. These are not blockers for the merge but they are part of the feature the Guide describes, so they are named here rather than discovered after the switch opens. Also open: two rewrite buttons now sit on an imported draft, both compliant, but §3.24 names side-by-side as the built piece — put to Audun. Four Real Estate §3.24 proofs are dark; eiendom-import selects an address input by a placeholder that no longer exists. Owner: Apple. Date: 2026-09-03 (Thu).",
+          "note": "Remaining: flipping the switch, which is one line and belongs after #567 merges — PG 40 item 3 makes shipping shut until all three portals are built the rule itself. Three pieces §3.24 names and nobody has built: the Fat-in-chat import door, \"reuse a previous listing\" on the same engine (§3.1), and publish-all-in-one-click on a business batch. These are not blockers for the merge but they are part of the feature the Guide describes, so they are named here rather than discovered after the switch opens. Also open: two rewrite buttons now sit on an imported draft, both compliant, but §3.24 names side-by-side as the built piece — put to Audun. Four Real Estate §3.24 proofs are dark; eiendom-import selects an address input by a placeholder that no longer exists. Owner: Apple.\nParked behind the Fat AI series (FAT ORDER v4); resumes after A-4, target set then.",
           "pct": 85,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "03-09-2026"
+          "target_date": "AFTER THE FAT SERIES"
         },
         {
           "id": "48a4a1eb-dcb9-47ad-ac7e-baed693a4f16",
           "portal": "Cloudinary signed delivery",
-          "note": "Files people upload as evidence in a complaint or with a business application no longer sit at permanent open addresses — uploads are signed, the files are private, and reading one takes a short-lived link that only the people already allowed on that page can mint. The cleanup ran and the proof is posted: the photo store held no open documents anywhere, and the one document store that was publicly readable is now closed and proven closed with a fresh read. Remaining: nothing from me — one already-written change switches the finished portals' production gate on, and it closes on the merge of #511, which has now been open eight days. Owner: Apple. Date: 2026-08-27 (Thu).",
+          "note": "Files people upload as evidence in a complaint or with a business application no longer sit at permanent open addresses — uploads are signed, the files are private, and reading one takes a short-lived link that only the people already allowed on that page can mint. The cleanup ran and the proof is posted: the photo store held no open documents anywhere, and the one document store that was publicly readable is now closed and proven closed with a fresh read. Remaining: nothing from me — one already-written change switches the finished portals' production gate on, and it closes on the merge of #511, which has now been open eight days. Owner: Apple.\nParked behind the Fat AI series (FAT ORDER v4); resumes after A-4, target set then.",
           "pct": 95,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "27-08-2026"
+          "target_date": "AFTER THE FAT SERIES"
         },
         {
           "id": "4da68792-18d1-4d72-8477-87d23607b6b0",
           "portal": "Pre-launch portal testing - Apple",
-          "note": "3 Sept — Apple — /eiendom — the filter panel and the new country dropdown, opened at Shafi's request before it reaches users — performance fine, ~250 options open instantly and scroll smoothly; two findings\n3 Sept — Apple — /eiendom — the country list has no search box, so a country low in the alphabet means scrolling past nearly two hundred names, and it opens on Norway before the alphabetical entries (§10.10) → logged, needs an owner\n2 Sept — Apple — /eiendom — the for-sale wizard and the wanted-ad form — item location, the off-platform sale wording and the wanted-ad exemption all correct; four findings\n2 Sept — Apple — /eiendom — the listing gate reads a different source than the Verification panel, so an account the panel shows as complete is still blocked from nineteen portals → logged, needs an owner\n\n1 Sept — Apple — /my-profile — 9 of 11 tabs; account, verification, data, payouts, plan and billing, transactions, notifications — three serious findings on legal or identity surfaces, five smaller, each checked in the code and not only on screen\n1 Sept — Apple — /my-profile — the Account tab prints \"verified\" and \"unverified\" under the email (§10.18 bans both) while the Verification tab states the same two facts correctly as \"confirmed\"; the panel is hardcoded English → logged, needs an owner\n1 Sept — Apple — /my-profile — the delete-account text promises \"all your data will be permanently deleted\"; the signed method is anonymise in place, with financial and identity records kept for their legal periods → flagged for a ruling, not to be reworded by hand\n1 Sept — Apple — /my-profile — \"Download my data\" is wired to the small /some social export, not the real GDPR bundle; the file was 3.5 KB while the button offers everything Fatsees has stored about you → logged, needs an owner\n1 Sept — Apple — /my-profile — Plan & Billing says payouts take 3-5 business days, Payouts says the next business day, and §6.10.3 is daily, so at least one screen is wrong; seen on screen, source not located in code → logged, needs an owner\n1 Sept — Apple — /my-profile — \"Verification level\" and the plan badge print twice on every tab; at phone width the floating Fat button and the plan pill cover two tabs → logged, needs an owner\n\n31 Aug — Apple — /motor and /bil — browse, filters, price, display name and the escrow copy all correct; eight findings\n31 Aug — Apple — /motor — the car create form stays entirely in English when the language is Norwegian → logged, needs an owner\n31 Aug — Apple — /motor — the listing page never shows where the vehicle is, a §10.17 read-side gap since the buyer is meant to know what country the thing is in → logged, needs an owner\n\n30 Aug — Apple — /agreements and the seller payout screen — payout wording correct: a real date not a Friday, no \"Paid\", no fee wording; four findings\n30 Aug — Apple — /agreements — the payouts screen prints \"Auto explainer\" and \"Withdraw note\" as raw labels where the free-withdrawal promise belongs; missing translation keys render as sentence-cased key names → logged, needs an owner\n\n27 Aug — Apple — /admin — all 20 pages opened and reached by clicking; escrow, costs, cron, kill-switch, platform settings and banned words walked — five findings plus one raised the same day\n27 Aug — Apple — /admin — DeepL is at 94% of its monthly translation cap and nothing on the page flags it → raised in team chat the same day\n27 Aug — Apple — /admin — the Escrow tab heading shows a raw text key, \"Admin escrowfailures title\" → fixed by Shafi, confirming on Dev\n27 Aug — Apple — /admin — the Chargeback recoveries link lands on the Cron Jobs screen instead → fixed by Shafi, confirming on Dev\n27 Aug — Apple — /admin — the API Cost Dashboard shows no cost anywhere, only usage counts and percentages → owned by Shafi, post-launch, to be relabelled until real spend exists\n27 Aug — Apple — /admin — the kill-switch state line cannot be read in dark mode → fixed by Shafi, confirming on Dev\n27 Aug — Apple — /admin — the cron page never says whether a job is running or stopped, and its jobs still name someone no longer on the team → owned by Nahid, post-launch\n\n26 Aug — Apple — /marketplace — browsing and searching signed out, listing an item with the new country and postal code, viewing it as a buyer, and trying to edit it — price, listing location, escrow line and display-name-not-real-name all correct; three findings\n26 Aug — Apple — /marketplace — the Edit button on a published listing does not edit; it opens an empty new-listing form, so a wrong price or postal code cannot be corrected and there is no other route back to your own advert → owned by Nahid\n26 Aug — Apple — /marketplace — the create form carries two location fields, one labelled only \"Location\"; filling that one leaves Publish disabled with nothing explaining why → logged, needs an owner\n26 Aug — Apple — /marketplace — the breadcrumb category renders in Norwegian on an English page → logged, needs an owner\n\n25 Aug — Apple — /some — profile setup, display name, public profile; text, image and poll posting; earnings and data screens — profile and posting worked, all amounts in the viewer's own currency\n25 Aug — Apple — /some — the intro on /some/create reads \"you become a Verified user\"; §10.18 bans that word on any user-facing screen and it is the only place left in the code still showing it → owned by Nahid\n25 Aug — Apple — /some — a post cannot be edited or deleted; the menu on your own post offers Report only, while the API already supports both and comments can be edited and deleted → owned by Nahid\n\nRemaining: rolling, 30 minutes every working day. Eight of eleven portals walked — /some, /marketplace, /admin, /agreements, /motor, /bil, /my-profile, /eiendom. Left: both rental portals, /videopay, and the pricing and legal pages, plus the /some remainder (follow and connect, network, activity, report and block) and the Norwegian and dark-mode passes on every portal already walked. The date is when the first pass through the list finishes; the routine does not stop there.\nOwner: Apple\nDate: 2026-09-07 (Mon)",
+          "note": "Standing daily line: a 30-minute portal test every working day, with the findings filed as cards in the Trello Feedback column. Rotation: /marketplace → /eiendom → Motor → /some → /ai.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
-          "target_date": "07-09-2026"
+          "target_date": "ONGOING"
         },
         {
           "id": "1c6cf222-058f-4dee-988b-1d47617d7a02",
           "portal": "/Some money flow e2e",
-          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof. Remaining: the whole run; not started, it sits behind the location service and the GDPR rerun.  run end-to-end as real buyer + seller with proof logged.\n\nOwner: Shafi; Apple testing on top.\n\nDate: 2026-09-01 (Tue).",
+          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof. Remaining: the whole run; not started, it sits behind the location service and the GDPR rerun.  run end-to-end as real buyer + seller with proof logged.\n\nOwner: Shafi; Apple testing on top.\n\nNot started — behind Fat AI.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 2,
-          "target_date": "01-09-2026"
+          "target_date": "AFTER THE FAT SERIES"
         },
         {
           "id": "45d32ae3-63b4-4e5d-8fbb-b974b06d4b03",
           "portal": "GDPR erasure — PG §10.19 (three signed additions)",
-          "note": "Built on Dev, flag still OFF. All three additions in:\n\nRetention mechanism — lib/retention.ts (5-yr clock per record class + purge cron), retention-purge route + cron 0 5 * * *, migration 20260823120000_gdpr_retention_holds.sql.\nFraud reporter_email strip on the reporter's own erasure — in lib/gdpr-erasure.ts (scheduleRetentionHolds wired in).\nSole-owner gate — app/api/account/route.ts returns 409 before erasure, never auto-closes.\n\nPending (yours, not code): apply the retention migration on prod → Dev dry-run → Apple's green rerun → only then flip GDPR_ERASE_ENABLED.",
+          "note": "Built on Dev, flag still OFF. All three additions in:\n\nRetention mechanism — lib/retention.ts (5-yr clock per record class + purge cron), retention-purge route + cron 0 5 * * *, migration 20260823120000_gdpr_retention_holds.sql.\nFraud reporter_email strip on the reporter's own erasure — in lib/gdpr-erasure.ts (scheduleRetentionHolds wired in).\nSole-owner gate — app/api/account/route.ts returns 409 before erasure, never auto-closes.\n\nPending (yours, not code): apply the retention migration on prod → Dev dry-run → Apple's green rerun → only then flip GDPR_ERASE_ENABLED.\nNot started as a card — the three signed additions are built on Dev with GDPR_ERASE_ENABLED off; what is left is the Dev dry-run and Apple's green rerun against the four rulings, parked behind the Fat AI series.",
           "pct": 0,
           "fe": "done",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "31-08-2026"
+          "target_date": "AFTER THE FAT SERIES"
         },
         {
-          "id": "fb1b96b0-b723-4e7c-90a9-70631e20ada3",
+          "id": "0fa97b34-4ff4-44ae-99de-5a8815719e58",
+          "portal": "A-6 — Fat sort + the location ask (F4/F5) — PR #690",
+          "note": "Status: in review. Done: Fat sort and the location ask are built, Nahid's code review is closed and his one nit is fixed. Left: Nahid's Preview control for cases B–D, which needs the seed listings from #697 on Dev first (Monday). Next: merge once the control is green.",
+          "pct": 95,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "14-10-2026"
+        },
+        {
+          "id": "b06689e6-e874-4086-9dbc-2deb0d2f43d4",
+          "portal": "Admin alarms surface — PR #696 (card 295)",
+          "note": "Status: signed off, waiting to merge. Done: the admin alarms screen is built, and Nahid signed it on Dev on 11 Oct — the list, acknowledge-once with a log line, and the read state are all proven. Left: Victor merges it. Next: the follow-ups are carded in Trello — paging, acknowledge and audit in one step, a write limit, and the badge colour.",
+          "pct": 95,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 0,
+          "target_date": "13-10-2026"
+        },
+        {
+          "id": "dbecb0f6-4d45-45bf-a71d-43ba6505c58d",
+          "portal": "MO-2 — Motor into fat_library, the write path (FAT ORDER v4 item 24)",
+          "note": "Status: built, PR not opened yet. Done: Motor ads are written into Fat's library — built 11 Oct, the round trip on Dev is green and the database change is applied on Dev. Left: (1) open the PR today, once #696 merges and frees the review slot; (2) Nahid's control; (3) merge. Open question for Shafi: Motor has no column for the photo read-out, so the library text comes from the ad text only — this has its own card. Next: the Motor items in TEST 7 can run once this is on Dev.",
+          "pct": 85,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "15-10-2026"
+        },
+        {
+          "id": "4ac6ba30-c15c-4b26-b2b3-ce2301817eeb",
+          "portal": "A-5 — 4 sponsored + 50 hits, Load more, 20-page cap, F6 (item 20)",
+          "note": "Status: not started. Plan: write the plan 13 Oct, build 14–15 Oct, open the PR 15 Oct, then Nahid's control. Left: all of it. Its proof needs the seed listings from #697 on Dev. Next: A-4.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 2,
+          "target_date": "20-10-2026"
+        },
+        {
+          "id": "4c2c6dcb-d918-4e50-9520-fe107d3f5723",
+          "portal": "A-4 — re-gate every Fat route Pro → Standard, one PR (item 27)",
+          "note": "Status: not started — starts after A-5. Left: move every Fat route from the Pro gate to Standard in one PR, then control and merge. Next: the queued A-7 to A-10.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 1,
+          "target_date": "22-10-2026"
+        },
+        {
+          "id": "b62ef7b5-4ca1-4ab9-ab79-0dff2b3c3893",
+          "portal": "TEST 7 stage 1 — Apple's 27 items on the four apple-* accounts",
+          "note": "Status: holding. Done: stage 0 — the four apple-* accounts exist and their plans were set on 9 Oct. Left: the 27 stage 1 items, about two sessions once released. Waiting on: Shafi posting \"24 accounts, plans set\" (16 of 24 exist today); the target date follows that post. The Motor items (Q2, Q7, Q13, Q28, Q53, X1, D2) also wait on MO-2 landing on Dev.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 2,
+          "target_date": "AFTER SHAFI'S POST"
+        },
+        {
+          "id": "e6775ede-672a-4eb4-a93b-fdae01c1687b",
           "portal": "Admin & compliance screen",
-          "note": "Remaining: nothing to build — #536 merged 24 Aug. Should move to Done at 100.\nOwner: Apple\nDate: 2026-08-24 (Mon)",
-          "pct": 90,
+          "note": "Remaining: nothing to build — #536 merged 24 Aug. Should move to Done at 100.\nOwner: Apple\nMerged 24 Aug (#536); end-to-end user test still to run.",
+          "pct": 100,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
-          "target_date": "25-08-2026"
+          "target_date": null
         }
       ],
       "planned_next": [
@@ -607,6 +677,26 @@
       "id": "4259bd67-21ba-48b3-b99a-42461fb8f184",
       "portal": "Usage / consumption view @Nahid",
       "note": "Remaining: Scope and estimate — not started. Approved by Audun 25 Aug\nas needed but NOT before 1 Sept; first in line after the current plan\ncloses. Split out of the Admin panel card."
+    },
+    {
+      "id": "66cb8025-3213-4c2e-8bc2-32c0cb6938b8",
+      "portal": "A-7 — every image, not just the first - @Apple",
+      "note": "Queued — after A-4. No target date yet."
+    },
+    {
+      "id": "149f401a-f4c2-4761-b0cf-79bc6dccb836",
+      "portal": "A-8 — Free-plan image gate (A35) - @Apple",
+      "note": "Queued — after A-4. No target date yet."
+    },
+    {
+      "id": "51a317e5-ca09-41aa-9a3a-c3d1f71e76bb",
+      "portal": "A-9 — retry + alarm on a failed scan (A25) - @Apple",
+      "note": "Queued — after A-4. No target date yet."
+    },
+    {
+      "id": "ca1a1d35-6b96-4987-b917-46d243d72346",
+      "portal": "A-10 — bubble rules + mobile - @Apple",
+      "note": "Queued — after A-4. No target date yet."
     }
   ]
 }
