@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T00:08:22.297+00:00",
+  "updated_at": "2026-10-13T00:20:48.878+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -435,8 +435,8 @@
         {
           "id": "b06689e6-e874-4086-9dbc-2deb0d2f43d4",
           "portal": "Admin alarms surface — PR #696 (card 295)",
-          "note": "Status: signed off, waiting to merge. Done: the admin alarms screen is built, and Nahid signed it on Dev on 11 Oct — the list, acknowledge-once with a log line, and the read state are all proven. Left: Victor merges it. Next: the follow-ups are carded in Trello — paging, acknowledge and audit in one step, a write limit, and the badge colour.",
-          "pct": 95,
+          "note": "Status: signed off, waiting to merge. Done: the admin alarms screen is built, and Nahid signed it on Dev on 11 Oct — the list, acknowledge-once with a log line, and the read state are all proven. Left: Victor merges it. Next: the follow-ups are carded in Trello — paging, acknowledge and audit in one step, a write limit, and the badge colour.\nMerged 12 Oct; Nahid's control proved list, ack and blind-read on Dev; Apple's own end-to-end walk still to do.",
+          "pct": 100,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 0,
@@ -445,8 +445,8 @@
         {
           "id": "dbecb0f6-4d45-45bf-a71d-43ba6505c58d",
           "portal": "MO-2 — Motor into fat_library, the write path (FAT ORDER v4 item 24)",
-          "note": "Status: built, PR not opened yet. Done: Motor ads are written into Fat's library — built 11 Oct, the round trip on Dev is green and the database change is applied on Dev. Left: (1) open the PR today, once #696 merges and frees the review slot; (2) Nahid's control; (3) merge. Open question for Shafi: Motor has no column for the photo read-out, so the library text comes from the ad text only — this has its own card. Next: the Motor items in TEST 7 can run once this is on Dev.",
-          "pct": 85,
+          "note": "Status: built, PR not opened yet. Done: Motor ads are written into Fat's library — built 11 Oct, the round trip on Dev is green and the database change is applied on Dev. Left: (1) open the PR today, once #696 merges and frees the review slot; (2) Nahid's control; (3) merge. Open question for Shafi: Motor has no column for the photo read-out, so the library text comes from the ad text only — this has its own card. Next: the Motor items in TEST 7 can run once this is on Dev.\nPR opened 13 Oct (#703), controller Nahid.",
+          "pct": 90,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 1,
@@ -455,8 +455,8 @@
         {
           "id": "4ac6ba30-c15c-4b26-b2b3-ce2301817eeb",
           "portal": "A-5 — 4 sponsored + 50 hits, Load more, 20-page cap, F6 (item 20)",
-          "note": "Status: not started. Plan: write the plan 13 Oct, build 14–15 Oct, open the PR 15 Oct, then Nahid's control. Left: all of it. Its proof needs the seed listings from #697 on Dev. Next: A-4.",
-          "pct": 0,
+          "note": "Status: not started. Plan: write the plan 13 Oct, build 14–15 Oct, open the PR 15 Oct, then Nahid's control. Left: all of it. Its proof needs the seed listings from #697 on Dev. Next: A-4.\nBuilt 12 Oct, branch feat-a5-fat-result-pages--ap pushed; PR waits for a cap slot; live proof after #697's seed; two STOP lines (totalCount after #698; ivfflat read for Victor).",
+          "pct": 85,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 2,
@@ -465,7 +465,7 @@
         {
           "id": "4c2c6dcb-d918-4e50-9520-fe107d3f5723",
           "portal": "A-4 — re-gate every Fat route Pro → Standard, one PR (item 27)",
-          "note": "Status: not started — starts after A-5. Left: move every Fat route from the Pro gate to Standard in one PR, then control and merge. Next: the queued A-7 to A-10.",
+          "note": "Status: not started — starts after A-5. Left: move every Fat route from the Pro gate to Standard in one PR, then control and merge. Next: the queued A-7 to A-10.\nOrder vs A12/A14 pending Shafi's board post.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
@@ -487,6 +487,26 @@
           "portal": "Admin & compliance screen",
           "note": "Remaining: nothing to build — #536 merged 24 Aug. Should move to Done at 100.\nOwner: Apple\nMerged 24 Aug (#536); end-to-end user test still to run.",
           "pct": 100,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "22c4bff7-c58a-489c-b2ce-ad7fba83e942",
+          "portal": "A12 — Fatsees Pay purchase protection (Trello 354–359)",
+          "note": "Ordered by Audun 11 Oct (PG46 A12 / A14); builder Apple, controller Nahid; dates once Shafi places it against the Fat series. Trello cards: 354 binding purchase + fixed cancellation list · 355 ship within 7 business days, reminders day 3/5/6, day-7 cancel+refund · 356 Register shipment (typed, receipt photo, handed over in person) · 357 14-day clock from trackingAddedAt, in-person never auto-releases · 358 confirm-receipt flow · 359 order timeline + profile counter + Fat underprice warning.\n357 planned (PLAN242ap), starts on Shafi's order.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "2fb1776c-2747-422b-b385-35b9396292b9",
+          "portal": "A14 — Sell to (Trello 362)",
+          "note": "Ordered by Audun 11 Oct (PG46 A12 / A14); builder Apple, controller Nahid; dates once Shafi places it against the Fat series. Trello cards: 362.",
+          "pct": 0,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
