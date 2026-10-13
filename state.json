@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-13T04:32:13.685+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-10-13T13:34:40.913+00:00",
+  "updated_by": "Nahid",
   "developers": [
     {
       "name": "Shafi",
@@ -140,7 +140,7 @@
           "note": ""
         },
         {
-          "id": "fbc5183b-5f02-43cd-afd2-7f8d9b9f64b6",
+          "id": "f43656ab-e876-4de2-a782-06149fc8b79d",
           "portal": "API-credits agent — Feedback backlog re-verification",
           "note": "Status: waiting on Console. Apple's idea, in Audun's \"build first\" batch on 11 Oct. Starts only after Shafi posts the Console setup; the card is Shafi's. No date yet."
         }
@@ -623,7 +623,13 @@
           "target_date": null
         }
       ],
-      "planned_next": [],
+      "planned_next": [
+        {
+          "id": "82292935-1030-42bb-adf4-72cd462a52bc",
+          "portal": "2FA — admin TOTP + enforcement (CA 003)",
+          "note": "Ordered by Audun (CA 003). Trello 369 · 370 · 371. Starts after my portal cards; target ~10 Nov. Every Dev/Prod admin must enroll TOTP before enforcement lands."
+        }
+      ],
       "priority": []
     },
     {
