@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-13T00:20:48.878+00:00",
+  "updated_at": "2026-10-13T04:32:13.685+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -190,12 +190,12 @@
         {
           "id": "12160ff0-fcf2-45f3-a316-e1df03fd2368",
           "portal": "Fat for life",
-          "note": "Fat AI in-context on /marketplace, /eiendom, /leie, /leie-eiendom + dispute-handle path. Text chat proven end-to-end; hook, streaming, cost-guard already live. Portal-specific system prompts + per-surface tool routing next. Ships after Mollie checkout wiring lands",
-          "pct": 90,
+          "note": "Fat AI in-context shipped on /marketplace + /eiendom (library write path landed via #697 seed 13 Oct). Item 10 (portalHasLibrary gate) in review as #698, F1 adapter test derived from write-path registry in draft as #700, voice chain cost table ready as #701, model-regression top_p fix as #702. Carrying: plan-read-as-Free defect (lib/token-gate.ts:104, Shafi queue-jump 12 Oct — blocks Test 7 stage 1 for every Standard account) + A13 card 360 messaging link safety. /leie, /leie_eiendom and Motor join F1's write-path-registry-derived set as their adapters land. Ships as the Fat series clears 26-10.",
+          "pct": 92,
           "fe": "prog",
-          "be": "done",
-          "estimate_days": 2,
-          "target_date": "27-08-2026"
+          "be": "prog",
+          "estimate_days": 5,
+          "target_date": "26-10-2026"
         },
         {
           "id": "00eae39c-21e8-413e-a432-c1f1675191c8",
@@ -290,12 +290,12 @@
         {
           "id": "a0118044-99d8-42f2-bf36-8fcb5386de81",
           "portal": "Fat — platform AI, verified portal-by-portal as each closes (sweep)",
-          "note": "Remaining: Prove PG §3.0 \"Fat everywhere\" — verify each portal has Fat present (bubble + header + hero) with the right per-surface system prompt and per-surface tool routing, and that Fat sees the right context on each surface (listing detail, edit, dispute, checkout). Portal-by-portal pass with a green checklist per portal.\nOwner: Victor.\nDate: 2026-08-22 (Sat).",
+          "note": "Remaining: Prove PG §3.0 \"Fat everywhere\" — verify each portal has Fat present (bubble + header + hero) with the right per-surface system prompt and per-surface tool routing, and that Fat sees the right context on each surface (listing detail, edit, dispute, checkout). Portal-by-portal pass with a green checklist per portal.\nOwner: Victor.\n\nStarts after plan-read-as-Free defect + A13 card 360 land. Portal set derived from wiredPortalIds() so sweep matches F1's adapter set.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
-          "target_date": "2026-08-27"
+          "target_date": "22-10-2026"
         },
         {
           "id": "33762444-4848-4ef1-822a-97470af02adc",
@@ -495,7 +495,7 @@
         {
           "id": "22c4bff7-c58a-489c-b2ce-ad7fba83e942",
           "portal": "A12 — Fatsees Pay purchase protection (Trello 354–359)",
-          "note": "Ordered by Audun 11 Oct (PG46 A12 / A14); builder Apple, controller Nahid; dates once Shafi places it against the Fat series. Trello cards: 354 binding purchase + fixed cancellation list · 355 ship within 7 business days, reminders day 3/5/6, day-7 cancel+refund · 356 Register shipment (typed, receipt photo, handed over in person) · 357 14-day clock from trackingAddedAt, in-person never auto-releases · 358 confirm-receipt flow · 359 order timeline + profile counter + Fat underprice warning.\n357 planned (PLAN242ap), starts on Shafi's order.",
+          "note": "Ordered by Audun 11 Oct (PG46 A12 / A14); builder Apple, controller Nahid; dates once Shafi places it against the Fat series. Trello cards: 354 binding purchase + fixed cancellation list · 355 ship within 7 business days, reminders day 3/5/6, day-7 cancel+refund · 356 Register shipment (typed, receipt photo, handed over in person) · 357 14-day clock from trackingAddedAt, in-person never auto-releases · 358 confirm-receipt flow · 359 order timeline + profile counter + Fat underprice warning.\n357 built + Dev-proven 13 Oct (own card).",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
@@ -511,6 +511,16 @@
           "be": "todo",
           "estimate_days": null,
           "target_date": null
+        },
+        {
+          "id": "60eba3fb-33b9-428b-9298-35a8d0c6a650",
+          "portal": "A12 · 357 — release clock",
+          "note": "Status: Built + Dev-proven 13 Oct, PR waits for a cap slot. Done: clock counts from the first registered shipment, never from payment; in-person handover never auto-releases; migration on Dev; Dev round trip 4/4 green. Left: PR + Nahid's control. Builder Apple, controller Nahid.",
+          "pct": 90,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": 2,
+          "target_date": "15-10-2026"
         }
       ],
       "planned_next": [
