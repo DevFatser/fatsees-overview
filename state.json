@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-13T13:34:40.913+00:00",
-  "updated_by": "Nahid",
+  "updated_at": "2026-10-14T00:29:22.825+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -515,11 +515,11 @@
         {
           "id": "60eba3fb-33b9-428b-9298-35a8d0c6a650",
           "portal": "A12 · 357 — release clock",
-          "note": "Status: Built + Dev-proven 13 Oct, PR waits for a cap slot. Done: clock counts from the first registered shipment, never from payment; in-person handover never auto-releases; migration on Dev; Dev round trip 4/4 green. Left: PR + Nahid's control. Builder Apple, controller Nahid.",
+          "note": "Status: in review — PR #707 open, controller Nahid. Done: clock counts from the first registered shipment, never from payment; in-person handover never auto-releases; migration on Dev; Dev round trip 4/4 green. Left: Nahid's control on #707, then merge. Builder Apple, controller Nahid.",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 2,
+          "estimate_days": 1,
           "target_date": "15-10-2026"
         }
       ],
