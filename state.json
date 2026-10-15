@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-14T00:29:22.825+00:00",
+  "updated_at": "2026-10-15T00:32:49.556+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -445,7 +445,7 @@
         {
           "id": "dbecb0f6-4d45-45bf-a71d-43ba6505c58d",
           "portal": "MO-2 — Motor into fat_library, the write path (FAT ORDER v4 item 24)",
-          "note": "Status: built, PR not opened yet. Done: Motor ads are written into Fat's library — built 11 Oct, the round trip on Dev is green and the database change is applied on Dev. Left: (1) open the PR today, once #696 merges and frees the review slot; (2) Nahid's control; (3) merge. Open question for Shafi: Motor has no column for the photo read-out, so the library text comes from the ad text only — this has its own card. Next: the Motor items in TEST 7 can run once this is on Dev.\nPR opened 13 Oct (#703), controller Nahid.",
+          "note": "Status: built, PR not opened yet. Done: Motor ads are written into Fat's library — built 11 Oct, the round trip on Dev is green and the database change is applied on Dev. Left: (1) open the PR today, once #696 merges and frees the review slot; (2) Nahid's control; (3) merge. Open question for Shafi: Motor has no column for the photo read-out, so the library text comes from the ad text only — this has its own card. Next: the Motor items in TEST 7 can run once this is on Dev.\nPR opened 13 Oct (#703), controller Nahid.\n#703: CI fixed; waits for Victor's merge.",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
@@ -455,8 +455,8 @@
         {
           "id": "4ac6ba30-c15c-4b26-b2b3-ce2301817eeb",
           "portal": "A-5 — 4 sponsored + 50 hits, Load more, 20-page cap, F6 (item 20)",
-          "note": "Status: not started. Plan: write the plan 13 Oct, build 14–15 Oct, open the PR 15 Oct, then Nahid's control. Left: all of it. Its proof needs the seed listings from #697 on Dev. Next: A-4.\nBuilt 12 Oct, branch feat-a5-fat-result-pages--ap pushed; PR waits for a cap slot; live proof after #697's seed; two STOP lines (totalCount after #698; ivfflat read for Victor).",
-          "pct": 85,
+          "note": "Status: not started. Plan: write the plan 13 Oct, build 14–15 Oct, open the PR 15 Oct, then Nahid's control. Left: all of it. Its proof needs the seed listings from #697 on Dev. Next: A-4.\nBuilt 12 Oct, branch feat-a5-fat-result-pages--ap pushed; PR waits for a cap slot; live proof after #697's seed; two STOP lines (totalCount after #698; ivfflat read for Victor).\nStatus: in review — PR #710 open, controller Nahid. Left: Nahid's control once Dev has real listings.",
+          "pct": 90,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 2,
@@ -515,7 +515,7 @@
         {
           "id": "60eba3fb-33b9-428b-9298-35a8d0c6a650",
           "portal": "A12 · 357 — release clock",
-          "note": "Status: in review — PR #707 open, controller Nahid. Done: clock counts from the first registered shipment, never from payment; in-person handover never auto-releases; migration on Dev; Dev round trip 4/4 green. Left: Nahid's control on #707, then merge. Builder Apple, controller Nahid.",
+          "note": "Status: in review — PR #707 open, controller Nahid. Done: clock counts from the first registered shipment, never from payment; in-person handover never auto-releases; migration on Dev; Dev round trip 4/4 green. Left: Nahid's control on #707, then merge. Builder Apple, controller Nahid.\n#707: CI fixed; waits for Nahid's re-sign + Victor's merge.",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
