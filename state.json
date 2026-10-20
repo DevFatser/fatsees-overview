@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T00:32:49.556+00:00",
+  "updated_at": "2026-10-20T03:25:40.025+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -329,6 +329,16 @@
           "id": "a888d91c-bd61-4816-826b-f5de55d7db3d",
           "portal": "MO-1 — Motor grid consumes FAT_RESULT (/bil, /mc-atv, /bobil, /nyttekjoretoy, /bat) — PR #687",
           "note": "Done: merged to Dev on 9 Oct — 100%. The Motor browse grid on all five portals now shows the results Fat finds. Left: nothing. Next: MO-2, Motor into the Fat library."
+        },
+        {
+          "id": "9bf88dcf-7638-4a11-b81c-42571fc05dc7",
+          "portal": "Card 380 — Oslo postcodes",
+          "note": "Done — 100%. PR #719 merged to Dev 19 Oct (Nahid). Left: nothing."
+        },
+        {
+          "id": "d71f449a-e6f9-4d40-9a71-326f07716c90",
+          "portal": "CA 007 /eiendom Fat result grid (card 395)",
+          "note": "Done — 100%. PR #715 merged to Dev 18 Oct. Left: nothing."
         }
       ],
       "in_progress": [
@@ -455,12 +465,12 @@
         {
           "id": "4ac6ba30-c15c-4b26-b2b3-ce2301817eeb",
           "portal": "A-5 — 4 sponsored + 50 hits, Load more, 20-page cap, F6 (item 20)",
-          "note": "Status: not started. Plan: write the plan 13 Oct, build 14–15 Oct, open the PR 15 Oct, then Nahid's control. Left: all of it. Its proof needs the seed listings from #697 on Dev. Next: A-4.\nBuilt 12 Oct, branch feat-a5-fat-result-pages--ap pushed; PR waits for a cap slot; live proof after #697's seed; two STOP lines (totalCount after #698; ivfflat read for Victor).\nStatus: in review — PR #710 open, controller Nahid. Left: Nahid's control once Dev has real listings.",
+          "note": "90% — built, PR #710 open (controller Nahid); blocked on Emmy's Real Estate 55+ (Fri 23) and on the rebase onto #720 + a query-vector column on fat_stored_results (Shafi's 20 Oct pick: #710's store wins). Built 12 Oct on branch feat-a5-fat-result-pages--ap; two STOP lines (totalCount after #698; ivfflat read for Victor). Left: Nahid's control once Dev has real listings — control Sun 25 Oct. Next: A-4.",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
           "estimate_days": 2,
-          "target_date": "20-10-2026"
+          "target_date": "25-10-2026"
         },
         {
           "id": "4c2c6dcb-d918-4e50-9520-fe107d3f5723",
@@ -521,6 +531,56 @@
           "be": "todo",
           "estimate_days": 1,
           "target_date": "15-10-2026"
+        },
+        {
+          "id": "371a2d1a-b8f7-41a4-8d26-e7244b580d8d",
+          "portal": "R2 image move, Dev — Builder @apple / Controller @nahid",
+          "note": "Status: in progress, started 18 Oct. Done: slice 1 = PR #723 — new public uploads go to R2 behind MEDIA_STORE, variants made at upload; CI green 20 Oct; rate limits added. Slice 2 built and pushed (7 commits: Motor key read-back, card/thumb/hero variants on read, next/image media host, upload-field images to R2, image check accepts R2, Rent a home publish, Motor listing page) — its PR opens when #723 merges. Left: (1) Nahid's control of #723 — waits on the bucket CORS setting (Shafi); (2) slice 2 PR + control; (3) Dev flip; (4) production + Cloudinary closed — waits on the DNS copy (Shafi).",
+          "pct": 70,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "d5d4ff6c-28e9-4945-869d-9707be19b782",
+          "portal": "#720 follow-up ① — one photo read and charged twice (Item 17) — Builder @apple / Controller @nahid",
+          "note": "Status: in progress, started 20 Oct; PLAN248ap building. Left: PR + Nahid's control.",
+          "pct": 20,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "22101cc2-371e-48e8-a639-6efbea2931d9",
+          "portal": "#720 follow-up ② — published listing active with embedding NULL — Builder @apple / Controller @nahid",
+          "note": "Status: not started — starts Thu 22 Oct. Left: build, PR + Nahid's control.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "932205a4-4e26-4376-8c51-f9cde4d9a089",
+          "portal": "C7 — Marketplace browse sort nearest first, newest when no location (PG48 C7) — Builder @apple",
+          "note": "Status: not started — starts Sun 25 Oct. Left: build, PR + control.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
+        },
+        {
+          "id": "2b766558-fabb-4b7a-ab8a-31b81d4de01a",
+          "portal": "Card 414 — Feedback re-verification agent — Builder @apple / Controller @victor",
+          "note": "Status: not started — starts when the drift agent runs, no later than Mon 2 Nov. Left: build, PR + Victor's control.",
+          "pct": 0,
+          "fe": "todo",
+          "be": "todo",
+          "estimate_days": null,
+          "target_date": null
         }
       ],
       "planned_next": [
