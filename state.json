@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-20T03:25:40.025+00:00",
-  "updated_by": "Apple",
+  "updated_at": "2026-10-21T10:02:08.856+00:00",
+  "updated_by": "Shafi",
   "developers": [
     {
       "name": "Shafi",
@@ -45,82 +45,82 @@
         {
           "id": "0e998d6a-ee4d-4e1c-9a77-f053b7ab8bdd",
           "portal": "/leie - Rent anything",
-          "note": "Remaining: Fat AI response check + Mollie integration end-to-end test on live prod.\nOwner: Shafi (lead dev per card; Victor is Fat-check on top). Date: 2026-08-23 (Sun)",
+          "note": "Fat door is a local keyword parser (#421 ph.1, @valiantjoe, Mon 26) · empty state #422 · booking floor to e-mail only (#431, PG48 A1) · payment E2E blocked on the provider decision, PG48 B3, owner @audun",
           "pct": 95,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "29-08-26"
+          "estimate_days": null,
+          "target_date": "after #421 ph.1"
         },
         {
           "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
           "portal": "REAL ESTATE (/eiendom)",
-          "note": "Remaining: Victor-> Fat AI response check + dispute path + Shafi: end-to-end test.\n: long-term rental upgrade — rental terms + Wanted tab\n:Victor's paid-subscription test (wanted-ad requires PAID plan under €4/mo).\nOwner: Shafi (code done); Victor's subscription-check gate on top.\nDate: 2026-08-24 (Mon",
+          "note": "#421 ph.3 · cards 390–392 behind 397 · 55 test listings land Fri 23 · wanted-ad plan gate — re-cite to PG47 §7.1, €5 not €4",
           "pct": 95,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "2026-08-30"
+          "estimate_days": null,
+          "target_date": "after #421 ph.3 + 397"
         },
         {
           "id": "c20081d6-29f1-459e-91c5-c1e859dcbad8",
           "portal": "/leie-eiendom: Rent a home — short term",
-          "note": "Remaining: Fat AI response check + dispute path + end-to-end test (same shape as /leie / /eiendom).\nOwner: Shafi.\nDate: 2026-08-26 (Tue).",
+          "note": "Four open cards on this portal: 411 (Victor, today), 412+413 (Nahid, PR Thu 22), 415 (Apple) · #421 ph.2 · Freja-to-list gate per PG47 §3.5",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "29-08-30"
+          "estimate_days": 0,
+          "target_date": "after 411–413"
         },
         {
           "id": "b1c7cbe7-43c7-40bb-9848-11f9e3338c12",
           "portal": "Fatsees Owners",
-          "note": "Remaining: Testing on prod, buying shares, freja verification\nOwner: Shafi.\nDate: 2026-08-26 (Tue).\nPending: flip OWNERS_FREJA_ENABLED + OWNERS_PAYMENT_ENABLED (need prod Freja cert + live Mollie), verify real price vs config, one end-to-end prod purchase. Optional: explicit Fat/RAG exclusion guard.\n\nEverything runs in TEST MODE until two flags flip, and each needs its backing config present (a flag alone can't turn on a half-configured leg):\n\nOWNERS_FREJA_ENABLED — needs the Freja prod cert + key in env → then real freja verification.\nOWNERS_PAYMENT_ENABLED — needs live Mollie → then real share purchase.\n\nSo \"testing on prod, buying shares, freja verification\" is a go-live checklist, not dev work: set the two env flags, run one real purchase end-to-end (reserve → Freja verify → pay → signed agreement PDF → my-shares), confirm the release cron.\n\nTwo things to verify before go-live:\n\nPrice placeholder — Audun required a checklist line confirming the real share price on-screen matches config (the \"kr 0.25\" is a placeholder). Confirm the live number before flipping payment.\nFat zero-access — owners tables aren't in the embed/RAG pipeline (so Fat de-facto can't see them, which is correct), but §3.22 wants an explicit exclusion. Low risk, but worth a one-line guard/comment so a future source-add can't accidentally sweep Owners in. I can add that now if you want.",
+          "note": "Unchanged work, but blocked: OWNERS_FREJA_ENABLED needs live Freja, which @audun is pausing · OWNERS_PAYMENT_ENABLED needs the provider decision (B3) · the “kr 0.25” placeholder still needs the real share price from the register",
           "pct": 85,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "28-08-26"
+          "target_date": "TBA"
         },
         {
           "id": "b8852b70-9196-4e53-abbb-fae85783cf39",
           "portal": "Fatsees Stores (frame, front-page rows, intro ad)",
-          "note": "To close it, the only coding left is wiring <StoresRow /> into the Marketplace and Motor front pages. components/stores/StoresRow.tsx and its feed app/api/stores/featured/route.ts are fully built — free, mechanical newest-active fill, never buyable (Audun's 2026-08-17 lock). But <StoresRow /> is not dropped into any front yet — it's imported nowhere.\nPending: one line — drop <StoresRow /> into Marketplace + Motor fronts. (Combined shipping is a separate deferred build.)",
+          "note": "Remaining: one import per front. components/stores/StoresRow.tsx and\napp/api/stores/featured/route.ts are built and tested — free,\nmechanical newest-active fill, never buyable (Audun 2026-08-17; PG47\n§31 and brief §31 both carry it). Verified 21 Oct: StoresRow is\nimported nowhere in the repo.\n\nWhy it is not done today: app/marketplace/client.tsx has three PRs\nlanding on it this week (#717 rework, #710 rebase + vector column,\nand the 38 ratchet pins). Dropping a new import into that file now\ncosts a conflict in all three. Motor's front is clear and can take it\nimmediately.\n\nPlan: StoresRow into the Motor front this week; Marketplace front\nonce the collision lane settles. Owner: Shafi.\n\nNote: this is the third built-and-unmounted component on the board\n(FatVisitorLine #716, FatAnswerStrip #718). Worth a lint rule rather\nthan three separate catches.\n\n(Combined shipping remains a separate deferred build.)",
           "pct": 90,
           "fe": "prog",
           "be": "todo",
           "estimate_days": 1,
-          "target_date": "29-8-26"
+          "target_date": "TBA"
         },
         {
           "id": "1c6cf222-058f-4dee-988b-1d47617d7a02",
           "portal": "/Some money flow e2e",
-          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof. Remaining: the whole run; not started, it sits behind the location service and the GDPR rerun.  run end-to-end as real buyer + seller with proof logged.\n\nOwner: Shafi; Apple testing on top.\n\nNot started — behind Fat AI.",
+          "note": "Remaining: the whole run, unchanged — a tip, a paid follower and a\nsponsored deal held until published, each end to end as a real buyer\nand seller, every run logged as proof.\n\nCorrecting the blocker. This card has read \"behind the Fat series\"\nsince August. The real hold is the payment provider: PG48 B3 is still\nopen, and @audun's own input of 19 Oct says a held payment at the\nproviders on the table is a card reservation, not a true hold. An\nend-to-end money run cannot be written against a rail that has not\nbeen chosen. The location service and the GDPR rerun sit behind it,\nnot in front.\n\nOwner: Shafi, @applee6784 testing on top. Dated the day B3 is ruled.\nOwner of the blocker: @audun.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 2,
+          "estimate_days": null,
           "target_date": "AFTER THE FAT SERIES"
         },
         {
           "id": "45d32ae3-63b4-4e5d-8fbb-b974b06d4b03",
           "portal": "GDPR erasure — PG §10.19 (three signed additions)",
-          "note": "Built on Dev, flag still OFF. All three additions in:\n\nRetention mechanism — lib/retention.ts (5-yr clock per record class + purge cron), retention-purge route + cron 0 5 * * *, migration 20260823120000_gdpr_retention_holds.sql.\nFraud reporter_email strip on the reporter's own erasure — in lib/gdpr-erasure.ts (scheduleRetentionHolds wired in).\nSole-owner gate — app/api/account/route.ts returns 409 before erasure, never auto-closes.\n\nPending (yours, not code): apply the retention migration on prod → Dev dry-run → Apple's green rerun → only then flip GDPR_ERASE_ENABLED.\nNot started as a card — the three signed additions are built on Dev with GDPR_ERASE_ENABLED off; what is left is the Dev dry-run and Apple's green rerun against the four rulings, parked behind the Fat AI series.",
-          "pct": 0,
+          "note": "Code unchanged and correct: retention mechanism in lib/retention.ts\n(5-yr clock per record class + purge cron), retention-purge route +\ncron 0 5 * * *, migration 20260823120000_gdpr_retention_holds.sql,\nfraud reporter_email strip in lib/gdpr-erasure.ts, sole-owner gate\nreturning 409 in app/api/account/route.ts. GDPR_ERASE_ENABLED is off\non Dev and lives in four files.\n\nPending, mine not code: apply the retention migration on prod → Dev\ndry-run → @applee6784's green rerun → only then flip\nGDPR_ERASE_ENABLED.\n\nNEW, from PG48 — two rulings land in this card's own sections at the\nv48 cut and are not built:\n· C4 (§6.10.3): a closed account with a positive balance has that\n  balance PAID OUT to the registered payout account BEFORE the\n  closure runs; only a balance that cannot be paid out is written off\n  after 12 months. Today lib/payouts.ts pays any positive balance on\n  withdrawal and payouts.expires_at carries a 12-month clock, but I\n  find no closure→payout sequencing. Needs a read before it is called\n  done.\n· C5 (§6.9.6(4)): an active listing of a closed account goes inactive\n  the moment the closure runs — a de-identified listing cannot be an\n  offer.\n\nAlso blocking the migration step: @nahidhasan3593 found Dev's ledger\ngate already red — two migration files from 17 Sept were never\napplied (topup_tier_plan_values, free_pot_one_time_never_resets),\nplus #710's fat_stored_results row with no file. Dev's migration\nstate has to be straight before a dry-run there proves anything.\n\nOwner: Shafi (apply) / @applee6784 (rerun).",
+          "pct": 60,
           "fe": "done",
           "be": "todo",
-          "estimate_days": 1,
+          "estimate_days": null,
           "target_date": "AFTER THE FAT SERIES"
         },
         {
           "id": "4ca75218-bc31-4e7c-8af2-25c25901742d",
           "portal": "Payout model — PG §6.10.3 (daily, final form)",
-          "note": "Done, on Dev. T41 replaced the interim weekly-Friday model with daily business-day payouts. lib/payouts.ts: WEEKLY_PAYOUT_DAY removed (0 refs), isPayoutBusinessDay() / nextAutoPayoutAt() added, pull-forward window gone, €5 floor is auto-run-only, every payout free. Cron 0 9 * * 1-5. Reconcile hardened with the partial-routed settle guard (Apple's finding). T43 stripped the false €0.25 payout-fee line from the ledger (PayoutLedger.tsx, 0 refs) — Fatsees fee now shows effective %. Test auto-payout-gate.test.ts rewritten (pays Wed, no-op Sun).\n\nPending: nothing code-side — it's live-verified.",
-          "pct": 0,
+          "note": "Done, on Dev and live-verified. T41 replaced the interim weekly-Friday\nmodel with daily business-day payouts. lib/payouts.ts:\nWEEKLY_PAYOUT_DAY removed (0 refs), isPayoutBusinessDay() /\nnextAutoPayoutAt() added, pull-forward window gone, €5 floor is\nauto-run-only, every payout free. Cron 0 9 * * 1-5. Reconcile hardened\nwith the partial-routed settle guard (@applee6784's finding). T43\nstripped the false €0.25 payout-fee line from the ledger\n(PayoutLedger.tsx, 0 refs) — the Fatsees fee now shows an effective %.\nTest auto-payout-gate.test.ts rewritten (pays Wed, no-op Sun).\n\nNot 100, and the bar was wrong at 0: PG48 C4 amends §6.10.3, this\ncard's own section. At the cut it reads \"a closed account with a\npositive balance: the balance is paid out to the registered payout\naccount before the closure runs; a balance that cannot be paid out is\nwritten off after 12 months.\" lib/payouts.ts pays any positive\nbalance on withdrawal and payouts.expires_at already carries the\n12-month clock, but the closure→payout sequencing is not wired that I\ncan see. One read, then either a line of code or a line in the card\nsaying it already holds.\n\nOwner: Shafi.",
+          "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "31-08-26"
+          "estimate_days": null,
+          "target_date": "TBA"
         },
         {
           "id": "55e54dac-50ef-45c5-991f-a4f4ac2906ab",
@@ -230,32 +230,32 @@
         {
           "id": "0e998d6a-ee4d-4e1c-9a77-f053b7ab8bdd",
           "portal": "/leie - Rent anything",
-          "note": "Remaining: Fat AI response check + Mollie integration end-to-end test on live prod.\nOwner: Shafi (lead dev per card; Victor is Fat-check on top). Date: 2026-08-23 (Sun)",
+          "note": "Fat door is a local keyword parser (#421 ph.1, @valiantjoe, Mon 26) · empty state #422 · booking floor to e-mail only (#431, PG48 A1) · payment E2E blocked on the provider decision, PG48 B3, owner @audun",
           "pct": 95,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "29-08-26"
+          "estimate_days": null,
+          "target_date": "after #421 ph.1"
         },
         {
           "id": "ab275811-88a4-48f4-9e63-6cfc4f5ee354",
           "portal": "REAL ESTATE (/eiendom)",
-          "note": "Remaining: Victor-> Fat AI response check + dispute path + Shafi: end-to-end test.\n: long-term rental upgrade — rental terms + Wanted tab\n:Victor's paid-subscription test (wanted-ad requires PAID plan under €4/mo).\nOwner: Shafi (code done); Victor's subscription-check gate on top.\nDate: 2026-08-24 (Mon",
+          "note": "#421 ph.3 · cards 390–392 behind 397 · 55 test listings land Fri 23 · wanted-ad plan gate — re-cite to PG47 §7.1, €5 not €4",
           "pct": 95,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "2026-08-30"
+          "estimate_days": null,
+          "target_date": "after #421 ph.3 + 397"
         },
         {
           "id": "c20081d6-29f1-459e-91c5-c1e859dcbad8",
           "portal": "/leie-eiendom: Rent a home — short term",
-          "note": "Remaining: Fat AI response check + dispute path + end-to-end test (same shape as /leie / /eiendom).\nOwner: Shafi.\nDate: 2026-08-26 (Tue).",
+          "note": "Four open cards on this portal: 411 (Victor, today), 412+413 (Nahid, PR Thu 22), 415 (Apple) · #421 ph.2 · Freja-to-list gate per PG47 §3.5",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 1,
-          "target_date": "29-08-30"
+          "estimate_days": 0,
+          "target_date": "after 411–413"
         },
         {
           "id": "e067ece1-2205-44b9-9e0c-754b816fa323",
@@ -415,21 +415,21 @@
         {
           "id": "1c6cf222-058f-4dee-988b-1d47617d7a02",
           "portal": "/Some money flow e2e",
-          "note": "The three ways money moves on the profile portal — a tip, a paid follower, and a sponsored deal held safely until published — each run end to end as a real buyer and seller, with every run logged as proof. Remaining: the whole run; not started, it sits behind the location service and the GDPR rerun.  run end-to-end as real buyer + seller with proof logged.\n\nOwner: Shafi; Apple testing on top.\n\nNot started — behind Fat AI.",
+          "note": "Remaining: the whole run, unchanged — a tip, a paid follower and a\nsponsored deal held until published, each end to end as a real buyer\nand seller, every run logged as proof.\n\nCorrecting the blocker. This card has read \"behind the Fat series\"\nsince August. The real hold is the payment provider: PG48 B3 is still\nopen, and @audun's own input of 19 Oct says a held payment at the\nproviders on the table is a card reservation, not a true hold. An\nend-to-end money run cannot be written against a rail that has not\nbeen chosen. The location service and the GDPR rerun sit behind it,\nnot in front.\n\nOwner: Shafi, @applee6784 testing on top. Dated the day B3 is ruled.\nOwner of the blocker: @audun.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
-          "estimate_days": 2,
+          "estimate_days": null,
           "target_date": "AFTER THE FAT SERIES"
         },
         {
           "id": "45d32ae3-63b4-4e5d-8fbb-b974b06d4b03",
           "portal": "GDPR erasure — PG §10.19 (three signed additions)",
-          "note": "Built on Dev, flag still OFF. All three additions in:\n\nRetention mechanism — lib/retention.ts (5-yr clock per record class + purge cron), retention-purge route + cron 0 5 * * *, migration 20260823120000_gdpr_retention_holds.sql.\nFraud reporter_email strip on the reporter's own erasure — in lib/gdpr-erasure.ts (scheduleRetentionHolds wired in).\nSole-owner gate — app/api/account/route.ts returns 409 before erasure, never auto-closes.\n\nPending (yours, not code): apply the retention migration on prod → Dev dry-run → Apple's green rerun → only then flip GDPR_ERASE_ENABLED.\nNot started as a card — the three signed additions are built on Dev with GDPR_ERASE_ENABLED off; what is left is the Dev dry-run and Apple's green rerun against the four rulings, parked behind the Fat AI series.",
-          "pct": 0,
+          "note": "Code unchanged and correct: retention mechanism in lib/retention.ts\n(5-yr clock per record class + purge cron), retention-purge route +\ncron 0 5 * * *, migration 20260823120000_gdpr_retention_holds.sql,\nfraud reporter_email strip in lib/gdpr-erasure.ts, sole-owner gate\nreturning 409 in app/api/account/route.ts. GDPR_ERASE_ENABLED is off\non Dev and lives in four files.\n\nPending, mine not code: apply the retention migration on prod → Dev\ndry-run → @applee6784's green rerun → only then flip\nGDPR_ERASE_ENABLED.\n\nNEW, from PG48 — two rulings land in this card's own sections at the\nv48 cut and are not built:\n· C4 (§6.10.3): a closed account with a positive balance has that\n  balance PAID OUT to the registered payout account BEFORE the\n  closure runs; only a balance that cannot be paid out is written off\n  after 12 months. Today lib/payouts.ts pays any positive balance on\n  withdrawal and payouts.expires_at carries a 12-month clock, but I\n  find no closure→payout sequencing. Needs a read before it is called\n  done.\n· C5 (§6.9.6(4)): an active listing of a closed account goes inactive\n  the moment the closure runs — a de-identified listing cannot be an\n  offer.\n\nAlso blocking the migration step: @nahidhasan3593 found Dev's ledger\ngate already red — two migration files from 17 Sept were never\napplied (topup_tier_plan_values, free_pot_one_time_never_resets),\nplus #710's fat_stored_results row with no file. Dev's migration\nstate has to be straight before a dry-run there proves anything.\n\nOwner: Shafi (apply) / @applee6784 (rerun).",
+          "pct": 60,
           "fe": "done",
           "be": "todo",
-          "estimate_days": 1,
+          "estimate_days": null,
           "target_date": "AFTER THE FAT SERIES"
         },
         {
