@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-21T10:02:08.856+00:00",
-  "updated_by": "Shafi",
+  "updated_at": "2026-10-26T03:52:33.412+00:00",
+  "updated_by": "Apple",
   "developers": [
     {
       "name": "Shafi",
@@ -575,7 +575,7 @@
         {
           "id": "2b766558-fabb-4b7a-ab8a-31b81d4de01a",
           "portal": "Card 414 — Feedback re-verification agent — Builder @apple / Controller @victor",
-          "note": "Status: not started — starts when the drift agent runs, no later than Mon 2 Nov. Left: build, PR + Victor's control.",
+          "note": "Status: in progress — started Mon 26 Oct (AN 015, Audun 26 Oct). Built on main like the dead-gate agent, report-only. Day one: cross-references every open Feedback card with merged PRs on Dev, flags dead Guide cites and twins, prints the run cost, and names the cards it cannot re-test. The Dev re-run half (Audun 18 Oct) is a second wave. Left: PR today; first run and day-one cost once Shafi sets the five variables; Victor's control.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
