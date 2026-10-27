@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T03:52:33.412+00:00",
+  "updated_at": "2026-10-27T04:33:41.485+00:00",
   "updated_by": "Apple",
   "developers": [
     {
@@ -465,7 +465,7 @@
         {
           "id": "4ac6ba30-c15c-4b26-b2b3-ce2301817eeb",
           "portal": "A-5 — 4 sponsored + 50 hits, Load more, 20-page cap, F6 (item 20)",
-          "note": "90% — built, PR #710 open (controller Nahid); blocked on Emmy's Real Estate 55+ (Fri 23) and on the rebase onto #720 + a query-vector column on fat_stored_results (Shafi's 20 Oct pick: #710's store wins). Built 12 Oct on branch feat-a5-fat-result-pages--ap; two STOP lines (totalCount after #698; ivfflat read for Victor). Left: Nahid's control once Dev has real listings — control Sun 25 Oct. Next: A-4.",
+          "note": "90% — built, PR #710 open (controller Nahid). Not rebased since 12 Oct: waits on the rebase onto #720 + a query-vector column on fat_stored_results (Shafi 20 Oct: #710's store wins). Left: rebase Thu 29 Oct, then Nahid's control once Dev has real listings. If the PR slot is needed first: close and recard (Shafi's call, asked 27 Oct). Next: A-4. Owner: Apple.",
           "pct": 90,
           "fe": "todo",
           "be": "todo",
@@ -535,8 +535,8 @@
         {
           "id": "371a2d1a-b8f7-41a4-8d26-e7244b580d8d",
           "portal": "R2 image move, Dev — Builder @apple / Controller @nahid",
-          "note": "Status: in progress, started 18 Oct. Done: slice 1 = PR #723 — new public uploads go to R2 behind MEDIA_STORE, variants made at upload; CI green 20 Oct; rate limits added. Slice 2 built and pushed (7 commits: Motor key read-back, card/thumb/hero variants on read, next/image media host, upload-field images to R2, image check accepts R2, Rent a home publish, Motor listing page) — its PR opens when #723 merges. Left: (1) Nahid's control of #723 — waits on the bucket CORS setting (Shafi); (2) slice 2 PR + control; (3) Dev flip; (4) production + Cloudinary closed — waits on the DNS copy (Shafi).",
-          "pct": 70,
+          "note": "Status: in progress, started 18 Oct. Done: slice 1 = PR #723 — new public uploads to R2 behind MEDIA_STORE, variants at upload; run 2 (25 Oct): partial publish per Audun 23 Oct, hash re-check on reuse, import folder gate, one sharp (finalize 500 fixed, 10 MiB 3.9 s / 1.6 s reuse); CORS set by Shafi 23 Oct; rebased on Dev 27 Oct after #725 merged (ac3f0ea3). Slice 2 built and pushed (7 commits) — its PR opens when #723 merges. Left: (1) Nahid's control of #723; (2) slice 2 PR + control; (3) Dev flip; (4) production + Cloudinary closed — waits on the DNS copy (Shafi). Owner: Apple.",
+          "pct": 75,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
@@ -545,8 +545,8 @@
         {
           "id": "d5d4ff6c-28e9-4945-869d-9707be19b782",
           "portal": "#720 follow-up ① — one photo read and charged twice (Item 17) — Builder @apple / Controller @nahid",
-          "note": "Status: in progress, started 20 Oct; PLAN248ap building. Left: PR + Nahid's control.",
-          "pct": 20,
+          "note": "Status: MERGED 26 Oct — PR #725 signed + merged by Nahid (9904bad): one photo, one read, one charge, proven on the Preview (176/81/56 charged as quoted, one listing_image_reads row, no second read at publish, failures charge 0). Four follow-ups → card #471. Left: nothing on this card. Owner: Apple.",
+          "pct": 100,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
@@ -555,8 +555,8 @@
         {
           "id": "22101cc2-371e-48e8-a639-6efbea2931d9",
           "portal": "#720 follow-up ② — published listing active with embedding NULL — Builder @apple / Controller @nahid",
-          "note": "Status: not started — starts Thu 22 Oct. Left: build, PR + Nahid's control.",
-          "pct": 0,
+          "note": "Status: MERGED 22 Oct — card 417, PR #734 (PLAN249ap): the publish embeds the library row in the same pass, so a published listing is searchable at once; signed + merged by Nahid. Left: nothing on this card. Owner: Apple.",
+          "pct": 100,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
@@ -565,7 +565,7 @@
         {
           "id": "932205a4-4e26-4376-8c51-f9cde4d9a089",
           "portal": "C7 — Marketplace browse sort nearest first, newest when no location (PG48 C7) — Builder @apple",
-          "note": "Status: not started — starts Sun 25 Oct. Left: build, PR + control.",
+          "note": "Status: not started — Sun 25 went to the #723/#725 fixes and the #735/#738 controls. Left: build, PR + control. Date: after Thu 29 (#459, #446/#388/#407, #710) — Shafi places it. Owner: Apple.",
           "pct": 0,
           "fe": "todo",
           "be": "todo",
@@ -575,8 +575,8 @@
         {
           "id": "2b766558-fabb-4b7a-ab8a-31b81d4de01a",
           "portal": "Card 414 — Feedback re-verification agent — Builder @apple / Controller @victor",
-          "note": "Status: in progress — started Mon 26 Oct (AN 015, Audun 26 Oct). Built on main like the dead-gate agent, report-only. Day one: cross-references every open Feedback card with merged PRs on Dev, flags dead Guide cites and twins, prints the run cost, and names the cards it cannot re-test. The Dev re-run half (Audun 18 Oct) is a second wave. Left: PR today; first run and day-one cost once Shafi sets the five variables; Victor's control.",
-          "pct": 0,
+          "note": "Status: built Mon 26 Oct (AN 015, Audun 26 Oct) — PR #742 on main, report-only, daily 05:30 UTC; reworked 27 Oct per Shafi's review (one scrub for every output, squash count, reverted PRs, _shared specs). Audun 26 Oct 11:18: this is step 1, the evidence half; step 2 = re-running each finding against Dev, dated by Shafi after the first run's cost. Five variables set by Shafi 26 Oct. Left: Victor controls on main after merge (first run → cost line in #all-team), then step 2. Owner: Apple.",
+          "pct": 60,
           "fe": "todo",
           "be": "todo",
           "estimate_days": null,
